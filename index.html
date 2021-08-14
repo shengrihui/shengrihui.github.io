@@ -186,7 +186,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-13 20:51:47" itemprop="dateModified" datetime="2021-08-13T20:51:47+08:00">2021-08-13</time>
+                <time title="修改时间：2021-08-14 23:00:50" itemprop="dateModified" datetime="2021-08-14T23:00:50+08:00">2021-08-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -214,6 +214,9 @@
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">&gt;This is an H1</span></span><br><span class="line"><span class="section">=============</span></span><br><span class="line">This is an H2</span><br><span class="line">&gt;-------------</span><br></pre></td></tr></table></figure>
 
 <p>任意长度的 = 或 - 都是可以的.</p>
+</blockquote>
+<span id="more"></span>
+<blockquote>
 <p>Atx 样式的标题每行开头使用 1-6 井号, 对应 1-6 级标题. 例如:</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># This is an H1</span></span><br><span class="line"><span class="section">## This is an H2</span></span><br><span class="line"><span class="section">###### This is an H6</span></span><br></pre></td></tr></table></figure>
 <p>可选地, 你可以 “关闭” atx 样式的标题. 这纯粹是美化需要 – 如果你认为这样美观一些就用吧. 关&gt;闭标签的井号数量甚至不需要和起始位置的匹配. (起始的井号数量决定了标题的级别.) :</p>
@@ -221,180 +224,15 @@
 <h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 这是一级标题</span></span><br><span class="line"><span class="section">## 这是二级标题</span></span><br><span class="line"><span class="section">### 这是三级标题</span></span><br><span class="line"><span class="section">#### 这是四级标题 ##</span></span><br><span class="line"><span class="section">这也是一级标题</span></span><br><span class="line"><span class="section">=========</span></span><br><span class="line"><span class="section">这是二级标题</span></span><br><span class="line"><span class="section">-------</span></span><br></pre></td></tr></table></figure>
 <h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><blockquote>
 <h1 id="这是一级标题"><a href="#这是一级标题" class="headerlink" title="这是一级标题"></a>这是一级标题</h1><h2 id="这是二级标题"><a href="#这是二级标题" class="headerlink" title="这是二级标题"></a>这是二级标题</h2><h3 id="这是三级标题"><a href="#这是三级标题" class="headerlink" title="这是三级标题"></a>这是三级标题</h3><h4 id="这是四级标题"><a href="#这是四级标题" class="headerlink" title="这是四级标题"></a>这是四级标题</h4><h1 id="这也是一级标题"><a href="#这也是一级标题" class="headerlink" title="这也是一级标题"></a>这也是一级标题</h1><h2 id="这是二级标题-1"><a href="#这是二级标题-1" class="headerlink" title="这是二级标题"></a>这是二级标题</h2></blockquote>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><h3 id="文档-1"><a href="#文档-1" class="headerlink" title="文档"></a>文档</h3><blockquote>
-<p>Markdown 使用 email 样式的 &gt; 字符作为块引用. 如果你熟悉 email 消息中的引用段落, 那么你同样可以在 Markdown 中创建块引用. 最好对引用文本采取强制换行并在每一行行首放一个 &gt; :</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,</span></span><br><span class="line"><span class="quote">&gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</span></span><br><span class="line"><span class="quote">&gt; Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</span></span><br><span class="line"><span class="quote">&gt;</span></span><br><span class="line"><span class="quote">&gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse</span></span><br><span class="line"><span class="quote">&gt; id sem consectetuer libero luctus adipiscing.</span></span><br></pre></td></tr></table></figure>
-<p>Markdown 中可以简便地只在每一个需要强制换行的段落的首行前面加上一个 &gt; :</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,</span></span><br><span class="line">consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.</span><br><span class="line">Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.</span><br><span class="line"></span><br><span class="line"><span class="quote">&gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse</span></span><br><span class="line">id sem consectetuer libero luctus adipiscing.</span><br></pre></td></tr></table></figure>
-<p>块引用可以嵌套 (例如, 块引用中包含块引用) , 只需添加额外层级的 &gt; 即可:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; This is the first level of quoting.</span></span><br><span class="line"><span class="quote">&gt;</span></span><br><span class="line"><span class="quote">&gt; &gt; This is nested blockquote.</span></span><br><span class="line"><span class="quote">&gt;</span></span><br><span class="line"><span class="quote">&gt; Back to the first level.</span></span><br></pre></td></tr></table></figure>
-<p>块引用可以包含 Markdown 元素, 包括标题, 列表和代码块:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; ## This is a header.</span></span><br><span class="line"><span class="quote">&gt;</span></span><br><span class="line"><span class="quote">&gt; 1.   This is the first list item.</span></span><br><span class="line"><span class="quote">&gt; 2.   This is the second list item.</span></span><br><span class="line"><span class="quote">&gt;</span></span><br><span class="line"><span class="quote">&gt; Here&#x27;s some example code:</span></span><br><span class="line"><span class="quote">&gt;</span></span><br><span class="line"><span class="quote">&gt;     return shell<span class="emphasis">_exec(&quot;echo $input | $markdown_</span>script&quot;);</span></span><br><span class="line">&gt;、</span><br></pre></td></tr></table></figure>
-<p>任何合适的文本编辑器都应该可以很方便的创建 email 样式的块引用. 例如, 用 BBEdit 就可以选取文本然后从 ‘Text’ 菜单中选择 ‘Increase Quote Level’.</p>
-</blockquote>
-<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h4><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;这是一级引用</span><br><span class="line">&gt;&gt;这是二级引用</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;这是好多级引用</span><br></pre></td></tr></table></figure>
-<h4 id="效果-1"><a href="#效果-1" class="headerlink" title="效果"></a>效果</h4><blockquote>
-<p>这是一级引用</p>
-<blockquote>
-<p>这是二级引用</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>这是好多级引用</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><h3 id="文档-2"><a href="#文档-2" class="headerlink" title="文档"></a>文档</h3><blockquote>
-<p>Markdown 支持有序列表和无序列表.</p>
-<p>无序列表使用星号, 加号, 和连字符 – 这些符号是可互换的 – 最为列表标记:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span>   Red</span><br><span class="line"><span class="bullet">*</span>   Green</span><br><span class="line"><span class="bullet">*</span>   Blue</span><br></pre></td></tr></table></figure>
-<p>等价于:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">+</span>   Red</span><br><span class="line"><span class="bullet">+</span>   Green</span><br><span class="line"><span class="bullet">+</span>   Blue</span><br></pre></td></tr></table></figure>
-<p>以及:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span>   Red</span><br><span class="line"><span class="bullet">-</span>   Green</span><br><span class="line"><span class="bullet">-</span>   Blue</span><br></pre></td></tr></table></figure>
-<p>有序列表使用数字加句号:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span>  Bird</span><br><span class="line"><span class="bullet">2.</span>  McHale</span><br><span class="line"><span class="bullet">3.</span>  Parish</span><br></pre></td></tr></table></figure>
-<p>需要注意的是这里的数字序号对于最终生成 HTML 是没有影响的. 这里 Markdown 输出的 HTML 列表是:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Bird<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>McHale<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Parish<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>即使你把列表写成这样:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span>  Bird</span><br><span class="line"><span class="bullet">1.</span>  McHale</span><br><span class="line"><span class="bullet">1.</span>  Parish</span><br></pre></td></tr></table></figure>
-<p>甚至这样:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">3.</span> Bird</span><br><span class="line"><span class="bullet">1.</span> McHale</span><br><span class="line"><span class="bullet">8.</span> Parish</span><br></pre></td></tr></table></figure>
-<p>你都讲得到相同的 HTML 输出. 重点是, 如果你希望你的 Markdown 源码中的列表序号匹配输出的 HTML 列表序号, 你应该使用正常的序号 . 当然, 如果你想简单点, 也可不必这么做.</p>
-<p>即使你使用错误的列表序号, 最终生成的列表仍然会以序号 1 开始. 在未来的版本里, Markdown 可能支持以任意数字作为列表起始序号.</p>
-<p>List 标记通常从左边开始, 可以用三个及以上的空格来缩进. List 标记后面应该跟一个以上的空格或者一个水平制表符.</p>
-<p>为了使列表更美观, 可以用悬挂缩进来格式化列表项:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span>   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</span><br><span class="line"><span class="code">    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,</span></span><br><span class="line"><span class="code">    viverra nec, fringilla in, laoreet vitae, risus.</span></span><br><span class="line"><span class="code">*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.</span></span><br><span class="line"><span class="code">    Suspendisse id sem consectetuer libero luctus adipiscing.</span></span><br><span class="line"><span class="code">    但是这不是必须的:</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">*</span>   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</span><br><span class="line">Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,</span><br><span class="line">viverra nec, fringilla in, laoreet vitae, risus.</span><br><span class="line"><span class="bullet">*</span>   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.</span><br><span class="line">Suspendisse id sem consectetuer libero luctus adipiscing.</span><br></pre></td></tr></table></figure>
-<p>如果列表项中包含空行, Markdown 会在 HTML 输出中用 </p><p> 来包裹他们. 例如, 下面的输入:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span>   Bird</span><br><span class="line"><span class="bullet">*</span>   Magic</span><br></pre></td></tr></table></figure>
-<p>会输出:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Bird<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>Magic<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>但是:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span>   Bird</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span>   Magic</span><br></pre></td></tr></table></figure>
-<p>会输出:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>Bird<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>Magic<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>列表项可能包含多个段落. 列表项中的每个段落都必须用 4 个空格或一个水平制表符来缩进:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span>  This is a list item with two paragraphs. Lorem ipsum dolor</span><br><span class="line"><span class="code">    sit amet, consectetuer adipiscing elit. Aliquam hendrerit</span></span><br><span class="line"><span class="code">    mi posuere lectus.</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="code">    Vestibulum enim wisi, viverra nec, fringilla in, laoreet</span></span><br><span class="line"><span class="code">    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum</span></span><br><span class="line"><span class="code">    sit amet velit.</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">2.</span>  Suspendisse id sem consectetuer libero luctus adipiscing.</span><br></pre></td></tr></table></figure>
-<p>同上, 悬挂缩进只是为了更美观, 而非强制要求:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span>   This is a list item with two paragraphs.</span><br><span class="line"></span><br><span class="line"><span class="code">    This is the second paragraph in the list item. You&#x27;re</span></span><br><span class="line"><span class="code">only required to indent the first line. Lorem ipsum dolor</span></span><br><span class="line"><span class="code">sit amet, consectetuer adipiscing elit.</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">*</span>   Another item in the same list.</span><br></pre></td></tr></table></figure>
-<p>如果列表项中包含块注释 , 块注释标记 &gt; 需要缩进:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span>   A list item with a blockquote:</span><br><span class="line"></span><br><span class="line"><span class="code">    &gt; This is a blockquote</span></span><br><span class="line"><span class="code">    &gt; inside a list item.</span></span><br></pre></td></tr></table></figure>
-<p>如果列表项中有代码块, 代码块需要 双倍 缩进– 8 个空格或者两个水平制表符:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">*</span> A list item with a code block:</span><br><span class="line"></span><br><span class="line"><span class="code">      &lt;code goes here&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>有时候无意中出发有序列表, 如下面这样的代码:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1986.</span> What a great season.</span><br></pre></td></tr></table></figure>
-<p>即使, 如果一行开头满足 number-period-space 模式. 可以通过转义点号来避免这种情况:</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1986\. What a great season.</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><p>略</p>
-<h2 id="代码块和代码"><a href="#代码块和代码" class="headerlink" title="代码块和代码"></a>代码块和代码</h2><h3 id="文档-3"><a href="#文档-3" class="headerlink" title="文档"></a>文档</h3><ul>
-<li> 代码块<blockquote>
-<p>预格式化的代码块用于输出编程语言和标记语言. 不同于普通段落, 代码块中的行会被原样呈现. Markdown 会用 <pre> 和 <code> 标签包围代码块.</code></pre></p>
-<p>要在 Markdown 中插入代码块, 只需要将每一行都缩进 4 个空格或者 1 个水平制表符. 例如, 下面的输入:</p>
-<pre><code>This is a normal paragraph:
-
-    This is a code block.
-</code></pre>
-<p>Markdown 会生成:</p>
-<pre><code>&lt;p&gt;This is a normal paragraph:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;This is a code block.
-&lt;/code&gt;&lt;/pre&gt;
-</code></pre>
-<p>只有一级缩进 – 4 个空格或者 1 个水平制表符 – 会从代码块中的每一行中移除. 例如:</p>
-<pre><code>Here is an example of AppleScript:
-                                                
-tell application &quot;Foo&quot;
-    beep
-end tell
-</code></pre>
-<p>会生成:</p>
-<pre><code>&lt;p&gt;Here is an example of AppleScript:&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;tell application &quot;Foo&quot;
-    beep
-end tell
-&lt;/code&gt;&lt;/pre&gt;
-</code></pre>
-</blockquote>
-</li>
-<li>  代码<blockquote>
-<p>要输出一个代码片段, 需要使用重音符号 (`). 不同于预格式的代码块, 代码片段只是在普通段落中标识出代码. 例如:</p>
-<pre><code> Use the `printf()` function.
-</code></pre>
-<p>会生成:</p>
-<pre><code> &lt;p&gt;Use the &lt;code&gt;printf()&lt;/code&gt; function.&lt;/p&gt;
-</code></pre>
-<p>要在代码片段中包含字面量的重音符号, 可以使用多个重音符号作为起始和结束标记:</p>
-<pre><code> ``There is a literal backtick (`) here.``
-</code></pre>
-<p>会生成:</p>
-<pre><code> &lt;p&gt;&lt;code&gt;There is a literal backtick (`) here.&lt;/code&gt;&lt;/p&gt;
-</code></pre>
-<p>包含代码片段的重音符号可以包含空格 – 起始标记后一个, 结束标记前一个. 这使你可以在代码片段开始和结束位置使用重音符号的字面量:</p>
-<pre><code> A single backtick in a code span: `` ` ``
-           
- A backtick-delimited string in a code span: `` `foo` ``
-</code></pre>
-<p>会生成:</p>
-<pre><code> &lt;p&gt;A single backtick in a code span: &lt;code&gt;`&lt;/code&gt;&lt;/p&gt;
-           
- &lt;p&gt;A backtick-delimited string in a code span: &lt;code&gt;`foo`&lt;/code&gt;&lt;/p&gt;
-</code></pre>
-<p>在代码片段中, 英镑符号和尖括号会被转换成相应的字符实体, 这使得包含 HTML 标签很容易. Markdown 会将下面的代码:</p>
-<pre><code> Please don&#39;t use any `&lt;blink&gt;` tags.
-</code></pre>
-<p> 转成:</p>
-<pre><code> &lt;p&gt;Please don&#39;t use any &lt;code&gt;&amp;lt;blink&amp;gt;&lt;/code&gt; tags.&lt;/p&gt;
-</code></pre>
-<p>这样写:</p>
-<pre><code> `&amp;#8212;` is the decimal-encoded equivalent of `&amp;mdash;`.
-</code></pre>
-<p>会生成:</p>
-<pre><code> &lt;p&gt;&lt;code&gt;&amp;amp;#8212;&lt;/code&gt; is the decimal-encoded
- equivalent of &lt;code&gt;&amp;amp;mdash;&lt;/code&gt;.&lt;/p&gt;
-</code></pre>
-</blockquote>
-</li>
-</ul>
-<h3 id="文档总结和补充"><a href="#文档总结和补充" class="headerlink" title="文档总结和补充"></a>文档总结和补充</h3><ol>
-<li>   选中写好了的代码，然后tab缩进就好了。</li>
-<li>   还有一种是通过一对  `` (英文状态下tab键上面那个) 或者 ~~~  (英文状态下shift+tab上面那个) 将代码包起来。三个反撇号和三个波浪号各一行。再第一个```或~~~后可以加上代码的语言，这样可以有更好的显示效果。</li>
-</ol>
-<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><ul>
-<li><h5 id="加粗"><a href="#加粗" class="headerlink" title="加粗"></a>加粗</h5>  要加粗的文字左右分别用两个*号包起来</li>
-<li><h5 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h5>  要倾斜的文字左右分别用一个*号包起来</li>
-<li><h5 id="斜体加粗"><a href="#斜体加粗" class="headerlink" title="斜体加粗"></a>斜体加粗</h5> 要倾斜和加粗的文字左右分别用三个*号包起来</li>
-<li><h5 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h5>  要加删除线的文字左右分别用两个~~号包起来<h4 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h4>  <strong>这是加粗的文字</strong><br>  <em>这是倾斜的文字</em><br>  <em><strong>这是倾斜加粗的文字</strong></em><br>  <del>这是添加删除线</del><h4 id="效果如下："><a href="#效果如下：" class="headerlink" title="效果如下："></a>效果如下：</h4></li>
-</ul>
-<p><strong>这是加粗的文字</strong><br><em>这是倾斜的文字</em><br><em><strong>这是倾斜加粗的文字</strong></em><br><del>这是添加删除线</del></p>
-<h3 id="4-分割线"><a href="#4-分割线" class="headerlink" title="4.  分割线"></a>4.  分割线</h3><p>三个或者三个以上的 - 或者 * 都可以。</p>
-<h4 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h4><pre><code>---
-----
-***
-****
-</code></pre>
-<h4 id="效果-2"><a href="#效果-2" class="headerlink" title="效果"></a>效果</h4><hr>
-<hr>
-<hr>
-<hr>
-<h3 id="5-图片"><a href="#5-图片" class="headerlink" title="5. 图片"></a>5. 图片</h3><h4 id="语法-amp-示例"><a href="#语法-amp-示例" class="headerlink" title="语法&amp;示例"></a>语法&amp;示例</h4><pre><code>本地：
-  ![狗]（markdown语法/dog.jpg &quot;狗&quot;）
-</code></pre>
-<h4 id="效果-3"><a href="#效果-3" class="headerlink" title="效果"></a>效果</h4><img src="/2021/08/05/markdown%E8%AF%AD%E6%B3%95/dog.jpg" class title="狗">
-
-
-
-<img src="/2021/08/05/markdown%E8%AF%AD%E6%B3%95/dog.jpg" width="256" height="256">
-
- <img src="/2021/08/05/markdown%E8%AF%AD%E6%B3%95/dog.jpg" class title="狗">{:width="30px" height="10px"}
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/08/05/markdown%E8%AF%AD%E6%B3%95/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -467,6 +305,14 @@ end tell
 <li><a target="_blank" rel="noopener" href="http://www.baidu.com/">www.baidu.com</a></li>
 </ul>
 
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/08/04/phote/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -531,12 +377,14 @@ end tell
 
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/08/04/hello-world/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

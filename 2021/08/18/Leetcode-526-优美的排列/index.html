@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shengrihui.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="题目\526. 优美的排列假设有从 1 到 N 的 N 个整数，如果从这 N 个数字中成功构造出一个数组，使得数组的第 i 位 (1 &lt;&#x3D; i &lt;&#x3D; N) 满足如下两个条件中的一个，我们就称这个数组为一个优美的排列。条件： 第 i 位的数字能被 i 整除i 能被第 i 位上的数字整除现在给定一个整数 N，请问可以构造多少个优美的排列？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode_526. 优美的排列">
+<meta property="og:url" content="https://shengrihui.github.io/2021/08/18/Leetcode-526-%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97/index.html">
+<meta property="og:site_name" content="盛日辉的博客">
+<meta property="og:description" content="题目\526. 优美的排列假设有从 1 到 N 的 N 个整数，如果从这 N 个数字中成功构造出一个数组，使得数组的第 i 位 (1 &lt;&#x3D; i &lt;&#x3D; N) 满足如下两个条件中的一个，我们就称这个数组为一个优美的排列。条件： 第 i 位的数字能被 i 整除i 能被第 i 位上的数字整除现在给定一个整数 N，请问可以构造多少个优美的排列？">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://z3.ax1x.com/2021/08/18/fI1buR.jpg">
+<meta property="article:published_time" content="2021-08-17T16:19:15.000Z">
+<meta property="article:modified_time" content="2021-08-17T16:26:01.718Z">
+<meta property="article:author" content="盛日辉">
+<meta property="article:tag" content="-Leetcode -回溯 -动态规划">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/08/18/fI1buR.jpg">
+
+<link rel="canonical" href="https://shengrihui.github.io/2021/08/18/Leetcode-526-%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Leetcode_526. 优美的排列 | 盛日辉的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">盛日辉的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/2021/08/18/Leetcode-526-%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Leetcode_526. 优美的排列
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-08-18 00:19:15 / 修改时间：00:26:01" itemprop="dateCreated datePublished" datetime="2021-08-18T00:19:15+08:00">2021-08-18</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>\526. 优美的排列<br>假设有从 1 到 N 的 N 个整数，如果从这 N 个数字中成功构造出一个数组，使得数组的第 i 位 (1 &lt;= i &lt;= N) 满足如下两个条件中的一个，我们就称这个数组为一个优美的排列。条件：</p>
+<p>第 i 位的数字能被 i 整除<br>i 能被第 i 位上的数字整除<br>现在给定一个整数 N，请问可以构造多少个优美的排列？</p>
+<p>示例1:</p>
+<p>输入: 2<br>输出: 2<br>解释: </p>
+<p>第 1 个优美的排列是 [1, 2]:<br>  第 1 个位置（i=1）上的数字是1，1能被 i（i=1）整除<br>  第 2 个位置（i=2）上的数字是2，2能被 i（i=2）整除</p>
+<p>第 2 个优美的排列是 [2, 1]:<br>  第 1 个位置（i=1）上的数字是2，2能被 i（i=1）整除<br>  第 2 个位置（i=2）上的数字是1，i（i=2）能被 1 整除<br>说明:</p>
+<p>N 是一个正整数，并且不会超过15。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/beautiful-arrangement">https://leetcode-cn.com/problems/beautiful-arrangement</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h3 id="方法零：流氓方法"><a href="#方法零：流氓方法" class="headerlink" title="方法零：流氓方法"></a>方法零：流氓方法</h3><p>因为题目说明了N不会超过15，那就用例测试所有的数得到答案，然后用列表或者一串<code>if</code>语句就可以通过了。</p>
+<h3 id="方法一：回溯"><a href="#方法一：回溯" class="headerlink" title="方法一：回溯"></a>方法一：回溯</h3><h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>本来就隐约觉得会用到回溯算法，但还是想先用排列组合的方法试一下，但太太困难了，最后还是用了回溯算法。<br>先创建一个字典<code>d</code>，可以理解成键是第几个位置，对应的值是该位置上能放哪些数。<br>接下来是回溯函数，设置两个参数，第一个是用于记录当前状态的列表，第二个是 现在要填的是哪一个位置<code>pos</code>，返回当前状态下的优美排列数<code>c</code>。<br><code>c</code>初始设为0，<code>i</code>遍历可以在<code>pos</code>位置上的所有数，即<code>d[pos]</code>，如果<code>i</code>不在列表之内，就将它填到列表的对应位置上，并<code>c += func(s, pos+1)</code>，递归到下一个<code>pos</code>中，直到<code>pos==n</code>时，<code>c += 1</code>。<br>可能还是直接看代码清楚一些吧。</p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">def countArrangement(n):</span><br><span class="line">    d = defaultdict(list)</span><br><span class="line">    # 第num个位置上可以放哪些数</span><br><span class="line">    for num in range(1, n+1):</span><br><span class="line">        for i in range(1, num+1):</span><br><span class="line">            if num % i == 0:</span><br><span class="line">                d[num].append(i)</span><br><span class="line">                if num != i:</span><br><span class="line">                    d[i].append(num)</span><br><span class="line"></span><br><span class="line">    def func(s, pos):</span><br><span class="line">        c = 0</span><br><span class="line">        for i in d[pos]:</span><br><span class="line">            if i not in s:</span><br><span class="line">                s[pos-1] = i</span><br><span class="line">                if pos == n:</span><br><span class="line">                    c += 1</span><br><span class="line">                else:</span><br><span class="line">                    c += func(s, pos+1)</span><br><span class="line">                s[pos-1] = 0</span><br><span class="line">        return c</span><br><span class="line">    return func([0]*n, 1)</span><br></pre></td></tr></table></figure>
+<p>官方的回溯算法和我写得几乎一样，只是他用的是集合。我一开始也是想用集合的，但不知道集合的<code>disturb</code>方法，才改成了列表。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def countArrangement(self, n: int) -&gt; int:</span><br><span class="line">        match = defaultdict(list)</span><br><span class="line">        for i in range(1, n + 1):</span><br><span class="line">            for j in range(1, n + 1):</span><br><span class="line">                if i % j == 0 or j % i == 0:</span><br><span class="line">                    match[i].append(j)</span><br><span class="line">        </span><br><span class="line">        num = 0</span><br><span class="line">        vis = set()</span><br><span class="line"></span><br><span class="line">        def backtrack(index: int) -&gt; None:</span><br><span class="line">            if index == n + 1:</span><br><span class="line">                nonlocal num</span><br><span class="line">                num += 1</span><br><span class="line">                return</span><br><span class="line">            </span><br><span class="line">            for x in match[index]:</span><br><span class="line">                if x not in vis:</span><br><span class="line">                    vis.add(x)</span><br><span class="line">                    backtrack(index + 1)</span><br><span class="line">                    vis.discard(x)</span><br><span class="line">                   </span><br><span class="line">        backtrack(1)</span><br><span class="line">        return num</span><br><span class="line"></span><br><span class="line">作者：LeetCode-Solution</span><br><span class="line">链接：https://leetcode-cn.com/problems/beautiful-arrangement/solution/you-mei-de-pai-lie-by-leetcode-solution-vea2/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法二：状态压缩-动态规划"><a href="#方法二：状态压缩-动态规划" class="headerlink" title="方法二：状态压缩+动态规划"></a>方法二：状态压缩+动态规划</h3><h5 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h5><p>这个方法实在难理解，借助官方题解下的评论才勉强看懂。也不知道什么叫状态压缩。<br>首先，是动态规划的状态表示。这里用二进制数表示，从右往左数，第<code>i</code>位上的数字是1，就表示<code>i</code>这个数字被选取了。创建长度为<code>1&lt;&lt;n</code>的数组<code>f</code>，表示某一状态下的优美排列数。<br>以<code>n=6</code>举例。<code>f[000110]</code>的意思是（这里下标里的数都是二进制数）：数字2和3能够组成的优美排列数。<br>所以，最后返回的结果就是<code>f[1&lt;&lt;n -1]</code>，即<code>f[111111]</code>。<br>然后是转移方程。<code>f[111111] = f[011111] + f[101111] + f[110111] + f[111011] + f[111101] + f[111110]</code>，也就是说，要算取了6个数的优美排列，就算上所有任意去掉这已经取了的6个数中的一个的状态的优美排列数。当然，事实上并不是所有的数都要相加，因为还需要判断，去掉的那个数能否放在第6个位置上。比如<code>f[101111]</code>这时数字<code>5</code>还没有取，而<code>5</code>并不能放在第6个位置上。<br>再举个例子。<code>f[100110]</code>是要算数字<code>2</code>、<code>3</code>和<code>6</code>这3个数的优美排列，那就看哪个数可以放在第3个位置上，这里<code>6</code>和<code>3</code>可以放在第3个位置上，而这时候已经取了的数字分别是<code>2</code>、<code>3</code>和<code>2</code>、<code>6</code>所以<code>f[100110] = f[000110] + f[100010]</code>。<br>因此，设计双重循环，外层<code>mask</code>循环遍历所有状态，内存<code>i</code>循环做的事情是从0（最右边）开始遍历<code>mask</code>的每一位，如果第<code>i+1</code>位上是<code>1</code>，并且这个<code>1</code>对应的数<code>i+1</code>能放在这个位置上（这句话的意思是：假装还没有取<code>i+1</code>这个数，此时已经取了<code>num - 1</code>个数，那 <code>i+1</code>能否放在<code>num</code>这个位置上，所以，<code>num</code>的意思就是要求的<code>mask</code>当中已经取了的数的数量，所以，<code>num</code>可以通过统计<code>mask</code>中有几个<code>1</code>来获得），那么<code>f[mask]</code>就可以加上这种状态下的优美排列数了。<br>还是结合代码进行理解吧。</p>
+<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">def countArrangement(n):</span><br><span class="line">    # f[X] X是一个二进制数，</span><br><span class="line">    # 例：f[000110]，表示数字2和3被选取后排在前面的优美排列数</span><br><span class="line">    # 从右往左数，1表示被选</span><br><span class="line">    f = [0]*(1 &lt;&lt; n)</span><br><span class="line">    f[0] = 1</span><br><span class="line"></span><br><span class="line">    # 动态规划，mask 遍历1到 1&lt;&lt;n</span><br><span class="line">    for mask in range(1, 1 &lt;&lt; n):</span><br><span class="line">        # 计mask有多少个1</span><br><span class="line">        # 以100110举例例，mum=3</span><br><span class="line">        # 也就是说，2、3、6被选取了，要放在前三个求他们呢的优美排列数</span><br><span class="line">        # 那需要判断第3个位置（也就是第 num个位置）可以放谁，</span><br><span class="line">        # 这里可以放3和6，</span><br><span class="line">        # 前两个位置是2，6，f[100110] += f[100010]</span><br><span class="line">        # 前两个位置是2，3，f[100110] += f[000110]</span><br><span class="line">        num = bin(mask).count(&quot;1&quot;)</span><br><span class="line">        for i in range(n):</span><br><span class="line">            # mask &amp; (1 &lt;&lt; i  mask的第i+1位是不是1</span><br><span class="line">            # 如果是，</span><br><span class="line">            # i+1这个数能不能放在 num 这个位置上</span><br><span class="line">            # 如果可以，</span><br><span class="line">            # mask ^ (1 &lt;&lt; i) mask的第i+1位改为0</span><br><span class="line">            # f[mask] += f[mask ^ (1 &lt;&lt; i)]</span><br><span class="line">            # 注意i与i+1，i-1的区别含义</span><br><span class="line">            if (mask &amp; (1 &lt;&lt; i) and (num % (i+1) == 0 or (i+1) % num == 0)):</span><br><span class="line">                f[mask] += f[mask ^ (1 &lt;&lt; i)]</span><br><span class="line">        # for i in range(1,n+1):</span><br><span class="line">        #     if (mask &amp; (1 &lt;&lt; (i-1)) and (num % i == 0 or i % num == 0)):</span><br><span class="line">        #         f[mask] += f[mask ^ (1 &lt;&lt; (i-1))]</span><br><span class="line">    return f[(1 &lt;&lt; n)-1]</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><img src="https://z3.ax1x.com/2021/08/18/fI1buR.jpg" alt="526. 优美的排列提交记录"></p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="盛日辉 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="盛日辉 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Leetcode-%E5%9B%9E%E6%BA%AF-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># -Leetcode -回溯 -动态规划</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/08/17/Leetcode%E9%A2%98%E8%A7%A3/" rel="prev" title="Leetcode题解">
+      <i class="fa fa-chevron-left"></i> Leetcode题解
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E9%9B%B6%EF%BC%9A%E6%B5%81%E6%B0%93%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">方法零：流氓方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E5%9B%9E%E6%BA%AF"><span class="nav-number">3.</span> <span class="nav-text">方法一：回溯</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF"><span class="nav-number">3.0.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.0.2.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E7%8A%B6%E6%80%81%E5%8E%8B%E7%BC%A9-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">4.</span> <span class="nav-text">方法二：状态压缩+动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="nav-number">4.0.1.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="nav-number">4.0.2.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95"><span class="nav-number">5.</span> <span class="nav-text">提交记录</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="盛日辉"
+      src="/images/SNNZ5107.JPG">
+  <p class="site-author-name" itemprop="name">盛日辉</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shengrihui" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;shengrihui" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://goat2003.github.io/" title="https:&#x2F;&#x2F;goat2003.github.io" rel="noopener" target="_blank">goat2003</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">盛日辉</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shengrihui.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="题目552. 学生出勤记录 II 可以用字符串表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符：      &#39;A&#39;：Absent，缺勤     &#39;L&#39;：Late，迟到     &#39;P&#39;：Present，到场   如果学生能够 同时 满足下面两个条件，则可以获得出勤奖励：       按 总出勤 计，学生缺勤（&#39;A&#39;）严格 少于两天。     学">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode_552. 学生出勤记录 II">
+<meta property="og:url" content="https://shengrihui.github.io/2021/08/19/Leetcode-552-%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95-II/index.html">
+<meta property="og:site_name" content="盛日辉的博客">
+<meta property="og:description" content="题目552. 学生出勤记录 II 可以用字符串表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符：      &#39;A&#39;：Absent，缺勤     &#39;L&#39;：Late，迟到     &#39;P&#39;：Present，到场   如果学生能够 同时 满足下面两个条件，则可以获得出勤奖励：       按 总出勤 计，学生缺勤（&#39;A&#39;）严格 少于两天。     学">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://z3.ax1x.com/2021/08/19/fq7VpQ.jpg">
+<meta property="og:image" content="https://z3.ax1x.com/2021/08/19/fqXhEn.jpg">
+<meta property="og:image" content="https://z3.ax1x.com/2021/08/19/fqXjER.jpg">
+<meta property="og:image" content="https://z3.ax1x.com/2021/08/19/fqjVUI.jpg">
+<meta property="og:image" content="https://z3.ax1x.com/2021/08/19/fqjXQS.jpg">
+<meta property="article:published_time" content="2021-08-19T15:35:32.000Z">
+<meta property="article:modified_time" content="2021-08-19T15:38:32.915Z">
+<meta property="article:author" content="盛日辉">
+<meta property="article:tag" content="Leetcode">
+<meta property="article:tag" content="动态规划">
+<meta property="article:tag" content="快速幂&#x2F;矩阵快速幂">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/08/19/fq7VpQ.jpg">
+
+<link rel="canonical" href="https://shengrihui.github.io/2021/08/19/Leetcode-552-%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95-II/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Leetcode_552. 学生出勤记录 II | 盛日辉的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">盛日辉的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/2021/08/19/Leetcode-552-%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95-II/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Leetcode_552. 学生出勤记录 II
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-08-19 23:35:32 / 修改时间：23:38:32" itemprop="dateCreated datePublished" datetime="2021-08-19T23:35:32+08:00">2021-08-19</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>552. 学生出勤记录 II</p>
+<div class="notranslate">可以用字符串表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符：
+<ul>
+    <li><code>'A'</code>：Absent，缺勤</li>
+    <li><code>'L'</code>：Late，迟到</li>
+    <li><code>'P'</code>：Present，到场</li>
+</ul>
+
+<p>如果学生能够 <strong>同时</strong> 满足下面两个条件，则可以获得出勤奖励：</p>
+
+<ul>
+    <li>按 <strong>总出勤</strong> 计，学生缺勤（<code>'A'</code>）<strong>严格</strong> 少于两天。</li>
+    <li>学生 <strong>不会</strong> 存在 <strong>连续</strong> 3 天或 <strong>连续</strong> 3 天以上的迟到（<code>'L'</code>）记录。</li>
+</ul>
+
+<p>给你一个整数 <code>n</code> ，表示出勤记录的长度（次数）。请你返回记录长度为 <code>n</code> 时，可能获得出勤奖励的记录情况 <strong>数量</strong> 。答案可能很大，所以返回对 <code>10<sup>9</sup> + 7</code> <strong>取余</strong> 的结果。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入：</strong>n = 2
+<strong>输出：</strong>8
+<strong>解释：
+</strong>有 8 种长度为 2 的记录将被视为可奖励：
+"PP" , "AP", "PA", "LP", "PL", "AL", "LA", "LL" 
+只有"AA"不会被视为可奖励，因为缺勤次数为 2 次（需要少于 2 次）。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>n = 1
+<strong>输出：</strong>3
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>n = 10101
+<strong>输出：</strong>183236316
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= n &lt;= 10<sup>5</sup></code></li>
+</ul>
+</div>
+
+
+
+<h3 id="方法一和方法二：我的动态规划-排列组合（-泰波纳契数列）"><a href="#方法一和方法二：我的动态规划-排列组合（-泰波纳契数列）" class="headerlink" title="方法一和方法二：我的动态规划+排列组合（+泰波纳契数列）"></a>方法一和方法二：我的动态规划+排列组合（+泰波纳契数列）</h3><p>因为A的情况只有两种：一种是没有A，一种是有A，所以分开考虑。而有A的情况下，A只能有一个，所以考虑将这一个A分别放在字符串的所有位置，这样就将整个字符串分成了左右两个没有A的小部分。若用<code>dp[i]</code>记只有p和L组成的长度为<code>i</code>的字符串当中数量，那么带上A的总数就是将A放在每个位置上的时候<code>dp[A左边长度]*dp[A右边的长度]</code>的总和。而最前面考虑的整个字符串当中没有A的情况即为<code>dp[总长度]</code>。<br>所以接下来就是<code>dp[i]</code>的状态转移方程了。这里再建立两个状态，<code>present[i]</code>和<code>late[i]</code>，分别用于表示长度为<code>i</code>时候以P和L开头（或结尾，其实一样的）的符合条件的数量。于是有状态转移方程：</p>
+<ul>
+<li><code>present[i] = present[i-1]+late[i-1]</code><br> 因为P可以既可以接在P后边，也可以接在L后边。 </li>
+<li><code>late[i] = present[i-1]+present[i-2]</code><br> 因为L可以接在两种情况后边：①恨着P；②只有一个L，这种时候就需要隔着一位是P了。</li>
+<li><code>dp[i] = present[i]+late[i]</code><br>这样就可以写代码了。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">8</span></span><br><span class="line">    dp, late, present = [<span class="number">0</span>]*(n+<span class="number">1</span>), [<span class="number">0</span>]*(n+<span class="number">1</span>), [<span class="number">0</span>]*(n+<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># dp, late, present = &#123;&#125;, &#123;&#125;, &#123;&#125;</span></span><br><span class="line">    present[<span class="number">0</span>] = late[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">    present[<span class="number">1</span>] = late[<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">    present[<span class="number">2</span>] = late[<span class="number">2</span>] = <span class="number">2</span></span><br><span class="line">    dp[<span class="number">0</span>], dp[<span class="number">1</span>], dp[<span class="number">2</span>] = <span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>, n+<span class="number">1</span>):</span><br><span class="line">        present[i] = present[i-<span class="number">1</span>]+late[i-<span class="number">1</span>]</span><br><span class="line">        late[i] = present[i-<span class="number">1</span>]+present[i-<span class="number">2</span>]</span><br><span class="line">        dp[i] = (present[i]+late[i]) % (<span class="number">10</span>**<span class="number">9</span>+<span class="number">7</span>)</span><br><span class="line">    <span class="comment"># print(present)</span></span><br><span class="line">    <span class="comment"># print(dp)</span></span><br><span class="line">    ret = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        t = dp[i]*dp[n-<span class="number">1</span>-i]</span><br><span class="line">        ret += t % (<span class="number">10</span>**<span class="number">9</span>+<span class="number">7</span>)</span><br><span class="line">    ret += dp[n]</span><br><span class="line">    <span class="keyword">return</span> ret % (<span class="number">10</span>**<span class="number">9</span>+<span class="number">7</span>)</span><br></pre></td></tr></table></figure>
+初始状态可以人工算出。<br>我以为我的思路那么简单清晰易懂，肯定没有问题（虽然确实可以解），但是提交之后超出时间限制了！以为因为中间没有每一步都取模（刚开始的时候没有）会导致大数运算变慢，于是每一步都加上取模运算；以为因为是列表取值慢于是有改成字典；以为网断了（其实并没有），重新连了网——而这些都没有用！<br>后来觉得可能是循环里头<code>[]</code>的取值操作有点多，于是将状态转移方程展开往下写，发现这里竟然有个泰波纳契数列。<br>dp[i]<br>= present[i]+late[i]<br>=present[i-1]+late[i-1]+present[i-1]+present[i-2]<br>=present[i-1]+(present[i-2]+present[i-3]) + present[i-1]+present[i-2]<br>=2<em>present[i-1]+2</em>present[i-2]+present[i-3]<br>于是“改进”了方法的前面部分。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">checkRecord2</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">8</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">3</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">19</span></span><br><span class="line">    <span class="comment"># dp = [0]*(n+1)</span></span><br><span class="line">    dp = &#123;&#125;</span><br><span class="line">    dp[<span class="number">0</span>], dp[<span class="number">1</span>], dp[<span class="number">2</span>], dp[<span class="number">3</span>] = <span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">7</span></span><br><span class="line"></span><br><span class="line">    a, b, c = <span class="number">1</span>, <span class="number">2</span>, <span class="number">4</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">4</span>, n+<span class="number">1</span>):</span><br><span class="line">        dp[i] = a+<span class="number">2</span>*b+<span class="number">2</span>*c</span><br><span class="line">        a, b, c = b, c, a+b+c</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure>
+然而仍然超时。——事实上这种更用时，后面放性能分析。<br><a target="_blank" rel="noopener" href="https://imgtu.com/i/fq7VpQ"><img src="https://z3.ax1x.com/2021/08/19/fq7VpQ.jpg" alt="超出时间限制.jpg"></a></li>
+</ul>
+<h3 id="方法三和方法四：官方的动态规划和我照官方的动态规划"><a href="#方法三和方法四：官方的动态规划和我照官方的动态规划" class="headerlink" title="方法三和方法四：官方的动态规划和我照官方的动态规划"></a>方法三和方法四：官方的动态规划和我照官方的动态规划</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">checkRecord</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        MOD = <span class="number">10</span>**<span class="number">9</span> + <span class="number">7</span></span><br><span class="line">        <span class="comment"># 长度，A 的数量，结尾连续 L 的数量</span></span><br><span class="line">        dp = [[[<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>], [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n + <span class="number">1</span>)]</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">            <span class="comment"># 以 P 结尾的数量</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">2</span>):</span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">3</span>):</span><br><span class="line">                    dp[i][j][<span class="number">0</span>] = (dp[i][j][<span class="number">0</span>] + dp[i - <span class="number">1</span>][j][k]) % MOD</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 以 A 结尾的数量</span></span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">3</span>):</span><br><span class="line">                dp[i][<span class="number">1</span>][<span class="number">0</span>] = (dp[i][<span class="number">1</span>][<span class="number">0</span>] + dp[i - <span class="number">1</span>][<span class="number">0</span>][k]) % MOD</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 以 L 结尾的数量</span></span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">2</span>):</span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="number">3</span>):</span><br><span class="line">                    dp[i][j][k] = (dp[i][j][k] + dp[i - <span class="number">1</span>][j][k - <span class="number">1</span>]) % MOD</span><br><span class="line">        </span><br><span class="line">        total = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">2</span>):</span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="number">3</span>):</span><br><span class="line">                total += dp[n][j][k]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> total % MOD</span><br><span class="line"></span><br><span class="line">作者：LeetCode-Solution</span><br><span class="line">链接：https://leetcode-cn.com/problems/student-attendance-record-ii/solution/xue-sheng-chu-qin-ji-lu-ii-by-leetcode-s-kdlm/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
+<p>借助他前面的讲解，也并没有很看懂，但了解了大概意思，然后理解着自己写了一个。<br>代码前面部分意思是列举所有情况，开头数字是dp下标。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">checkRecord5</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="comment"># 0 前面没有A，现在要加P  +=[0]+[1]+[2]</span></span><br><span class="line">    <span class="comment"># 1 前面没有A，上一个不是L，现在要加L  +=[0]</span></span><br><span class="line">    <span class="comment"># 2 前面没有A，上一个是L，现在要加L    +=[1]</span></span><br><span class="line">    <span class="comment"># 3 前面有A，现在要加P   +=[6]+[3]+[4]+[5]</span></span><br><span class="line">    <span class="comment"># 4 前面有A，上一个不是L，现在要加L    +=[6]+[3]</span></span><br><span class="line">    <span class="comment"># 5 前面有A，上一个是L，现在要加L     +=[4]</span></span><br><span class="line">    <span class="comment"># 6 现在要加A  +=[0]+[1]+[2]</span></span><br><span class="line">    MOD = <span class="number">10</span>**<span class="number">9</span>+<span class="number">7</span></span><br><span class="line">    <span class="comment"># dp = [[0 for _ in range(7)] for _ in range(n+1)]</span></span><br><span class="line">    <span class="comment"># dp[1] = [1, 1, 0, 0, 0, 0, 1]</span></span><br><span class="line">    <span class="comment"># for i in range(2, n+1):</span></span><br><span class="line">    <span class="comment">#     dp[i][0] += (dp[i-1][0]+dp[i-1][1]+dp[i-1][2])% MOD</span></span><br><span class="line">    <span class="comment">#     dp[i][1] += dp[i-1][0]% MOD</span></span><br><span class="line">    <span class="comment">#     dp[i][2] += dp[i-1][1]% MOD</span></span><br><span class="line">    <span class="comment">#     dp[i][3] += (dp[i-1][6]+dp[i-1][3]+dp[i-1][4]+dp[i-1][5])% MOD</span></span><br><span class="line">    <span class="comment">#     dp[i][4] += (dp[i-1][6]+dp[i-1][3])% MOD</span></span><br><span class="line">    <span class="comment">#     dp[i][5] += dp[i-1][4]% MOD</span></span><br><span class="line">    <span class="comment">#     dp[i][6] += (dp[i-1][0]+dp[i-1][1]+dp[i-1][2])% MOD</span></span><br><span class="line">    <span class="comment"># return sum(dp[n])%MOD</span></span><br><span class="line">    dp = [[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">7</span>)], [<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">7</span>)]]</span><br><span class="line">    dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">        a, b = i % <span class="number">2</span>, <span class="number">1</span>-i % <span class="number">2</span></span><br><span class="line">        dp[a][<span class="number">0</span>] += (dp[b][<span class="number">0</span>]+dp[b][<span class="number">1</span>]+dp[b][<span class="number">2</span>]) % MOD</span><br><span class="line">        dp[a][<span class="number">1</span>] += dp[b][<span class="number">0</span>] % MOD</span><br><span class="line">        dp[a][<span class="number">2</span>] += dp[b][<span class="number">1</span>] % MOD</span><br><span class="line">        dp[a][<span class="number">3</span>] += (dp[b][<span class="number">6</span>]+dp[b][<span class="number">3</span>]+dp[b][<span class="number">4</span>]+dp[b][<span class="number">5</span>]) % MOD</span><br><span class="line">        dp[a][<span class="number">4</span>] += (dp[b][<span class="number">6</span>]+dp[b][<span class="number">3</span>]) % MOD</span><br><span class="line">        dp[a][<span class="number">5</span>] += dp[b][<span class="number">4</span>] % MOD</span><br><span class="line">        dp[a][<span class="number">6</span>] += (dp[b][<span class="number">0</span>]+dp[b][<span class="number">1</span>]+dp[b][<span class="number">2</span>]) % MOD</span><br><span class="line">        dp[b] = [<span class="number">0</span>]*<span class="number">7</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sum</span>(dp[n % <span class="number">2</span>]) % MOD</span><br></pre></td></tr></table></figure>
+<p>这里其实也有两个方法，没注释掉的用上了滚动数组，这里需要注意的是清零的这一步<code>dp[b] = [0]*7</code>操作不能忘了。</p>
+<h3 id="方法五：-矩阵快速幂"><a href="#方法五：-矩阵快速幂" class="headerlink" title="方法五： 矩阵快速幂"></a>方法五： 矩阵快速幂</h3><p>有我前面列举过所有情况的基础上，写出矩阵快速幂就并不是那么难了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">checkRecord6</span>(<span class="params">n</span>):</span></span><br><span class="line">    mat = [</span><br><span class="line">        [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">        [<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">        [<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">        [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>],</span><br><span class="line">        [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>],</span><br><span class="line">        [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>],</span><br><span class="line">        [<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>]</span><br><span class="line">    ]</span><br><span class="line">    MOD = <span class="number">10</span>**<span class="number">9</span>+<span class="number">7</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">multiply</span>(<span class="params">a, b</span>):</span></span><br><span class="line">        <span class="comment"># a[r*m] * b[m*c] = ret[r*c]</span></span><br><span class="line">        r, m, c = <span class="built_in">len</span>(a), <span class="built_in">len</span>(a[<span class="number">0</span>]), <span class="built_in">len</span>(b[<span class="number">0</span>])</span><br><span class="line">        ret = [[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(c)]<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(r)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(r):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(c):</span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> <span class="built_in">range</span>(m):</span><br><span class="line">                    ret[i][j] += a[i][k]*b[k][j]</span><br><span class="line">                    ret[i][j] %= MOD</span><br><span class="line">        <span class="keyword">return</span> ret</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">matrixpow</span>(<span class="params">mat, n</span>):</span></span><br><span class="line">        ret = [[<span class="number">1</span>], [<span class="number">0</span>], [<span class="number">0</span>], [<span class="number">0</span>], [<span class="number">0</span>], [<span class="number">0</span>], [<span class="number">0</span>]]</span><br><span class="line">        <span class="keyword">while</span> n:</span><br><span class="line">            <span class="keyword">if</span> n &amp; <span class="number">1</span>:</span><br><span class="line">                ret = multiply(mat, ret)</span><br><span class="line">            mat = multiply(mat, mat)</span><br><span class="line">            n &gt;&gt;= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ret</span><br><span class="line">    ret = matrixpow(mat, n)</span><br><span class="line">    ans = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> ret:</span><br><span class="line">        ans += i[<span class="number">0</span>] % MOD</span><br><span class="line">    <span class="keyword">return</span> ans % MOD</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><h5 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h5><ul>
+<li>动态规划通过<br> <a target="_blank" rel="noopener" href="https://imgtu.com/i/fqXhEn"><img src="https://z3.ax1x.com/2021/08/19/fqXhEn.jpg" alt="动态规划通过.jpg"></a></li>
+<li>矩阵快速幂（官方）<br> <a target="_blank" rel="noopener" href="https://imgtu.com/i/fqXjER"><img src="https://z3.ax1x.com/2021/08/19/fqXjER.jpg" alt="矩阵快速幂（官方）.jpg"></a></li>
+<li>矩阵快速幂（自己）<br> <a target="_blank" rel="noopener" href="https://imgtu.com/i/fqjVUI"><img src="https://z3.ax1x.com/2021/08/19/fqjVUI.jpg" alt="矩阵快速幂（自己）.jpg"></a></li>
+</ul>
+</li>
+<li><h5 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h5> 用<code>test = [3, 4, 5, 6, 7, 10101, 100000]</code>分别作为输入，用spyder进行性能分析。<br> <a target="_blank" rel="noopener" href="https://imgtu.com/i/fqjXQS"><img src="https://z3.ax1x.com/2021/08/19/fqjXQS.jpg" alt="性能分析.jpg"></a><br> 1、2、3、5分别对应前面的方法一、二、三、四。可见泰波纳契数列的”改进“是个灾难啊。6、7分别对应自己和官方的矩阵快速幂。</li>
+<li><h5 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h5> 1.真难！不是题目本身，因为虽然是一道困难提，但我还是比较快地有了方法 ，并且能够正确求解，但是总是超时而不清楚原因再哪实在崩溃！<br> 2.<code>1 &lt;= n &lt;= 10<sup>5</sup></code>，10<sup>5</sup>大约是273多年。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="盛日辉 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="盛日辉 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+              <a href="/tags/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="tag"># 动态规划</a>
+              <a href="/tags/%E5%BF%AB%E9%80%9F%E5%B9%82-%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82/" rel="tag"># 快速幂/矩阵快速幂</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/08/19/Leetcode-345-%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D/" rel="prev" title="Leetcode_345. 反转字符串中的元音字母">
+      <i class="fa fa-chevron-left"></i> Leetcode_345. 反转字符串中的元音字母
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%E5%92%8C%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E6%88%91%E7%9A%84%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E6%8E%92%E5%88%97%E7%BB%84%E5%90%88%EF%BC%88-%E6%B3%B0%E6%B3%A2%E7%BA%B3%E5%A5%91%E6%95%B0%E5%88%97%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">方法一和方法二：我的动态规划+排列组合（+泰波纳契数列）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%89%E5%92%8C%E6%96%B9%E6%B3%95%E5%9B%9B%EF%BC%9A%E5%AE%98%E6%96%B9%E7%9A%84%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92%E5%92%8C%E6%88%91%E7%85%A7%E5%AE%98%E6%96%B9%E7%9A%84%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92"><span class="nav-number">3.</span> <span class="nav-text">方法三和方法四：官方的动态规划和我照官方的动态规划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%94%EF%BC%9A-%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82"><span class="nav-number">4.</span> <span class="nav-text">方法五： 矩阵快速幂</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">5.</span> <span class="nav-text">其他</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95"><span class="nav-number">5.0.1.</span> <span class="nav-text">提交记录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="nav-number">5.0.2.</span> <span class="nav-text">性能分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%84%9F%E6%83%B3"><span class="nav-number">5.0.3.</span> <span class="nav-text">感想</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="盛日辉"
+      src="/images/SNNZ5107.JPG">
+  <p class="site-author-name" itemprop="name">盛日辉</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shengrihui" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;shengrihui" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://goat2003.github.io/" title="https:&#x2F;&#x2F;goat2003.github.io" rel="noopener" target="_blank">goat2003</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">盛日辉</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

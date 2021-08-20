@@ -63,32 +63,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode_551. 学生出勤记录 I</title>
-    <url>/2021/08/17/Leetcode-551-%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95-I/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>551.-学生出勤记录-I<br>给你一个字符串 s 表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符：</p>
-<p>‘A’：Absent，缺勤<br>‘L’：Late，迟到<br>‘P’：Present，到场<br>如果学生能够 同时 满足下面两个条件，则可以获得出勤奖励：</p>
-<p>按 总出勤 计，学生缺勤（’A’）严格 少于两天。<br>学生 不会 存在 连续 3 天或 3 天以上的迟到（’L’）记录。<br>如果学生可以获得出勤奖励，返回 true ；否则，返回 false 。</p>
-<p>示例 1：</p>
-<p>输入：s = “PPALLP”<br>输出：true<br>解释：学生缺勤次数少于 2 次，且不存在 3 天或以上的连续迟到记录。<br>示例 2：</p>
-<p>输入：s = “PPALLL”<br>输出：false<br>解释：学生最后三天连续迟到，所以不满足出勤奖励的条件。</p>
-<p>提示：</p>
-<p>1 &lt;= s.length &lt;= 1000<br>s[i] 为 ‘A’、’L’ 或 ‘P’</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/student-attendance-record-i">https://leetcode-cn.com/problems/student-attendance-record-i</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>太简单了，略</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ul>
-<li>python<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def checkRecord(self, s: str) -&gt; bool:</span><br><span class="line">        return s.count(&quot;A&quot;)&lt;2 and s.count(&quot;LLL&quot;)&lt;=0</span><br></pre></td></tr></table></figure></li>
-<li>C<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">checkRecord</span><span class="params">(<span class="keyword">char</span>* s)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> absent = <span class="number">0</span>, late = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (*s != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (*s == <span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			absent++;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span> (absent == <span class="number">2</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (*s == <span class="string">&#x27;L&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			late++;</span><br><span class="line">			<span class="keyword">if</span> (late == <span class="number">3</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		s++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/f4KPi9"><img src="https://z3.ax1x.com/2021/08/17/f4KPi9.png" alt="551. 学生出勤记录 I.png"></a><br><a href="https://imgtu.com/i/f4h6TP"><img src="https://z3.ax1x.com/2021/08/17/f4h6TP.jpg" alt="551. 学生出勤记录 IC语言"></a></p>
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode_541. 反转字符串 II</title>
     <url>/2021/08/20/Leetcode-541-%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2-II/</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>541. 反转字符串 II</p>
@@ -226,22 +200,80 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2021/08/04/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <title>Leetcode_57|. 出界的路径数</title>
+    <url>/2021/08/20/Leetcode-57-%E5%87%BA%E7%95%8C%E7%9A%84%E8%B7%AF%E5%BE%84%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>57|. 出界的路径数</p>
+<p>给你一个大小为 <code>m x n</code> 的网格和一个球。球的起始坐标为 <code>[startRow, startColumn]</code> 。你可以将球移到在四个方向上相邻的单元格内（可以穿过网格边界到达网格之外）。你 <strong>最多</strong> 可以移动 <code>maxMove</code> 次球。</p>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>给你五个整数 <code>m</code>、<code>n</code>、<code>maxMove</code>、<code>startRow</code> 以及 <code>startColumn</code> ，找出并返回可以将球移出边界的路径数量。因为答案可能非常大，返回对 <code>10<sup>9</sup> + 7</code> <strong>取余</strong> 后的结果。</p>
 
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>&nbsp;</p>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p><strong>示例 1：</strong></p>
+<img style="width: 500px; height: 296px;" src="https://assets.leetcode.com/uploads/2021/04/28/out_of_boundary_paths_1.png" alt>
+<pre><strong>输入：</strong>m = 2, n = 2, maxMove = 2, startRow = 0, startColumn = 0
+<strong>输出：</strong>6
+</pre>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p><strong>示例 2：</strong></p>
+<img style="width: 500px; height: 293px;" src="https://assets.leetcode.com/uploads/2021/04/28/out_of_boundary_paths_2.png" alt>
+<pre><strong>输入：</strong>m = 1, n = 3, maxMove = 3, startRow = 0, startColumn = 1
+<strong>输出：</strong>12
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= m, n &lt;= 50</code></li>
+    <li><code>0 &lt;= maxMove &lt;= 50</code></li>
+    <li><code>0 &lt;= startRow &lt; m</code></li>
+    <li><code>0 &lt;= startColumn &lt; n</code></li>
+</ul>
+
+<h3 id="f方法一：-动态规划"><a href="#f方法一：-动态规划" class="headerlink" title="f方法一： 动态规划"></a>f方法一： 动态规划</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>这一题显然是要用动态规划来做。状态也不难写，<code>dp[move][r][c]</code>表示第<code>move</code>步走到第<code>r</code>行第<code>c</code>列的数量。状态转移方程也不难想到，即<code>dp[move][r][c]</code>等于<code>move-1</code>上一步步第<code>r</code>行第<code>c</code>列上下左右四个数的和，当然这是要在范围内，这里需要一个判断。而我的代码实现当中，是将这一步第<code>r</code>行第<code>c</code>列上下左右四个数加到下一步去。<br>较为复杂的我认为是在对于边界一圈的情况的考虑。如果球走到边界上了，剩余的步数至少还有一步，那他就可以出界，而且有多少种情况能走到边界的这个位置就有多少种出界的情况。但就如题目中的示例那样，边界的不同位置出界的可能i性是不同的。所以，我是在循环当中，先判断这个位置是不是边界以及是哪一种边界，如果是，再判断这个位置上是不是0，如果不是0，说明可以出界，那就将它加到出界总数去，一种边界加一次，这样就解决了边界不同位置有不同出界的可能性。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def findPaths(m, n, maxMove, startRow, startColumn):</span><br><span class="line">    if maxMove == 0:</span><br><span class="line">        return 0</span><br><span class="line">    dp = [[[0 for c in range(n)] for r in range(m)] for move in range(maxMove)]</span><br><span class="line">    outCounts = 0</span><br><span class="line">    dp[0][startRow][startColumn] = 1</span><br><span class="line">    for move in range(maxMove):</span><br><span class="line">        for r in range(m):</span><br><span class="line">            for c in range(n):</span><br><span class="line">                if r == 0 or c == 0 or r == m-1 or c == n-1:</span><br><span class="line">                    t = dp[move][r][c]</span><br><span class="line">                    if t != 0:</span><br><span class="line">                        if r-1 &lt; 0:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                        if c-1 &lt; 0:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                        if r+1 == m:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                        if c+1 == n:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                if move == maxMove-1:</span><br><span class="line">                    continue</span><br><span class="line">                for i, j in [(r-1, c), (r+1, c), (r, c-1), (r, c+1)]:</span><br><span class="line">                    if i &gt;= 0 and i &lt; m and j &gt;= 0 and j &lt; n:</span><br><span class="line">                        dp[move+1][r][c] += dp[move][i][j]</span><br><span class="line"></span><br><span class="line">    return outCounts % (10**9+7)</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法二：-卷积"><a href="#方法二：-卷积" class="headerlink" title="方法二： 卷积"></a>方法二： 卷积</h3><p>大佬都在评论区。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findPaths</span>(<span class="params">m, n, maxMove, startRow, startColumn</span>):</span></span><br><span class="line">    <span class="keyword">if</span> maxMove &lt;= <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    ans = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    a = numpy.zeros((m, n), )</span><br><span class="line">    a[startRow, startColumn] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    b = numpy.zeros((<span class="number">3</span>, <span class="number">3</span>), <span class="built_in">int</span>)</span><br><span class="line">    b[<span class="number">0</span>][<span class="number">1</span>] = b[<span class="number">1</span>][<span class="number">0</span>] = b[-<span class="number">1</span>][<span class="number">1</span>] = b[<span class="number">1</span>][-<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">    <span class="comment"># print(a)</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(maxMove):</span><br><span class="line">        ans += (a[:, <span class="number">0</span>].<span class="built_in">sum</span>() + a[:, -<span class="number">1</span>].<span class="built_in">sum</span>() +</span><br><span class="line">                a[<span class="number">0</span>, :].<span class="built_in">sum</span>() + a[-<span class="number">1</span>, :].<span class="built_in">sum</span>()) % <span class="number">1_000_000_007</span></span><br><span class="line">        a = scipy.signal.convolve2d(a, b, <span class="string">&#x27;same&#x27;</span>) % <span class="number">1_000_000_007</span></span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">int</span>(ans) % <span class="number">1_000_000_007</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/fXAdy9"><img src="https://z3.ax1x.com/2021/08/20/fXAdy9.jpg" alt="t提交记录1.jpg"></a><br><a href="https://imgtu.com/i/fXAaQJ"><img src="https://z3.ax1x.com/2021/08/20/fXAaQJ.jpg" alt="提交记录2.jpg"></a></p>
 ]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+        <tag>动态规划</tag>
+        <tag>卷积</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode_551. 学生出勤记录 I</title>
+    <url>/2021/08/17/Leetcode-551-%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95-I/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>551.-学生出勤记录-I<br>给你一个字符串 s 表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符：</p>
+<p>‘A’：Absent，缺勤<br>‘L’：Late，迟到<br>‘P’：Present，到场<br>如果学生能够 同时 满足下面两个条件，则可以获得出勤奖励：</p>
+<p>按 总出勤 计，学生缺勤（’A’）严格 少于两天。<br>学生 不会 存在 连续 3 天或 3 天以上的迟到（’L’）记录。<br>如果学生可以获得出勤奖励，返回 true ；否则，返回 false 。</p>
+<p>示例 1：</p>
+<p>输入：s = “PPALLP”<br>输出：true<br>解释：学生缺勤次数少于 2 次，且不存在 3 天或以上的连续迟到记录。<br>示例 2：</p>
+<p>输入：s = “PPALLL”<br>输出：false<br>解释：学生最后三天连续迟到，所以不满足出勤奖励的条件。</p>
+<p>提示：</p>
+<p>1 &lt;= s.length &lt;= 1000<br>s[i] 为 ‘A’、’L’ 或 ‘P’</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/student-attendance-record-i">https://leetcode-cn.com/problems/student-attendance-record-i</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>太简单了，略</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ul>
+<li>python<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def checkRecord(self, s: str) -&gt; bool:</span><br><span class="line">        return s.count(&quot;A&quot;)&lt;2 and s.count(&quot;LLL&quot;)&lt;=0</span><br></pre></td></tr></table></figure></li>
+<li>C<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">checkRecord</span><span class="params">(<span class="keyword">char</span>* s)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> absent = <span class="number">0</span>, late = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (*s != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (*s == <span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			absent++;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span> (absent == <span class="number">2</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (*s == <span class="string">&#x27;L&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			late++;</span><br><span class="line">			<span class="keyword">if</span> (late == <span class="number">3</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		s++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/f4KPi9"><img src="https://z3.ax1x.com/2021/08/17/f4KPi9.png" alt="551. 学生出勤记录 I.png"></a><br><a href="https://imgtu.com/i/f4h6TP"><img src="https://z3.ax1x.com/2021/08/17/f4h6TP.jpg" alt="551. 学生出勤记录 IC语言"></a></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
   </entry>
   <entry>
     <title>Leetcode题解</title>
@@ -460,53 +492,65 @@ end tell
       </tags>
   </entry>
   <entry>
-    <title>Leetcode_57|. 出界的路径数</title>
-    <url>/2021/08/20/Leetcode-57-%E5%87%BA%E7%95%8C%E7%9A%84%E8%B7%AF%E5%BE%84%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>57|. 出界的路径数</p>
-<p>给你一个大小为 <code>m x n</code> 的网格和一个球。球的起始坐标为 <code>[startRow, startColumn]</code> 。你可以将球移到在四个方向上相邻的单元格内（可以穿过网格边界到达网格之外）。你 <strong>最多</strong> 可以移动 <code>maxMove</code> 次球。</p>
+    <title>Hello World</title>
+    <url>/2021/08/04/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>给你五个整数 <code>m</code>、<code>n</code>、<code>maxMove</code>、<code>startRow</code> 以及 <code>startColumn</code> ，找出并返回可以将球移出边界的路径数量。因为答案可能非常大，返回对 <code>10<sup>9</sup> + 7</code> <strong>取余</strong> 后的结果。</p>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
 
-<p>&nbsp;</p>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
 
-<p><strong>示例 1：</strong></p>
-<img style="width: 500px; height: 296px;" src="https://assets.leetcode.com/uploads/2021/04/28/out_of_boundary_paths_1.png" alt>
-<pre><strong>输入：</strong>m = 2, n = 2, maxMove = 2, startRow = 0, startColumn = 0
-<strong>输出：</strong>6
-</pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 
-<p><strong>示例 2：</strong></p>
-<img style="width: 500px; height: 293px;" src="https://assets.leetcode.com/uploads/2021/04/28/out_of_boundary_paths_2.png" alt>
-<pre><strong>输入：</strong>m = 1, n = 3, maxMove = 3, startRow = 0, startColumn = 1
-<strong>输出：</strong>12
-</pre>
-
-<p>&nbsp;</p>
-
-<p><strong>提示：</strong></p>
-
-<ul>
-    <li><code>1 &lt;= m, n &lt;= 50</code></li>
-    <li><code>0 &lt;= maxMove &lt;= 50</code></li>
-    <li><code>0 &lt;= startRow &lt; m</code></li>
-    <li><code>0 &lt;= startColumn &lt; n</code></li>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>next主题配置</title>
+    <url>/2021/08/20/next%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h4 id="04-正确姿势打开标签页和分类页"><a href="#04-正确姿势打开标签页和分类页" class="headerlink" title="04 正确姿势打开标签页和分类页"></a>04 正确姿势打开标签页和分类页</h4><ol>
+<li>命令<code>hexo n page tags</code>,source文件夹中多出一个包含index.html的tags文件夹。这时候博客中的“标签就能打开了。</li>
+<li>修改index.html文件。<code>title</code>改为<code>标签</code>，增加一行<code>type: tags</code>（这句不写标签页不会有标签）。</li>
+<li>命令：<code>hexo n page categories</code>创建分类页。</li>
+<li>修改categories里的index.html ，与之前类似。</li>
+</ol>
+<h4 id="05-主题样式的更改"><a href="#05-主题样式的更改" class="headerlink" title="05 主题样式的更改"></a>05 主题样式的更改</h4><p>在样式配置文件中修改<code>Schemes</code>项。</p>
+<h4 id="04-设置主题头像"><a href="#04-设置主题头像" class="headerlink" title="04 设置主题头像"></a>04 设置主题头像</h4><p>主题配置文件中<code>Avatar</code>项</p>
+<h4 id="07-更改作者和标题以及链接"><a href="#07-更改作者和标题以及链接" class="headerlink" title="07 更改作者和标题以及链接"></a>07 更改作者和标题以及链接</h4><h4 id="08-启用侧边栏社交链接"><a href="#08-启用侧边栏社交链接" class="headerlink" title="08 启用侧边栏社交链接"></a>08 启用侧边栏社交链接</h4><ul>
+<li>主题配置文件的<code>Social</code>项。</li>
 </ul>
+<h4 id="09-启用友情链接"><a href="#09-启用友情链接" class="headerlink" title="09 启用友情链接"></a>09 启用友情链接</h4><p>主题配置文件中<code>links_settings</code>项。</p>
+<h4 id="10-新建一篇文章"><a href="#10-新建一篇文章" class="headerlink" title="10 新建一篇文章"></a>10 新建一篇文章</h4><ul>
+<li><code>hexo n 文章名</code> 新建一篇文章</li>
+<li>在文章里添加标签和分类：<br>  tags:<pre><code> - xx
+ - xx
+    categories:
+    xx
+</code></pre>
+</li>
+</ul>
+<h4 id="11-Markdown的使用"><a href="#11-Markdown的使用" class="headerlink" title="11 Markdown的使用"></a>11 Markdown的使用</h4><h4 id="12-开启文章打赏功能"><a href="#12-开启文章打赏功能" class="headerlink" title="12 开启文章打赏功能"></a>12 开启文章打赏功能</h4><p>主题配置文件中<code>reward</code>项。</p>
+<h4 id="13-开启订阅公众号"><a href="#13-开启订阅公众号" class="headerlink" title="13 开启订阅公众号"></a>13 开启订阅公众号</h4><p>主题配置文件中<code>wechat Subscriber</code>项。</p>
+<h4 id="14-设置头像是圆形可旋转"><a href="#14-设置头像是圆形可旋转" class="headerlink" title="14 设置头像是圆形可旋转"></a>14 设置头像是圆形可旋转</h4><ul>
+<li>打开文件<code>..\themes\hexo-theme-next\source\css\_common\outline\sidebar\sidebar-author.sty</code>，对其中的参数进行修改。</li>
+<li>在主题配置文件中修改： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># If true, the avatar will be dispalyed in circle.</span><br><span class="line">rounded: true</span><br><span class="line"># If true, the avatar will be rotated with the cursor.</span><br><span class="line">rotated: true</span><br></pre></td></tr></table></figure>
+第一个是让头像在圆中显示，第二个是鼠标移上去后旋转。</li>
+</ul>
+<h4 id="15-首页设置文章阅读全文"><a href="#15-首页设置文章阅读全文" class="headerlink" title="15 首页设置文章阅读全文"></a>15 首页设置文章阅读全文</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">excerpt:</span><br><span class="line">  depth: 3  #按层来算，也就是按代码块来算</span><br><span class="line">  excerpt_excludes: []</span><br><span class="line">  more_excludes: []</span><br><span class="line">  hideWholePostExcerpts: true</span><br></pre></td></tr></table></figure>
 
-<h3 id="f方法一：-动态规划"><a href="#f方法一：-动态规划" class="headerlink" title="f方法一： 动态规划"></a>f方法一： 动态规划</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>这一题显然是要用动态规划来做。状态也不难写，<code>dp[move][r][c]</code>表示第<code>move</code>步走到第<code>r</code>行第<code>c</code>列的数量。状态转移方程也不难想到，即<code>dp[move][r][c]</code>等于<code>move-1</code>上一步步第<code>r</code>行第<code>c</code>列上下左右四个数的和，当然这是要在范围内，这里需要一个判断。而我的代码实现当中，是将这一步第<code>r</code>行第<code>c</code>列上下左右四个数加到下一步去。<br>较为复杂的我认为是在对于边界一圈的情况的考虑。如果球走到边界上了，剩余的步数至少还有一步，那他就可以出界，而且有多少种情况能走到边界的这个位置就有多少种出界的情况。但就如题目中的示例那样，边界的不同位置出界的可能i性是不同的。所以，我是在循环当中，先判断这个位置是不是边界以及是哪一种边界，如果是，再判断这个位置上是不是0，如果不是0，说明可以出界，那就将它加到出界总数去，一种边界加一次，这样就解决了边界不同位置有不同出界的可能性。</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def findPaths(m, n, maxMove, startRow, startColumn):</span><br><span class="line">    if maxMove == 0:</span><br><span class="line">        return 0</span><br><span class="line">    dp = [[[0 for c in range(n)] for r in range(m)] for move in range(maxMove)]</span><br><span class="line">    outCounts = 0</span><br><span class="line">    dp[0][startRow][startColumn] = 1</span><br><span class="line">    for move in range(maxMove):</span><br><span class="line">        for r in range(m):</span><br><span class="line">            for c in range(n):</span><br><span class="line">                if r == 0 or c == 0 or r == m-1 or c == n-1:</span><br><span class="line">                    t = dp[move][r][c]</span><br><span class="line">                    if t != 0:</span><br><span class="line">                        if r-1 &lt; 0:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                        if c-1 &lt; 0:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                        if r+1 == m:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                        if c+1 == n:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                if move == maxMove-1:</span><br><span class="line">                    continue</span><br><span class="line">                for i, j in [(r-1, c), (r+1, c), (r, c-1), (r, c+1)]:</span><br><span class="line">                    if i &gt;= 0 and i &lt; m and j &gt;= 0 and j &lt; n:</span><br><span class="line">                        dp[move+1][r][c] += dp[move][i][j]</span><br><span class="line"></span><br><span class="line">    return outCounts % (10**9+7)</span><br></pre></td></tr></table></figure>
 
-<h3 id="方法二：-卷积"><a href="#方法二：-卷积" class="headerlink" title="方法二： 卷积"></a>方法二： 卷积</h3><p>大佬都在评论区。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findPaths</span>(<span class="params">m, n, maxMove, startRow, startColumn</span>):</span></span><br><span class="line">    <span class="keyword">if</span> maxMove &lt;= <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    ans = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    a = numpy.zeros((m, n), )</span><br><span class="line">    a[startRow, startColumn] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    b = numpy.zeros((<span class="number">3</span>, <span class="number">3</span>), <span class="built_in">int</span>)</span><br><span class="line">    b[<span class="number">0</span>][<span class="number">1</span>] = b[<span class="number">1</span>][<span class="number">0</span>] = b[-<span class="number">1</span>][<span class="number">1</span>] = b[<span class="number">1</span>][-<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">    <span class="comment"># print(a)</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(maxMove):</span><br><span class="line">        ans += (a[:, <span class="number">0</span>].<span class="built_in">sum</span>() + a[:, -<span class="number">1</span>].<span class="built_in">sum</span>() +</span><br><span class="line">                a[<span class="number">0</span>, :].<span class="built_in">sum</span>() + a[-<span class="number">1</span>, :].<span class="built_in">sum</span>()) % <span class="number">1_000_000_007</span></span><br><span class="line">        a = scipy.signal.convolve2d(a, b, <span class="string">&#x27;same&#x27;</span>) % <span class="number">1_000_000_007</span></span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">int</span>(ans) % <span class="number">1_000_000_007</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/fXAdy9"><img src="https://z3.ax1x.com/2021/08/20/fXAdy9.jpg" alt="t提交记录1.jpg"></a><br><a href="https://imgtu.com/i/fXAaQJ"><img src="https://z3.ax1x.com/2021/08/20/fXAaQJ.jpg" alt="提交记录2.jpg"></a></p>
+<h4 id="背景黑色"><a href="#背景黑色" class="headerlink" title="背景黑色"></a>背景黑色</h4><h4 id="fork-Github"><a href="#fork-Github" class="headerlink" title="fork Github"></a>fork Github</h4><p>打开<code>..\themes\hexo-theme-next\layout</code>中的文件<code>_layout.swig</code>。<br>在<a href="https://tholman.com/github-corners/">https://tholman.com/github-corners/</a> 中选一个样式，将代码复制到文件中的<code>&lt;/header&gt;</code>前，并修改称自己的GitHub链接。</p>
+<h4 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h4><p>按官方文档的local search来。<a href="http://theme-next.iissnan.com/third-party-services.html">http://theme-next.iissnan.com/third-party-services.html</a></p>
 ]]></content>
       <categories>
-        <category>Leetcode</category>
+        <category>其他</category>
       </categories>
       <tags>
-        <tag>Leetcode</tag>
-        <tag>动态规划</tag>
-        <tag>卷积</tag>
+        <tag>其他</tag>
       </tags>
   </entry>
 </search>

@@ -1,9 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Leetcode_1583. 统计不开心的朋友</title>
+    <url>/2021/08/20/Leetcode-1583-%E7%BB%9F%E8%AE%A1%E4%B8%8D%E5%BC%80%E5%BF%83%E7%9A%84%E6%9C%8B%E5%8F%8B/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1583. 统计不开心的朋友<br>难度：中等</p>
+<p>给你一份 <code>n</code> 位朋友的亲近程度列表，其中 <code>n</code> 总是 <strong>偶数</strong> 。</p>
+
+<p>对每位朋友 <code>i</code>，<code>preferences[i]</code> 包含一份 <strong>按亲近程度从高</strong><strong>到低排列</strong> 的朋友列表。换句话说，排在列表前面的朋友与 <code>i</code> 的亲近程度比排在列表后面的朋友更高。每个列表中的朋友均以 <code>0</code> 到 <code>n-1</code> 之间的整数表示。</p>
+
+<p>所有的朋友被分成几对，配对情况以列表 <code>pairs</code> 给出，其中 <code>pairs[i] = [x<sub>i</sub>, y<sub>i</sub>]</code> 表示 <code>x<sub>i</sub></code> 与 <code>y<sub>i</sub></code> 配对，且 <code>y<sub>i</sub></code> 与 <code>x<sub>i</sub></code> 配对。</p>
+
+<p>但是，这样的配对情况可能会使其中部分朋友感到不开心。在 <code>x</code> 与 <code>y</code> 配对且 <code>u</code> 与 <code>v</code> 配对的情况下，如果同时满足下述两个条件，<code>x</code> 就会不开心：</p>
+
+<ul>
+    <li><code>x</code> 与 <code>u</code> 的亲近程度胜过 <code>x</code> 与 <code>y</code>，且</li>
+    <li><code>u</code> 与 <code>x</code> 的亲近程度胜过 <code>u</code> 与 <code>v</code></li>
+</ul>
+
+<p>返回 <strong>不开心的朋友的数目</strong> 。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入：</strong>n = 4, preferences = [[1, 2, 3], [3, 2, 0], [3, 1, 0], [1, 2, 0]], pairs = [[0, 1], [2, 3]]
+<strong>输出：</strong>2
+<strong>解释：</strong>
+朋友 1 不开心，因为：
+- <strong>1 与 0 </strong>配对，但 <strong>1 与 3</strong> 的亲近程度比 <strong>1 与 0</strong> 高，且
+- <strong>3 与 1</strong> 的亲近程度比 <strong>3 与 2</strong> 高。
+朋友 3 不开心，因为：
+- 3 与 2 配对，但 <strong>3 与 1</strong> 的亲近程度比 <strong>3 与 2</strong> 高，且
+- <strong>1 与 3</strong> 的亲近程度比 <strong>1 与 0</strong> 高。
+朋友 0 和 2 都是开心的。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>n = 2, preferences = [[1], [0]], pairs = [[1, 0]]
+<strong>输出：</strong>0
+<strong>解释：</strong>朋友 0 和 1 都开心。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>n = 4, preferences = [[1, 3, 2], [2, 3, 0], [1, 3, 0], [0, 2, 1]], pairs = [[1, 3], [0, 2]]
+<strong>输出：</strong>4
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>2 &lt;= n &lt;= 500</code></li>
+    <li><code>n</code> 是偶数</li>
+    <li><code>preferences.length&nbsp;== n</code></li>
+    <li><code>preferences[i].length&nbsp;== n - 1</code></li>
+    <li><code>0 &lt;= preferences[i][j] &lt;= n - 1</code></li>
+    <li><code>preferences[i]</code> 不包含 <code>i</code></li>
+    <li><code>preferences[i]</code> 中的所有值都是独一无二的</li>
+    <li><code>pairs.length&nbsp;== n/2</code></li>
+    <li><code>pairs[i].length&nbsp;== 2</code></li>
+    <li><code>x<sub>i</sub> != y<sub>i</sub></code></li>
+    <li><code>0 &lt;= x<sub>i</sub>, y<sub>i</sub>&nbsp;&lt;= n - 1</code></li>
+
+<li>每位朋友都 <strong>恰好</strong> 被包含在一对中</li>
+</ul>
+
+<h3 id="方法一：-模拟"><a href="#方法一：-模拟" class="headerlink" title="方法一： 模拟"></a>方法一： 模拟</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>这道题看起来非常非常非常复杂，但其实重点再那两个且的条件：</p>
+<blockquote>
+<ul>
+<li><code>x</code> 与 <code>u</code> 的亲近程度胜过 <code>x</code> 与 <code>y</code>，且</li>
+<li><code>u</code> 与 <code>x</code> 的亲近程度胜过 <code>u</code> 与 <code>v</code></li>
+</ul>
+</blockquote>
+<p>因此我们的做法就是：</p>
+<ol>
+<li>找到一个<code>x</code>，以及和他配对的<code>y</code>;</li>
+<li>在<code>x</code>的<code>preferences</code>里遍历，在没有遇到<code>y</code>之前，每一个都是可能的<code>u</code>;（这时满足了第一个条件）</li>
+<li>在找到与这个<code>u</code>配对的<code>v</code>，然后在<code>u</code>的<code>preferences</code>里找<code>x</code>和<code>v</code>的下标关系是否满足第二个条件，即如果在<code>u</code>的<code>preferences</code>里<code>x</code>的下标小于<code>v</code>的下标，那么，<code>x</code>就是不开心的。<br>为了找所有不开心的<code>x</code>，那么，就是要遍历所有人，同时还要方便找到与它配对的<code>y</code>，所以再开始的时候先创建一个字典，用于记录每个人和谁配对。<br>具体代码实现的时候，还有一个<code>x_isunhappy</code>用于标记<code>x</code>是不是不开心的，如果是，就可以去下一个<code>x</code>了。<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">unhappyFriends</span>(<span class="params">n, preferences, pairs</span>):</span></span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    unhappy = <span class="number">0</span></span><br><span class="line">    pairs_dict = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> x, y <span class="keyword">in</span> pairs:</span><br><span class="line">        pairs_dict[x] = y</span><br><span class="line">        pairs_dict[y] = x</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        y = pairs_dict[x]</span><br><span class="line">        x_isunhappy = <span class="literal">False</span></span><br><span class="line">        <span class="keyword">for</span> u <span class="keyword">in</span> preferences[x]:</span><br><span class="line">            <span class="keyword">if</span> u == y <span class="keyword">or</span> x_isunhappy == <span class="literal">True</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            v = pairs_dict[u]</span><br><span class="line">            <span class="keyword">if</span> preferences[u].index(x) &lt; preferences[u].index(v):</span><br><span class="line">                x_isunhappy = <span class="literal">True</span></span><br><span class="line">                unhappy += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> unhappy</span><br></pre></td></tr></table></figure>
+官方的方法和我的几乎一样。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def unhappyFriends(self, n: int, preferences: List[List[int]], pairs: List[List[int]]) -&gt; int:</span><br><span class="line">        order = [[0] * n for _ in range(n)]</span><br><span class="line">        for i in range(n):</span><br><span class="line">            for j in range(n - 1):</span><br><span class="line">                order[i][preferences[i][j]] = j</span><br><span class="line">        </span><br><span class="line">        match = [0] * n</span><br><span class="line">        for x, y in pairs:</span><br><span class="line">            match[x] = y</span><br><span class="line">            match[y] = x</span><br><span class="line"></span><br><span class="line">        unhappyCount = 0</span><br><span class="line">        for x in range(n):</span><br><span class="line">            y = match[x]</span><br><span class="line">            index = order[x][y]</span><br><span class="line">            for i in range(index):</span><br><span class="line">                u = preferences[x][i]</span><br><span class="line">                v = match[u]</span><br><span class="line">                if order[u][x] &lt; order[u][v]:</span><br><span class="line">                    unhappyCount += 1</span><br><span class="line">                    break</span><br><span class="line">        </span><br><span class="line">        return unhappyCount</span><br><span class="line"></span><br><span class="line"># 作者：LeetCode-Solution</span><br><span class="line"># 链接：https://leetcode-cn.com/problems/count-unhappy-friends/solution/tong-ji-bu-kai-xin-de-peng-you-by-leetcode-solutio/</span><br><span class="line"># 来源：力扣（LeetCode）</span><br><span class="line"># 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/fXcVKK"><img src="https://z3.ax1x.com/2021/08/20/fXcVKK.jpg" alt="提交记录.jpg"></a></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
+        <tag>Leetcode中等</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode_345. 反转字符串中的元音字母</title>
     <url>/2021/08/19/Leetcode-345-%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>345. 反转字符串中的元音字母<br>编写一个函数，以字符串作为输入，反转该字符串中的元音字母。</p>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>345. 反转字符串中的元音字母<br>难度：简单<br>编写一个函数，以字符串作为输入，反转该字符串中的元音字母。</p>
 <p> </p>
 <p>示例 1：</p>
 <p>输入：”hello”<br>输出：”holle”<br>示例 2：</p>
@@ -26,14 +118,14 @@
         <category>Leetcode</category>
       </categories>
       <tags>
-        <tag>Leetcode</tag>
+        <tag>Leetcode简单</tag>
         <tag>双指针</tag>
       </tags>
   </entry>
   <entry>
     <title>Leetcode_526. 优美的排列</title>
     <url>/2021/08/18/Leetcode-526-%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>526. 优美的排列<br>假设有从 1 到 N 的 N 个整数，如果从这 N 个数字中成功构造出一个数组，使得数组的第 i 位 (1 &lt;= i &lt;= N) 满足如下两个条件中的一个，我们就称这个数组为一个优美的排列。条件：</p>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>526. 优美的排列<br>难度：中等<br>假设有从 1 到 N 的 N 个整数，如果从这 N 个数字中成功构造出一个数组，使得数组的第 i 位 (1 &lt;= i &lt;= N) 满足如下两个条件中的一个，我们就称这个数组为一个优美的排列。条件：</p>
 <p>第 i 位的数字能被 i 整除<br>i 能被第 i 位上的数字整除<br>现在给定一个整数 N，请问可以构造多少个优美的排列？</p>
 <p>示例1:</p>
 <p>输入: 2<br>输出: 2<br>解释: </p>
@@ -57,7 +149,7 @@
         <category>Leetcode</category>
       </categories>
       <tags>
-        <tag>Leetcode</tag>
+        <tag>Leetcode中等</tag>
         <tag>回溯</tag>
         <tag>动态规划</tag>
       </tags>
@@ -65,7 +157,7 @@
   <entry>
     <title>Leetcode_541. 反转字符串 II</title>
     <url>/2021/08/20/Leetcode-541-%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2-II/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>541. 反转字符串 II</p>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>541. 反转字符串 II<br>难度：简单</p>
 <p>给定一个字符串 <code>s</code> 和一个整数 <code>k</code>，从字符串开头算起，每 <code>2k</code> 个字符反转前 <code>k</code> 个字符。</p>
 
 <ul>
@@ -107,14 +199,14 @@
         <category>Leetcode</category>
       </categories>
       <tags>
-        <tag>Leetcode</tag>
         <tag>模拟</tag>
+        <tag>Leetcode简单</tag>
       </tags>
   </entry>
   <entry>
     <title>Leetcode_552. 学生出勤记录 II</title>
     <url>/2021/08/19/Leetcode-552-%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95-II/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>552. 学生出勤记录 II<br>可以用字符串表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符：</p>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>552. 学生出勤记录 II<br>难度：困难<br>可以用字符串表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符：</p>
 <ul>
     <li><code>'A'</code>：Absent，缺勤</li>
     <li><code>'L'</code>：Late，迟到</li>
@@ -194,15 +286,41 @@
         <category>Leetcode</category>
       </categories>
       <tags>
-        <tag>Leetcode</tag>
         <tag>动态规划</tag>
         <tag>快速幂/矩阵快速幂</tag>
+        <tag>Leetcode困难</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode_551. 学生出勤记录 I</title>
+    <url>/2021/08/17/Leetcode-551-%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95-I/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>551.-学生出勤记录-I<br>难度：简单<br>给你一个字符串 s 表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符：</p>
+<p>‘A’：Absent，缺勤<br>‘L’：Late，迟到<br>‘P’：Present，到场<br>如果学生能够 同时 满足下面两个条件，则可以获得出勤奖励：</p>
+<p>按 总出勤 计，学生缺勤（’A’）严格 少于两天。<br>学生 不会 存在 连续 3 天或 3 天以上的迟到（’L’）记录。<br>如果学生可以获得出勤奖励，返回 true ；否则，返回 false 。</p>
+<p>示例 1：</p>
+<p>输入：s = “PPALLP”<br>输出：true<br>解释：学生缺勤次数少于 2 次，且不存在 3 天或以上的连续迟到记录。<br>示例 2：</p>
+<p>输入：s = “PPALLL”<br>输出：false<br>解释：学生最后三天连续迟到，所以不满足出勤奖励的条件。</p>
+<p>提示：</p>
+<p>1 &lt;= s.length &lt;= 1000<br>s[i] 为 ‘A’、’L’ 或 ‘P’</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/student-attendance-record-i">https://leetcode-cn.com/problems/student-attendance-record-i</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>太简单了，略</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ul>
+<li>python<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def checkRecord(self, s: str) -&gt; bool:</span><br><span class="line">        return s.count(&quot;A&quot;)&lt;2 and s.count(&quot;LLL&quot;)&lt;=0</span><br></pre></td></tr></table></figure></li>
+<li>C<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">checkRecord</span><span class="params">(<span class="keyword">char</span>* s)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> absent = <span class="number">0</span>, late = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (*s != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (*s == <span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			absent++;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span> (absent == <span class="number">2</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (*s == <span class="string">&#x27;L&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			late++;</span><br><span class="line">			<span class="keyword">if</span> (late == <span class="number">3</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		s++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/f4KPi9"><img src="https://z3.ax1x.com/2021/08/17/f4KPi9.png" alt="551. 学生出勤记录 I.png"></a><br><a href="https://imgtu.com/i/f4h6TP"><img src="https://z3.ax1x.com/2021/08/17/f4h6TP.jpg" alt="551. 学生出勤记录 IC语言"></a></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode简单</tag>
       </tags>
   </entry>
   <entry>
     <title>Leetcode_57|. 出界的路径数</title>
     <url>/2021/08/20/Leetcode-57-%E5%87%BA%E7%95%8C%E7%9A%84%E8%B7%AF%E5%BE%84%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>57|. 出界的路径数</p>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>57|. 出界的路径数<br>难度：简单</p>
 <p>给你一个大小为 <code>m x n</code> 的网格和一个球。球的起始坐标为 <code>[startRow, startColumn]</code> 。你可以将球移到在四个方向上相邻的单元格内（可以穿过网格边界到达网格之外）。你 <strong>最多</strong> 可以移动 <code>maxMove</code> 次球。</p>
 
 <p>给你五个整数 <code>m</code>、<code>n</code>、<code>maxMove</code>、<code>startRow</code> 以及 <code>startColumn</code> ，找出并返回可以将球移出边界的路径数量。因为答案可能非常大，返回对 <code>10<sup>9</sup> + 7</code> <strong>取余</strong> 后的结果。</p>
@@ -244,35 +362,9 @@
         <category>Leetcode</category>
       </categories>
       <tags>
-        <tag>Leetcode</tag>
+        <tag>Leetcode简单</tag>
         <tag>动态规划</tag>
         <tag>卷积</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode_551. 学生出勤记录 I</title>
-    <url>/2021/08/17/Leetcode-551-%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95-I/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>551.-学生出勤记录-I<br>给你一个字符串 s 表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符：</p>
-<p>‘A’：Absent，缺勤<br>‘L’：Late，迟到<br>‘P’：Present，到场<br>如果学生能够 同时 满足下面两个条件，则可以获得出勤奖励：</p>
-<p>按 总出勤 计，学生缺勤（’A’）严格 少于两天。<br>学生 不会 存在 连续 3 天或 3 天以上的迟到（’L’）记录。<br>如果学生可以获得出勤奖励，返回 true ；否则，返回 false 。</p>
-<p>示例 1：</p>
-<p>输入：s = “PPALLP”<br>输出：true<br>解释：学生缺勤次数少于 2 次，且不存在 3 天或以上的连续迟到记录。<br>示例 2：</p>
-<p>输入：s = “PPALLL”<br>输出：false<br>解释：学生最后三天连续迟到，所以不满足出勤奖励的条件。</p>
-<p>提示：</p>
-<p>1 &lt;= s.length &lt;= 1000<br>s[i] 为 ‘A’、’L’ 或 ‘P’</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/student-attendance-record-i">https://leetcode-cn.com/problems/student-attendance-record-i</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>太简单了，略</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ul>
-<li>python<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def checkRecord(self, s: str) -&gt; bool:</span><br><span class="line">        return s.count(&quot;A&quot;)&lt;2 and s.count(&quot;LLL&quot;)&lt;=0</span><br></pre></td></tr></table></figure></li>
-<li>C<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">checkRecord</span><span class="params">(<span class="keyword">char</span>* s)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> absent = <span class="number">0</span>, late = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (*s != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (*s == <span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			absent++;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span> (absent == <span class="number">2</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (*s == <span class="string">&#x27;L&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			late++;</span><br><span class="line">			<span class="keyword">if</span> (late == <span class="number">3</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		s++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/f4KPi9"><img src="https://z3.ax1x.com/2021/08/17/f4KPi9.png" alt="551. 学生出勤记录 I.png"></a><br><a href="https://imgtu.com/i/f4h6TP"><img src="https://z3.ax1x.com/2021/08/17/f4h6TP.jpg" alt="551. 学生出勤记录 IC语言"></a></p>
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>Leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -293,6 +385,24 @@
       <tags>
         <tag>Leetcode</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/08/04/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>markdown语法</title>
@@ -490,24 +600,6 @@ end tell
       <tags>
         <tag>其他</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2021/08/04/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>next主题配置</title>

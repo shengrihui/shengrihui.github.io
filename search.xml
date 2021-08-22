@@ -1,6 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Leetcode_345. 反转字符串中的元音字母</title>
+    <url>/2021/08/19/Leetcode-345-%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>345. 反转字符串中的元音字母<br>难度：简单<br>编写一个函数，以字符串作为输入，反转该字符串中的元音字母。</p>
+<p> </p>
+<p>示例 1：</p>
+<p>输入：”hello”<br>输出：”holle”<br>示例 2：</p>
+<p>输入：”leetcode”<br>输出：”leotcede”</p>
+<p>提示：</p>
+<p>元音字母不包含字母 “y” 。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/reverse-vowels-of-a-string">https://leetcode-cn.com/problems/reverse-vowels-of-a-string</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h3 id="方法一：双指针"><a href="#方法一：双指针" class="headerlink" title="方法一：双指针"></a>方法一：双指针</h3><p>这提不难。<br>弄两个指针<code>i</code>和<code>j</code>，<code>i</code>从前往后走，<code>j</code>从后往前走，当遇到原因字母的时候，就停下来。当两个指针都停下来的时候，交换两个字母。使用<code>while</code>循环，退出条件是<code>i</code>和<code>j</code>重合。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><ul>
+<li>python<pre><code> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def reverseVowels(s):</span><br><span class="line">l = list(s)</span><br><span class="line">i, j = 0, len(s)-1</span><br><span class="line">Vowels = [&#x27;a&#x27;, &#x27;e&#x27;, &#x27;i&#x27;, &#x27;o&#x27;, &#x27;u&#x27;, &#x27;A&#x27;, &#x27;E&#x27;, &#x27;I&#x27;, &#x27;O&#x27;, &#x27;U&#x27;]</span><br><span class="line"># vowels = &quot;aeiouAEIOU&quot;</span><br><span class="line">i_step = 1</span><br><span class="line">j_step = -1</span><br><span class="line">while i &lt; j:</span><br><span class="line">    if l[i] in Vowels:</span><br><span class="line">        i_step = 0</span><br><span class="line">    if l[j] in Vowels:</span><br><span class="line">        j_step = 0</span><br><span class="line"></span><br><span class="line">    if i_step == j_step == 0:</span><br><span class="line">        l[i], l[j] = l[j], l[i]</span><br><span class="line">        i_step = 1</span><br><span class="line">        j_step = -1</span><br><span class="line">    i += i_step</span><br><span class="line">    j += j_step</span><br><span class="line">return &#x27;&#x27;.join(l)</span><br></pre></td></tr></table></figure>
+</code></pre>
+  和官方题解几乎一样。</li>
+<li>C<pre><code> <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">   	<span class="function"><span class="keyword">int</span> <span class="title">isVowel</span><span class="params">(<span class="keyword">char</span> ch)</span></span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">	<span class="keyword">char</span> vowels[] = <span class="string">&quot;aeiouAEIOU&quot;</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; vowels[i]; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (ch == vowels[i])<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">reverseVowels</span><span class="params">(<span class="keyword">char</span>* s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="built_in">strlen</span>(s)<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">char</span> tmp = s[<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">int</span> i_step = <span class="number">1</span>, j_step = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span> (i &lt; j)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="number">1</span> == isVowel(s[i]))</span><br><span class="line">			i_step = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> (<span class="number">1</span> == isVowel(s[j]))</span><br><span class="line">			j_step = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> (i_step == <span class="number">0</span> &amp;&amp; j_step == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%c %c %s\n&quot;</span>, s[i], s[j], s);</span><br><span class="line">			tmp = s[i];</span><br><span class="line">			s[i] = s[j];</span><br><span class="line">			s[j] = tmp;</span><br><span class="line">			i_step = <span class="number">1</span>;</span><br><span class="line">			j_step = <span class="number">-1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		i += i_step;</span><br><span class="line">		j += j_step;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/fHEmKP"><img src="https://z3.ax1x.com/2021/08/19/fHEmKP.jpg" alt="python提交记录"></a><br><a href="https://imgtu.com/i/fHEZvt"><img src="https://z3.ax1x.com/2021/08/19/fHEZvt.jpg" alt="C语言提交记录"></a></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode简单</tag>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode_1583. 统计不开心的朋友</title>
     <url>/2021/08/20/Leetcode-1583-%E7%BB%9F%E8%AE%A1%E4%B8%8D%E5%BC%80%E5%BF%83%E7%9A%84%E6%9C%8B%E5%8F%8B/</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1583. 统计不开心的朋友<br>难度：中等</p>
@@ -93,33 +123,74 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode_345. 反转字符串中的元音字母</title>
-    <url>/2021/08/19/Leetcode-345-%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>345. 反转字符串中的元音字母<br>难度：简单<br>编写一个函数，以字符串作为输入，反转该字符串中的元音字母。</p>
-<p> </p>
-<p>示例 1：</p>
-<p>输入：”hello”<br>输出：”holle”<br>示例 2：</p>
-<p>输入：”leetcode”<br>输出：”leotcede”</p>
-<p>提示：</p>
-<p>元音字母不包含字母 “y” 。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/reverse-vowels-of-a-string">https://leetcode-cn.com/problems/reverse-vowels-of-a-string</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h3 id="方法一：双指针"><a href="#方法一：双指针" class="headerlink" title="方法一：双指针"></a>方法一：双指针</h3><p>这提不难。<br>弄两个指针<code>i</code>和<code>j</code>，<code>i</code>从前往后走，<code>j</code>从后往前走，当遇到原因字母的时候，就停下来。当两个指针都停下来的时候，交换两个字母。使用<code>while</code>循环，退出条件是<code>i</code>和<code>j</code>重合。</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><ul>
-<li>python<pre><code> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def reverseVowels(s):</span><br><span class="line">l = list(s)</span><br><span class="line">i, j = 0, len(s)-1</span><br><span class="line">Vowels = [&#x27;a&#x27;, &#x27;e&#x27;, &#x27;i&#x27;, &#x27;o&#x27;, &#x27;u&#x27;, &#x27;A&#x27;, &#x27;E&#x27;, &#x27;I&#x27;, &#x27;O&#x27;, &#x27;U&#x27;]</span><br><span class="line"># vowels = &quot;aeiouAEIOU&quot;</span><br><span class="line">i_step = 1</span><br><span class="line">j_step = -1</span><br><span class="line">while i &lt; j:</span><br><span class="line">    if l[i] in Vowels:</span><br><span class="line">        i_step = 0</span><br><span class="line">    if l[j] in Vowels:</span><br><span class="line">        j_step = 0</span><br><span class="line"></span><br><span class="line">    if i_step == j_step == 0:</span><br><span class="line">        l[i], l[j] = l[j], l[i]</span><br><span class="line">        i_step = 1</span><br><span class="line">        j_step = -1</span><br><span class="line">    i += i_step</span><br><span class="line">    j += j_step</span><br><span class="line">return &#x27;&#x27;.join(l)</span><br></pre></td></tr></table></figure>
-</code></pre>
-  和官方题解几乎一样。</li>
-<li>C<pre><code> <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">   	<span class="function"><span class="keyword">int</span> <span class="title">isVowel</span><span class="params">(<span class="keyword">char</span> ch)</span></span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">	<span class="keyword">char</span> vowels[] = <span class="string">&quot;aeiouAEIOU&quot;</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; vowels[i]; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (ch == vowels[i])<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">char</span>* <span class="title">reverseVowels</span><span class="params">(<span class="keyword">char</span>* s)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="built_in">strlen</span>(s)<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">char</span> tmp = s[<span class="number">0</span>];</span><br><span class="line">	<span class="keyword">int</span> i_step = <span class="number">1</span>, j_step = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span> (i &lt; j)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="number">1</span> == isVowel(s[i]))</span><br><span class="line">			i_step = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> (<span class="number">1</span> == isVowel(s[j]))</span><br><span class="line">			j_step = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> (i_step == <span class="number">0</span> &amp;&amp; j_step == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%c %c %s\n&quot;</span>, s[i], s[j], s);</span><br><span class="line">			tmp = s[i];</span><br><span class="line">			s[i] = s[j];</span><br><span class="line">			s[j] = tmp;</span><br><span class="line">			i_step = <span class="number">1</span>;</span><br><span class="line">			j_step = <span class="number">-1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		i += i_step;</span><br><span class="line">		j += j_step;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre>
-</li>
+    <title>Leetcode_443. 压缩字符串</title>
+    <url>/2021/08/22/Leetcode-443-%E5%8E%8B%E7%BC%A9%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>443. 压缩字符串<br>难度：中等</p>
+<p>给你一个字符数组 <code>chars</code> ，请使用下述算法压缩：</p>
+
+<p>从一个空字符串 <code>s</code> 开始。对于 <code>chars</code> 中的每组 <strong>连续重复字符</strong> ：</p>
+
+<ul>
+    <li>如果这一组长度为 <code>1</code> ，则将字符追加到 <code>s</code> 中。</li>
+    <li>否则，需要向 <code>s</code> 追加字符，后跟这一组的长度。</li>
 </ul>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/fHEmKP"><img src="https://z3.ax1x.com/2021/08/19/fHEmKP.jpg" alt="python提交记录"></a><br><a href="https://imgtu.com/i/fHEZvt"><img src="https://z3.ax1x.com/2021/08/19/fHEZvt.jpg" alt="C语言提交记录"></a></p>
+
+<p>压缩后得到的字符串 <code>s</code> <strong>不应该直接返回</strong> ，需要转储到字符数组 <code>chars</code> 中。需要注意的是，如果组长度为 <code>10</code> 或 <code>10</code> 以上，则在 <code>chars</code> 数组中会被拆分为多个字符。</p>
+
+<p>请在 <strong>修改完输入数组后</strong> ，返回该数组的新长度。</p>
+
+<p>你必须设计并实现一个只使用常量额外空间的算法来解决此问题。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入：</strong>chars = ["a","a","b","b","c","c","c"]
+<strong>输出：</strong>返回 6 ，输入数组的前 6 个字符应该是：["a","2","b","2","c","3"]
+<strong>解释：</strong>
+"aa" 被 "a2" 替代。"bb" 被 "b2" 替代。"ccc" 被 "c3" 替代。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>chars = ["a"]
+<strong>输出：</strong>返回 1 ，输入数组的前 1 个字符应该是：["a"]
+<strong>解释：</strong>
+没有任何字符串被替代。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>chars = ["a","b","b","b","b","b","b","b","b","b","b","b","b"]
+<strong>输出：</strong>返回 4 ，输入数组的前 4 个字符应该是：["a","b","1","2"]。
+<strong>解释：</strong>
+由于字符 "a" 不重复，所以不会被压缩。"bbbbbbbbbbbb" 被 “b12” 替代。
+注意每个数字在数组中都有它自己的位置。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= chars.length &lt;= 2000</code></li>
+    <li><code>chars[i]</code> 可以是小写英文字母、大写英文字母、数字或符号</li>
+</ul>
+
+<h3 id="方法一："><a href="#方法一：" class="headerlink" title="方法一："></a>方法一：</h3><p>要注意理解题目中确实是要将<code>chars</code>里的内容给改掉的。<br>我的第一个方法是另外创建一个<code>s</code>，初始就为<code>chars[0]</code>，然后遍历<code>chars</code>，用一个变量<code>c</code>来记相同的个数，直到遇到的字符与<code>s[-1]</code>不一样或者到了最后一个，就将计数器<code>s</code>强制转换乘字符串并一个一个加到<code>s</code>里去。最后再将<code>chars</code>里的字符一个个改掉。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">compress</span>(<span class="params">chars</span>):</span></span><br><span class="line">    s = [chars[<span class="number">0</span>]]</span><br><span class="line">    c = <span class="number">1</span></span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    n = <span class="built_in">len</span>(chars)</span><br><span class="line">    <span class="keyword">while</span> i &lt; n:</span><br><span class="line">        <span class="keyword">if</span> s[-<span class="number">1</span>] != chars[i]:</span><br><span class="line">            <span class="keyword">if</span> c != <span class="number">1</span>:</span><br><span class="line">                s.extend(<span class="built_in">list</span>(<span class="built_in">str</span>(c)))</span><br><span class="line">            s.append(chars[i])</span><br><span class="line">            c = <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            c += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> i == n-<span class="number">1</span>:</span><br><span class="line">                s.extend(<span class="built_in">list</span>(<span class="built_in">str</span>(c)))</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i, x <span class="keyword">in</span> <span class="built_in">enumerate</span>(s):</span><br><span class="line">        chars[i] = x</span><br><span class="line">    <span class="comment"># print(chars)</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(s)</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法二：双指针"><a href="#方法二：双指针" class="headerlink" title="方法二：双指针"></a>方法二：双指针</h3><p>不创建新的列表或字符串，在原有的列表上直接修改。<br>（其实是三指针）设一个写指针，两个读指针。大思路并不难，主要是具体实现上需要有些注意。比如，<code>if right == n-1 or chars[right] != chars[right+1]:</code>这句，①将是不是到了最后一个位置的判断放在<code>or</code>前面，②判断两个字符是否相等，是判断指针和它的下一个是不是一样，而不是往前判断，这样就可以解决好多最后一个字符的情况（往后判断的话，需要考虑最后一个是否与前一个相等的情况，会麻烦一些）。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">compress</span>(<span class="params">chars</span>):</span></span><br><span class="line">    write = left = <span class="number">0</span></span><br><span class="line">    n = <span class="built_in">len</span>(chars)</span><br><span class="line">    <span class="keyword">for</span> right <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        <span class="keyword">if</span> right == n-<span class="number">1</span> <span class="keyword">or</span> chars[right] != chars[right+<span class="number">1</span>]:</span><br><span class="line">            l = right-left+<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> l != <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">str</span>(l):</span><br><span class="line">                    write += <span class="number">1</span></span><br><span class="line">                    chars[write] = i</span><br><span class="line">            left = right+<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> right != n-<span class="number">1</span>:</span><br><span class="line">                write += <span class="number">1</span></span><br><span class="line">                chars[write] = chars[right+<span class="number">1</span>]</span><br><span class="line">    <span class="comment"># print(chars[:write+1])</span></span><br><span class="line">    <span class="keyword">return</span> write+<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/hSKTDP"><img src="https://z3.ax1x.com/2021/08/22/hSKTDP.jpg" alt="压缩字符串提交记录jpg"></a></p>
 ]]></content>
       <categories>
         <category>Leetcode</category>
       </categories>
       <tags>
-        <tag>Leetcode简单</tag>
         <tag>双指针</tag>
+        <tag>Leetcode中等</tag>
       </tags>
   </entry>
   <entry>
@@ -199,7 +270,33 @@
         <category>Leetcode</category>
       </categories>
       <tags>
+        <tag>Leetcode简单</tag>
         <tag>模拟</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode_551. 学生出勤记录 I</title>
+    <url>/2021/08/17/Leetcode-551-%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95-I/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>551.-学生出勤记录-I<br>难度：简单<br>给你一个字符串 s 表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符：</p>
+<p>‘A’：Absent，缺勤<br>‘L’：Late，迟到<br>‘P’：Present，到场<br>如果学生能够 同时 满足下面两个条件，则可以获得出勤奖励：</p>
+<p>按 总出勤 计，学生缺勤（’A’）严格 少于两天。<br>学生 不会 存在 连续 3 天或 3 天以上的迟到（’L’）记录。<br>如果学生可以获得出勤奖励，返回 true ；否则，返回 false 。</p>
+<p>示例 1：</p>
+<p>输入：s = “PPALLP”<br>输出：true<br>解释：学生缺勤次数少于 2 次，且不存在 3 天或以上的连续迟到记录。<br>示例 2：</p>
+<p>输入：s = “PPALLL”<br>输出：false<br>解释：学生最后三天连续迟到，所以不满足出勤奖励的条件。</p>
+<p>提示：</p>
+<p>1 &lt;= s.length &lt;= 1000<br>s[i] 为 ‘A’、’L’ 或 ‘P’</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/student-attendance-record-i">https://leetcode-cn.com/problems/student-attendance-record-i</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>太简单了，略</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ul>
+<li>python<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def checkRecord(self, s: str) -&gt; bool:</span><br><span class="line">        return s.count(&quot;A&quot;)&lt;2 and s.count(&quot;LLL&quot;)&lt;=0</span><br></pre></td></tr></table></figure></li>
+<li>C<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">checkRecord</span><span class="params">(<span class="keyword">char</span>* s)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> absent = <span class="number">0</span>, late = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (*s != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (*s == <span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			absent++;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span> (absent == <span class="number">2</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (*s == <span class="string">&#x27;L&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			late++;</span><br><span class="line">			<span class="keyword">if</span> (late == <span class="number">3</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		s++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/f4KPi9"><img src="https://z3.ax1x.com/2021/08/17/f4KPi9.png" alt="551. 学生出勤记录 I.png"></a><br><a href="https://imgtu.com/i/f4h6TP"><img src="https://z3.ax1x.com/2021/08/17/f4h6TP.jpg" alt="551. 学生出勤记录 IC语言"></a></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
         <tag>Leetcode简单</tag>
       </tags>
   </entry>
@@ -292,32 +389,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Leetcode_551. 学生出勤记录 I</title>
-    <url>/2021/08/17/Leetcode-551-%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95-I/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>551.-学生出勤记录-I<br>难度：简单<br>给你一个字符串 s 表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符：</p>
-<p>‘A’：Absent，缺勤<br>‘L’：Late，迟到<br>‘P’：Present，到场<br>如果学生能够 同时 满足下面两个条件，则可以获得出勤奖励：</p>
-<p>按 总出勤 计，学生缺勤（’A’）严格 少于两天。<br>学生 不会 存在 连续 3 天或 3 天以上的迟到（’L’）记录。<br>如果学生可以获得出勤奖励，返回 true ；否则，返回 false 。</p>
-<p>示例 1：</p>
-<p>输入：s = “PPALLP”<br>输出：true<br>解释：学生缺勤次数少于 2 次，且不存在 3 天或以上的连续迟到记录。<br>示例 2：</p>
-<p>输入：s = “PPALLL”<br>输出：false<br>解释：学生最后三天连续迟到，所以不满足出勤奖励的条件。</p>
-<p>提示：</p>
-<p>1 &lt;= s.length &lt;= 1000<br>s[i] 为 ‘A’、’L’ 或 ‘P’</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/student-attendance-record-i">https://leetcode-cn.com/problems/student-attendance-record-i</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>太简单了，略</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ul>
-<li>python<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def checkRecord(self, s: str) -&gt; bool:</span><br><span class="line">        return s.count(&quot;A&quot;)&lt;2 and s.count(&quot;LLL&quot;)&lt;=0</span><br></pre></td></tr></table></figure></li>
-<li>C<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">checkRecord</span><span class="params">(<span class="keyword">char</span>* s)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> absent = <span class="number">0</span>, late = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (*s != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (*s == <span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			absent++;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span> (absent == <span class="number">2</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (*s == <span class="string">&#x27;L&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			late++;</span><br><span class="line">			<span class="keyword">if</span> (late == <span class="number">3</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		s++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/f4KPi9"><img src="https://z3.ax1x.com/2021/08/17/f4KPi9.png" alt="551. 学生出勤记录 I.png"></a><br><a href="https://imgtu.com/i/f4h6TP"><img src="https://z3.ax1x.com/2021/08/17/f4h6TP.jpg" alt="551. 学生出勤记录 IC语言"></a></p>
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>Leetcode简单</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode_57|. 出界的路径数</title>
     <url>/2021/08/20/Leetcode-57-%E5%87%BA%E7%95%8C%E7%9A%84%E8%B7%AF%E5%BE%84%E6%95%B0/</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>57|. 出界的路径数<br>难度：简单</p>
@@ -365,6 +436,83 @@
         <tag>Leetcode简单</tag>
         <tag>动态规划</tag>
         <tag>卷积</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode_789.逃脱阻碍者</title>
+    <url>/2021/08/22/Leetcode-789-%E9%80%83%E8%84%B1%E9%98%BB%E7%A2%8D%E8%80%85/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>789. 逃脱阻碍者<br>难度：中等</p>
+<p>你在进行一个简化版的吃豆人游戏。你从 <code>[0, 0]</code> 点开始出发，你的目的地是&nbsp;<code>target = [x<sub>target</sub>, y<sub>target</sub>]</code> 。地图上有一些阻碍者，以数组 <code>ghosts</code> 给出，第 <code>i</code> 个阻碍者从&nbsp;<code>ghosts[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&nbsp;出发。所有输入均为 <strong>整数坐标</strong> 。</p>
+
+<p>每一回合，你和阻碍者们可以同时向东，西，南，北四个方向移动，每次可以移动到距离原位置 <strong>1 个单位</strong> 的新位置。当然，也可以选择 <strong>不动</strong> 。所有动作 <strong>同时</strong> 发生。</p>
+
+<p>如果你可以在任何阻碍者抓住你 <strong>之前</strong> 到达目的地（阻碍者可以采取任意行动方式），则被视为逃脱成功。如果你和阻碍者同时到达了一个位置（包括目的地）都不算是逃脱成功。</p>
+
+<p>只有在你有可能成功逃脱时，输出 <code>true</code> ；否则，输出 <code>false</code> 。</p>
+&nbsp;
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入：</strong>ghosts = [[1,0],[0,3]], target = [0,1]
+<strong>输出：</strong>true
+<strong>解释：</strong>你可以直接一步到达目的地 (0,1) ，在 (1, 0) 或者 (0, 3) 位置的阻碍者都不可能抓住你。 
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>ghosts = [[1,0]], target = [2,0]
+<strong>输出：</strong>false
+<strong>解释：</strong>你需要走到位于 (2, 0) 的目的地，但是在 (1, 0) 的阻碍者位于你和目的地之间。 
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>ghosts = [[2,0]], target = [1,0]
+<strong>输出：</strong>false
+<strong>解释：</strong>阻碍者可以和你同时达到目的地。 
+</pre>
+
+<p><strong>示例 4：</strong></p>
+
+<pre><strong>输入：</strong>ghosts = [[5,0],[-10,-2],[0,-5],[-2,-2],[-7,1]], target = [7,7]
+<strong>输出：</strong>false
+</pre>
+
+<p><strong>示例 5：</strong></p>
+
+<pre><strong>输入：</strong>ghosts = [[-1,0],[0,1],[-1,0],[0,1],[-1,0]], target = [0,0]
+<strong>输出：</strong>true
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= ghosts.length &lt;= 100</code></li>
+    <li><code>ghosts[i].length == 2</code></li>
+    <li><code>-10<sup>4</sup> &lt;= x<sub>i</sub>, y<sub>i</sub> &lt;= 10<sup>4</sup></code></li>
+    <li>同一位置可能有 <strong>多个阻碍者</strong> 。</li>
+    <li><code>target.length == 2</code></li>
+    <li><code>-10<sup>4</sup> &lt;= x<sub>target</sub>, y<sub>target</sub> &lt;= 10<sup>4</sup></code></li>
+</ul>
+
+
+<h3 id="方法：-曼哈顿距离"><a href="#方法：-曼哈顿距离" class="headerlink" title="方法： 曼哈顿距离"></a>方法： 曼哈顿距离</h3><p>刚过十二点，看完题目是懵的，这是要干嘛？没有思路，去看题解，曼哈顿距离又是什么鬼？于是去B站上找一下曼哈顿距离的讲解，知道了就是两个点之间的横坐标距离与纵坐标距离的和。那这和解题有什么关系呢？上床在睡前想了一下，发现其实并不难。<br>题目中的情况虽然看起来很多很复杂，但其实要解决的就是”我“能不能比幽灵更快地到达目的地。因为中途被拦截地情况，也能变为让拦截者到了目的地之后等”我“，结果是一样的。因此，就是要考虑”我“的起点到目的地的曼哈顿距离是不是比所有幽灵到目的地的曼哈顿距离小。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">escapeGhosts</span>(<span class="params">ghosts, target</span>):</span></span><br><span class="line">    target_x, target_y = target</span><br><span class="line">    L = <span class="built_in">abs</span>(target_x)+<span class="built_in">abs</span>(target_y)</span><br><span class="line">    <span class="keyword">for</span> x, y <span class="keyword">in</span> ghosts:</span><br><span class="line">        l = <span class="built_in">abs</span>(x-target_x)+<span class="built_in">abs</span>(y-target_y)</span><br><span class="line">        <span class="keyword">if</span> l &lt;= L:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<p>还有一行的版本：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">escapeGhosts</span>(<span class="params">self, ghosts: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]], target: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">bool</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">all</span>([<span class="built_in">abs</span>(target[<span class="number">0</span>])+<span class="built_in">abs</span>(target[<span class="number">1</span>]) &lt; <span class="built_in">abs</span>(ghost[<span class="number">0</span>]-target[<span class="number">0</span>])+<span class="built_in">abs</span>(ghost[<span class="number">1</span>]-target[<span class="number">1</span>]) <span class="keyword">for</span> ghost <span class="keyword">in</span> ghosts])</span><br><span class="line"></span><br><span class="line">作者：luanhz</span><br><span class="line">链接：https://leetcode-cn.com/problems/escape-the-ghosts/solution/wei-jin-zhe-sheng-pythonyi-xing-dai-ma-by-luanz/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>all() 函数用于判断给定的可迭代参数 iterable 中的所有元素是否都为 TRUE，如果是返回 True，否则返回 False。<br>元素除了是 0、空、None、False 外都算 True。</p>
+</blockquote>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/hSCRQe"><img src="https://z3.ax1x.com/2021/08/22/hSCRQe.jpg" alt="逃脱阻碍者提交记录.jpg"></a></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode中等</tag>
+        <tag>曼哈顿距离</tag>
       </tags>
   </entry>
   <entry>

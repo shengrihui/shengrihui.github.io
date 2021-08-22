@@ -20,23 +20,23 @@
     var CONFIG = {"hostname":"shengrihui.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="题目551.-学生出勤记录-I难度：简单给你一个字符串 s 表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符： ‘A’：Absent，缺勤‘L’：Late，迟到‘P’：Present，到场如果学生能够 同时 满足下面两个条件，则可以获得出勤奖励：">
+  <meta name="description" content="题目789. 逃脱阻碍者难度：中等 你在进行一个简化版的吃豆人游戏。你从 [0, 0] 点开始出发，你的目的地是&amp;nbsp;target &#x3D; [xtarget, ytarget] 。地图上有一些阻碍者，以数组 ghosts 给出，第 i 个阻碍者从&amp;nbsp;ghosts[i] &#x3D; [xi, yi]&amp;nbsp;出发。所有输入均为 整数坐标 。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Leetcode_551. 学生出勤记录 I">
-<meta property="og:url" content="https://shengrihui.github.io/2021/08/17/Leetcode-551-%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95-I/index.html">
+<meta property="og:title" content="Leetcode_789.逃脱阻碍者">
+<meta property="og:url" content="https://shengrihui.github.io/2021/08/22/Leetcode-789-%E9%80%83%E8%84%B1%E9%98%BB%E7%A2%8D%E8%80%85/index.html">
 <meta property="og:site_name" content="盛日辉的博客">
-<meta property="og:description" content="题目551.-学生出勤记录-I难度：简单给你一个字符串 s 表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符： ‘A’：Absent，缺勤‘L’：Late，迟到‘P’：Present，到场如果学生能够 同时 满足下面两个条件，则可以获得出勤奖励：">
+<meta property="og:description" content="题目789. 逃脱阻碍者难度：中等 你在进行一个简化版的吃豆人游戏。你从 [0, 0] 点开始出发，你的目的地是&amp;nbsp;target &#x3D; [xtarget, ytarget] 。地图上有一些阻碍者，以数组 ghosts 给出，第 i 个阻碍者从&amp;nbsp;ghosts[i] &#x3D; [xi, yi]&amp;nbsp;出发。所有输入均为 整数坐标 。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://z3.ax1x.com/2021/08/17/f4KPi9.png">
-<meta property="og:image" content="https://z3.ax1x.com/2021/08/17/f4h6TP.jpg">
-<meta property="article:published_time" content="2021-08-17T08:15:13.000Z">
-<meta property="article:modified_time" content="2021-08-20T12:21:47.890Z">
+<meta property="og:image" content="https://z3.ax1x.com/2021/08/22/hSCRQe.jpg">
+<meta property="article:published_time" content="2021-08-22T04:41:00.000Z">
+<meta property="article:modified_time" content="2021-08-22T04:42:09.458Z">
 <meta property="article:author" content="盛日辉">
-<meta property="article:tag" content="Leetcode简单">
+<meta property="article:tag" content="Leetcode中等">
+<meta property="article:tag" content="曼哈顿距离">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://z3.ax1x.com/2021/08/17/f4KPi9.png">
+<meta name="twitter:image" content="https://z3.ax1x.com/2021/08/22/hSCRQe.jpg">
 
-<link rel="canonical" href="https://shengrihui.github.io/2021/08/17/Leetcode-551-%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95-I/">
+<link rel="canonical" href="https://shengrihui.github.io/2021/08/22/Leetcode-789-%E9%80%83%E8%84%B1%E9%98%BB%E7%A2%8D%E8%80%85/">
 
 
 <script id="page-configurations">
@@ -49,7 +49,7 @@
   };
 </script>
 
-  <title>Leetcode_551. 学生出勤记录 I | 盛日辉的博客</title>
+  <title>Leetcode_789.逃脱阻碍者 | 盛日辉的博客</title>
   
 
 
@@ -193,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/2021/08/17/Leetcode-551-%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95-I/">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/2021/08/22/Leetcode-789-%E9%80%83%E8%84%B1%E9%98%BB%E7%A2%8D%E8%80%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -206,7 +206,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Leetcode_551. 学生出勤记录 I
+          Leetcode_789.逃脱阻碍者
         </h1>
 
         <div class="post-meta">
@@ -215,16 +215,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-08-17 16:15:13" itemprop="dateCreated datePublished" datetime="2021-08-17T16:15:13+08:00">2021-08-17</time>
+              <time title="创建时间：2021-08-22 12:41:00 / 修改时间：12:42:09" itemprop="dateCreated datePublished" datetime="2021-08-22T12:41:00+08:00">2021-08-22</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-08-20 20:21:47" itemprop="dateModified" datetime="2021-08-20T20:21:47+08:00">2021-08-20</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -246,21 +240,71 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>551.-学生出勤记录-I<br>难度：简单<br>给你一个字符串 s 表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符：</p>
-<p>‘A’：Absent，缺勤<br>‘L’：Late，迟到<br>‘P’：Present，到场<br>如果学生能够 同时 满足下面两个条件，则可以获得出勤奖励：</p>
-<p>按 总出勤 计，学生缺勤（’A’）严格 少于两天。<br>学生 不会 存在 连续 3 天或 3 天以上的迟到（’L’）记录。<br>如果学生可以获得出勤奖励，返回 true ；否则，返回 false 。</p>
-<p>示例 1：</p>
-<p>输入：s = “PPALLP”<br>输出：true<br>解释：学生缺勤次数少于 2 次，且不存在 3 天或以上的连续迟到记录。<br>示例 2：</p>
-<p>输入：s = “PPALLL”<br>输出：false<br>解释：学生最后三天连续迟到，所以不满足出勤奖励的条件。</p>
-<p>提示：</p>
-<p>1 &lt;= s.length &lt;= 1000<br>s[i] 为 ‘A’、’L’ 或 ‘P’</p>
-<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/student-attendance-record-i">https://leetcode-cn.com/problems/student-attendance-record-i</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>太简单了，略</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ul>
-<li>python<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def checkRecord(self, s: str) -&gt; bool:</span><br><span class="line">        return s.count(&quot;A&quot;)&lt;2 and s.count(&quot;LLL&quot;)&lt;=0</span><br></pre></td></tr></table></figure></li>
-<li>C<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">checkRecord</span><span class="params">(<span class="keyword">char</span>* s)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> absent = <span class="number">0</span>, late = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (*s != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (*s == <span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			absent++;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span> (absent == <span class="number">2</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (*s == <span class="string">&#x27;L&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			late++;</span><br><span class="line">			<span class="keyword">if</span> (late == <span class="number">3</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		s++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+        <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>789. 逃脱阻碍者<br>难度：中等</p>
+<p>你在进行一个简化版的吃豆人游戏。你从 <code>[0, 0]</code> 点开始出发，你的目的地是&nbsp;<code>target = [x<sub>target</sub>, y<sub>target</sub>]</code> 。地图上有一些阻碍者，以数组 <code>ghosts</code> 给出，第 <code>i</code> 个阻碍者从&nbsp;<code>ghosts[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&nbsp;出发。所有输入均为 <strong>整数坐标</strong> 。</p>
+
+<p>每一回合，你和阻碍者们可以同时向东，西，南，北四个方向移动，每次可以移动到距离原位置 <strong>1 个单位</strong> 的新位置。当然，也可以选择 <strong>不动</strong> 。所有动作 <strong>同时</strong> 发生。</p>
+
+<p>如果你可以在任何阻碍者抓住你 <strong>之前</strong> 到达目的地（阻碍者可以采取任意行动方式），则被视为逃脱成功。如果你和阻碍者同时到达了一个位置（包括目的地）都不算是逃脱成功。</p>
+
+<p>只有在你有可能成功逃脱时，输出 <code>true</code> ；否则，输出 <code>false</code> 。</p>
+&nbsp;
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入：</strong>ghosts = [[1,0],[0,3]], target = [0,1]
+<strong>输出：</strong>true
+<strong>解释：</strong>你可以直接一步到达目的地 (0,1) ，在 (1, 0) 或者 (0, 3) 位置的阻碍者都不可能抓住你。 
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>ghosts = [[1,0]], target = [2,0]
+<strong>输出：</strong>false
+<strong>解释：</strong>你需要走到位于 (2, 0) 的目的地，但是在 (1, 0) 的阻碍者位于你和目的地之间。 
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>ghosts = [[2,0]], target = [1,0]
+<strong>输出：</strong>false
+<strong>解释：</strong>阻碍者可以和你同时达到目的地。 
+</pre>
+
+<p><strong>示例 4：</strong></p>
+
+<pre><strong>输入：</strong>ghosts = [[5,0],[-10,-2],[0,-5],[-2,-2],[-7,1]], target = [7,7]
+<strong>输出：</strong>false
+</pre>
+
+<p><strong>示例 5：</strong></p>
+
+<pre><strong>输入：</strong>ghosts = [[-1,0],[0,1],[-1,0],[0,1],[-1,0]], target = [0,0]
+<strong>输出：</strong>true
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= ghosts.length &lt;= 100</code></li>
+    <li><code>ghosts[i].length == 2</code></li>
+    <li><code>-10<sup>4</sup> &lt;= x<sub>i</sub>, y<sub>i</sub> &lt;= 10<sup>4</sup></code></li>
+    <li>同一位置可能有 <strong>多个阻碍者</strong> 。</li>
+    <li><code>target.length == 2</code></li>
+    <li><code>-10<sup>4</sup> &lt;= x<sub>target</sub>, y<sub>target</sub> &lt;= 10<sup>4</sup></code></li>
 </ul>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/f4KPi9"><img src="https://z3.ax1x.com/2021/08/17/f4KPi9.png" alt="551. 学生出勤记录 I.png"></a><br><a target="_blank" rel="noopener" href="https://imgtu.com/i/f4h6TP"><img src="https://z3.ax1x.com/2021/08/17/f4h6TP.jpg" alt="551. 学生出勤记录 IC语言"></a></p>
+
+
+<h3 id="方法：-曼哈顿距离"><a href="#方法：-曼哈顿距离" class="headerlink" title="方法： 曼哈顿距离"></a>方法： 曼哈顿距离</h3><p>刚过十二点，看完题目是懵的，这是要干嘛？没有思路，去看题解，曼哈顿距离又是什么鬼？于是去B站上找一下曼哈顿距离的讲解，知道了就是两个点之间的横坐标距离与纵坐标距离的和。那这和解题有什么关系呢？上床在睡前想了一下，发现其实并不难。<br>题目中的情况虽然看起来很多很复杂，但其实要解决的就是”我“能不能比幽灵更快地到达目的地。因为中途被拦截地情况，也能变为让拦截者到了目的地之后等”我“，结果是一样的。因此，就是要考虑”我“的起点到目的地的曼哈顿距离是不是比所有幽灵到目的地的曼哈顿距离小。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">escapeGhosts</span>(<span class="params">ghosts, target</span>):</span></span><br><span class="line">    target_x, target_y = target</span><br><span class="line">    L = <span class="built_in">abs</span>(target_x)+<span class="built_in">abs</span>(target_y)</span><br><span class="line">    <span class="keyword">for</span> x, y <span class="keyword">in</span> ghosts:</span><br><span class="line">        l = <span class="built_in">abs</span>(x-target_x)+<span class="built_in">abs</span>(y-target_y)</span><br><span class="line">        <span class="keyword">if</span> l &lt;= L:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+<p>还有一行的版本：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">escapeGhosts</span>(<span class="params">self, ghosts: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]], target: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">bool</span>:</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">all</span>([<span class="built_in">abs</span>(target[<span class="number">0</span>])+<span class="built_in">abs</span>(target[<span class="number">1</span>]) &lt; <span class="built_in">abs</span>(ghost[<span class="number">0</span>]-target[<span class="number">0</span>])+<span class="built_in">abs</span>(ghost[<span class="number">1</span>]-target[<span class="number">1</span>]) <span class="keyword">for</span> ghost <span class="keyword">in</span> ghosts])</span><br><span class="line"></span><br><span class="line">作者：luanhz</span><br><span class="line">链接：https://leetcode-cn.com/problems/escape-the-ghosts/solution/wei-jin-zhe-sheng-pythonyi-xing-dai-ma-by-luanz/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>all() 函数用于判断给定的可迭代参数 iterable 中的所有元素是否都为 TRUE，如果是返回 True，否则返回 False。<br>元素除了是 0、空、None、False 外都算 True。</p>
+</blockquote>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/hSCRQe"><img src="https://z3.ax1x.com/2021/08/22/hSCRQe.jpg" alt="逃脱阻碍者提交记录.jpg"></a></p>
 
     </div>
 
@@ -290,7 +334,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Leetcode%E7%AE%80%E5%8D%95/" rel="tag"># Leetcode简单</a>
+              <a href="/tags/Leetcode%E4%B8%AD%E7%AD%89/" rel="tag"># Leetcode中等</a>
+              <a href="/tags/%E6%9B%BC%E5%93%88%E9%A1%BF%E8%B7%9D%E7%A6%BB/" rel="tag"># 曼哈顿距离</a>
           </div>
 
         
@@ -299,12 +344,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/08/05/markdown%E8%AF%AD%E6%B3%95/" rel="prev" title="markdown语法">
-      <i class="fa fa-chevron-left"></i> markdown语法
+    <a href="/2021/08/20/Leetcode-1583-%E7%BB%9F%E8%AE%A1%E4%B8%8D%E5%BC%80%E5%BF%83%E7%9A%84%E6%9C%8B%E5%8F%8B/" rel="prev" title="Leetcode_1583. 统计不开心的朋友">
+      <i class="fa fa-chevron-left"></i> Leetcode_1583. 统计不开心的朋友
     </a></div>
       <div class="post-nav-item">
-    <a href="/2021/08/17/Leetcode%E9%A2%98%E8%A7%A3/" rel="next" title="Leetcode题解">
-      Leetcode题解 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/08/22/Leetcode-443-%E5%8E%8B%E7%BC%A9%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="next" title="Leetcode_443. 压缩字符串">
+      Leetcode_443. 压缩字符串 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -364,7 +409,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95"><span class="nav-number">4.</span> <span class="nav-text">提交记录</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%EF%BC%9A-%E6%9B%BC%E5%93%88%E9%A1%BF%E8%B7%9D%E7%A6%BB"><span class="nav-number">2.</span> <span class="nav-text">方法： 曼哈顿距离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95"><span class="nav-number">3.</span> <span class="nav-text">提交记录</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -793,4 +793,354 @@ end tell
         <tag>其他</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Leetcode_1646. 获取生成数组中的最大值</title>
+    <url>/2021/08/23/Leetcode-1646-%E8%8E%B7%E5%8F%96%E7%94%9F%E6%88%90%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A4%A7%E5%80%BC/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1646. 获取生成数组中的最大值<br>难度：简单</p>
+<p>给你一个整数 <code>n</code> 。按下述规则生成一个长度为 <code>n + 1</code> 的数组 <code>nums</code> ：</p>
+
+<ul>
+    <li><code>nums[0] = 0</code></li>
+    <li><code>nums[1] = 1</code></li>
+    <li>当 <code>2 &lt;= 2 * i &lt;= n</code> 时，<code>nums[2 * i] = nums[i]</code></li>
+    <li>当 <code>2 &lt;= 2 * i + 1 &lt;= n</code> 时，<code>nums[2 * i + 1] = nums[i] + nums[i + 1]</code></li>
+</ul>
+
+<p>返回生成数组 <code>nums</code> 中的 <strong>最大</strong> 值。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入：</strong>n = 7
+<strong>输出：</strong>3
+<strong>解释：</strong>根据规则：
+  nums[0] = 0
+  nums[1] = 1
+  nums[(1 * 2) = 2] = nums[1] = 1
+  nums[(1 * 2) + 1 = 3] = nums[1] + nums[2] = 1 + 1 = 2
+  nums[(2 * 2) = 4] = nums[2] = 1
+  nums[(2 * 2) + 1 = 5] = nums[2] + nums[3] = 1 + 2 = 3
+  nums[(3 * 2) = 6] = nums[3] = 2
+  nums[(3 * 2) + 1 = 7] = nums[3] + nums[4] = 2 + 1 = 3
+因此，nums = [0,1,1,2,1,3,2,3]，最大值 3
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>n = 2
+<strong>输出：</strong>1
+<strong>解释：</strong>根据规则，nums[0]、nums[1] 和 nums[2] 之中的最大值是 1
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>n = 3
+<strong>输出：</strong>2
+<strong>解释：</strong>根据规则，nums[0]、nums[1]、nums[2] 和 nums[3] 之中的最大值是 2
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>0 &lt;= n &lt;= 100</code></li>
+</ul>
+<div class="notranslate"><p>给你一个整数 <code>n</code> 。按下述规则生成一个长度为 <code>n + 1</code> 的数组 <code>nums</code> ：</p>
+
+<ul>
+    <li><code>nums[0] = 0</code></li>
+    <li><code>nums[1] = 1</code></li>
+    <li>当 <code>2 &lt;= 2 * i &lt;= n</code> 时，<code>nums[2 * i] = nums[i]</code></li>
+    <li>当 <code>2 &lt;= 2 * i + 1 &lt;= n</code> 时，<code>nums[2 * i + 1] = nums[i] + nums[i + 1]</code></li>
+</ul>
+
+<p>返回生成数组 <code>nums</code> 中的 <strong>最大</strong> 值。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入：</strong>n = 7
+<strong>输出：</strong>3
+<strong>解释：</strong>根据规则：
+  nums[0] = 0
+  nums[1] = 1
+  nums[(1 * 2) = 2] = nums[1] = 1
+  nums[(1 * 2) + 1 = 3] = nums[1] + nums[2] = 1 + 1 = 2
+  nums[(2 * 2) = 4] = nums[2] = 1
+  nums[(2 * 2) + 1 = 5] = nums[2] + nums[3] = 1 + 2 = 3
+  nums[(3 * 2) = 6] = nums[3] = 2
+  nums[(3 * 2) + 1 = 7] = nums[3] + nums[4] = 2 + 1 = 3
+因此，nums = [0,1,1,2,1,3,2,3]，最大值 3
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>n = 2
+<strong>输出：</strong>1
+<strong>解释：</strong>根据规则，nums[0]、nums[1] 和 nums[2] 之中的最大值是 1
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>n = 3
+<strong>输出：</strong>2
+<strong>解释：</strong>根据规则，nums[0]、nums[1]、nums[2] 和 nums[3] 之中的最大值是 2
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>0 &lt;= n &lt;= 100</code></li>
+</ul>
+
+
+<h3 id="方法：-模拟"><a href="#方法：-模拟" class="headerlink" title="方法： 模拟"></a>方法： 模拟</h3><p>代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getMaximumGenerated</span>(<span class="params">n</span>):</span></span><br><span class="line">    <span class="keyword">if</span> n==<span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    nums = [<span class="number">0</span>]*(n+<span class="number">1</span>)</span><br><span class="line">    nums[<span class="number">0</span>], nums[<span class="number">1</span>] = <span class="number">0</span>, <span class="number">1</span></span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> i*<span class="number">2</span>+<span class="number">1</span> &lt;= n:</span><br><span class="line">        nums[i*<span class="number">2</span>] = nums[i]</span><br><span class="line">        nums[i*<span class="number">2</span>+<span class="number">1</span>] = nums[i]+nums[i+<span class="number">1</span>]</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">max</span>(nums)</span><br></pre></td></tr></table></figure>
+<p>官方处理奇偶两种情况的方法挺好的。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getMaximumGenerated</span>(<span class="params">self, n: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        nums = [<span class="number">0</span>] * (n + <span class="number">1</span>)</span><br><span class="line">        nums[<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>, n + <span class="number">1</span>):</span><br><span class="line">            nums[i] = nums[i // <span class="number">2</span>] + i % <span class="number">2</span> * nums[i // <span class="number">2</span> + <span class="number">1</span>]</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">max</span>(nums)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 作者：LeetCode-Solution</span></span><br><span class="line"><span class="comment"># 链接：https://leetcode-cn.com/problems/get-maximum-in-generated-array/solution/huo-qu-sheng-cheng-shu-zu-zhong-de-zui-d-0z2l/</span></span><br><span class="line"><span class="comment"># 来源：力扣（LeetCode）</span></span><br><span class="line"><span class="comment"># 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/h95spt"><img src="https://z3.ax1x.com/2021/08/23/h95spt.jpg" alt="获取生成数组中的最大值提交记录.jpg"></a></p>
+</div>]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode简单</tag>
+        <tag>模拟</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode_233. 数字 1 的个数</title>
+    <url>/2021/08/23/Leetcode-233-%E6%95%B0%E5%AD%97-1-%E7%9A%84%E4%B8%AA%E6%95%B0/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Leetcode_787. K 站中转内最便宜的航班</title>
+    <url>/2021/08/27/Leetcode-787-K-%E7%AB%99%E4%B8%AD%E8%BD%AC%E5%86%85%E6%9C%80%E4%BE%BF%E5%AE%9C%E7%9A%84%E8%88%AA%E7%8F%AD/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>787. K 站中转内最便宜的航班<br>难度：中等</p>
+<p>有 <code>n</code> 个城市通过一些航班连接。给你一个数组&nbsp;<code>flights</code> ，其中&nbsp;<code>flights[i] = [from<sub>i</sub>, to<sub>i</sub>, price<sub>i</sub>]</code> ，表示该航班都从城市 <code>from<sub>i</sub></code> 开始，以价格 <code>price<sub>i</sub></code> 抵达 <code>to<sub>i</sub></code>。</p>
+
+<p>现在给定所有的城市和航班，以及出发城市 <code>src</code> 和目的地 <code>dst</code>，你的任务是找到出一条最多经过 <code>k</code>&nbsp;站中转的路线，使得从 <code>src</code> 到 <code>dst</code> 的 <strong>价格最便宜</strong> ，并返回该价格。 如果不存在这样的路线，则输出 <code>-1</code>。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入:</strong> 
+n = 3, edges = [[0,1,100],[1,2,100],[0,2,500]]
+src = 0, dst = 2, k = 1
+<strong>输出:</strong> 200
+<strong>解释:</strong> 
+城市航班图如下
+<img style="height: 180px; width: 246px;" src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/02/16/995.png" alt>
+
+从城市 0 到城市 2 在 1 站中转以内的最便宜价格是 200，如图中红色所示。</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入:</strong> 
+n = 3, edges = [[0,1,100],[1,2,100],[0,2,500]]
+src = 0, dst = 2, k = 0
+<strong>输出:</strong> 500
+<strong>解释:</strong> 
+城市航班图如下
+<img style="height: 180px; width: 246px;" src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/02/16/995.png" alt>
+
+从城市 0 到城市 2 在 0 站中转以内的最便宜价格是 500，如图中蓝色所示。</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= n &lt;= 100</code></li>
+    <li><code>0 &lt;= flights.length &lt;= (n * (n - 1) / 2)</code></li>
+    <li><code>flights[i].length == 3</code></li>
+    <li><code>0 &lt;= from<sub>i</sub>, to<sub>i</sub> &lt; n</code></li>
+    <li><code>from<sub>i</sub> != to<sub>i</sub></code></li>
+    <li><code>1 &lt;= price<sub>i</sub> &lt;= 10<sup>4</sup></code></li>
+    <li>航班没有重复，且不存在自环</li>
+    <li><code>0 &lt;= src, dst, k &lt; n</code></li>
+    <li><code>src != dst</code></li>
+</ul>
+
+
+<h3 id="方法一-枚举"><a href="#方法一-枚举" class="headerlink" title="方法一: 枚举"></a>方法一: 枚举</h3><h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><ol>
+<li>先创建一个字典，用于存从某一个地方出发，可以到哪些目的地以及花费是多少；</li>
+<li>建立两个列表，分别存这一次可以从哪些地方出发，以及到这个地方已经用了的花费；</li>
+<li>再建立两个临时列表，分别存在遍历出发地点的列时的目的地，以及到达目的地的的花费；</li>
+<li>若遇到了目的地是<code>dst</code>，就将花费记录到另一个<code>ret</code>列表当中；</li>
+<li>遍历完一遍出发列表后，<code>k</code>自减，将<code>3</code>中的列表分别赋给<code>2</code>中的列表；</li>
+<li>直到<code>k</code>变为负数，输出<code>ret</code>中的最小值，如果没有，输出<code>-1</code>。<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findCheapestPrice</span>(<span class="params">n, flights, src, dst, k</span>):</span></span><br><span class="line">    dst_price = defaultdict(<span class="built_in">list</span>)</span><br><span class="line">    <span class="keyword">for</span> s, d, p <span class="keyword">in</span> flights:</span><br><span class="line">        dst_price[s].append([d, p])</span><br><span class="line">        <span class="comment">#dst_price[d].append([s, p])</span></span><br><span class="line">    <span class="comment"># print(dst_price)</span></span><br><span class="line">    next_place = [src]</span><br><span class="line">    next_price = [<span class="number">0</span>]</span><br><span class="line">    temp_place = []</span><br><span class="line">    temp_price = []</span><br><span class="line">    kk = k</span><br><span class="line">    ret = []</span><br><span class="line">    <span class="keyword">while</span> k &gt;= <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">for</span> f, p0 <span class="keyword">in</span> <span class="built_in">zip</span>(next_place, next_price):</span><br><span class="line">            <span class="keyword">for</span> d, p <span class="keyword">in</span> dst_price[f]:</span><br><span class="line">                temp_place.append(d)</span><br><span class="line">                temp_price.append(p0+p)</span><br><span class="line">                <span class="comment"># print(f,d,temp_place)</span></span><br><span class="line">                <span class="comment"># print(temp_price)</span></span><br><span class="line">                <span class="keyword">if</span> d == dst:</span><br><span class="line">                    ret.append(p0+p)</span><br><span class="line">        next_place = temp_place</span><br><span class="line">        next_price = temp_price</span><br><span class="line">        <span class="comment"># print(next_place)</span></span><br><span class="line">        <span class="comment"># print(next_price,&quot;***&quot;)</span></span><br><span class="line">        temp_place = []</span><br><span class="line">        temp_price = []</span><br><span class="line">        k -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">min</span>(ret) <span class="keyword">if</span> ret != [] <span class="keyword">else</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4>可能会出现两个地方来回的情况，造成超级大量的浪费计算。</li>
+</ol>
+<h3 id="方法二：-回溯"><a href="#方法二：-回溯" class="headerlink" title="方法二： 回溯"></a>方法二： 回溯</h3><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findCheapestPrice</span>(<span class="params">n, flights, src, dst, k</span>):</span></span><br><span class="line">    dst_price = defaultdict(<span class="built_in">list</span>)</span><br><span class="line">    <span class="keyword">for</span> s, d, p <span class="keyword">in</span> flights:</span><br><span class="line">        dst_price[s].append([d, p])</span><br><span class="line"></span><br><span class="line">    place = [src]</span><br><span class="line">    price = [<span class="number">0</span>]</span><br><span class="line">    ret = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">k, place, price</span>):</span></span><br><span class="line">        <span class="keyword">if</span> k &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">for</span> d, p0 <span class="keyword">in</span> dst_price[place[-<span class="number">1</span>]]:</span><br><span class="line">            <span class="keyword">if</span> d == dst:</span><br><span class="line">                ret.append(price[-<span class="number">1</span>]+p0)</span><br><span class="line">            place.append(d)</span><br><span class="line">            price.append(price[-<span class="number">1</span>]+p0)</span><br><span class="line">            forward(k-<span class="number">1</span>, place, price)</span><br><span class="line">            place.pop()</span><br><span class="line">            price.pop()</span><br><span class="line">    forward(k, place, price)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">min</span>(ret) <span class="keyword">if</span> ret != [] <span class="keyword">else</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="方法三：-动态规划"><a href="#方法三：-动态规划" class="headerlink" title="方法三： 动态规划"></a>方法三： 动态规划</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>我刚开始的时候想，某次换成之后的最便宜的花费等于换成之前的那么多可能的站里的最便宜的花费加上这一段的花费，然而显然不是这样的，一度认为这一题不能用动态规划来做。而事实上这是错的，因为到某一站的最便宜花费应当等于到上一站的所有可能的站的最便宜花费分别加上这些上一站到这一站的花费之后所有花费当中最便宜的。还是用式子和代码来表示这些狗屁不通的话吧。</p>
+<ol>
+<li>状态:<code>dp[t][d]</code>表示第<code>t</code>次换乘时到<code>d</code>站的最小花费;</li>
+<li>状态转移方程::<code>dp[t][d] = min(dp[t][d], dp[t-1][f]+cost)</code>,<code>cost</code>是<code>f</code>站到<code>d</code>站的花费,所以第<code>t</code>次换乘时到<code>d</code>站的最小花费等于所有能到<code>d</code>站的那些站到<code>d</code>站的最便宜花费加上那些站到<code>d</code>站的花费当中的最小值.</li>
+<li>初始状态:<code>d[0][src]=0</code>.<br>其他注意的</li>
+<li><code>k</code>次换乘,也就会有<code>k+2</code>个站,,注意相关循环的范围以及<code>dp</code>的设置;</li>
+<li><code>float(&quot;inf&quot;)</code>表示无穷大.<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findCheapestPrice</span>(<span class="params">n, flights, src, dst, k</span>):</span></span><br><span class="line">    dp = [[<span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)]*n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(k+<span class="number">2</span>)]</span><br><span class="line">    dp[<span class="number">0</span>][src] = <span class="number">0</span></span><br><span class="line">    ret = []</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, k+<span class="number">2</span>):</span><br><span class="line">        <span class="keyword">for</span> f, d, cost <span class="keyword">in</span> flights:</span><br><span class="line">            dp[t][d] = <span class="built_in">min</span>(dp[t][d], dp[t-<span class="number">1</span>][f]+cost)</span><br><span class="line">            <span class="keyword">if</span> d == dst <span class="keyword">and</span> dp[t][d] != <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>):</span><br><span class="line">                ret.append(dp[t][d])</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">min</span>(ret) <span class="keyword">if</span> ret != [] <span class="keyword">else</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h4 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findCheapestPrice</span>(<span class="params">n, flights, src, dst, k</span>):</span></span><br><span class="line">    <span class="comment"># dst_price = defaultdict(list)</span></span><br><span class="line">    <span class="comment"># for s, d, p in flights:</span></span><br><span class="line">    <span class="comment">#     dst_price[s].append([d, p])</span></span><br><span class="line"></span><br><span class="line">    dp = [<span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)]*n</span><br><span class="line">    ans = <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># next_place = [src]</span></span><br><span class="line">    dp[src] = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, k+<span class="number">2</span>):</span><br><span class="line">        g = [<span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)]*n</span><br><span class="line">        <span class="keyword">for</span> f,d,cost <span class="keyword">in</span> flights:</span><br><span class="line">            g[d]=<span class="built_in">min</span>(g[d],dp[f]+cost)</span><br><span class="line">        <span class="comment"># temp = []</span></span><br><span class="line">        <span class="comment"># for f in next_place:</span></span><br><span class="line">        <span class="comment">#     for d, p in dst_price[f]:</span></span><br><span class="line">        <span class="comment">#         g[d] = min(g[d], dp[f]+p)</span></span><br><span class="line">        <span class="comment">#         temp.append(d)</span></span><br><span class="line">            <span class="keyword">if</span> d == dst:</span><br><span class="line">                ans = <span class="built_in">min</span>(ans, g[d])</span><br><span class="line">        dp = g</span><br><span class="line">        <span class="comment"># next_place = temp</span></span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span> <span class="keyword">if</span> ans == <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>) <span class="keyword">else</span> ans</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/hAHnSS"><img src="https://z3.ax1x.com/2021/08/24/hAHnSS.jpg" alt="航班换乘提交记录.jpg"></a></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode中等</tag>
+        <tag>回溯</tag>
+        <tag>动态规划</tag>
+        <tag>枚举</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode_797. 所有可能的路径</title>
+    <url>/2021/08/26/Leetcode-797-%E6%89%80%E6%9C%89%E5%8F%AF%E8%83%BD%E7%9A%84%E8%B7%AF%E5%BE%84/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>797. 所有可能的路径<br>难度：中等</p>
+<p>给你一个有&nbsp;<code>n</code>&nbsp;个节点的 <strong>有向无环图（DAG）</strong>，请你找出所有从节点 <code>0</code>&nbsp;到节点 <code>n-1</code>&nbsp;的路径并输出（<strong>不要求按特定顺序</strong>）</p>
+
+<p>二维数组的第 <code>i</code> 个数组中的单元都表示有向图中 <code>i</code> 号节点所能到达的下一些节点，空就是没有下一个结点了。</p>
+
+<p>译者注：有向图是有方向的，即规定了 a→b 你就不能从 b→a 。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<p><img style="height: 242px; width: 242px;" src="https://assets.leetcode.com/uploads/2020/09/28/all_1.jpg" alt></p>
+
+<pre><strong>输入：</strong>graph = [[1,2],[3],[3],[]]
+<strong>输出：</strong>[[0,1,3],[0,2,3]]
+<strong>解释：</strong>有两条路径 0 -&gt; 1 -&gt; 3 和 0 -&gt; 2 -&gt; 3
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<p><img style="height: 301px; width: 423px;" src="https://assets.leetcode.com/uploads/2020/09/28/all_2.jpg" alt></p>
+
+<pre><strong>输入：</strong>graph = [[4,3,1],[3,2,4],[3],[4],[]]
+<strong>输出：</strong>[[0,4],[0,3,4],[0,1,3,4],[0,1,2,3,4],[0,1,4]]
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>graph = [[1],[]]
+<strong>输出：</strong>[[0,1]]
+</pre>
+
+<p><strong>示例 4：</strong></p>
+
+<pre><strong>输入：</strong>graph = [[1,2,3],[2],[3],[]]
+<strong>输出：</strong>[[0,1,2,3],[0,2,3],[0,3]]
+</pre>
+
+<p><strong>示例 5：</strong></p>
+
+<pre><strong>输入：</strong>graph = [[1,3],[2],[3],[]]
+<strong>输出：</strong>[[0,1,2,3],[0,3]]
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>n == graph.length</code></li>
+    <li><code>2 &lt;= n &lt;= 15</code></li>
+    <li><code>0 &lt;= graph[i][j] &lt; n</code></li>
+    <li><code>graph[i][j] != i</code>（即，不存在自环）</li>
+    <li><code>graph[i]</code> 中的所有元素 <strong>互不相同</strong></li>
+    <li>保证输入为 <strong>有向无环图（DAG）</strong></li>
+</ul>
+
+
+<h3 id="方法一：-回溯-深度优先搜索（DFS）"><a href="#方法一：-回溯-深度优先搜索（DFS）" class="headerlink" title="方法一：  回溯/深度优先搜索（DFS）"></a>方法一：  回溯/深度优先搜索（DFS）</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">allPathsSourceTarget</span>(<span class="params">self, graph: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span></span><br><span class="line">        n = <span class="built_in">len</span>(graph)</span><br><span class="line">        ret = []</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">backtrack</span>(<span class="params">temp, node</span>):</span></span><br><span class="line">            <span class="keyword">if</span> node == n-<span class="number">1</span>:</span><br><span class="line">                ret.append(temp[:])</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> graph[node]:</span><br><span class="line">                temp.append(i)</span><br><span class="line">                backtrack(temp, i)</span><br><span class="line">                temp.pop()</span><br><span class="line">        backtrack([<span class="number">0</span>], <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure>
+<p>正常的回溯套路，需要注意的是：</p>
+<ol>
+<li>每个列表<code>apppend</code>的时候到底加的是什么东西；</li>
+<li>开头的<code>0</code>的加上；</li>
+<li><code>ret.append(temp[:])</code>用这种方式可以解决深浅拷贝的问题。</li>
+</ol>
+<h3 id="方法二：-宽度优先搜索（BFS）"><a href="#方法二：-宽度优先搜索（BFS）" class="headerlink" title="方法二： 宽度优先搜索（BFS）"></a>方法二： 宽度优先搜索（BFS）</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">allPathsSourceTarget</span>(<span class="params">self, graph: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]:</span></span><br><span class="line">        <span class="keyword">from</span> queue <span class="keyword">import</span> Queue</span><br><span class="line">        <span class="comment"># 创建一个先进先出的队列</span></span><br><span class="line">        q = Queue()</span><br><span class="line">        n = <span class="built_in">len</span>(graph)-<span class="number">1</span></span><br><span class="line">        ret = []</span><br><span class="line">        <span class="comment"># 向队列中加入元素</span></span><br><span class="line">        q.put([<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">not</span> q.empty():</span><br><span class="line">            <span class="comment"># 取出队列中的元素（因为是先进先出，所以是第一个）</span></span><br><span class="line">            tmp = q.get()</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> graph[tmp[-<span class="number">1</span>]]:</span><br><span class="line">                <span class="keyword">if</span> i == n:</span><br><span class="line">                    ret.append(tmp+[i])</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                q.put(tmp+[i])</span><br><span class="line">        <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure>
+
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/hKFuX8"><img src="https://z3.ax1x.com/2021/08/26/hKFuX8.md.jpg" alt="提交记录.md.jpg"></a></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode中等</tag>
+        <tag>回溯</tag>
+        <tag>深度优先搜索（DFS）</tag>
+        <tag>广度优先搜索（BFS）</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode_881. 救生艇</title>
+    <url>/2021/08/26/Leetcode-881-%E6%95%91%E7%94%9F%E8%89%87/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>881. 救生艇<br>难度：中等</p>
+<p>第&nbsp;<code>i</code>&nbsp;个人的体重为&nbsp;<code>people[i]</code>，每艘船可以承载的最大重量为&nbsp;<code>limit</code>。</p>
+
+<p>每艘船最多可同时载两人，但条件是这些人的重量之和最多为&nbsp;<code>limit</code>。</p>
+
+<p>返回载到每一个人所需的最小船数。(保证每个人都能被船载)。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入：</strong>people = [1,2], limit = 3
+<strong>输出：</strong>1
+<strong>解释：</strong>1 艘船载 (1, 2)
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>people = [3,2,2,1], limit = 3
+<strong>输出：</strong>3
+<strong>解释：</strong>3 艘船分别载 (1, 2), (2) 和 (3)
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>people = [3,5,3,4], limit = 5
+<strong>输出：</strong>4
+<strong>解释：</strong>4 艘船分别载 (3), (3), (4), (5)</pre>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;=&nbsp;people.length &lt;= 50000</code></li>
+    <li><code>1 &lt;= people[i] &lt;=&nbsp;limit &lt;= 30000</code></li>
+</ul>
+
+
+<h3 id="方法一：-贪心-排序-双指针"><a href="#方法一：-贪心-排序-双指针" class="headerlink" title="方法一： 贪心=排序+双指针"></a>方法一： 贪心=排序+双指针</h3><p>将<code>people</code>数组排序之后，用双指针的方法来做。要使船的数量尽可能少，那就让一个船上的人尽可能多，也就是让体重大的，尽可能和一个体重轻的坐一个船。两个指针<code>i</code>和<code>j</code>，一个从轻往重走，一个从重往轻走，如果可以一起坐船，两个指针一起动，<code>boats</code>计数自增；如果两个不能一起坐船，那就重的指针移动，计数自增；直到两个指针重合，这时候，计数还需要再自增一次。<br>贪心相当于思想，排序+双指针是具体的实现方法。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">numRescueBoats</span>(<span class="params">people, limit</span>):</span></span><br><span class="line">    people.sort()</span><br><span class="line">    i, j = <span class="number">0</span>, <span class="built_in">len</span>(people)-<span class="number">1</span></span><br><span class="line">    boats = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        <span class="keyword">if</span> people[i]+people[j] &gt; limit:</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">            boats+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            boats+=<span class="number">1</span></span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> i==j:</span><br><span class="line">            boats+=<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> boats</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numRescueBoats</span>(<span class="params">self, people: <span class="type">List</span>[<span class="built_in">int</span>], limit: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span></span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        people.sort()</span><br><span class="line">        light, heavy = <span class="number">0</span>, <span class="built_in">len</span>(people) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> light &lt;= heavy:</span><br><span class="line">            <span class="keyword">if</span> people[light] + people[heavy] &gt; limit:</span><br><span class="line">                heavy -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                light += <span class="number">1</span></span><br><span class="line">                heavy -= <span class="number">1</span></span><br><span class="line">            ans += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line">作者：LeetCode-Solution</span><br><span class="line">链接：https://leetcode-cn.com/problems/boats-to-save-people/solution/jiu-sheng-ting-by-leetcode-solution-0nsp/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法二：-贪心"><a href="#方法二：-贪心" class="headerlink" title="方法二： 贪心"></a>方法二： 贪心</h3><p>这其实使我首先想到的方法，但。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">numRescueBoats</span>(<span class="params">people, limit</span>):</span></span><br><span class="line">    d = defaultdict(<span class="built_in">int</span>)</span><br><span class="line">    i, j = limit+<span class="number">1</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> w <span class="keyword">in</span> people:</span><br><span class="line">        d[w] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> i &gt; w:</span><br><span class="line">            i = w</span><br><span class="line">        <span class="keyword">if</span> j &lt; w:</span><br><span class="line">            j = w</span><br><span class="line">    boats = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        <span class="keyword">if</span> d[j]==<span class="number">0</span>:</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> d[i] == <span class="number">0</span>:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> i+j &gt; limit:</span><br><span class="line">            boats += d[j]</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        m = <span class="built_in">min</span>(d[i], d[j])</span><br><span class="line">        boats += m</span><br><span class="line">        d[i] -= m</span><br><span class="line">        d[j] -= m</span><br><span class="line">        <span class="comment"># i += (1-d[i]/1)</span></span><br><span class="line">        <span class="comment"># # if d[i]==0:</span></span><br><span class="line">        <span class="comment"># #     i-=1</span></span><br><span class="line">        <span class="comment"># j -= (1-d[j]/1)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> i &lt;= limit/<span class="number">2</span>:</span><br><span class="line">        boats += (d[i]+<span class="number">1</span>)//<span class="number">2</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        boats += d[i]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> boats</span><br></pre></td></tr></table></figure>
+<p>说明：<br>这里的做法是先统计了每种体重的人数，然后再用双指针的方法根据人数来做。<br>每次进入循环的时候，都要先判断对应体重的人数是不是0，这是因为，如果是0而没有先做处理的话，会出现<code>if i+j &gt; limit:</code>依然被执行的情况。<br>以为这种方法会减少时间消耗，然而并没有。</p>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/hKF2jK"><img src="https://z3.ax1x.com/2021/08/26/hKF2jK.jpg" alt="救生艇提交记录.jpg"></a></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>双指针</tag>
+        <tag>Leetcode中等</tag>
+        <tag>贪心</tag>
+      </tags>
+  </entry>
 </search>

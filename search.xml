@@ -1224,10 +1224,21 @@ src = 0, dst = 2, k = 0
       </tags>
   </entry>
   <entry>
-    <title>1</title>
-    <url>/2021/09/07/1/</url>
-    <content><![CDATA[<p>1111</p>
-<p>111</p>
+    <title>hexo命令.md</title>
+    <url>/2021/10/03/hexo%E5%91%BD%E4%BB%A4-md/</url>
+    <content><![CDATA[<p>全局安装淘宝镜像cnpm<br>npm  insatll -g cnpm –registry=<a href="https://registry.npm.taobao.org/">https://registry.npm.taobao.org</a><br>全局安装hexo框架<br>cnpm install -g hexo-cli<br>进入blog文件夹<br>hexo init  （名字）<br>sudo hexo init …   用管理员命令<br>启动 start/service<br>hexo s<br>清理一下<br>hexo clean<br>生成<br>hexo g<br>安装git插件<br>cnpm install –save hexo-deployer-git</p>
+<p>标签页<br>hexo n page tags</p>
 ]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode_502. IPO</title>
+    <url>/2021/09/08/Leetcode-502-IPO/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>

@@ -20,20 +20,23 @@
     var CONFIG = {"hostname":"shengrihui.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="B站视频：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1Yb411a7ty?spm_id_from&#x3D;333.999.0.0 安装配置hexo 安装nodejs和npm nodejs网站：nodejs.org 可以用nodejs -v npm -v检查是否安装成功 安装淘宝镜像cnpm npm  insatll -g cnpm --registry&#x3D;https:&#x2F;&#x2F;regist">
+  <meta name="description" content="题目2029.石子游戏 IX 难度：中等 Alice 和 Bob 再次设计了一款新的石子游戏。现有一行 n 个石子，每个石子都有一个关联的数字表示它的价值。给你一个整数数组 stones ，其中 stones[i] 是第 i 个石子的价值。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo命令.md">
-<meta property="og:url" content="https://shengrihui.github.io/2021/10/03/hexo%E5%91%BD%E4%BB%A4/index.html">
+<meta property="og:title" content="Leetcode-2029-石子游戏 IX">
+<meta property="og:url" content="https://shengrihui.github.io/2022/02/14/Leetcode-2029-%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8F-IX/index.html">
 <meta property="og:site_name" content="盛日辉的博客">
-<meta property="og:description" content="B站视频：https:&#x2F;&#x2F;www.bilibili.com&#x2F;video&#x2F;BV1Yb411a7ty?spm_id_from&#x3D;333.999.0.0 安装配置hexo 安装nodejs和npm nodejs网站：nodejs.org 可以用nodejs -v npm -v检查是否安装成功 安装淘宝镜像cnpm npm  insatll -g cnpm --registry&#x3D;https:&#x2F;&#x2F;regist">
+<meta property="og:description" content="题目2029.石子游戏 IX 难度：中等 Alice 和 Bob 再次设计了一款新的石子游戏。现有一行 n 个石子，每个石子都有一个关联的数字表示它的价值。给你一个整数数组 stones ，其中 stones[i] 是第 i 个石子的价值。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-10-03T12:25:57.000Z">
-<meta property="article:modified_time" content="2022-02-09T14:58:09.964Z">
+<meta property="og:image" content="https://s4.ax1x.com/2022/01/22/7hd2IU.png">
+<meta property="article:published_time" content="2022-02-14T14:13:15.000Z">
+<meta property="article:modified_time" content="2022-02-14T14:44:47.947Z">
 <meta property="article:author" content="盛日辉">
-<meta property="article:tag" content="其他">
+<meta property="article:tag" content="Leetcode中等">
+<meta property="article:tag" content="构造">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s4.ax1x.com/2022/01/22/7hd2IU.png">
 
-<link rel="canonical" href="https://shengrihui.github.io/2021/10/03/hexo%E5%91%BD%E4%BB%A4/">
+<link rel="canonical" href="https://shengrihui.github.io/2022/02/14/Leetcode-2029-%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8F-IX/">
 
 
 <script id="page-configurations">
@@ -46,7 +49,7 @@
   };
 </script>
 
-  <title>hexo命令.md | 盛日辉的博客</title>
+  <title>Leetcode-2029-石子游戏 IX | 盛日辉的博客</title>
   
 
 
@@ -190,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/2021/10/03/hexo%E5%91%BD%E4%BB%A4/">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/2022/02/14/Leetcode-2029-%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8F-IX/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -203,7 +206,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          hexo命令.md
+          Leetcode-2029-石子游戏 IX
         </h1>
 
         <div class="post-meta">
@@ -212,23 +215,17 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2021-10-03 20:25:57" itemprop="dateCreated datePublished" datetime="2021-10-03T20:25:57+08:00">2021-10-03</time>
+              <time title="创建时间：2022-02-14 22:13:15 / 修改时间：22:44:47" itemprop="dateCreated datePublished" datetime="2022-02-14T22:13:15+08:00">2022-02-14</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-02-09 22:58:09" itemprop="dateModified" datetime="2022-02-09T22:58:09+08:00">2022-02-09</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
+                  <a href="/categories/Leetcode/" itemprop="url" rel="index"><span itemprop="name">Leetcode</span></a>
                 </span>
             </span>
 
@@ -243,22 +240,152 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>B站视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Yb411a7ty?spm_id_from=333.999.0.0">https://www.bilibili.com/video/BV1Yb411a7ty?spm_id_from=333.999.0.0</a></p>
-<h5 id="安装配置hexo"><a href="#安装配置hexo" class="headerlink" title="安装配置hexo"></a>安装配置hexo</h5><ol>
-<li>安装nodejs和npm<br> nodejs网站：nodejs.org<br> 可以用<code>nodejs -v</code> <code>npm -v</code>检查是否安装成功</li>
-<li>安装淘宝镜像cnpm<br> <code>npm  insatll -g cnpm --registry=https://registry.npm.taobao.org</code><br> <code>-g</code>全局安装<br> <code>cnpm -v</code>检查是否安装成功</li>
-<li>安装hexo框架<br> <code>cnpm install -g hexo-cli</code><br> <code>hexo -v</code></li>
+        <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>2029.石子游戏 IX 难度：中等</p>
+<p>Alice 和 Bob 再次设计了一款新的石子游戏。现有一行 n 个石子，每个石子都有一个关联的数字表示它的价值。给你一个整数数组 <code>stones</code> ，其中 <code>stones[i]</code> 是第 <code>i</code> 个石子的价值。</p>
+
+<p>Alice 和 Bob 轮流进行自己的回合，<strong>Alice</strong> 先手。每一回合，玩家需要从 <code>stones</code>&nbsp;中移除任一石子。</p>
+
+<ul>
+    <li>如果玩家移除石子后，导致 <strong>所有已移除石子</strong> 的价值&nbsp;<strong>总和</strong> 可以被 3 整除，那么该玩家就 <strong>输掉游戏</strong> 。</li>
+    <li>如果不满足上一条，且移除后没有任何剩余的石子，那么 Bob 将会直接获胜（即便是在 Alice 的回合）。</li>
+</ul>
+
+
+<p>假设两位玩家均采用&nbsp;<strong>最佳</strong> 决策。如果 Alice 获胜，返回 <code>true</code> ；如果 Bob 获胜，返回 <code>false</code> 。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入：</strong>stones = [2,1]
+<strong>输出：</strong>true
+<strong>解释：</strong>游戏进行如下：
+- 回合 1：Alice 可以移除任意一个石子。
+- 回合 2：Bob 移除剩下的石子。 
+已移除的石子的值总和为 1 + 2 = 3 且可以被 3 整除。因此，Bob 输，Alice 获胜。
+</pre>
+
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>stones = [2]
+<strong>输出：</strong>false
+<strong>解释：</strong>Alice 会移除唯一一个石子，已移除石子的值总和为 2 。 
+由于所有石子都已移除，且值总和无法被 3 整除，Bob 获胜。
+</pre>
+
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>stones = [5,1,2,4,3]
+<strong>输出：</strong>false
+<strong>解释：</strong>Bob 总会获胜。其中一种可能的游戏进行方式如下：
+- 回合 1：Alice 可以移除值为 1 的第 2 个石子。已移除石子值总和为 1 。
+- 回合 2：Bob 可以移除值为 3 的第 5 个石子。已移除石子值总和为 = 1 + 3 = 4 。
+- 回合 3：Alices 可以移除值为 4 的第 4 个石子。已移除石子值总和为 = 1 + 3 + 4 = 8 。
+- 回合 4：Bob 可以移除值为 2 的第 3 个石子。已移除石子值总和为 = 1 + 3 + 4 + 2 = 10.
+- 回合 5：Alice 可以移除值为 5 的第 1 个石子。已移除石子值总和为 = 1 + 3 + 4 + 2 + 5 = 15.
+Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，Bob 获胜。
+</pre>
+
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= stones.length &lt;= 10<sup>5</sup></code></li>
+    <li><code>1 &lt;= stones[i] &lt;= 10<sup>4</sup></code></li>
+</ul>
+
+
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>根据规则和题目，可以有这些小结论：</p>
+<ol>
+<li>所谓石子的价值真正有用的是对3取模后的值，我们将移除石子价值总数记为<code>x</code>，每个石子的价值记为<code>s=0,1,2</code>；</li>
+<li>Alice想要赢，只有一种情况，就是让Bob移除石子后使得移除石子总数是3的倍数；</li>
+<li>为了保证自己不输，自己要移除的石子<code>s</code>不能等于<code>3-x</code>，也就是如果现在<code>x=1</code>，“我”现在能选的石子<code>s</code>只能是1或0；</li>
+<li>偶数个<code>s=0</code>相当于没有<code>x=0</code>，因为都是最优走法；</li>
+<li>没有<code>s=0</code>，大致情况是：</li>
+<li>1,1,2,1,2,1…或2,2,1,2,1,2,1…;</li>
 </ol>
-<h5 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h5><ol>
-<li>新建一个文件夹， 进入该文件夹，<code>hexo init</code></li>
-<li>或者 <code>hexo init (名字)</code>;</li>
-<li>启动 start/service<br> <code>hexo s</code></li>
-<li>清理一下<br> <code>hexo clean</code></li>
-<li>生成<br> <code>hexo g</code></li>
-<li>安装git插件<br> <code>cnpm install --save hexo-deployer-git</code></li>
-<li>上传<br> <code>hexo d</code><br> 简单点可以和生成一起：<code>hexo g -d</code></li>
-<li>标签页<br> <code>hexo n page tags</code></li>
+<p>讨论<code>s=0</code>偶数个的情况：</p>
+<ul>
+<li><p>如果全是<code>s=1</code>,Alice必败；</p>
+</li>
+<li><p>如果全是<code>s=2</code>,Alice也必败；</p>
+</li>
+<li><p>如果既有<code>s=1</code>，也有<code>s=2</code>， 因为A第一手之后，1和2交替进行，所以，</p>
+<ol>
+<li><p>两个数量相等。无论Alice选哪个，Bob最后选的和Alice一开始选的构成三的倍数，所以Alice都赢；</p>
+</li>
+<li><p><code>s=1</code>和<code>s=2</code>不一样多。</p>
+<ol>
+<li><p>Alice第一步选少的那个，这样，Bob就会一路选和Alice第一次一样的，直到没了Bob只好选另一个，这时候就构成了三的倍数，Bob输掉，Alice必胜；</p>
+</li>
+<li><p>但如果Alice选较多的那一个（假设是<code>s=2</code>），一顿交替之后，较少的<code>s=1</code>没了，</p>
+<ol>
+<li><p>如果<code>s=2</code>比<code>s=1</code>只多一个，Alice是最后一个，Alice输掉；</p>
+</li>
+<li><p>如果<code>s=2</code>比<code>s=1</code>多两个，Bob最后是<code>s=1</code>，根据规则，依然是Bob胜利；</p>
+</li>
+<li><p>如果<code>s=2</code>比<code>s=1</code>多超过两个，当<code>s=1</code>没了，Bob选<code>s=2</code>，Alice只能再选<code>s=2</code>，构成3的倍数，Alice输掉–就相当于前面全是<code>s=2</code>的情况。</p>
+</li>
 </ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>所以，Alice要选少的那个，一样多就都行。</p>
+</li>
+<li><p>综合一下：</p>
+</li>
+<li><p>如果相同，只有一种，Alice完了；</p>
+</li>
+<li><p>两种都有，选少的，一样就都可以选；</p>
+</li>
+<li><p>也就是说，只要<code>s=1</code>或<code>s=2</code>有一个没有，就完了。</p>
+</li>
+</ul>
+<p>讨论<code>s=0</code>奇数的情况：</p>
+<ul>
+<li>Alice第一步肯定不拿<code>s=0</code>;</li>
+<li>奇数个<code>s=0</code>有起到转换先手的作用；</li>
+<li>那Bob第一步也就是整个的第二回合用不用这个<code>s=0</code>呢？</li>
+<li>也先考虑全是<code>s=1</code>或<code>s=2</code>的情况，因为这两其实等价，所以假设全是<code>s=1</code>：<ol>
+<li>如果数量只有1个或2个，那Alice必输<br>她都没机会让Bob取了之后构成3的倍数啊。</li>
+<li>如果数量大于2个<ol>
+<li>Bob首先就选了<code>s=0</code>，那现在的Alice就相当于之前讨论的<code>s=0</code>个数是偶数且全是<code>s=1</code>这种情况下的Bob，Alice赢；</li>
+<li>Bob先不选<code>s=0</code>，那Alice不选<code>s=0</code>就输了，所以肯定会选<code>s=0</code>。。。Bob输了。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>所以，如果这数量超过2，Alice必胜，不然就必败</li>
+<li>现在考虑既有<code>s=1</code>也有<code>s=2</code>：</li>
+<li>非常多的<code>s=2</code>或<code>s=1</code>意义不大，就用三个以内的数量来代表；</li>
+<li><code>s=1</code>和<code>s=1</code>各一个（代表一样多）：Alice必输啊；</li>
+<li><code>s=1</code>1个，<code>s=2</code>2个（代表两个数量相差1）：<ol>
+<li>Alice选<code>s=1</code>，Bob选<code>s=0</code>，Alice最后回选到<code>s=2</code>而输掉，Bob为了赢那肯定会选<code>s=0</code>：</li>
+<li>Alice选<code>s=2</code>，<ol>
+<li>Bob不选<code>s=0</code>,而是选了和Alice一样的<code>s=2</code>，那Alice接下来选<code>s=1</code>输，选<code>s=0</code>，也是输；</li>
+<li>Bob选<code>s=0</code>,那Alice接下来只能接着选<code>s=2</code>，最终还是输。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>所以这种情况Alice必输。</li>
+<li>换个角度理解这种Alice必输的情况，因为总的数量是个偶数（1个<code>s=1</code>，2个<code>s=2</code>，奇数个<code>s=0</code>），而Alice要赢就要让Bob自己构成3的倍数，他俩又都是高手，能撑到最后，而最后走完，总和不可能是3的倍数，所以Alice必输。</li>
+<li>其实不用接着讨论数量差更大的情况了，对之前讨论的只有一种的情况，往里加一对<code>s=1</code>和<code>s=2</code>就好了，效果是一样的。</li>
+<li>所以综合一下：</li>
+<li>其中一个没有，得相差超过2，能赢；</li>
+<li>两个都有，相差两个之内，Alice输；</li>
+<li>所以，只要两个数量相差超过2Alice就能赢。</li>
+</ul>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def stoneGameIX(self, stones) -&gt; bool:</span><br><span class="line">        a = [0, 0, 0]</span><br><span class="line">        for i in stones:</span><br><span class="line">            a[i % 3] += 1</span><br><span class="line">        if a[0] % 2 == 0:</span><br><span class="line">            # if a[1]*a[2]==0:</span><br><span class="line">            #     return False</span><br><span class="line">            return a[1] * a[2] != 0</span><br><span class="line">        else:</span><br><span class="line">            return abs(a[1] - a[2]) &gt; 2</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a target="_blank" rel="noopener" href="https://imgtu.com/i/7hd2IU"><img src="https://s4.ax1x.com/2022/01/22/7hd2IU.png" alt="本题提交记录"></a></p>
 
     </div>
 
@@ -288,7 +415,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%85%B6%E4%BB%96/" rel="tag"># 其他</a>
+              <a href="/tags/Leetcode%E4%B8%AD%E7%AD%89/" rel="tag"># Leetcode中等</a>
+              <a href="/tags/%E6%9E%84%E9%80%A0/" rel="tag"># 构造</a>
           </div>
 
         
@@ -297,13 +425,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/09/08/Leetcode-502-IPO/" rel="prev" title="Leetcode_502. IPO">
-      <i class="fa fa-chevron-left"></i> Leetcode_502. IPO
+    <a href="/2022/02/09/hello-world/" rel="prev" title="Hello World">
+      <i class="fa fa-chevron-left"></i> Hello World
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/02/09/hello-world/" rel="next" title="Hello World">
-      Hello World <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -362,7 +487,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEhexo"><span class="nav-number">1.</span> <span class="nav-text">安装配置hexo</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="nav-number">2.</span> <span class="nav-text">搭建博客</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4%E8%AE%B0%E5%BD%95"><span class="nav-number">4.</span> <span class="nav-text">提交记录</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

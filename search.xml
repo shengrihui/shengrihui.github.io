@@ -1436,4 +1436,72 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
         <tag>Python</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Leetcode-688-骑士在棋盘上的概率</title>
+    <url>/2022/02/18/Leetcode-688-%E9%AA%91%E5%A3%AB%E5%9C%A8%E6%A3%8B%E7%9B%98%E4%B8%8A%E7%9A%84%E6%A6%82%E7%8E%87/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>688. 骑士在棋盘上的概率<br>难度：中等</p>
+<p>在一个&nbsp;<code>n x n</code>&nbsp;的国际象棋棋盘上，一个骑士从单元格 <code>(row, column)</code>&nbsp;开始，并尝试进行 <code>k</code> 次移动。行和列是 <strong>从 0 开始</strong> 的，所以左上单元格是 <code>(0,0)</code> ，右下单元格是 <code>(n - 1, n - 1)</code> 。</p>
+
+<p>象棋骑士有8种可能的走法，如下图所示。每次移动在基本方向上是两个单元格，然后在正交方向上是一个单元格。</p>
+
+<p><img style="height: 300px; width: 300px;" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/12/knight.png"></p>
+
+<p>每次骑士要移动时，它都会随机从8种可能的移动中选择一种(即使棋子会离开棋盘)，然后移动到那里。</p>
+
+<p>骑士继续移动，直到它走了 <code>k</code> 步或离开了棋盘。</p>
+
+<p>返回 <em>骑士在棋盘停止移动后仍留在棋盘上的概率</em> 。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入:</strong> n = 3, k = 2, row = 0, column = 0
+<strong>输出:</strong> 0.0625
+<strong>解释:</strong> 有两步(到(1,2)，(2,1))可以让骑士留在棋盘上。
+在每一个位置上，也有两种移动可以让骑士留在棋盘上。
+骑士留在棋盘上的总概率是0.0625。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入:</strong> n = 1, k = 0, row = 0, column = 0
+<strong>输出:</strong> 1.00000
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示:</strong></p>
+
+<ul>
+    <li><code>1 &lt;= n &lt;= 25</code></li>
+    <li><code>0 &lt;= k &lt;= 100</code></li>
+    <li><code>0 &lt;= row, column &lt;= n</code></li>
+</ul>
+
+<h3 id="思路一：广度优先搜索（BFS）"><a href="#思路一：广度优先搜索（BFS）" class="headerlink" title="思路一：广度优先搜索（BFS）"></a>思路一：广度优先搜索（BFS）</h3><p>题目不是很难理解，容易想到BFS。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">	    <span class="function"><span class="keyword">def</span> <span class="title">knightProbability</span>(<span class="params">self, n: <span class="built_in">int</span>, k: <span class="built_in">int</span>, row: <span class="built_in">int</span>, column: <span class="built_in">int</span></span>) -&gt; <span class="built_in">float</span>:</span></span><br><span class="line">        Dirs = [(-<span class="number">1</span>, -<span class="number">2</span>), (<span class="number">1</span>, -<span class="number">2</span>),</span><br><span class="line">                (-<span class="number">2</span>, -<span class="number">1</span>), (<span class="number">2</span>, -<span class="number">1</span>),</span><br><span class="line">                (-<span class="number">2</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">1</span>),</span><br><span class="line">                (-<span class="number">1</span>, <span class="number">2</span>), (<span class="number">1</span>, <span class="number">2</span>)]</span><br><span class="line">        q = deque()</span><br><span class="line">        q.append((row, column, k))</span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> q:</span><br><span class="line">            r, c, kk = q.popleft()</span><br><span class="line">            <span class="comment"># # 取出kk==0，cnt+1</span></span><br><span class="line">            <span class="comment"># # 也就是，走到最后一步再计数</span></span><br><span class="line">            <span class="keyword">if</span> kk == <span class="number">0</span>:</span><br><span class="line">                cnt += <span class="number">1</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">for</span> x, y <span class="keyword">in</span> Dirs:</span><br><span class="line">                <span class="keyword">if</span> <span class="number">0</span> &lt;= r + x &lt; n <span class="keyword">and</span> <span class="number">0</span> &lt;= c + y &lt; n:</span><br><span class="line">                    q.append((r + x, c + y, kk - <span class="number">1</span>))</span><br><span class="line">        <span class="keyword">return</span> cnt / <span class="built_in">pow</span>(<span class="number">8</span>, k)</span><br></pre></td></tr></table></figure>
+
+<p>但这也很容易地超出了时间限制。</p>
+<h3 id="思路二：动态规划"><a href="#思路二：动态规划" class="headerlink" title="思路二：动态规划"></a>思路二：动态规划</h3><p>看了一下官解，没想到用的是动态规划。尝试自己写了一下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">knightProbability</span>(<span class="params">self, n: <span class="built_in">int</span>, k: <span class="built_in">int</span>, row: <span class="built_in">int</span>, column: <span class="built_in">int</span></span>) -&gt; <span class="built_in">float</span>:</span></span><br><span class="line">        Dirs = [(-<span class="number">1</span>, -<span class="number">2</span>), (<span class="number">1</span>, -<span class="number">2</span>),</span><br><span class="line">                (-<span class="number">2</span>, -<span class="number">1</span>), (<span class="number">2</span>, -<span class="number">1</span>),</span><br><span class="line">                (-<span class="number">2</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">1</span>),</span><br><span class="line">                (-<span class="number">1</span>, <span class="number">2</span>), (<span class="number">1</span>, <span class="number">2</span>)]</span><br><span class="line">        dp=[[[<span class="number">0</span>]* n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)]<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(k+<span class="number">1</span>)]</span><br><span class="line">        dp[<span class="number">0</span>][row][column]=<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> step <span class="keyword">in</span> <span class="built_in">range</span>(k):</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                    <span class="keyword">if</span> dp[step][i][j]&gt;<span class="number">0</span>:</span><br><span class="line">                        <span class="keyword">for</span> di,dj <span class="keyword">in</span> Dirs:</span><br><span class="line">                            ni,nj=i+di,j+dj</span><br><span class="line">                            <span class="keyword">if</span> <span class="number">0</span>&lt;=ni&lt;n <span class="keyword">and</span> <span class="number">0</span>&lt;=nj&lt;n:</span><br><span class="line">                                dp[step+<span class="number">1</span>][ni][nj]+=<span class="number">1</span></span><br><span class="line">        cnt=<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            cnt+=<span class="built_in">sum</span>(dp[-<span class="number">1</span>][i])</span><br><span class="line">        <span class="built_in">print</span>(dp[-<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> cnt/<span class="built_in">pow</span>(<span class="number">8</span>,k)</span><br></pre></td></tr></table></figure>
+
+<p>但是这样出现了错误，原因是在最后一步（<code>step=k-1</code>）的<code>dp[step+1][ni][nj]+=1</code>，加的只是这一步的情况，没有算上之前其实还有很多能到<code>i</code>,<code>j</code>的情况。</p>
+<p>将<code>dp[step+1][ni][nj]+=1</code>修改为<code>dp[step + 1][ni][nj] += dp[step][i][j]</code>,成功通过！而且比官解的好！</p>
+<p>官解：<br>它的状态值<code>dp[step][i][j]</code>指的是从<code>(i,j)</code>出发第<code>step</code>步后还在棋盘上的概率，状态转移方程是： $ dp[step][i][j] += \frac{1}{8} + \sum_{di,dj} dp[step-1][i+di][j+dj] , (di,dj)\in {(-2, -1), (-2, 1), (2, -1), (2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2)}, 0\leq i,j,i+di,j+dj &lt;n $ 。<br>也不难理解，因为<code>(i,j)</code>下一步有8种可能的走法，那<code>(i+di,j+dj)</code>的概率就是 $\frac{1}{8}$ <code>(i,j)</code>的概率。换个角度讲也就是，有8种可能走到它<code>(i,j)</code>这，那走到<code>(i,j)</code>的概率就是$\sum_{di,dj} dp[step-1][i+di][j+dj]$。<br>那为什么最后只要输出<code>dp[k][row][column]</code>就好了呢？<br>我觉得可以倒过来走，以<code>n=3,k=1,row=0,colmn=0</code>为例，<code>(0,0)</code>在第1步往回走，有<code>0.25</code>的概率留在棋盘上，这就是答案。将初始值全部设为1，遍历所有点进行状态转移方程的计算，所得的结果<code>dp[k][i][j]</code>就是<code>(i,j)</code>走了<code>k</code>步之后仍然留在棋盘上的概率。将<code>k</code>扩展来解释状态转移方程，第<code>k</code>步<code>(i,j)</code>仍然留在棋盘的概率是由第<code>k-1</code>步对应8个点的状态值计算而来，每个点的状态值就是该店走那么多步仍然留在棋盘的概率。<br>当然了，超出棋盘范围的值都是0啦。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">knightProbability</span>(<span class="params">self, n: <span class="built_in">int</span>, k: <span class="built_in">int</span>, row: <span class="built_in">int</span>, column: <span class="built_in">int</span></span>) -&gt; <span class="built_in">float</span>:</span></span><br><span class="line">        dp = [[[<span class="number">0</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(k + <span class="number">1</span>)]</span><br><span class="line">        <span class="keyword">for</span> step <span class="keyword">in</span> <span class="built_in">range</span>(k + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                    <span class="keyword">if</span> step == <span class="number">0</span>:</span><br><span class="line">                        dp[step][i][j] = <span class="number">1</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        <span class="keyword">for</span> di, dj <span class="keyword">in</span> ((-<span class="number">2</span>, -<span class="number">1</span>), (-<span class="number">2</span>, <span class="number">1</span>), (<span class="number">2</span>, -<span class="number">1</span>), (<span class="number">2</span>, <span class="number">1</span>), (-<span class="number">1</span>, -<span class="number">2</span>), (-<span class="number">1</span>, <span class="number">2</span>), (<span class="number">1</span>, -<span class="number">2</span>), (<span class="number">1</span>, <span class="number">2</span>)):</span><br><span class="line">                            ni, nj = i + di, j + dj</span><br><span class="line">                            <span class="keyword">if</span> <span class="number">0</span> &lt;= ni &lt; n <span class="keyword">and</span> <span class="number">0</span> &lt;= nj &lt; n:</span><br><span class="line">                                dp[step][i][j] += dp[step - <span class="number">1</span>][ni][nj] / <span class="number">8</span></span><br><span class="line">        <span class="keyword">return</span> dp[k][row][column]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 作者：LeetCode-Solution</span></span><br><span class="line"><span class="comment"># 链接：https://leetcode-cn.com/problems/knight-probability-in-chessboard/solution/qi-shi-zai-qi-pan-shang-de-gai-lu-by-lee-2qhk/</span></span><br><span class="line"><span class="comment"># 来源：力扣（LeetCode）</span></span><br><span class="line"><span class="comment"># 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span></span><br></pre></td></tr></table></figure>
+
+<p>我对官解的优化</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def knightProbability(self, n: int, k: int, row: int, column: int) -&gt; float:</span><br><span class="line">        Dirs = ((-2, -1), (-2, 1), (2, -1), (2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2))</span><br><span class="line">        dp = [[[0] * (n + 4) for _ in range(n + 4)] for _ in range(2)]</span><br><span class="line">        for i in range(2, 2 + n):</span><br><span class="line">            for j in range(2, 2 + n):</span><br><span class="line">                dp[0][i][j] = 1</span><br><span class="line">        for step in range(1, k + 1):</span><br><span class="line">            for i in range(2, 2 + n):</span><br><span class="line">                for j in range(2, 2 + n):</span><br><span class="line">                    dp[step % 2][i][j] = 0</span><br><span class="line">                    for di, dj in Dirs:</span><br><span class="line">                        ni, nj = i + di, j + dj</span><br><span class="line">                        dp[step % 2][i][j] += dp[1 - step % 2][ni][nj] / 8</span><br><span class="line">        return dp[k % 2][row + 2][column + 2]</span><br></pre></td></tr></table></figure>
+
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/H74Hte"><img src="https://s4.ax1x.com/2022/02/18/H74Hte.png" alt="提交记录.png"></a></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode中等</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
 </search>

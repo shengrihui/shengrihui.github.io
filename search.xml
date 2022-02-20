@@ -277,6 +277,114 @@
       </tags>
   </entry>
   <entry>
+    <title>Leetcode-1719-重构一棵树的方案数</title>
+    <url>/2022/02/20/Leetcode-1719-%E9%87%8D%E6%9E%84%E4%B8%80%E6%A3%B5%E6%A0%91%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1719. 重构一棵树的方案数<br>难度：困难</p>
+<p>给你一个数组&nbsp;<code>pairs</code> ，其中&nbsp;<code>pairs[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&nbsp;，并且满足：</p>
+
+<ul>
+    <li><code>pairs</code>&nbsp;中没有重复元素</li>
+    <li><code>x<sub>i</sub> &lt; y<sub>i</sub></code></li>
+</ul>
+
+
+<p>令&nbsp;<code>ways</code>&nbsp;为满足下面条件的有根树的方案数：</p>
+
+<ul>
+    <li>树所包含的所有节点值都在 <code>pairs</code>&nbsp;中。</li>
+    <li>一个数对&nbsp;<code>[x<sub>i</sub>, y<sub>i</sub>]</code> 出现在&nbsp;<code>pairs</code>&nbsp;中&nbsp;<strong>当且仅当</strong><strong>&nbsp;</strong><code>x<sub>i</sub></code>&nbsp;是&nbsp;<code>y<sub>i</sub></code>&nbsp;的祖先或者&nbsp;<code>y<sub>i</sub></code>&nbsp;是&nbsp;<code>x<sub>i</sub></code><sub>&nbsp;</sub>的祖先。</li>
+    <li><strong>注意：</strong>构造出来的树不一定是二叉树。</li>
+</ul>
+
+
+<p>两棵树被视为不同的方案当存在至少一个节点在两棵树中有不同的父节点。</p>
+
+<p>请你返回：</p>
+
+<ul>
+    <li>如果&nbsp;<code>ways == 0</code>&nbsp;，返回&nbsp;<code>0</code>&nbsp;。</li>
+    <li>如果&nbsp;<code>ways == 1</code>&nbsp;，返回 <code>1</code>&nbsp;。</li>
+    <li>如果&nbsp;<code>ways &gt; 1</code>&nbsp;，返回&nbsp;<code>2</code>&nbsp;。</li>
+</ul>
+
+
+<p>一棵 <strong>有根树</strong>&nbsp;指的是只有一个根节点的树，所有边都是从根往外的方向。</p>
+
+<p>我们称从根到一个节点路径上的任意一个节点（除去节点本身）都是该节点的 <strong>祖先</strong>&nbsp;。根节点没有祖先。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<p><img style="width: 208px; height: 221px;" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/09/trees2.png"></p>
+<pre><b>输入：</b>pairs = [[1,2],[2,3]]
+<b>输出：</b>1
+<b>解释：</b>如上图所示，有且只有一个符合规定的有根树。
+</pre>
+
+
+<p><strong>示例 2：</strong></p>
+
+<p><img style="width: 234px; height: 241px;" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/09/tree.png" alt></p>
+<pre><b>输入：</b>pairs = [[1,2],[2,3],[1,3]]
+<b>输出：</b>2
+<b>解释：</b>有多个符合规定的有根树，其中三个如上图所示。
+</pre>
+
+
+<p><strong>示例 3：</strong></p>
+
+<pre><b>输入：</b>pairs = [[1,2],[2,3],[2,4],[1,5]]
+<b>输出：</b>0
+<b>解释：</b>没有符合规定的有根树。</pre>
+
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= pairs.length &lt;= 10<sup>5</sup></code></li>
+    <li><code>1 &lt;= x<sub>i </sub>&lt; y<sub>i</sub> &lt;= 500</code></li>
+    <li><code>pairs</code>&nbsp;中的元素互不相同。</li>
+</ul>
+
+
+
+<h3 id="思考过程"><a href="#思考过程" class="headerlink" title="思考过程"></a>思考过程</h3><p>一开始一直看不懂题目，不明白示例三为什么不行，认为示例三很容易就能画出一棵树来。反复读题之后才意识到题目中“树所包含的所有节点值都在 <code>pairs</code>&nbsp;中。”的意思，就是说构造出来的树的所有信息都要再<code>pairs</code>中体现，也明白了为什么要那样输出，只要找到符合条件的2个就能输出了。<br>于是看示例三就能想到：如果一个节点在一个数对中做了孩子节点，那它在其他数对中只能作为双亲节点，比如示例三中的<code>2</code>节点。<br>不对不对，;<code>pairs[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&amp;nbsp中，<code>x<sub>i</sub></code>和<code>y<sub>i</sub></code>之间的关系是祖先和后代的关系，而不是双亲孩子的关系，所以这不能用来解题。<br>那也就是说所有祖先后代的关系在<code>pairs</code>当中都有体现，那如果存在根节点的话，每一组数对当中都会有这个根节点咯？——找到根节点了！<br>呀，不是在每个数对中都出现，就是：    </p>
+<pre><code>d = defaultdict(set)
+for x,y in pairs:
+    d[x].add(y)
+    d[y].add(x)
+</code></pre><p>这样<code>d[根节点]</code>就包含了除自己以外所有的节点，而<code>d[x]</code>就是包含<code>x</code>的所有祖先和后代了。<br>然 后呢？官解是直接模拟，模拟啥呀？<br><code>x<sub>i</sub> &lt; y<sub>i</sub></code>这个条件有什么用吗？应该没有吧，只是一种表示而已吧。<br>能不能再统计一下<code>d[x]</code>的个数，然后用集合的相关运算划分出不同的子树，然后……<br>哎，大约只能想到这了，看官解吧。<br>哎，官解前面设的东西和我的想法好像哦。<br>看了一圈题解，字面上的也基本上都懂了，但离理解还是差点。<br>自己写了一个。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def checkWays(self, pairs) -&gt; int:</span><br><span class="line">        adj = defaultdict(set)</span><br><span class="line"></span><br><span class="line">        for x, y in pairs:</span><br><span class="line">            adj[x].add(y)</span><br><span class="line">            adj[y].add(x)</span><br><span class="line">        for x in adj:</span><br><span class="line">            adj[x].add(x)</span><br><span class="line">        for i in adj:</span><br><span class="line">            print(i,adj[i])</span><br><span class="line">        adj = sorted(adj.values(), key=lambda item: len(item))</span><br><span class="line">        n = len(adj)</span><br><span class="line">        if len(adj[-1]) &lt; n:</span><br><span class="line">            return 0</span><br><span class="line">        ans = 1</span><br><span class="line">        print(adj)</span><br><span class="line">        for i in range(n - 1):</span><br><span class="line">            for j in range(i + 1, n):</span><br><span class="line">                if adj[i].issubset(adj[j]):</span><br><span class="line">                    if ans != 2 and adj[i] == adj[j]:</span><br><span class="line">                        ans = 2</span><br><span class="line">                    break</span><br><span class="line">            else:</span><br><span class="line">                return 0</span><br><span class="line">        return ans</span><br></pre></td></tr></table></figure>
+<p>将某个节点的所有祖先和所有后代还有它自己装进一个集合里，然后以集合大小为排序依据进行排序。从小的开始，找到包含这个小集合的最小的大集合，那个就是小集合对应的节点的父节点了。然后判断如果这两集合一样大，那就说明可以交换。<br>这样是错误的，问题在于，所有集合都是根节点的那个集合的子集，那所有节点都能认根节点作为它的直接父节点。完了。<br>看官解代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> maxsize</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">checkWays</span>(<span class="params">self, pairs</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        adj = defaultdict(<span class="built_in">set</span>)</span><br><span class="line">        <span class="keyword">for</span> x, y <span class="keyword">in</span> pairs:</span><br><span class="line">            adj[x].add(y)</span><br><span class="line">            adj[y].add(x)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 检测是否存在根节点</span></span><br><span class="line">        root = <span class="built_in">next</span>((node <span class="keyword">for</span> node, neighbours <span class="keyword">in</span> adj.items() <span class="keyword">if</span> <span class="built_in">len</span>(neighbours) == <span class="built_in">len</span>(adj) - <span class="number">1</span>), -<span class="number">1</span>)</span><br><span class="line">        <span class="comment"># # 没有根节点</span></span><br><span class="line">        <span class="keyword">if</span> root == -<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        ans = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> node, neighbours <span class="keyword">in</span> adj.items():</span><br><span class="line">            <span class="keyword">if</span> node == root:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># # 遍历过程当中当前节点的Degree</span></span><br><span class="line">            currDegree = <span class="built_in">len</span>(neighbours)</span><br><span class="line">            parent = -<span class="number">1</span></span><br><span class="line">            parentDegree = maxsize</span><br><span class="line">            <span class="comment"># 根据 degree 的大小找到 node 的父节点 parent</span></span><br><span class="line">            <span class="comment"># # 遍历 adj[node] ,就是和 node 有关系的所有节点</span></span><br><span class="line">            <span class="keyword">for</span> neighbour <span class="keyword">in</span> neighbours:</span><br><span class="line">                <span class="comment"># # 找到 node 的可能父节点—— parentDegree &gt;= currDegree</span></span><br><span class="line">                <span class="keyword">if</span> currDegree &lt;= <span class="built_in">len</span>(adj[neighbour]) &lt; parentDegree:</span><br><span class="line">                    parent = neighbour</span><br><span class="line">                    parentDegree = <span class="built_in">len</span>(adj[neighbour])</span><br><span class="line">            <span class="comment"># 检测 neighbours 是否为 adj[parent] 的子集</span></span><br><span class="line">            <span class="comment"># # if parent == -1 or not neighbours.issubset(adj[parent]):</span></span><br><span class="line">            <span class="comment"># # ??</span></span><br><span class="line">            <span class="keyword">if</span> parent == -<span class="number">1</span> <span class="keyword">or</span> <span class="built_in">any</span>(neighbour != parent <span class="keyword">and</span> neighbour <span class="keyword">not</span> <span class="keyword">in</span> adj[parent] <span class="keyword">for</span> neighbour <span class="keyword">in</span> neighbours):</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> parentDegree == currDegree:</span><br><span class="line">                ans = <span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<p>其中<code># #</code>是我的注释。<br>现在问题就是，</p>
+<pre><code># 检测 neighbours 是否为 adj[parent] 的子集
+# # if parent == -1 or not neighbours.issubset(adj[parent]):
+if parent == -1 or any(neighbour != parent and neighbour not in adj[parent] for neighbour in neighbours):
+return 0
+</code></pre><p>我用集合本身的判断是否为另一个集合的子集的函数，结果是错误的。<br>现在就是要重点理解<code>any(neighbour != parent and neighbour not in adj[parent] for neighbour in neighbours)</code>了。还有，<code>parent</code>什么时候会是<code>-1</code>呀？<br>不，在这里<code>parent</code>都不可能是<code>-1</code>，经代码提交确认也是这样。<br>    any(neighbour != parent and neighbour not in adj[parent] for neighbour in neighbours)</p>
+<ul>
+<li><code>any()</code>只要有一个是True，结果就是True。</li>
+<li>遍历当前<code>node</code>的<code>neighbours</code>，若出现一个节点不属于<code>parent</code>那个集合时，就可以证明这个<code>parent</code>不是这个<code>node</code>的父节点：<ul>
+<li>当遍历的<code>neighbour</code>不是<code>parent</code>(<code>neighbour != parent</code>为<code>True</code>)时,<code>neighbour</code>又不在<code>parent</code>的集合里，整体值为<code>True</code>，即<code>parent</code>不是当前<code>node</code>的父节点，<code>return 0</code>；</li>
+<li>当遍历的<code>neighbour</code>恰好时<code>parent</code>(<code>neighbour != parent</code>为<code>False</code>)时，<code>neighbour</code>也一定不在’parent<code>的集合里，因此整体值为</code>False`;</li>
+</ul>
+</li>
+</ul>
+<p>好家伙，总算是理清了。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
+        <tag>Leetcode困难</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-2029-石子游戏 IX</title>
     <url>/2022/02/14/Leetcode-2029-%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8F-IX/</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>2029.石子游戏 IX 难度：中等</p>
@@ -430,38 +538,6 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>Leetcode_345. 反转字符串中的元音字母</title>
-    <url>/2021/08/19/Leetcode-345-%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>345. 反转字符串中的元音字母<br>难度：简单<br>编写一个函数，以字符串作为输入，反转该字符串中的元音字母。</p>
-<p>示例 1：</p>
-<p>输入：”hello”<br>输出：”holle”<br>示例 2：</p>
-<p>输入：”leetcode”<br>输出：”leotcede”</p>
-<p>提示：</p>
-<p>元音字母不包含字母 “y” 。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/reverse-vowels-of-a-string">https://leetcode-cn.com/problems/reverse-vowels-of-a-string</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h3 id="方法一：双指针"><a href="#方法一：双指针" class="headerlink" title="方法一：双指针"></a>方法一：双指针</h3><p>这提不难。<br>弄两个指针<code>i</code>和<code>j</code>，<code>i</code>从前往后走，<code>j</code>从后往前走，当遇到原因字母的时候，就停下来。当两个指针都停下来的时候，交换两个字母。使用<code>while</code>循环，退出条件是<code>i</code>和<code>j</code>重合。</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><ul>
-<li>python<pre><code> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def reverseVowels(s):</span><br><span class="line">l = list(s)</span><br><span class="line">i, j = 0, len(s)-1</span><br><span class="line">Vowels = [&#x27;a&#x27;, &#x27;e&#x27;, &#x27;i&#x27;, &#x27;o&#x27;, &#x27;u&#x27;, &#x27;A&#x27;, &#x27;E&#x27;, &#x27;I&#x27;, &#x27;O&#x27;, &#x27;U&#x27;]</span><br><span class="line"># vowels = &quot;aeiouAEIOU&quot;</span><br><span class="line">i_step = 1</span><br><span class="line">j_step = -1</span><br><span class="line">while i &lt; j:</span><br><span class="line">    if l[i] in Vowels:</span><br><span class="line">        i_step = 0</span><br><span class="line">    if l[j] in Vowels:</span><br><span class="line">        j_step = 0</span><br><span class="line"></span><br><span class="line">    if i_step == j_step == 0:</span><br><span class="line">        l[i], l[j] = l[j], l[i]</span><br><span class="line">        i_step = 1</span><br><span class="line">        j_step = -1</span><br><span class="line">    i += i_step</span><br><span class="line">    j += j_step</span><br><span class="line">return &#x27;&#x27;.join(l)</span><br></pre></td></tr></table></figure>
-</code></pre>  和官方题解几乎一样。</li>
-<li>C<pre><code> <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">   	<span class="type">int</span> <span class="title function_">isVowel</span><span class="params">(<span class="type">char</span> ch)</span></span><br><span class="line">   &#123;</span><br><span class="line">	<span class="type">char</span> vowels[] = <span class="string">&quot;aeiouAEIOU&quot;</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; vowels[i]; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (ch == vowels[i])<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">char</span>* <span class="title function_">reverseVowels</span><span class="params">(<span class="type">char</span>* s)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>, j = <span class="built_in">strlen</span>(s)<span class="number">-1</span>;</span><br><span class="line">	<span class="type">char</span> tmp = s[<span class="number">0</span>];</span><br><span class="line">	<span class="type">int</span> i_step = <span class="number">1</span>, j_step = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span> (i &lt; j)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="number">1</span> == isVowel(s[i]))</span><br><span class="line">			i_step = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> (<span class="number">1</span> == isVowel(s[j]))</span><br><span class="line">			j_step = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> (i_step == <span class="number">0</span> &amp;&amp; j_step == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%c %c %s\n&quot;</span>, s[i], s[j], s);</span><br><span class="line">			tmp = s[i];</span><br><span class="line">			s[i] = s[j];</span><br><span class="line">			s[j] = tmp;</span><br><span class="line">			i_step = <span class="number">1</span>;</span><br><span class="line">			j_step = <span class="number">-1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		i += i_step;</span><br><span class="line">		j += j_step;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre></li>
-</ul>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/fHEmKP"><img src="https://z3.ax1x.com/2021/08/19/fHEmKP.jpg" alt="python提交记录"></a><br><a href="https://imgtu.com/i/fHEZvt"><img src="https://z3.ax1x.com/2021/08/19/fHEZvt.jpg" alt="C语言提交记录"></a></p>
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>Leetcode简单</tag>
-        <tag>双指针</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode_502. IPO</title>
-    <url>/2021/09/08/Leetcode-502-IPO/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>Leetcode_443. 压缩字符串</title>
     <url>/2021/08/22/Leetcode-443-%E5%8E%8B%E7%BC%A9%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>443. 压缩字符串<br>难度：中等</p>
@@ -529,30 +605,30 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
       </tags>
   </entry>
   <entry>
-    <title>Leetcode_551. 学生出勤记录 I</title>
-    <url>/2021/08/17/Leetcode-551-%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95-I/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>551.-学生出勤记录-I<br>难度：简单<br>给你一个字符串 s 表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符：</p>
-<p>‘A’：Absent，缺勤<br>‘L’：Late，迟到<br>‘P’：Present，到场<br>如果学生能够 同时 满足下面两个条件，则可以获得出勤奖励：</p>
-<p>按 总出勤 计，学生缺勤（’A’）严格 少于两天。<br>学生 不会 存在 连续 3 天或 3 天以上的迟到（’L’）记录。<br>如果学生可以获得出勤奖励，返回 true ；否则，返回 false 。</p>
+    <title>Leetcode_345. 反转字符串中的元音字母</title>
+    <url>/2021/08/19/Leetcode-345-%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>345. 反转字符串中的元音字母<br>难度：简单<br>编写一个函数，以字符串作为输入，反转该字符串中的元音字母。</p>
 <p>示例 1：</p>
-<p>输入：s = “PPALLP”<br>输出：true<br>解释：学生缺勤次数少于 2 次，且不存在 3 天或以上的连续迟到记录。<br>示例 2：</p>
-<p>输入：s = “PPALLL”<br>输出：false<br>解释：学生最后三天连续迟到，所以不满足出勤奖励的条件。</p>
+<p>输入：”hello”<br>输出：”holle”<br>示例 2：</p>
+<p>输入：”leetcode”<br>输出：”leotcede”</p>
 <p>提示：</p>
-<p>1 &lt;= s.length &lt;= 1000<br>s[i] 为 ‘A’、’L’ 或 ‘P’</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/student-attendance-record-i">https://leetcode-cn.com/problems/student-attendance-record-i</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>太简单了，略</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ul>
-<li>python<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def checkRecord(self, s: str) -&gt; bool:</span><br><span class="line">        return s.count(&quot;A&quot;)&lt;2 and s.count(&quot;LLL&quot;)&lt;=0</span><br></pre></td></tr></table></figure></li>
-<li>C<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">bool</span> <span class="title function_">checkRecord</span><span class="params">(<span class="type">char</span>* s)</span> &#123;</span><br><span class="line">	<span class="type">int</span> absent = <span class="number">0</span>, late = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (*s != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (*s == <span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			absent++;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span> (absent == <span class="number">2</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (*s == <span class="string">&#x27;L&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			late++;</span><br><span class="line">			<span class="keyword">if</span> (late == <span class="number">3</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		s++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
+<p>元音字母不包含字母 “y” 。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/reverse-vowels-of-a-string">https://leetcode-cn.com/problems/reverse-vowels-of-a-string</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h3 id="方法一：双指针"><a href="#方法一：双指针" class="headerlink" title="方法一：双指针"></a>方法一：双指针</h3><p>这提不难。<br>弄两个指针<code>i</code>和<code>j</code>，<code>i</code>从前往后走，<code>j</code>从后往前走，当遇到原因字母的时候，就停下来。当两个指针都停下来的时候，交换两个字母。使用<code>while</code>循环，退出条件是<code>i</code>和<code>j</code>重合。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><ul>
+<li>python<pre><code> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def reverseVowels(s):</span><br><span class="line">l = list(s)</span><br><span class="line">i, j = 0, len(s)-1</span><br><span class="line">Vowels = [&#x27;a&#x27;, &#x27;e&#x27;, &#x27;i&#x27;, &#x27;o&#x27;, &#x27;u&#x27;, &#x27;A&#x27;, &#x27;E&#x27;, &#x27;I&#x27;, &#x27;O&#x27;, &#x27;U&#x27;]</span><br><span class="line"># vowels = &quot;aeiouAEIOU&quot;</span><br><span class="line">i_step = 1</span><br><span class="line">j_step = -1</span><br><span class="line">while i &lt; j:</span><br><span class="line">    if l[i] in Vowels:</span><br><span class="line">        i_step = 0</span><br><span class="line">    if l[j] in Vowels:</span><br><span class="line">        j_step = 0</span><br><span class="line"></span><br><span class="line">    if i_step == j_step == 0:</span><br><span class="line">        l[i], l[j] = l[j], l[i]</span><br><span class="line">        i_step = 1</span><br><span class="line">        j_step = -1</span><br><span class="line">    i += i_step</span><br><span class="line">    j += j_step</span><br><span class="line">return &#x27;&#x27;.join(l)</span><br></pre></td></tr></table></figure>
+</code></pre>  和官方题解几乎一样。</li>
+<li>C<pre><code> <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">   	<span class="type">int</span> <span class="title function_">isVowel</span><span class="params">(<span class="type">char</span> ch)</span></span><br><span class="line">   &#123;</span><br><span class="line">	<span class="type">char</span> vowels[] = <span class="string">&quot;aeiouAEIOU&quot;</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; vowels[i]; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (ch == vowels[i])<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">char</span>* <span class="title function_">reverseVowels</span><span class="params">(<span class="type">char</span>* s)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>, j = <span class="built_in">strlen</span>(s)<span class="number">-1</span>;</span><br><span class="line">	<span class="type">char</span> tmp = s[<span class="number">0</span>];</span><br><span class="line">	<span class="type">int</span> i_step = <span class="number">1</span>, j_step = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span> (i &lt; j)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="number">1</span> == isVowel(s[i]))</span><br><span class="line">			i_step = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> (<span class="number">1</span> == isVowel(s[j]))</span><br><span class="line">			j_step = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> (i_step == <span class="number">0</span> &amp;&amp; j_step == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%c %c %s\n&quot;</span>, s[i], s[j], s);</span><br><span class="line">			tmp = s[i];</span><br><span class="line">			s[i] = s[j];</span><br><span class="line">			s[j] = tmp;</span><br><span class="line">			i_step = <span class="number">1</span>;</span><br><span class="line">			j_step = <span class="number">-1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		i += i_step;</span><br><span class="line">		j += j_step;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre></li>
 </ul>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/f4KPi9"><img src="https://z3.ax1x.com/2021/08/17/f4KPi9.png" alt="551. 学生出勤记录 I.png"></a><br><a href="https://imgtu.com/i/f4h6TP"><img src="https://z3.ax1x.com/2021/08/17/f4h6TP.jpg" alt="551. 学生出勤记录 IC语言"></a></p>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/fHEmKP"><img src="https://z3.ax1x.com/2021/08/19/fHEmKP.jpg" alt="python提交记录"></a><br><a href="https://imgtu.com/i/fHEZvt"><img src="https://z3.ax1x.com/2021/08/19/fHEZvt.jpg" alt="C语言提交记录"></a></p>
 ]]></content>
       <categories>
         <category>Leetcode</category>
       </categories>
       <tags>
         <tag>Leetcode简单</tag>
+        <tag>双指针</tag>
       </tags>
   </entry>
   <entry>
@@ -582,6 +658,11 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
         <tag>回溯</tag>
         <tag>动态规划</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Leetcode_502. IPO</title>
+    <url>/2021/09/08/Leetcode-502-IPO/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Leetcode_541. 反转字符串 II</title>
@@ -628,6 +709,33 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
       <tags>
         <tag>Leetcode简单</tag>
         <tag>模拟</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode_551. 学生出勤记录 I</title>
+    <url>/2021/08/17/Leetcode-551-%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95-I/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>551.-学生出勤记录-I<br>难度：简单<br>给你一个字符串 s 表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符：</p>
+<p>‘A’：Absent，缺勤<br>‘L’：Late，迟到<br>‘P’：Present，到场<br>如果学生能够 同时 满足下面两个条件，则可以获得出勤奖励：</p>
+<p>按 总出勤 计，学生缺勤（’A’）严格 少于两天。<br>学生 不会 存在 连续 3 天或 3 天以上的迟到（’L’）记录。<br>如果学生可以获得出勤奖励，返回 true ；否则，返回 false 。</p>
+<p>示例 1：</p>
+<p>输入：s = “PPALLP”<br>输出：true<br>解释：学生缺勤次数少于 2 次，且不存在 3 天或以上的连续迟到记录。<br>示例 2：</p>
+<p>输入：s = “PPALLL”<br>输出：false<br>解释：学生最后三天连续迟到，所以不满足出勤奖励的条件。</p>
+<p>提示：</p>
+<p>1 &lt;= s.length &lt;= 1000<br>s[i] 为 ‘A’、’L’ 或 ‘P’</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/student-attendance-record-i">https://leetcode-cn.com/problems/student-attendance-record-i</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>太简单了，略</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ul>
+<li>python<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def checkRecord(self, s: str) -&gt; bool:</span><br><span class="line">        return s.count(&quot;A&quot;)&lt;2 and s.count(&quot;LLL&quot;)&lt;=0</span><br></pre></td></tr></table></figure></li>
+<li>C<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">bool</span> <span class="title function_">checkRecord</span><span class="params">(<span class="type">char</span>* s)</span> &#123;</span><br><span class="line">	<span class="type">int</span> absent = <span class="number">0</span>, late = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (*s != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (*s == <span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			absent++;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span> (absent == <span class="number">2</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (*s == <span class="string">&#x27;L&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			late++;</span><br><span class="line">			<span class="keyword">if</span> (late == <span class="number">3</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		s++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/f4KPi9"><img src="https://z3.ax1x.com/2021/08/17/f4KPi9.png" alt="551. 学生出勤记录 I.png"></a><br><a href="https://imgtu.com/i/f4h6TP"><img src="https://z3.ax1x.com/2021/08/17/f4h6TP.jpg" alt="551. 学生出勤记录 IC语言"></a></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode简单</tag>
       </tags>
   </entry>
   <entry>
@@ -709,9 +817,58 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
         <category>Leetcode</category>
       </categories>
       <tags>
+        <tag>Leetcode困难</tag>
         <tag>动态规划</tag>
         <tag>快速幂/矩阵快速幂</tag>
-        <tag>Leetcode困难</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode_57|. 出界的路径数</title>
+    <url>/2021/08/20/Leetcode-576-%E5%87%BA%E7%95%8C%E7%9A%84%E8%B7%AF%E5%BE%84%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><ol>
+<li>出界的路径数<br>难度：简单<p>给你一个大小为 <code>m x n</code> 的网格和一个球。球的起始坐标为 <code>[startRow, startColumn]</code> 。你可以将球移到在四个方向上相邻的单元格内（可以穿过网格边界到达网格之外）。你 <strong>最多</strong> 可以移动 <code>maxMove</code> 次球。</p>
+
+</li>
+</ol>
+<p>给你五个整数 <code>m</code>、<code>n</code>、<code>maxMove</code>、<code>startRow</code> 以及 <code>startColumn</code> ，找出并返回可以将球移出边界的路径数量。因为答案可能非常大，返回对 <code>10<sup>9</sup> + 7</code> <strong>取余</strong> 后的结果。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+<img style="width: 500px; height: 296px;" src="https://assets.leetcode.com/uploads/2021/04/28/out_of_boundary_paths_1.png" alt>
+<pre><strong>输入：</strong>m = 2, n = 2, maxMove = 2, startRow = 0, startColumn = 0
+<strong>输出：</strong>6
+</pre>
+
+<p><strong>示例 2：</strong></p>
+<img style="width: 500px; height: 293px;" src="https://assets.leetcode.com/uploads/2021/04/28/out_of_boundary_paths_2.png" alt>
+<pre><strong>输入：</strong>m = 1, n = 3, maxMove = 3, startRow = 0, startColumn = 1
+<strong>输出：</strong>12
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= m, n &lt;= 50</code></li>
+    <li><code>0 &lt;= maxMove &lt;= 50</code></li>
+    <li><code>0 &lt;= startRow &lt; m</code></li>
+    <li><code>0 &lt;= startColumn &lt; n</code></li>
+</ul>
+
+<h3 id="f方法一：-动态规划"><a href="#f方法一：-动态规划" class="headerlink" title="f方法一： 动态规划"></a>f方法一： 动态规划</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>这一题显然是要用动态规划来做。状态也不难写，<code>dp[move][r][c]</code>表示第<code>move</code>步走到第<code>r</code>行第<code>c</code>列的数量。状态转移方程也不难想到，即<code>dp[move][r][c]</code>等于<code>move-1</code>上一步步第<code>r</code>行第<code>c</code>列上下左右四个数的和，当然这是要在范围内，这里需要一个判断。而我的代码实现当中，是将这一步第<code>r</code>行第<code>c</code>列上下左右四个数加到下一步去。<br>较为复杂的我认为是在对于边界一圈的情况的考虑。如果球走到边界上了，剩余的步数至少还有一步，那他就可以出界，而且有多少种情况能走到边界的这个位置就有多少种出界的情况。但就如题目中的示例那样，边界的不同位置出界的可能i性是不同的。所以，我是在循环当中，先判断这个位置是不是边界以及是哪一种边界，如果是，再判断这个位置上是不是0，如果不是0，说明可以出界，那就将它加到出界总数去，一种边界加一次，这样就解决了边界不同位置有不同出界的可能性。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def findPaths(m, n, maxMove, startRow, startColumn):</span><br><span class="line">    if maxMove == 0:</span><br><span class="line">        return 0</span><br><span class="line">    dp = [[[0 for c in range(n)] for r in range(m)] for move in range(maxMove)]</span><br><span class="line">    outCounts = 0</span><br><span class="line">    dp[0][startRow][startColumn] = 1</span><br><span class="line">    for move in range(maxMove):</span><br><span class="line">        for r in range(m):</span><br><span class="line">            for c in range(n):</span><br><span class="line">                if r == 0 or c == 0 or r == m-1 or c == n-1:</span><br><span class="line">                    t = dp[move][r][c]</span><br><span class="line">                    if t != 0:</span><br><span class="line">                        if r-1 &lt; 0:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                        if c-1 &lt; 0:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                        if r+1 == m:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                        if c+1 == n:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                if move == maxMove-1:</span><br><span class="line">                    continue</span><br><span class="line">                for i, j in [(r-1, c), (r+1, c), (r, c-1), (r, c+1)]:</span><br><span class="line">                    if i &gt;= 0 and i &lt; m and j &gt;= 0 and j &lt; n:</span><br><span class="line">                        dp[move+1][r][c] += dp[move][i][j]</span><br><span class="line"></span><br><span class="line">    return outCounts % (10**9+7)</span><br></pre></td></tr></table></figure>
+<h3 id="方法二：-卷积"><a href="#方法二：-卷积" class="headerlink" title="方法二： 卷积"></a>方法二： 卷积</h3><p>大佬都在评论区。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">findPaths</span>(<span class="params">m, n, maxMove, startRow, startColumn</span>):</span><br><span class="line">    <span class="keyword">if</span> maxMove &lt;= <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    ans = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    a = numpy.zeros((m, n), )</span><br><span class="line">    a[startRow, startColumn] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    b = numpy.zeros((<span class="number">3</span>, <span class="number">3</span>), <span class="built_in">int</span>)</span><br><span class="line">    b[<span class="number">0</span>][<span class="number">1</span>] = b[<span class="number">1</span>][<span class="number">0</span>] = b[-<span class="number">1</span>][<span class="number">1</span>] = b[<span class="number">1</span>][-<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">    <span class="comment"># print(a)</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(maxMove):</span><br><span class="line">        ans += (a[:, <span class="number">0</span>].<span class="built_in">sum</span>() + a[:, -<span class="number">1</span>].<span class="built_in">sum</span>() +</span><br><span class="line">                a[<span class="number">0</span>, :].<span class="built_in">sum</span>() + a[-<span class="number">1</span>, :].<span class="built_in">sum</span>()) % <span class="number">1_000_000_007</span></span><br><span class="line">        a = scipy.signal.convolve2d(a, b, <span class="string">&#x27;same&#x27;</span>) % <span class="number">1_000_000_007</span></span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">int</span>(ans) % <span class="number">1_000_000_007</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/fXAdy9"><img src="https://z3.ax1x.com/2021/08/20/fXAdy9.jpg" alt="t提交记录1.jpg"></a><br><a href="https://imgtu.com/i/fXAaQJ"><img src="https://z3.ax1x.com/2021/08/20/fXAaQJ.jpg" alt="提交记录2.jpg"></a></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode简单</tag>
+        <tag>动态规划</tag>
+        <tag>卷积</tag>
       </tags>
   </entry>
   <entry>
@@ -775,129 +932,6 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
       <tags>
         <tag>Leetcode中等</tag>
         <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode_57|. 出界的路径数</title>
-    <url>/2021/08/20/Leetcode-576-%E5%87%BA%E7%95%8C%E7%9A%84%E8%B7%AF%E5%BE%84%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><ol>
-<li>出界的路径数<br>难度：简单<p>给你一个大小为 <code>m x n</code> 的网格和一个球。球的起始坐标为 <code>[startRow, startColumn]</code> 。你可以将球移到在四个方向上相邻的单元格内（可以穿过网格边界到达网格之外）。你 <strong>最多</strong> 可以移动 <code>maxMove</code> 次球。</p>
-
-</li>
-</ol>
-<p>给你五个整数 <code>m</code>、<code>n</code>、<code>maxMove</code>、<code>startRow</code> 以及 <code>startColumn</code> ，找出并返回可以将球移出边界的路径数量。因为答案可能非常大，返回对 <code>10<sup>9</sup> + 7</code> <strong>取余</strong> 后的结果。</p>
-
-<p>&nbsp;</p>
-
-<p><strong>示例 1：</strong></p>
-<img style="width: 500px; height: 296px;" src="https://assets.leetcode.com/uploads/2021/04/28/out_of_boundary_paths_1.png" alt>
-<pre><strong>输入：</strong>m = 2, n = 2, maxMove = 2, startRow = 0, startColumn = 0
-<strong>输出：</strong>6
-</pre>
-
-<p><strong>示例 2：</strong></p>
-<img style="width: 500px; height: 293px;" src="https://assets.leetcode.com/uploads/2021/04/28/out_of_boundary_paths_2.png" alt>
-<pre><strong>输入：</strong>m = 1, n = 3, maxMove = 3, startRow = 0, startColumn = 1
-<strong>输出：</strong>12
-</pre>
-
-<p>&nbsp;</p>
-
-<p><strong>提示：</strong></p>
-
-<ul>
-    <li><code>1 &lt;= m, n &lt;= 50</code></li>
-    <li><code>0 &lt;= maxMove &lt;= 50</code></li>
-    <li><code>0 &lt;= startRow &lt; m</code></li>
-    <li><code>0 &lt;= startColumn &lt; n</code></li>
-</ul>
-
-<h3 id="f方法一：-动态规划"><a href="#f方法一：-动态规划" class="headerlink" title="f方法一： 动态规划"></a>f方法一： 动态规划</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>这一题显然是要用动态规划来做。状态也不难写，<code>dp[move][r][c]</code>表示第<code>move</code>步走到第<code>r</code>行第<code>c</code>列的数量。状态转移方程也不难想到，即<code>dp[move][r][c]</code>等于<code>move-1</code>上一步步第<code>r</code>行第<code>c</code>列上下左右四个数的和，当然这是要在范围内，这里需要一个判断。而我的代码实现当中，是将这一步第<code>r</code>行第<code>c</code>列上下左右四个数加到下一步去。<br>较为复杂的我认为是在对于边界一圈的情况的考虑。如果球走到边界上了，剩余的步数至少还有一步，那他就可以出界，而且有多少种情况能走到边界的这个位置就有多少种出界的情况。但就如题目中的示例那样，边界的不同位置出界的可能i性是不同的。所以，我是在循环当中，先判断这个位置是不是边界以及是哪一种边界，如果是，再判断这个位置上是不是0，如果不是0，说明可以出界，那就将它加到出界总数去，一种边界加一次，这样就解决了边界不同位置有不同出界的可能性。</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def findPaths(m, n, maxMove, startRow, startColumn):</span><br><span class="line">    if maxMove == 0:</span><br><span class="line">        return 0</span><br><span class="line">    dp = [[[0 for c in range(n)] for r in range(m)] for move in range(maxMove)]</span><br><span class="line">    outCounts = 0</span><br><span class="line">    dp[0][startRow][startColumn] = 1</span><br><span class="line">    for move in range(maxMove):</span><br><span class="line">        for r in range(m):</span><br><span class="line">            for c in range(n):</span><br><span class="line">                if r == 0 or c == 0 or r == m-1 or c == n-1:</span><br><span class="line">                    t = dp[move][r][c]</span><br><span class="line">                    if t != 0:</span><br><span class="line">                        if r-1 &lt; 0:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                        if c-1 &lt; 0:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                        if r+1 == m:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                        if c+1 == n:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                if move == maxMove-1:</span><br><span class="line">                    continue</span><br><span class="line">                for i, j in [(r-1, c), (r+1, c), (r, c-1), (r, c+1)]:</span><br><span class="line">                    if i &gt;= 0 and i &lt; m and j &gt;= 0 and j &lt; n:</span><br><span class="line">                        dp[move+1][r][c] += dp[move][i][j]</span><br><span class="line"></span><br><span class="line">    return outCounts % (10**9+7)</span><br></pre></td></tr></table></figure>
-<h3 id="方法二：-卷积"><a href="#方法二：-卷积" class="headerlink" title="方法二： 卷积"></a>方法二： 卷积</h3><p>大佬都在评论区。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">findPaths</span>(<span class="params">m, n, maxMove, startRow, startColumn</span>):</span><br><span class="line">    <span class="keyword">if</span> maxMove &lt;= <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    ans = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    a = numpy.zeros((m, n), )</span><br><span class="line">    a[startRow, startColumn] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    b = numpy.zeros((<span class="number">3</span>, <span class="number">3</span>), <span class="built_in">int</span>)</span><br><span class="line">    b[<span class="number">0</span>][<span class="number">1</span>] = b[<span class="number">1</span>][<span class="number">0</span>] = b[-<span class="number">1</span>][<span class="number">1</span>] = b[<span class="number">1</span>][-<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">    <span class="comment"># print(a)</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(maxMove):</span><br><span class="line">        ans += (a[:, <span class="number">0</span>].<span class="built_in">sum</span>() + a[:, -<span class="number">1</span>].<span class="built_in">sum</span>() +</span><br><span class="line">                a[<span class="number">0</span>, :].<span class="built_in">sum</span>() + a[-<span class="number">1</span>, :].<span class="built_in">sum</span>()) % <span class="number">1_000_000_007</span></span><br><span class="line">        a = scipy.signal.convolve2d(a, b, <span class="string">&#x27;same&#x27;</span>) % <span class="number">1_000_000_007</span></span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">int</span>(ans) % <span class="number">1_000_000_007</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/fXAdy9"><img src="https://z3.ax1x.com/2021/08/20/fXAdy9.jpg" alt="t提交记录1.jpg"></a><br><a href="https://imgtu.com/i/fXAaQJ"><img src="https://z3.ax1x.com/2021/08/20/fXAaQJ.jpg" alt="提交记录2.jpg"></a></p>
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>Leetcode简单</tag>
-        <tag>动态规划</tag>
-        <tag>卷积</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode_789.逃脱阻碍者</title>
-    <url>/2021/08/22/Leetcode-789-%E9%80%83%E8%84%B1%E9%98%BB%E7%A2%8D%E8%80%85/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>789. 逃脱阻碍者<br>难度：中等</p>
-<p>你在进行一个简化版的吃豆人游戏。你从 <code>[0, 0]</code> 点开始出发，你的目的地是&nbsp;<code>target = [x<sub>target</sub>, y<sub>target</sub>]</code> 。地图上有一些阻碍者，以数组 <code>ghosts</code> 给出，第 <code>i</code> 个阻碍者从&nbsp;<code>ghosts[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&nbsp;出发。所有输入均为 <strong>整数坐标</strong> 。</p>
-
-<p>每一回合，你和阻碍者们可以同时向东，西，南，北四个方向移动，每次可以移动到距离原位置 <strong>1 个单位</strong> 的新位置。当然，也可以选择 <strong>不动</strong> 。所有动作 <strong>同时</strong> 发生。</p>
-
-<p>如果你可以在任何阻碍者抓住你 <strong>之前</strong> 到达目的地（阻碍者可以采取任意行动方式），则被视为逃脱成功。如果你和阻碍者同时到达了一个位置（包括目的地）都不算是逃脱成功。</p>
-
-<p>只有在你有可能成功逃脱时，输出 <code>true</code> ；否则，输出 <code>false</code> 。</p>
-&nbsp;
-
-<p><strong>示例 1：</strong></p>
-
-<pre><strong>输入：</strong>ghosts = [[1,0],[0,3]], target = [0,1]
-<strong>输出：</strong>true
-<strong>解释：</strong>你可以直接一步到达目的地 (0,1) ，在 (1, 0) 或者 (0, 3) 位置的阻碍者都不可能抓住你。 
-</pre>
-
-<p><strong>示例 2：</strong></p>
-
-<pre><strong>输入：</strong>ghosts = [[1,0]], target = [2,0]
-<strong>输出：</strong>false
-<strong>解释：</strong>你需要走到位于 (2, 0) 的目的地，但是在 (1, 0) 的阻碍者位于你和目的地之间。 
-</pre>
-
-<p><strong>示例 3：</strong></p>
-
-<pre><strong>输入：</strong>ghosts = [[2,0]], target = [1,0]
-<strong>输出：</strong>false
-<strong>解释：</strong>阻碍者可以和你同时达到目的地。 
-</pre>
-
-<p><strong>示例 4：</strong></p>
-
-<pre><strong>输入：</strong>ghosts = [[5,0],[-10,-2],[0,-5],[-2,-2],[-7,1]], target = [7,7]
-<strong>输出：</strong>false
-</pre>
-
-<p><strong>示例 5：</strong></p>
-
-<pre><strong>输入：</strong>ghosts = [[-1,0],[0,1],[-1,0],[0,1],[-1,0]], target = [0,0]
-<strong>输出：</strong>true
-</pre>
-
-<p>&nbsp;</p>
-
-<p><strong>提示：</strong></p>
-
-<ul>
-    <li><code>1 &lt;= ghosts.length &lt;= 100</code></li>
-    <li><code>ghosts[i].length == 2</code></li>
-    <li><code>-10<sup>4</sup> &lt;= x<sub>i</sub>, y<sub>i</sub> &lt;= 10<sup>4</sup></code></li>
-    <li>同一位置可能有 <strong>多个阻碍者</strong> 。</li>
-    <li><code>target.length == 2</code></li>
-    <li><code>-10<sup>4</sup> &lt;= x<sub>target</sub>, y<sub>target</sub> &lt;= 10<sup>4</sup></code></li>
-</ul>
-
-
-<h3 id="方法：-曼哈顿距离"><a href="#方法：-曼哈顿距离" class="headerlink" title="方法： 曼哈顿距离"></a>方法： 曼哈顿距离</h3><p>刚过十二点，看完题目是懵的，这是要干嘛？没有思路，去看题解，曼哈顿距离又是什么鬼？于是去B站上找一下曼哈顿距离的讲解，知道了就是两个点之间的横坐标距离与纵坐标距离的和。那这和解题有什么关系呢？上床在睡前想了一下，发现其实并不难。<br>题目中的情况虽然看起来很多很复杂，但其实要解决的就是”我“能不能比幽灵更快地到达目的地。因为中途被拦截地情况，也能变为让拦截者到了目的地之后等”我“，结果是一样的。因此，就是要考虑”我“的起点到目的地的曼哈顿距离是不是比所有幽灵到目的地的曼哈顿距离小。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">escapeGhosts</span>(<span class="params">ghosts, target</span>):</span><br><span class="line">    target_x, target_y = target</span><br><span class="line">    L = <span class="built_in">abs</span>(target_x)+<span class="built_in">abs</span>(target_y)</span><br><span class="line">    <span class="keyword">for</span> x, y <span class="keyword">in</span> ghosts:</span><br><span class="line">        l = <span class="built_in">abs</span>(x-target_x)+<span class="built_in">abs</span>(y-target_y)</span><br><span class="line">        <span class="keyword">if</span> l &lt;= L:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure><br>还有一行的版本：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">escapeGhosts</span>(<span class="params">self, ghosts: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]], target: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">all</span>([<span class="built_in">abs</span>(target[<span class="number">0</span>])+<span class="built_in">abs</span>(target[<span class="number">1</span>]) &lt; <span class="built_in">abs</span>(ghost[<span class="number">0</span>]-target[<span class="number">0</span>])+<span class="built_in">abs</span>(ghost[<span class="number">1</span>]-target[<span class="number">1</span>]) <span class="keyword">for</span> ghost <span class="keyword">in</span> ghosts])</span><br><span class="line"></span><br><span class="line">作者：luanhz</span><br><span class="line">链接：https://leetcode-cn.com/problems/escape-the-ghosts/solution/wei-jin-zhe-sheng-pythonyi-xing-dai-ma-by-luanz/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>all() 函数用于判断给定的可迭代参数 iterable 中的所有元素是否都为 TRUE，如果是返回 True，否则返回 False。<br>元素除了是 0、空、None、False 外都算 True。</p>
-</blockquote>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/hSCRQe"><img src="https://z3.ax1x.com/2021/08/22/hSCRQe.jpg" alt="逃脱阻碍者提交记录.jpg"></a></p>
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>Leetcode中等</tag>
-        <tag>曼哈顿距离</tag>
       </tags>
   </entry>
   <entry>
@@ -984,56 +1018,77 @@ src = 0, dst = 2, k = 0
       </tags>
   </entry>
   <entry>
-    <title>Leetcode_881. 救生艇</title>
-    <url>/2021/08/26/Leetcode-881-%E6%95%91%E7%94%9F%E8%89%87/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>881. 救生艇<br>难度：中等</p>
-<p>第&nbsp;<code>i</code>&nbsp;个人的体重为&nbsp;<code>people[i]</code>，每艘船可以承载的最大重量为&nbsp;<code>limit</code>。</p>
+    <title>Leetcode_789.逃脱阻碍者</title>
+    <url>/2021/08/22/Leetcode-789-%E9%80%83%E8%84%B1%E9%98%BB%E7%A2%8D%E8%80%85/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>789. 逃脱阻碍者<br>难度：中等</p>
+<p>你在进行一个简化版的吃豆人游戏。你从 <code>[0, 0]</code> 点开始出发，你的目的地是&nbsp;<code>target = [x<sub>target</sub>, y<sub>target</sub>]</code> 。地图上有一些阻碍者，以数组 <code>ghosts</code> 给出，第 <code>i</code> 个阻碍者从&nbsp;<code>ghosts[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&nbsp;出发。所有输入均为 <strong>整数坐标</strong> 。</p>
 
-<p>每艘船最多可同时载两人，但条件是这些人的重量之和最多为&nbsp;<code>limit</code>。</p>
+<p>每一回合，你和阻碍者们可以同时向东，西，南，北四个方向移动，每次可以移动到距离原位置 <strong>1 个单位</strong> 的新位置。当然，也可以选择 <strong>不动</strong> 。所有动作 <strong>同时</strong> 发生。</p>
 
-<p>返回载到每一个人所需的最小船数。(保证每个人都能被船载)。</p>
+<p>如果你可以在任何阻碍者抓住你 <strong>之前</strong> 到达目的地（阻碍者可以采取任意行动方式），则被视为逃脱成功。如果你和阻碍者同时到达了一个位置（包括目的地）都不算是逃脱成功。</p>
 
-<p>&nbsp;</p>
+<p>只有在你有可能成功逃脱时，输出 <code>true</code> ；否则，输出 <code>false</code> 。</p>
+&nbsp;
 
 <p><strong>示例 1：</strong></p>
 
-<pre><strong>输入：</strong>people = [1,2], limit = 3
-<strong>输出：</strong>1
-<strong>解释：</strong>1 艘船载 (1, 2)
+<pre><strong>输入：</strong>ghosts = [[1,0],[0,3]], target = [0,1]
+<strong>输出：</strong>true
+<strong>解释：</strong>你可以直接一步到达目的地 (0,1) ，在 (1, 0) 或者 (0, 3) 位置的阻碍者都不可能抓住你。 
 </pre>
 
 <p><strong>示例 2：</strong></p>
 
-<pre><strong>输入：</strong>people = [3,2,2,1], limit = 3
-<strong>输出：</strong>3
-<strong>解释：</strong>3 艘船分别载 (1, 2), (2) 和 (3)
+<pre><strong>输入：</strong>ghosts = [[1,0]], target = [2,0]
+<strong>输出：</strong>false
+<strong>解释：</strong>你需要走到位于 (2, 0) 的目的地，但是在 (1, 0) 的阻碍者位于你和目的地之间。 
 </pre>
 
 <p><strong>示例 3：</strong></p>
 
-<pre><strong>输入：</strong>people = [3,5,3,4], limit = 5
-<strong>输出：</strong>4
-<strong>解释：</strong>4 艘船分别载 (3), (3), (4), (5)</pre>
+<pre><strong>输入：</strong>ghosts = [[2,0]], target = [1,0]
+<strong>输出：</strong>false
+<strong>解释：</strong>阻碍者可以和你同时达到目的地。 
+</pre>
+
+<p><strong>示例 4：</strong></p>
+
+<pre><strong>输入：</strong>ghosts = [[5,0],[-10,-2],[0,-5],[-2,-2],[-7,1]], target = [7,7]
+<strong>输出：</strong>false
+</pre>
+
+<p><strong>示例 5：</strong></p>
+
+<pre><strong>输入：</strong>ghosts = [[-1,0],[0,1],[-1,0],[0,1],[-1,0]], target = [0,0]
+<strong>输出：</strong>true
+</pre>
+
+<p>&nbsp;</p>
 
 <p><strong>提示：</strong></p>
 
 <ul>
-    <li><code>1 &lt;=&nbsp;people.length &lt;= 50000</code></li>
-    <li><code>1 &lt;= people[i] &lt;=&nbsp;limit &lt;= 30000</code></li>
+    <li><code>1 &lt;= ghosts.length &lt;= 100</code></li>
+    <li><code>ghosts[i].length == 2</code></li>
+    <li><code>-10<sup>4</sup> &lt;= x<sub>i</sub>, y<sub>i</sub> &lt;= 10<sup>4</sup></code></li>
+    <li>同一位置可能有 <strong>多个阻碍者</strong> 。</li>
+    <li><code>target.length == 2</code></li>
+    <li><code>-10<sup>4</sup> &lt;= x<sub>target</sub>, y<sub>target</sub> &lt;= 10<sup>4</sup></code></li>
 </ul>
 
 
-<h3 id="方法一：-贪心-排序-双指针"><a href="#方法一：-贪心-排序-双指针" class="headerlink" title="方法一： 贪心=排序+双指针"></a>方法一： 贪心=排序+双指针</h3><p>将<code>people</code>数组排序之后，用双指针的方法来做。要使船的数量尽可能少，那就让一个船上的人尽可能多，也就是让体重大的，尽可能和一个体重轻的坐一个船。两个指针<code>i</code>和<code>j</code>，一个从轻往重走，一个从重往轻走，如果可以一起坐船，两个指针一起动，<code>boats</code>计数自增；如果两个不能一起坐船，那就重的指针移动，计数自增；直到两个指针重合，这时候，计数还需要再自增一次。<br>贪心相当于思想，排序+双指针是具体的实现方法。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">numRescueBoats</span>(<span class="params">people, limit</span>):</span><br><span class="line">    people.sort()</span><br><span class="line">    i, j = <span class="number">0</span>, <span class="built_in">len</span>(people)-<span class="number">1</span></span><br><span class="line">    boats = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        <span class="keyword">if</span> people[i]+people[j] &gt; limit:</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">            boats+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            boats+=<span class="number">1</span></span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> i==j:</span><br><span class="line">            boats+=<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> boats</span><br></pre></td></tr></table></figure><br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">numRescueBoats</span>(<span class="params">self, people: <span class="type">List</span>[<span class="built_in">int</span>], limit: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        people.sort()</span><br><span class="line">        light, heavy = <span class="number">0</span>, <span class="built_in">len</span>(people) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> light &lt;= heavy:</span><br><span class="line">            <span class="keyword">if</span> people[light] + people[heavy] &gt; limit:</span><br><span class="line">                heavy -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                light += <span class="number">1</span></span><br><span class="line">                heavy -= <span class="number">1</span></span><br><span class="line">            ans += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line">作者：LeetCode-Solution</span><br><span class="line">链接：https://leetcode-cn.com/problems/boats-to-save-people/solution/jiu-sheng-ting-by-leetcode-solution-0nsp/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure></p>
-<h3 id="方法二：-贪心"><a href="#方法二：-贪心" class="headerlink" title="方法二： 贪心"></a>方法二： 贪心</h3><p>这其实使我首先想到的方法，但。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">numRescueBoats</span>(<span class="params">people, limit</span>):</span><br><span class="line">    d = defaultdict(<span class="built_in">int</span>)</span><br><span class="line">    i, j = limit+<span class="number">1</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> w <span class="keyword">in</span> people:</span><br><span class="line">        d[w] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> i &gt; w:</span><br><span class="line">            i = w</span><br><span class="line">        <span class="keyword">if</span> j &lt; w:</span><br><span class="line">            j = w</span><br><span class="line">    boats = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        <span class="keyword">if</span> d[j]==<span class="number">0</span>:</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> d[i] == <span class="number">0</span>:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> i+j &gt; limit:</span><br><span class="line">            boats += d[j]</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        m = <span class="built_in">min</span>(d[i], d[j])</span><br><span class="line">        boats += m</span><br><span class="line">        d[i] -= m</span><br><span class="line">        d[j] -= m</span><br><span class="line">        <span class="comment"># i += (1-d[i]/1)</span></span><br><span class="line">        <span class="comment"># # if d[i]==0:</span></span><br><span class="line">        <span class="comment"># #     i-=1</span></span><br><span class="line">        <span class="comment"># j -= (1-d[j]/1)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> i &lt;= limit/<span class="number">2</span>:</span><br><span class="line">        boats += (d[i]+<span class="number">1</span>)//<span class="number">2</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        boats += d[i]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> boats</span><br></pre></td></tr></table></figure><br>说明：<br>这里的做法是先统计了每种体重的人数，然后再用双指针的方法根据人数来做。<br>每次进入循环的时候，都要先判断对应体重的人数是不是0，这是因为，如果是0而没有先做处理的话，会出现<code>if i+j &gt; limit:</code>依然被执行的情况。<br>以为这种方法会减少时间消耗，然而并没有。</p>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/hKF2jK"><img src="https://z3.ax1x.com/2021/08/26/hKF2jK.jpg" alt="救生艇提交记录.jpg"></a></p>
+<h3 id="方法：-曼哈顿距离"><a href="#方法：-曼哈顿距离" class="headerlink" title="方法： 曼哈顿距离"></a>方法： 曼哈顿距离</h3><p>刚过十二点，看完题目是懵的，这是要干嘛？没有思路，去看题解，曼哈顿距离又是什么鬼？于是去B站上找一下曼哈顿距离的讲解，知道了就是两个点之间的横坐标距离与纵坐标距离的和。那这和解题有什么关系呢？上床在睡前想了一下，发现其实并不难。<br>题目中的情况虽然看起来很多很复杂，但其实要解决的就是”我“能不能比幽灵更快地到达目的地。因为中途被拦截地情况，也能变为让拦截者到了目的地之后等”我“，结果是一样的。因此，就是要考虑”我“的起点到目的地的曼哈顿距离是不是比所有幽灵到目的地的曼哈顿距离小。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">escapeGhosts</span>(<span class="params">ghosts, target</span>):</span><br><span class="line">    target_x, target_y = target</span><br><span class="line">    L = <span class="built_in">abs</span>(target_x)+<span class="built_in">abs</span>(target_y)</span><br><span class="line">    <span class="keyword">for</span> x, y <span class="keyword">in</span> ghosts:</span><br><span class="line">        l = <span class="built_in">abs</span>(x-target_x)+<span class="built_in">abs</span>(y-target_y)</span><br><span class="line">        <span class="keyword">if</span> l &lt;= L:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure><br>还有一行的版本：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">escapeGhosts</span>(<span class="params">self, ghosts: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]], target: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">all</span>([<span class="built_in">abs</span>(target[<span class="number">0</span>])+<span class="built_in">abs</span>(target[<span class="number">1</span>]) &lt; <span class="built_in">abs</span>(ghost[<span class="number">0</span>]-target[<span class="number">0</span>])+<span class="built_in">abs</span>(ghost[<span class="number">1</span>]-target[<span class="number">1</span>]) <span class="keyword">for</span> ghost <span class="keyword">in</span> ghosts])</span><br><span class="line"></span><br><span class="line">作者：luanhz</span><br><span class="line">链接：https://leetcode-cn.com/problems/escape-the-ghosts/solution/wei-jin-zhe-sheng-pythonyi-xing-dai-ma-by-luanz/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>all() 函数用于判断给定的可迭代参数 iterable 中的所有元素是否都为 TRUE，如果是返回 True，否则返回 False。<br>元素除了是 0、空、None、False 外都算 True。</p>
+</blockquote>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/hSCRQe"><img src="https://z3.ax1x.com/2021/08/22/hSCRQe.jpg" alt="逃脱阻碍者提交记录.jpg"></a></p>
 ]]></content>
       <categories>
         <category>Leetcode</category>
       </categories>
       <tags>
-        <tag>贪心</tag>
         <tag>Leetcode中等</tag>
-        <tag>双指针</tag>
+        <tag>曼哈顿距离</tag>
       </tags>
   </entry>
   <entry>
@@ -1118,6 +1173,89 @@ src = 0, dst = 2, k = 0
       </tags>
   </entry>
   <entry>
+    <title>Leetcode_881. 救生艇</title>
+    <url>/2021/08/26/Leetcode-881-%E6%95%91%E7%94%9F%E8%89%87/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>881. 救生艇<br>难度：中等</p>
+<p>第&nbsp;<code>i</code>&nbsp;个人的体重为&nbsp;<code>people[i]</code>，每艘船可以承载的最大重量为&nbsp;<code>limit</code>。</p>
+
+<p>每艘船最多可同时载两人，但条件是这些人的重量之和最多为&nbsp;<code>limit</code>。</p>
+
+<p>返回载到每一个人所需的最小船数。(保证每个人都能被船载)。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入：</strong>people = [1,2], limit = 3
+<strong>输出：</strong>1
+<strong>解释：</strong>1 艘船载 (1, 2)
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>people = [3,2,2,1], limit = 3
+<strong>输出：</strong>3
+<strong>解释：</strong>3 艘船分别载 (1, 2), (2) 和 (3)
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>people = [3,5,3,4], limit = 5
+<strong>输出：</strong>4
+<strong>解释：</strong>4 艘船分别载 (3), (3), (4), (5)</pre>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;=&nbsp;people.length &lt;= 50000</code></li>
+    <li><code>1 &lt;= people[i] &lt;=&nbsp;limit &lt;= 30000</code></li>
+</ul>
+
+
+<h3 id="方法一：-贪心-排序-双指针"><a href="#方法一：-贪心-排序-双指针" class="headerlink" title="方法一： 贪心=排序+双指针"></a>方法一： 贪心=排序+双指针</h3><p>将<code>people</code>数组排序之后，用双指针的方法来做。要使船的数量尽可能少，那就让一个船上的人尽可能多，也就是让体重大的，尽可能和一个体重轻的坐一个船。两个指针<code>i</code>和<code>j</code>，一个从轻往重走，一个从重往轻走，如果可以一起坐船，两个指针一起动，<code>boats</code>计数自增；如果两个不能一起坐船，那就重的指针移动，计数自增；直到两个指针重合，这时候，计数还需要再自增一次。<br>贪心相当于思想，排序+双指针是具体的实现方法。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">numRescueBoats</span>(<span class="params">people, limit</span>):</span><br><span class="line">    people.sort()</span><br><span class="line">    i, j = <span class="number">0</span>, <span class="built_in">len</span>(people)-<span class="number">1</span></span><br><span class="line">    boats = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        <span class="keyword">if</span> people[i]+people[j] &gt; limit:</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">            boats+=<span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            boats+=<span class="number">1</span></span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> i==j:</span><br><span class="line">            boats+=<span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> boats</span><br></pre></td></tr></table></figure><br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">numRescueBoats</span>(<span class="params">self, people: <span class="type">List</span>[<span class="built_in">int</span>], limit: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        people.sort()</span><br><span class="line">        light, heavy = <span class="number">0</span>, <span class="built_in">len</span>(people) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> light &lt;= heavy:</span><br><span class="line">            <span class="keyword">if</span> people[light] + people[heavy] &gt; limit:</span><br><span class="line">                heavy -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                light += <span class="number">1</span></span><br><span class="line">                heavy -= <span class="number">1</span></span><br><span class="line">            ans += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line">作者：LeetCode-Solution</span><br><span class="line">链接：https://leetcode-cn.com/problems/boats-to-save-people/solution/jiu-sheng-ting-by-leetcode-solution-0nsp/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure></p>
+<h3 id="方法二：-贪心"><a href="#方法二：-贪心" class="headerlink" title="方法二： 贪心"></a>方法二： 贪心</h3><p>这其实使我首先想到的方法，但。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">numRescueBoats</span>(<span class="params">people, limit</span>):</span><br><span class="line">    d = defaultdict(<span class="built_in">int</span>)</span><br><span class="line">    i, j = limit+<span class="number">1</span>, <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> w <span class="keyword">in</span> people:</span><br><span class="line">        d[w] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> i &gt; w:</span><br><span class="line">            i = w</span><br><span class="line">        <span class="keyword">if</span> j &lt; w:</span><br><span class="line">            j = w</span><br><span class="line">    boats = <span class="number">0</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; j:</span><br><span class="line">        <span class="keyword">if</span> d[j]==<span class="number">0</span>:</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> d[i] == <span class="number">0</span>:</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> i+j &gt; limit:</span><br><span class="line">            boats += d[j]</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        m = <span class="built_in">min</span>(d[i], d[j])</span><br><span class="line">        boats += m</span><br><span class="line">        d[i] -= m</span><br><span class="line">        d[j] -= m</span><br><span class="line">        <span class="comment"># i += (1-d[i]/1)</span></span><br><span class="line">        <span class="comment"># # if d[i]==0:</span></span><br><span class="line">        <span class="comment"># #     i-=1</span></span><br><span class="line">        <span class="comment"># j -= (1-d[j]/1)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> i &lt;= limit/<span class="number">2</span>:</span><br><span class="line">        boats += (d[i]+<span class="number">1</span>)//<span class="number">2</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        boats += d[i]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> boats</span><br></pre></td></tr></table></figure><br>说明：<br>这里的做法是先统计了每种体重的人数，然后再用双指针的方法根据人数来做。<br>每次进入循环的时候，都要先判断对应体重的人数是不是0，这是因为，如果是0而没有先做处理的话，会出现<code>if i+j &gt; limit:</code>依然被执行的情况。<br>以为这种方法会减少时间消耗，然而并没有。</p>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/hKF2jK"><img src="https://z3.ax1x.com/2021/08/26/hKF2jK.jpg" alt="救生艇提交记录.jpg"></a></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>贪心</tag>
+        <tag>Leetcode中等</tag>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-969-煎饼排序</title>
+    <url>/2022/02/19/Leetcode-969-%E7%85%8E%E9%A5%BC%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">### 题目</span><br><span class="line">969\. 煎饼排序</span><br><span class="line"></span><br><span class="line">难度：中等</span><br><span class="line">&lt;p&gt;给你一个整数数组 &lt;code&gt;arr&lt;/code&gt; ，请使用 &lt;strong&gt;煎饼翻转&lt;/strong&gt;&lt;em&gt; &lt;/em&gt;完成对数组的排序。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;一次煎饼翻转的执行过程如下：&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;ul&gt;</span><br><span class="line">   &lt;li&gt;选择一个整数 &lt;code&gt;k&lt;/code&gt; ，&lt;code&gt;1 &amp;lt;= k &amp;lt;= arr.length&lt;/code&gt;&lt;/li&gt;</span><br><span class="line">   &lt;li&gt;反转子数组 &lt;code&gt;arr[0...k-1]&lt;/code&gt;（&lt;strong&gt;下标从 0 开始&lt;/strong&gt;）&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;例如，&lt;code&gt;arr = [3,2,1,4]&lt;/code&gt; ，选择 &lt;code&gt;k = 3&lt;/code&gt; 进行一次煎饼翻转，反转子数组 &lt;code&gt;[3,2,1]&lt;/code&gt; ，得到 &lt;code&gt;arr = [&lt;strong&gt;1&lt;/strong&gt;,&lt;strong&gt;2&lt;/strong&gt;,&lt;strong&gt;3&lt;/strong&gt;,4]&lt;/code&gt; 。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;以数组形式返回能使 &lt;code&gt;arr&lt;/code&gt; 有序的煎饼翻转操作所对应的 &lt;code&gt;k&lt;/code&gt; 值序列。任何将数组排序且翻转次数在&amp;nbsp;&lt;code&gt;10 * arr.length&lt;/code&gt; 范围内的有效答案都将被判断为正确。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;&amp;nbsp;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;pre&gt;&lt;strong&gt;输入：&lt;/strong&gt;[3,2,4,1]</span><br><span class="line">&lt;strong&gt;输出：&lt;/strong&gt;[4,2,4,3]</span><br><span class="line">&lt;strong&gt;解释：&lt;/strong&gt;</span><br><span class="line">我们执行 4 次煎饼翻转，k 值分别为 4，2，4，和 3。</span><br><span class="line">初始状态 arr = [3, 2, 4, 1]</span><br><span class="line">第一次翻转后（k = 4）：arr = [&lt;strong&gt;1&lt;/strong&gt;, &lt;strong&gt;4&lt;/strong&gt;, &lt;strong&gt;2&lt;/strong&gt;, &lt;strong&gt;3&lt;/strong&gt;]</span><br><span class="line">第二次翻转后（k = 2）：arr = [&lt;strong&gt;4&lt;/strong&gt;, &lt;strong&gt;1&lt;/strong&gt;, 2, 3]</span><br><span class="line">第三次翻转后（k = 4）：arr = [&lt;strong&gt;3&lt;/strong&gt;, &lt;strong&gt;2&lt;/strong&gt;, &lt;strong&gt;1&lt;/strong&gt;, &lt;strong&gt;4&lt;/strong&gt;]</span><br><span class="line">第四次翻转后（k = 3）：arr = [&lt;strong&gt;1&lt;/strong&gt;, &lt;strong&gt;2&lt;/strong&gt;, &lt;strong&gt;3&lt;/strong&gt;, 4]，此时已完成排序。 </span><br><span class="line">&lt;/pre&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;pre&gt;&lt;strong&gt;输入：&lt;/strong&gt;[1,2,3]</span><br><span class="line">&lt;strong&gt;输出：&lt;/strong&gt;[]</span><br><span class="line">&lt;strong&gt;解释：</span><br><span class="line">&lt;/strong&gt;输入已经排序，因此不需要翻转任何内容。</span><br><span class="line">请注意，其他可能的答案，如 [3，3] ，也将被判断为正确。</span><br><span class="line">&lt;/pre&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;&amp;nbsp;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;&lt;strong&gt;提示：&lt;/strong&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;ul&gt;</span><br><span class="line">   &lt;li&gt;&lt;code&gt;1 &amp;lt;= arr.length &amp;lt;= 100&lt;/code&gt;&lt;/li&gt;</span><br><span class="line">   &lt;li&gt;&lt;code&gt;1 &amp;lt;= arr[i] &amp;lt;= arr.length&lt;/code&gt;&lt;/li&gt;</span><br><span class="line">   &lt;li&gt;&lt;code&gt;arr&lt;/code&gt; 中的所有整数互不相同（即，&lt;code&gt;arr&lt;/code&gt; 是从 &lt;code&gt;1&lt;/code&gt; 到 &lt;code&gt;arr.length&lt;/code&gt; 整数的一个排列）&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 方法一</span><br><span class="line">一开始觉得有点懵，但稍微想了一下，其实简单，每一次都将未排序的部分中找到最大的那个，然后将它到第一个 的这部分翻转，</span><br><span class="line">再将未排序的部分整体翻转，也就是每一次将未排序的最大的那个弄到已排序的开头。</span><br><span class="line">这样的操作一共就是`2*len(arr)`，符合条件。</span><br><span class="line"></span><br><span class="line">~~~ Python</span><br><span class="line">class Solution:</span><br><span class="line">    def pancakeSort(self, arr):</span><br><span class="line">        ans = []</span><br><span class="line">        n = len(arr)</span><br><span class="line">        m = 0</span><br><span class="line">        while m &lt; n:</span><br><span class="line">            max_i = 0</span><br><span class="line">            for i in range(n - m):</span><br><span class="line">                if arr[i] &gt; arr[max_i]:</span><br><span class="line">                    max_i = i</span><br><span class="line">            arr = arr[max_i::-1] + arr[max_i + 1:]</span><br><span class="line">            arr = arr[n - m - 1::-1] + arr[n - m::]</span><br><span class="line">            m += 1</span><br><span class="line">            ans.append(max_i + 1)</span><br><span class="line">            ans.append(n - m + 1)</span><br><span class="line">        return ans</span><br><span class="line">~~~</span><br><span class="line"></span><br><span class="line">官解想法和我的是一样的。</span><br><span class="line">只是实现上不一样。</span><br><span class="line">我用的列表切片可真搞我。还有下标和range范围。</span><br><span class="line">~~~ Python</span><br><span class="line">class Solution:</span><br><span class="line">    def pancakeSort(self, arr: List[int]) -&gt; List[int]:</span><br><span class="line">        ans = []</span><br><span class="line">        for n in range(len(arr), 1, -1):</span><br><span class="line">            index = 0</span><br><span class="line">            for i in range(n):</span><br><span class="line">                if arr[i] &gt; arr[index]:</span><br><span class="line">                    index = i</span><br><span class="line">            if index == n - 1:</span><br><span class="line">                continue</span><br><span class="line">            m = index</span><br><span class="line">            for i in range((m + 1) // 2):</span><br><span class="line">                arr[i], arr[m - i] = arr[m - i], arr[i]  # 原地反转</span><br><span class="line">            for i in range(n // 2):</span><br><span class="line">                arr[i], arr[n - 1 - i] = arr[n - 1 - i], arr[i]  # 原地反转</span><br><span class="line">            ans.append(index + 1)</span><br><span class="line">            ans.append(n)</span><br><span class="line">        return ans</span><br><span class="line"></span><br><span class="line">作者：LeetCode-Solution</span><br><span class="line">链接：https://leetcode-cn.com/problems/pancake-sorting/solution/jian-bing-pai-xu-by-leetcode-solution-rzzu/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br><span class="line">~~~</span><br><span class="line"></span><br><span class="line">Python可以用切片，一般的可以用双指针来实现。</span><br><span class="line">~~~ Python</span><br><span class="line">class Solution:</span><br><span class="line">    def pancakeSort(self, arr: List[int]) -&gt; List[int]:</span><br><span class="line">        ans = []</span><br><span class="line">        for n in range(len(arr), 0, -1):</span><br><span class="line">            k = 0</span><br><span class="line">            for i in range(n):</span><br><span class="line">                if arr[i] &gt; arr[k]:</span><br><span class="line">                    k = i</span><br><span class="line">            if k == n - 1:</span><br><span class="line">                continue</span><br><span class="line">            i, j = 0, k</span><br><span class="line">            while i &lt; j:</span><br><span class="line">                arr[i], arr[j] = arr[j], arr[i]</span><br><span class="line">                i, j = i + 1, j - 1</span><br><span class="line">            i, j = 0, n - 1</span><br><span class="line">            while i &lt; j:</span><br><span class="line">                arr[i], arr[j] = arr[j], arr[i]</span><br><span class="line">                i, j = i + 1, j - 1</span><br><span class="line">            ans.append(k + 1)</span><br><span class="line">            ans.append(n)</span><br><span class="line">        return ans</span><br><span class="line">~~~</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode中等</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode题解</title>
+    <url>/2021/08/17/Leetcode%E9%A2%98%E8%A7%A3/</url>
+    <content><![CDATA[<p>因为既想在Github上传题解思路和代码，又想在博客上传，但保证两边同步好麻烦，所以这里列一个列表，链接到Github上。</p>
+<h3 id="301-400"><a href="#301-400" class="headerlink" title="301-400"></a>301-400</h3><ul>
+<li><a href="https://github.com/shengrihui/Leetcode/blob/c396f399bcca39c40923411eabf0306c7d89739f/3/345.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D/345.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D.md">345. 反转字符串中的元音字母</a><h3 id="501-600"><a href="#501-600" class="headerlink" title="501~600"></a>501~600</h3></li>
+<li><a href="https://github.com/shengrihui/Leetcode/blob/5acbc6232b0a90c9cf3beaaa4972ba3e9174d7ab/5/526.%20%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97/526.%20%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97.md">526.优美的排列</a></li>
+<li>[541. 反转字符串 ](<a href="https://github.com/shengrihui/Leetcode/blob/c5b27e27baac035e0fddb3e64867fab88630da82/5/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II.md">https://github.com/shengrihui/Leetcode/blob/c5b27e27baac035e0fddb3e64867fab88630da82/5/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II.md</a></li>
+<li><a href="https://github.com/shengrihui/Leetcode/blob/96ca3695c85441f9cc189b123944249f5bb81bbc/5/551.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20I/551.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20I_%E9%A2%98%E8%A7%A3.md">551. 学生出勤记录 I_题解</a></li>
+<li><a href="https://github.com/shengrihui/Leetcode/blob/c396f399bcca39c40923411eabf0306c7d89739f/5/552.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20II/552.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20II.md">552. 学生出勤记录 II</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python的一些内建函数和基本句法</title>
     <url>/2022/02/17/Python%E7%9A%84%E4%B8%80%E4%BA%9B%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0%E5%92%8C%E5%9F%BA%E6%9C%AC%E5%8F%A5%E6%B3%95/</url>
     <content><![CDATA[<h3 id="any-和all"><a href="#any-和all" class="headerlink" title="any()和all()"></a><code>any()</code>和<code>all()</code></h3><h5 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h5><p><code>any()</code>函数用来判断给定的迭代参数<code>iterable</code>中是否含有<code>True</code>，如果有（只要有一个），则返回<code>True</code>.<br>函数等价于：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">any</span>(<span class="params">iterable</span>):</span><br><span class="line">    <span class="keyword">for</span> element <span class="keyword">in</span> iterable:</span><br><span class="line">        <span class="keyword">if</span> element:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure></p>
@@ -1144,25 +1282,6 @@ src = 0, dst = 2, k = 0
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Leetcode题解</title>
-    <url>/2021/08/17/Leetcode%E9%A2%98%E8%A7%A3/</url>
-    <content><![CDATA[<p>因为既想在Github上传题解思路和代码，又想在博客上传，但保证两边同步好麻烦，所以这里列一个列表，链接到Github上。</p>
-<h3 id="301-400"><a href="#301-400" class="headerlink" title="301-400"></a>301-400</h3><ul>
-<li><a href="https://github.com/shengrihui/Leetcode/blob/c396f399bcca39c40923411eabf0306c7d89739f/3/345.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D/345.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D.md">345. 反转字符串中的元音字母</a><h3 id="501-600"><a href="#501-600" class="headerlink" title="501~600"></a>501~600</h3></li>
-<li><a href="https://github.com/shengrihui/Leetcode/blob/5acbc6232b0a90c9cf3beaaa4972ba3e9174d7ab/5/526.%20%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97/526.%20%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97.md">526.优美的排列</a></li>
-<li>[541. 反转字符串 ](<a href="https://github.com/shengrihui/Leetcode/blob/c5b27e27baac035e0fddb3e64867fab88630da82/5/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II.md">https://github.com/shengrihui/Leetcode/blob/c5b27e27baac035e0fddb3e64867fab88630da82/5/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II.md</a></li>
-<li><a href="https://github.com/shengrihui/Leetcode/blob/96ca3695c85441f9cc189b123944249f5bb81bbc/5/551.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20I/551.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20I_%E9%A2%98%E8%A7%A3.md">551. 学生出勤记录 I_题解</a></li>
-<li><a href="https://github.com/shengrihui/Leetcode/blob/c396f399bcca39c40923411eabf0306c7d89739f/5/552.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20II/552.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20II.md">552. 学生出勤记录 II</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>Leetcode</tag>
-      </tags>
   </entry>
   <entry>
     <title>cuda</title>
@@ -1417,14 +1536,45 @@ end tell
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-969-煎饼排序</title>
-    <url>/2022/02/19/Leetcode-969-%E7%85%8E%E9%A5%BC%E6%8E%92%E5%BA%8F/</url>
-    <content><![CDATA[<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">### 题目</span><br><span class="line">969\. 煎饼排序</span><br><span class="line"></span><br><span class="line">难度：中等</span><br><span class="line">&lt;p&gt;给你一个整数数组 &lt;code&gt;arr&lt;/code&gt; ，请使用 &lt;strong&gt;煎饼翻转&lt;/strong&gt;&lt;em&gt; &lt;/em&gt;完成对数组的排序。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;一次煎饼翻转的执行过程如下：&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;ul&gt;</span><br><span class="line">   &lt;li&gt;选择一个整数 &lt;code&gt;k&lt;/code&gt; ，&lt;code&gt;1 &amp;lt;= k &amp;lt;= arr.length&lt;/code&gt;&lt;/li&gt;</span><br><span class="line">   &lt;li&gt;反转子数组 &lt;code&gt;arr[0...k-1]&lt;/code&gt;（&lt;strong&gt;下标从 0 开始&lt;/strong&gt;）&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;例如，&lt;code&gt;arr = [3,2,1,4]&lt;/code&gt; ，选择 &lt;code&gt;k = 3&lt;/code&gt; 进行一次煎饼翻转，反转子数组 &lt;code&gt;[3,2,1]&lt;/code&gt; ，得到 &lt;code&gt;arr = [&lt;strong&gt;1&lt;/strong&gt;,&lt;strong&gt;2&lt;/strong&gt;,&lt;strong&gt;3&lt;/strong&gt;,4]&lt;/code&gt; 。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;以数组形式返回能使 &lt;code&gt;arr&lt;/code&gt; 有序的煎饼翻转操作所对应的 &lt;code&gt;k&lt;/code&gt; 值序列。任何将数组排序且翻转次数在&amp;nbsp;&lt;code&gt;10 * arr.length&lt;/code&gt; 范围内的有效答案都将被判断为正确。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;&amp;nbsp;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;&lt;strong&gt;示例 1：&lt;/strong&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;pre&gt;&lt;strong&gt;输入：&lt;/strong&gt;[3,2,4,1]</span><br><span class="line">&lt;strong&gt;输出：&lt;/strong&gt;[4,2,4,3]</span><br><span class="line">&lt;strong&gt;解释：&lt;/strong&gt;</span><br><span class="line">我们执行 4 次煎饼翻转，k 值分别为 4，2，4，和 3。</span><br><span class="line">初始状态 arr = [3, 2, 4, 1]</span><br><span class="line">第一次翻转后（k = 4）：arr = [&lt;strong&gt;1&lt;/strong&gt;, &lt;strong&gt;4&lt;/strong&gt;, &lt;strong&gt;2&lt;/strong&gt;, &lt;strong&gt;3&lt;/strong&gt;]</span><br><span class="line">第二次翻转后（k = 2）：arr = [&lt;strong&gt;4&lt;/strong&gt;, &lt;strong&gt;1&lt;/strong&gt;, 2, 3]</span><br><span class="line">第三次翻转后（k = 4）：arr = [&lt;strong&gt;3&lt;/strong&gt;, &lt;strong&gt;2&lt;/strong&gt;, &lt;strong&gt;1&lt;/strong&gt;, &lt;strong&gt;4&lt;/strong&gt;]</span><br><span class="line">第四次翻转后（k = 3）：arr = [&lt;strong&gt;1&lt;/strong&gt;, &lt;strong&gt;2&lt;/strong&gt;, &lt;strong&gt;3&lt;/strong&gt;, 4]，此时已完成排序。 </span><br><span class="line">&lt;/pre&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;&lt;strong&gt;示例 2：&lt;/strong&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;pre&gt;&lt;strong&gt;输入：&lt;/strong&gt;[1,2,3]</span><br><span class="line">&lt;strong&gt;输出：&lt;/strong&gt;[]</span><br><span class="line">&lt;strong&gt;解释：</span><br><span class="line">&lt;/strong&gt;输入已经排序，因此不需要翻转任何内容。</span><br><span class="line">请注意，其他可能的答案，如 [3，3] ，也将被判断为正确。</span><br><span class="line">&lt;/pre&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;&amp;nbsp;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;&lt;strong&gt;提示：&lt;/strong&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;ul&gt;</span><br><span class="line">   &lt;li&gt;&lt;code&gt;1 &amp;lt;= arr.length &amp;lt;= 100&lt;/code&gt;&lt;/li&gt;</span><br><span class="line">   &lt;li&gt;&lt;code&gt;1 &amp;lt;= arr[i] &amp;lt;= arr.length&lt;/code&gt;&lt;/li&gt;</span><br><span class="line">   &lt;li&gt;&lt;code&gt;arr&lt;/code&gt; 中的所有整数互不相同（即，&lt;code&gt;arr&lt;/code&gt; 是从 &lt;code&gt;1&lt;/code&gt; 到 &lt;code&gt;arr.length&lt;/code&gt; 整数的一个排列）&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 方法一</span><br><span class="line">一开始觉得有点懵，但稍微想了一下，其实简单，每一次都将未排序的部分中找到最大的那个，然后将它到第一个 的这部分翻转，</span><br><span class="line">再将未排序的部分整体翻转，也就是每一次将未排序的最大的那个弄到已排序的开头。</span><br><span class="line">这样的操作一共就是`2*len(arr)`，符合条件。</span><br><span class="line"></span><br><span class="line">~~~ Python</span><br><span class="line">class Solution:</span><br><span class="line">    def pancakeSort(self, arr):</span><br><span class="line">        ans = []</span><br><span class="line">        n = len(arr)</span><br><span class="line">        m = 0</span><br><span class="line">        while m &lt; n:</span><br><span class="line">            max_i = 0</span><br><span class="line">            for i in range(n - m):</span><br><span class="line">                if arr[i] &gt; arr[max_i]:</span><br><span class="line">                    max_i = i</span><br><span class="line">            arr = arr[max_i::-1] + arr[max_i + 1:]</span><br><span class="line">            arr = arr[n - m - 1::-1] + arr[n - m::]</span><br><span class="line">            m += 1</span><br><span class="line">            ans.append(max_i + 1)</span><br><span class="line">            ans.append(n - m + 1)</span><br><span class="line">        return ans</span><br><span class="line">~~~</span><br><span class="line"></span><br><span class="line">官解想法和我的是一样的。</span><br><span class="line">只是实现上不一样。</span><br><span class="line">我用的列表切片可真搞我。还有下标和range范围。</span><br><span class="line">~~~ Python</span><br><span class="line">class Solution:</span><br><span class="line">    def pancakeSort(self, arr: List[int]) -&gt; List[int]:</span><br><span class="line">        ans = []</span><br><span class="line">        for n in range(len(arr), 1, -1):</span><br><span class="line">            index = 0</span><br><span class="line">            for i in range(n):</span><br><span class="line">                if arr[i] &gt; arr[index]:</span><br><span class="line">                    index = i</span><br><span class="line">            if index == n - 1:</span><br><span class="line">                continue</span><br><span class="line">            m = index</span><br><span class="line">            for i in range((m + 1) // 2):</span><br><span class="line">                arr[i], arr[m - i] = arr[m - i], arr[i]  # 原地反转</span><br><span class="line">            for i in range(n // 2):</span><br><span class="line">                arr[i], arr[n - 1 - i] = arr[n - 1 - i], arr[i]  # 原地反转</span><br><span class="line">            ans.append(index + 1)</span><br><span class="line">            ans.append(n)</span><br><span class="line">        return ans</span><br><span class="line"></span><br><span class="line">作者：LeetCode-Solution</span><br><span class="line">链接：https://leetcode-cn.com/problems/pancake-sorting/solution/jian-bing-pai-xu-by-leetcode-solution-rzzu/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br><span class="line">~~~</span><br><span class="line"></span><br><span class="line">Python可以用切片，一般的可以用双指针来实现。</span><br><span class="line">~~~ Python</span><br><span class="line">class Solution:</span><br><span class="line">    def pancakeSort(self, arr: List[int]) -&gt; List[int]:</span><br><span class="line">        ans = []</span><br><span class="line">        for n in range(len(arr), 0, -1):</span><br><span class="line">            k = 0</span><br><span class="line">            for i in range(n):</span><br><span class="line">                if arr[i] &gt; arr[k]:</span><br><span class="line">                    k = i</span><br><span class="line">            if k == n - 1:</span><br><span class="line">                continue</span><br><span class="line">            i, j = 0, k</span><br><span class="line">            while i &lt; j:</span><br><span class="line">                arr[i], arr[j] = arr[j], arr[i]</span><br><span class="line">                i, j = i + 1, j - 1</span><br><span class="line">            i, j = 0, n - 1</span><br><span class="line">            while i &lt; j:</span><br><span class="line">                arr[i], arr[j] = arr[j], arr[i]</span><br><span class="line">                i, j = i + 1, j - 1</span><br><span class="line">            ans.append(k + 1)</span><br><span class="line">            ans.append(n)</span><br><span class="line">        return ans</span><br><span class="line">~~~</span><br></pre></td></tr></table></figure>]]></content>
+    <title>欧拉公式</title>
+    <url>/2022/02/20/%E6%AC%A7%E6%8B%89%E5%85%AC%E5%BC%8F/</url>
+    <content><![CDATA[<h3 id="欧拉公式"><a href="#欧拉公式" class="headerlink" title="欧拉公式"></a>欧拉公式</h3><p>$ e^{i\theta} = \cos\theta + i\sin\theta$ ，当 $\theta=\pi$ 时，$e^{i\pi} + 1 =0$.</p>
+<h3 id="证明一：求导"><a href="#证明一：求导" class="headerlink" title="证明一：求导"></a>证明一：求导</h3><p>设 $f(\theta)=\frac{e^i\theta}{i\sin\theta+\cos\theta}$,对 $ f(\theta)$ 求一阶导，</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f'(\theta)&=\frac{ie^{i\theta}(i\sin\theta+\cos\theta)-e^{i\theta}(i\cos\theta-\sin\theta)}{(i\sin\theta+\cos\theta)^{2}} \\
+&=\frac{-e^{i\theta}\sin\theta+ie^{i\theta}\cos\theta-ie^{i\theta}\cos\theta+e^{i\theta}\sin\theta}{(i\sin\theta+\cos\theta)^{2}} \\
+&=0\\
+\end{aligned}</script><p>因为 $f’(\theta)=0$ ，所以 $f(\theta)$ 是一个常数。取$\theta=0$:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f(0)&=\frac{e^{i·0}}{i\sin0+\cos0}\\
+&=\frac{1}{0+1}\\
+&=1\\
+\end{aligned}</script><p>所以，$e^{i\theta} = \cos\theta + i\sin\theta$。<br>同时，也容易得到 $e^{i\theta} $ 和 $  \cos\theta + i\sin\theta$ 都不等于0。<br>将 $f(\theta)设为f(\theta)=\frac{i\sin\theta+\cos\theta}{e^i\theta}$是一样的。</p>
+<h3 id="证明二：泰勒展开"><a href="#证明二：泰勒展开" class="headerlink" title="证明二：泰勒展开"></a>证明二：泰勒展开</h3><h5 id="泰勒公式的简单推导"><a href="#泰勒公式的简单推导" class="headerlink" title="泰勒公式的简单推导"></a>泰勒公式的简单推导</h5><h5 id="推导欧拉公式"><a href="#推导欧拉公式" class="headerlink" title="推导欧拉公式"></a>推导欧拉公式</h5><p>根据泰勒展开，我们可以有：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\sin x&=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\frac{x^9}{9!}-...\\
+\cos x&=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+\frac{x^8}{8!}-...\\
+e^x&=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\frac{x^4}{4!}+...
+\end{aligned}</script><p>计算$\sin x+\cos x$，得到：</p>
+<script type="math/tex; mode=display">
+\sin x+\cos x=1+x-\frac{x^2}{2!}-\frac{x^3}{3!}+\frac{x^4}{4!}+\frac{x^5}{5!}-\frac{x^6}{6!}-\frac{x^7}{7!}+\frac{x^8}{8!}+...</script><p>这与$e^x$的区别在于符号上，随着$x$的次数增加，符号的变化规律时$+,-,-,+$，这正好符合虚数单位$i$的符号变化规律。因此，考虑计算$e^{ix}$:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+e^{ix}&=1+ix+\frac{(ix)^2}{2!}+\frac{(ix)^3}{3!}+\frac{(ix)^4}{4!}+...\\
+&=1+ix-\frac{x^2}{2!}-\frac{ix^3}{3!}+\frac{x^4}{4!}+\frac{ix^5}{5!}-\frac{x^6}{6!}-\frac{ix^7}{7!}+\frac{x^8}{8!}...\\
+&=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+\frac{x^8}{8!}-...\\
+& +i(x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\frac{x^9}{9!}-...)\\
+&=\cos x+i\sin x
+\end{aligned}</script><h3 id="应用：解方程-sin-x-2"><a href="#应用：解方程-sin-x-2" class="headerlink" title="应用：解方程 $ \sin x=2 $"></a>应用：解方程 $ \sin x=2 $</h3><p>其实就是想联系一下简单的Latex的公式编辑，这个直接放B站链接：<a href="https://www.bilibili.com/video/av32271249/">解方程 $ \sin x=2 $</a></p>
+]]></content>
       <categories>
-        <category>Leetcode</category>
+        <category>数学</category>
       </categories>
       <tags>
-        <tag>Leetcode中等</tag>
+        <tag>数学</tag>
       </tags>
   </entry>
 </search>

@@ -1,71 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Leetcode_1221. 分割平衡字符串</title>
-    <url>/2021/09/07/Leetcode-1221-%E5%88%86%E5%89%B2%E5%B9%B3%E8%A1%A1%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1221. 分割平衡字符串<br>难度：简单</p>
-<p>在一个 <strong>平衡字符串</strong> 中，<code>'L'</code> 和 <code>'R'</code> 字符的数量是相同的。</p>
-
-<p>给你一个平衡字符串&nbsp;<code>s</code>，请你将它分割成尽可能多的平衡字符串。</p>
-
-<p><strong>注意：</strong>分割得到的每个字符串都必须是平衡字符串。</p>
-
-<p>返回可以通过分割得到的平衡字符串的 <strong>最大数量</strong> <strong>。</strong></p>
-
-<p>&nbsp;</p>
-
-<p><strong>示例 1：</strong></p>
-
-<pre><strong>输入：</strong>s = "RLRRLLRLRL"
-<strong>输出：</strong>4
-<strong>解释：</strong>s 可以分割为 "RL"、"RRLL"、"RL"、"RL" ，每个子字符串中都包含相同数量的 'L' 和 'R' 。
-</pre>
-
-<p><strong>示例 2：</strong></p>
-
-<pre><strong>输入：</strong>s = "RLLLLRRRLR"
-<strong>输出：</strong>3
-<strong>解释：</strong>s 可以分割为 "RL"、"LLLRRR"、"LR" ，每个子字符串中都包含相同数量的 'L' 和 'R' 。
-</pre>
-
-<p><strong>示例 3：</strong></p>
-
-<pre><strong>输入：</strong>s = "LLLLRRRR"
-<strong>输出：</strong>1
-<strong>解释：</strong>s 只能保持原样 "LLLLRRRR".
-</pre>
-
-<p><strong>示例 4：</strong></p>
-
-<pre><strong>输入：</strong>s = "RLRRRLLRLL"
-<strong>输出：</strong>2
-<strong>解释：</strong>s 可以分割为 "RL"、"RRRLLRLL" ，每个子字符串中都包含相同数量的 'L' 和 'R' 。
-</pre>
-
-<p>&nbsp;</p>
-
-<p><strong>提示：</strong></p>
-
-<ul>
-    <li><code>1 &lt;= s.length &lt;= 1000</code></li>
-    <li><code>s[i] = 'L' 或 'R'</code></li>
-    <li><code>s</code> 是一个 <strong>平衡</strong> 字符串</li>
-</ul>
-
-
-<h3 id="方法一：-贪心"><a href="#方法一：-贪心" class="headerlink" title="方法一： 贪心"></a>方法一： 贪心</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">balancedStringSplit</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        l, r, ans = <span class="number">0</span> ,<span class="number">0</span>,<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> i == <span class="string">&#x27;L&#x27;</span>:</span><br><span class="line">                l += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> i == <span class="string">&#x27;R&#x27;</span>:</span><br><span class="line">                r += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> l == r:</span><br><span class="line">                ans += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">balancedStringSplit</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        ans, d = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> ch <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> ch == <span class="string">&#x27;L&#x27;</span>:</span><br><span class="line">                d += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                d -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> d == <span class="number">0</span>:</span><br><span class="line">                ans += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line">作者：LeetCode-Solution</span><br><span class="line">链接：https://leetcode-cn.com/problems/split-a-string-<span class="keyword">in</span>-balanced-strings/solution/fen-ge-ping-heng-zi-fu-chuan-by-leetcode-7y8u/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/hoq3tI"><img src="https://z3.ax1x.com/2021/09/07/hoq3tI.jpg" alt="平衡字符串提交记录.jpg"></a></p>
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>Leetcode简单</tag>
-        <tag>贪心</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode_1583. 统计不开心的朋友</title>
     <url>/2021/08/20/Leetcode-1583-%E7%BB%9F%E8%AE%A1%E4%B8%8D%E5%BC%80%E5%BF%83%E7%9A%84%E6%9C%8B%E5%8F%8B/</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1583. 统计不开心的朋友<br>难度：中等</p>
@@ -157,6 +92,179 @@
       <tags>
         <tag>模拟</tag>
         <tag>Leetcode中等</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode_1221. 分割平衡字符串</title>
+    <url>/2021/09/07/Leetcode-1221-%E5%88%86%E5%89%B2%E5%B9%B3%E8%A1%A1%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1221. 分割平衡字符串<br>难度：简单</p>
+<p>在一个 <strong>平衡字符串</strong> 中，<code>'L'</code> 和 <code>'R'</code> 字符的数量是相同的。</p>
+
+<p>给你一个平衡字符串&nbsp;<code>s</code>，请你将它分割成尽可能多的平衡字符串。</p>
+
+<p><strong>注意：</strong>分割得到的每个字符串都必须是平衡字符串。</p>
+
+<p>返回可以通过分割得到的平衡字符串的 <strong>最大数量</strong> <strong>。</strong></p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入：</strong>s = "RLRRLLRLRL"
+<strong>输出：</strong>4
+<strong>解释：</strong>s 可以分割为 "RL"、"RRLL"、"RL"、"RL" ，每个子字符串中都包含相同数量的 'L' 和 'R' 。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>s = "RLLLLRRRLR"
+<strong>输出：</strong>3
+<strong>解释：</strong>s 可以分割为 "RL"、"LLLRRR"、"LR" ，每个子字符串中都包含相同数量的 'L' 和 'R' 。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>s = "LLLLRRRR"
+<strong>输出：</strong>1
+<strong>解释：</strong>s 只能保持原样 "LLLLRRRR".
+</pre>
+
+<p><strong>示例 4：</strong></p>
+
+<pre><strong>输入：</strong>s = "RLRRRLLRLL"
+<strong>输出：</strong>2
+<strong>解释：</strong>s 可以分割为 "RL"、"RRRLLRLL" ，每个子字符串中都包含相同数量的 'L' 和 'R' 。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= s.length &lt;= 1000</code></li>
+    <li><code>s[i] = 'L' 或 'R'</code></li>
+    <li><code>s</code> 是一个 <strong>平衡</strong> 字符串</li>
+</ul>
+
+
+<h3 id="方法一：-贪心"><a href="#方法一：-贪心" class="headerlink" title="方法一： 贪心"></a>方法一： 贪心</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">balancedStringSplit</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        l, r, ans = <span class="number">0</span> ,<span class="number">0</span>,<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> i == <span class="string">&#x27;L&#x27;</span>:</span><br><span class="line">                l += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> i == <span class="string">&#x27;R&#x27;</span>:</span><br><span class="line">                r += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> l == r:</span><br><span class="line">                ans += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">balancedStringSplit</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        ans, d = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> ch <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> ch == <span class="string">&#x27;L&#x27;</span>:</span><br><span class="line">                d += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                d -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> d == <span class="number">0</span>:</span><br><span class="line">                ans += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line">作者：LeetCode-Solution</span><br><span class="line">链接：https://leetcode-cn.com/problems/split-a-string-<span class="keyword">in</span>-balanced-strings/solution/fen-ge-ping-heng-zi-fu-chuan-by-leetcode-7y8u/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/hoq3tI"><img src="https://z3.ax1x.com/2021/09/07/hoq3tI.jpg" alt="平衡字符串提交记录.jpg"></a></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode简单</tag>
+        <tag>贪心</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-1719-重构一棵树的方案数</title>
+    <url>/2022/02/20/Leetcode-1719-%E9%87%8D%E6%9E%84%E4%B8%80%E6%A3%B5%E6%A0%91%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1719. 重构一棵树的方案数<br>难度：困难</p>
+<p>给你一个数组&nbsp;<code>pairs</code> ，其中&nbsp;<code>pairs[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&nbsp;，并且满足：</p>
+
+<ul>
+    <li><code>pairs</code>&nbsp;中没有重复元素</li>
+    <li><code>x<sub>i</sub> &lt; y<sub>i</sub></code></li>
+</ul>
+
+
+<p>令&nbsp;<code>ways</code>&nbsp;为满足下面条件的有根树的方案数：</p>
+
+<ul>
+    <li>树所包含的所有节点值都在 <code>pairs</code>&nbsp;中。</li>
+    <li>一个数对&nbsp;<code>[x<sub>i</sub>, y<sub>i</sub>]</code> 出现在&nbsp;<code>pairs</code>&nbsp;中&nbsp;<strong>当且仅当</strong><strong>&nbsp;</strong><code>x<sub>i</sub></code>&nbsp;是&nbsp;<code>y<sub>i</sub></code>&nbsp;的祖先或者&nbsp;<code>y<sub>i</sub></code>&nbsp;是&nbsp;<code>x<sub>i</sub></code><sub>&nbsp;</sub>的祖先。</li>
+    <li><strong>注意：</strong>构造出来的树不一定是二叉树。</li>
+</ul>
+
+
+<p>两棵树被视为不同的方案当存在至少一个节点在两棵树中有不同的父节点。</p>
+
+<p>请你返回：</p>
+
+<ul>
+    <li>如果&nbsp;<code>ways == 0</code>&nbsp;，返回&nbsp;<code>0</code>&nbsp;。</li>
+    <li>如果&nbsp;<code>ways == 1</code>&nbsp;，返回 <code>1</code>&nbsp;。</li>
+    <li>如果&nbsp;<code>ways &gt; 1</code>&nbsp;，返回&nbsp;<code>2</code>&nbsp;。</li>
+</ul>
+
+
+<p>一棵 <strong>有根树</strong>&nbsp;指的是只有一个根节点的树，所有边都是从根往外的方向。</p>
+
+<p>我们称从根到一个节点路径上的任意一个节点（除去节点本身）都是该节点的 <strong>祖先</strong>&nbsp;。根节点没有祖先。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<p><img style="width: 208px; height: 221px;" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/09/trees2.png"></p>
+<pre><b>输入：</b>pairs = [[1,2],[2,3]]
+<b>输出：</b>1
+<b>解释：</b>如上图所示，有且只有一个符合规定的有根树。
+</pre>
+
+
+<p><strong>示例 2：</strong></p>
+
+<p><img style="width: 234px; height: 241px;" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/09/tree.png" alt></p>
+<pre><b>输入：</b>pairs = [[1,2],[2,3],[1,3]]
+<b>输出：</b>2
+<b>解释：</b>有多个符合规定的有根树，其中三个如上图所示。
+</pre>
+
+
+<p><strong>示例 3：</strong></p>
+
+<pre><b>输入：</b>pairs = [[1,2],[2,3],[2,4],[1,5]]
+<b>输出：</b>0
+<b>解释：</b>没有符合规定的有根树。</pre>
+
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= pairs.length &lt;= 10<sup>5</sup></code></li>
+    <li><code>1 &lt;= x<sub>i </sub>&lt; y<sub>i</sub> &lt;= 500</code></li>
+    <li><code>pairs</code>&nbsp;中的元素互不相同。</li>
+</ul>
+
+
+
+<h3 id="思考过程"><a href="#思考过程" class="headerlink" title="思考过程"></a>思考过程</h3><p>一开始一直看不懂题目，不明白示例三为什么不行，认为示例三很容易就能画出一棵树来。反复读题之后才意识到题目中“树所包含的所有节点值都在 <code>pairs</code>&nbsp;中。”的意思，就是说构造出来的树的所有信息都要再<code>pairs</code>中体现，也明白了为什么要那样输出，只要找到符合条件的2个就能输出了。<br>于是看示例三就能想到：如果一个节点在一个数对中做了孩子节点，那它在其他数对中只能作为双亲节点，比如示例三中的<code>2</code>节点。<br>不对不对，;<code>pairs[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&amp;nbsp中，<code>x<sub>i</sub></code>和<code>y<sub>i</sub></code>之间的关系是祖先和后代的关系，而不是双亲孩子的关系，所以这不能用来解题。<br>那也就是说所有祖先后代的关系在<code>pairs</code>当中都有体现，那如果存在根节点的话，每一组数对当中都会有这个根节点咯？——找到根节点了！<br>呀，不是在每个数对中都出现，就是：    </p>
+<pre><code>d = defaultdict(set)
+for x,y in pairs:
+    d[x].add(y)
+    d[y].add(x)
+</code></pre><p>这样<code>d[根节点]</code>就包含了除自己以外所有的节点，而<code>d[x]</code>就是包含<code>x</code>的所有祖先和后代了。<br>然 后呢？官解是直接模拟，模拟啥呀？<br><code>x<sub>i</sub> &lt; y<sub>i</sub></code>这个条件有什么用吗？应该没有吧，只是一种表示而已吧。<br>能不能再统计一下<code>d[x]</code>的个数，然后用集合的相关运算划分出不同的子树，然后……<br>哎，大约只能想到这了，看官解吧。<br>哎，官解前面设的东西和我的想法好像哦。<br>看了一圈题解，字面上的也基本上都懂了，但离理解还是差点。<br>自己写了一个。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def checkWays(self, pairs) -&gt; int:</span><br><span class="line">        adj = defaultdict(set)</span><br><span class="line"></span><br><span class="line">        for x, y in pairs:</span><br><span class="line">            adj[x].add(y)</span><br><span class="line">            adj[y].add(x)</span><br><span class="line">        for x in adj:</span><br><span class="line">            adj[x].add(x)</span><br><span class="line">        for i in adj:</span><br><span class="line">            print(i,adj[i])</span><br><span class="line">        adj = sorted(adj.values(), key=lambda item: len(item))</span><br><span class="line">        n = len(adj)</span><br><span class="line">        if len(adj[-1]) &lt; n:</span><br><span class="line">            return 0</span><br><span class="line">        ans = 1</span><br><span class="line">        print(adj)</span><br><span class="line">        for i in range(n - 1):</span><br><span class="line">            for j in range(i + 1, n):</span><br><span class="line">                if adj[i].issubset(adj[j]):</span><br><span class="line">                    if ans != 2 and adj[i] == adj[j]:</span><br><span class="line">                        ans = 2</span><br><span class="line">                    break</span><br><span class="line">            else:</span><br><span class="line">                return 0</span><br><span class="line">        return ans</span><br></pre></td></tr></table></figure>
+<p>将某个节点的所有祖先和所有后代还有它自己装进一个集合里，然后以集合大小为排序依据进行排序。从小的开始，找到包含这个小集合的最小的大集合，那个就是小集合对应的节点的父节点了。然后判断如果这两集合一样大，那就说明可以交换。<br>这样是错误的，问题在于，所有集合都是根节点的那个集合的子集，那所有节点都能认根节点作为它的直接父节点。完了。<br>看官解代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> maxsize</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">checkWays</span>(<span class="params">self, pairs</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        adj = defaultdict(<span class="built_in">set</span>)</span><br><span class="line">        <span class="keyword">for</span> x, y <span class="keyword">in</span> pairs:</span><br><span class="line">            adj[x].add(y)</span><br><span class="line">            adj[y].add(x)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 检测是否存在根节点</span></span><br><span class="line">        root = <span class="built_in">next</span>((node <span class="keyword">for</span> node, neighbours <span class="keyword">in</span> adj.items() <span class="keyword">if</span> <span class="built_in">len</span>(neighbours) == <span class="built_in">len</span>(adj) - <span class="number">1</span>), -<span class="number">1</span>)</span><br><span class="line">        <span class="comment"># # 没有根节点</span></span><br><span class="line">        <span class="keyword">if</span> root == -<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        ans = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> node, neighbours <span class="keyword">in</span> adj.items():</span><br><span class="line">            <span class="keyword">if</span> node == root:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># # 遍历过程当中当前节点的Degree</span></span><br><span class="line">            currDegree = <span class="built_in">len</span>(neighbours)</span><br><span class="line">            parent = -<span class="number">1</span></span><br><span class="line">            parentDegree = maxsize</span><br><span class="line">            <span class="comment"># 根据 degree 的大小找到 node 的父节点 parent</span></span><br><span class="line">            <span class="comment"># # 遍历 adj[node] ,就是和 node 有关系的所有节点</span></span><br><span class="line">            <span class="keyword">for</span> neighbour <span class="keyword">in</span> neighbours:</span><br><span class="line">                <span class="comment"># # 找到 node 的可能父节点—— parentDegree &gt;= currDegree</span></span><br><span class="line">                <span class="keyword">if</span> currDegree &lt;= <span class="built_in">len</span>(adj[neighbour]) &lt; parentDegree:</span><br><span class="line">                    parent = neighbour</span><br><span class="line">                    parentDegree = <span class="built_in">len</span>(adj[neighbour])</span><br><span class="line">            <span class="comment"># 检测 neighbours 是否为 adj[parent] 的子集</span></span><br><span class="line">            <span class="comment"># # if parent == -1 or not neighbours.issubset(adj[parent]):</span></span><br><span class="line">            <span class="comment"># # ??</span></span><br><span class="line">            <span class="keyword">if</span> parent == -<span class="number">1</span> <span class="keyword">or</span> <span class="built_in">any</span>(neighbour != parent <span class="keyword">and</span> neighbour <span class="keyword">not</span> <span class="keyword">in</span> adj[parent] <span class="keyword">for</span> neighbour <span class="keyword">in</span> neighbours):</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> parentDegree == currDegree:</span><br><span class="line">                ans = <span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<p>其中<code># #</code>是我的注释。<br>现在问题就是，</p>
+<pre><code># 检测 neighbours 是否为 adj[parent] 的子集
+# # if parent == -1 or not neighbours.issubset(adj[parent]):
+if parent == -1 or any(neighbour != parent and neighbour not in adj[parent] for neighbour in neighbours):
+return 0
+</code></pre><p>我用集合本身的判断是否为另一个集合的子集的函数，结果是错误的。<br>现在就是要重点理解<code>any(neighbour != parent and neighbour not in adj[parent] for neighbour in neighbours)</code>了。还有，<code>parent</code>什么时候会是<code>-1</code>呀？<br>不，在这里<code>parent</code>都不可能是<code>-1</code>，经代码提交确认也是这样。<br>    any(neighbour != parent and neighbour not in adj[parent] for neighbour in neighbours)</p>
+<ul>
+<li><code>any()</code>只要有一个是True，结果就是True。</li>
+<li>遍历当前<code>node</code>的<code>neighbours</code>，若出现一个节点不属于<code>parent</code>那个集合时，就可以证明这个<code>parent</code>不是这个<code>node</code>的父节点：<ul>
+<li>当遍历的<code>neighbour</code>不是<code>parent</code>(<code>neighbour != parent</code>为<code>True</code>)时,<code>neighbour</code>又不在<code>parent</code>的集合里，整体值为<code>True</code>，即<code>parent</code>不是当前<code>node</code>的父节点，<code>return 0</code>；</li>
+<li>当遍历的<code>neighbour</code>恰好时<code>parent</code>(<code>neighbour != parent</code>为<code>False</code>)时，<code>neighbour</code>也一定不在’parent<code>的集合里，因此整体值为</code>False`;</li>
+</ul>
+</li>
+</ul>
+<p>好家伙，总算是理清了。</p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
+        <tag>Leetcode困难</tag>
       </tags>
   </entry>
   <entry>
@@ -272,116 +380,8 @@
         <category>Leetcode</category>
       </categories>
       <tags>
+        <tag>模拟</tag>
         <tag>Leetcode简单</tag>
-        <tag>模拟</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-1719-重构一棵树的方案数</title>
-    <url>/2022/02/20/Leetcode-1719-%E9%87%8D%E6%9E%84%E4%B8%80%E6%A3%B5%E6%A0%91%E7%9A%84%E6%96%B9%E6%A1%88%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1719. 重构一棵树的方案数<br>难度：困难</p>
-<p>给你一个数组&nbsp;<code>pairs</code> ，其中&nbsp;<code>pairs[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&nbsp;，并且满足：</p>
-
-<ul>
-    <li><code>pairs</code>&nbsp;中没有重复元素</li>
-    <li><code>x<sub>i</sub> &lt; y<sub>i</sub></code></li>
-</ul>
-
-
-<p>令&nbsp;<code>ways</code>&nbsp;为满足下面条件的有根树的方案数：</p>
-
-<ul>
-    <li>树所包含的所有节点值都在 <code>pairs</code>&nbsp;中。</li>
-    <li>一个数对&nbsp;<code>[x<sub>i</sub>, y<sub>i</sub>]</code> 出现在&nbsp;<code>pairs</code>&nbsp;中&nbsp;<strong>当且仅当</strong><strong>&nbsp;</strong><code>x<sub>i</sub></code>&nbsp;是&nbsp;<code>y<sub>i</sub></code>&nbsp;的祖先或者&nbsp;<code>y<sub>i</sub></code>&nbsp;是&nbsp;<code>x<sub>i</sub></code><sub>&nbsp;</sub>的祖先。</li>
-    <li><strong>注意：</strong>构造出来的树不一定是二叉树。</li>
-</ul>
-
-
-<p>两棵树被视为不同的方案当存在至少一个节点在两棵树中有不同的父节点。</p>
-
-<p>请你返回：</p>
-
-<ul>
-    <li>如果&nbsp;<code>ways == 0</code>&nbsp;，返回&nbsp;<code>0</code>&nbsp;。</li>
-    <li>如果&nbsp;<code>ways == 1</code>&nbsp;，返回 <code>1</code>&nbsp;。</li>
-    <li>如果&nbsp;<code>ways &gt; 1</code>&nbsp;，返回&nbsp;<code>2</code>&nbsp;。</li>
-</ul>
-
-
-<p>一棵 <strong>有根树</strong>&nbsp;指的是只有一个根节点的树，所有边都是从根往外的方向。</p>
-
-<p>我们称从根到一个节点路径上的任意一个节点（除去节点本身）都是该节点的 <strong>祖先</strong>&nbsp;。根节点没有祖先。</p>
-
-<p>&nbsp;</p>
-
-<p><strong>示例 1：</strong></p>
-
-<p><img style="width: 208px; height: 221px;" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/09/trees2.png"></p>
-<pre><b>输入：</b>pairs = [[1,2],[2,3]]
-<b>输出：</b>1
-<b>解释：</b>如上图所示，有且只有一个符合规定的有根树。
-</pre>
-
-
-<p><strong>示例 2：</strong></p>
-
-<p><img style="width: 234px; height: 241px;" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/09/tree.png" alt></p>
-<pre><b>输入：</b>pairs = [[1,2],[2,3],[1,3]]
-<b>输出：</b>2
-<b>解释：</b>有多个符合规定的有根树，其中三个如上图所示。
-</pre>
-
-
-<p><strong>示例 3：</strong></p>
-
-<pre><b>输入：</b>pairs = [[1,2],[2,3],[2,4],[1,5]]
-<b>输出：</b>0
-<b>解释：</b>没有符合规定的有根树。</pre>
-
-
-<p>&nbsp;</p>
-
-<p><strong>提示：</strong></p>
-
-<ul>
-    <li><code>1 &lt;= pairs.length &lt;= 10<sup>5</sup></code></li>
-    <li><code>1 &lt;= x<sub>i </sub>&lt; y<sub>i</sub> &lt;= 500</code></li>
-    <li><code>pairs</code>&nbsp;中的元素互不相同。</li>
-</ul>
-
-
-
-<h3 id="思考过程"><a href="#思考过程" class="headerlink" title="思考过程"></a>思考过程</h3><p>一开始一直看不懂题目，不明白示例三为什么不行，认为示例三很容易就能画出一棵树来。反复读题之后才意识到题目中“树所包含的所有节点值都在 <code>pairs</code>&nbsp;中。”的意思，就是说构造出来的树的所有信息都要再<code>pairs</code>中体现，也明白了为什么要那样输出，只要找到符合条件的2个就能输出了。<br>于是看示例三就能想到：如果一个节点在一个数对中做了孩子节点，那它在其他数对中只能作为双亲节点，比如示例三中的<code>2</code>节点。<br>不对不对，;<code>pairs[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&amp;nbsp中，<code>x<sub>i</sub></code>和<code>y<sub>i</sub></code>之间的关系是祖先和后代的关系，而不是双亲孩子的关系，所以这不能用来解题。<br>那也就是说所有祖先后代的关系在<code>pairs</code>当中都有体现，那如果存在根节点的话，每一组数对当中都会有这个根节点咯？——找到根节点了！<br>呀，不是在每个数对中都出现，就是：    </p>
-<pre><code>d = defaultdict(set)
-for x,y in pairs:
-    d[x].add(y)
-    d[y].add(x)
-</code></pre><p>这样<code>d[根节点]</code>就包含了除自己以外所有的节点，而<code>d[x]</code>就是包含<code>x</code>的所有祖先和后代了。<br>然 后呢？官解是直接模拟，模拟啥呀？<br><code>x<sub>i</sub> &lt; y<sub>i</sub></code>这个条件有什么用吗？应该没有吧，只是一种表示而已吧。<br>能不能再统计一下<code>d[x]</code>的个数，然后用集合的相关运算划分出不同的子树，然后……<br>哎，大约只能想到这了，看官解吧。<br>哎，官解前面设的东西和我的想法好像哦。<br>看了一圈题解，字面上的也基本上都懂了，但离理解还是差点。<br>自己写了一个。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def checkWays(self, pairs) -&gt; int:</span><br><span class="line">        adj = defaultdict(set)</span><br><span class="line"></span><br><span class="line">        for x, y in pairs:</span><br><span class="line">            adj[x].add(y)</span><br><span class="line">            adj[y].add(x)</span><br><span class="line">        for x in adj:</span><br><span class="line">            adj[x].add(x)</span><br><span class="line">        for i in adj:</span><br><span class="line">            print(i,adj[i])</span><br><span class="line">        adj = sorted(adj.values(), key=lambda item: len(item))</span><br><span class="line">        n = len(adj)</span><br><span class="line">        if len(adj[-1]) &lt; n:</span><br><span class="line">            return 0</span><br><span class="line">        ans = 1</span><br><span class="line">        print(adj)</span><br><span class="line">        for i in range(n - 1):</span><br><span class="line">            for j in range(i + 1, n):</span><br><span class="line">                if adj[i].issubset(adj[j]):</span><br><span class="line">                    if ans != 2 and adj[i] == adj[j]:</span><br><span class="line">                        ans = 2</span><br><span class="line">                    break</span><br><span class="line">            else:</span><br><span class="line">                return 0</span><br><span class="line">        return ans</span><br></pre></td></tr></table></figure>
-<p>将某个节点的所有祖先和所有后代还有它自己装进一个集合里，然后以集合大小为排序依据进行排序。从小的开始，找到包含这个小集合的最小的大集合，那个就是小集合对应的节点的父节点了。然后判断如果这两集合一样大，那就说明可以交换。<br>这样是错误的，问题在于，所有集合都是根节点的那个集合的子集，那所有节点都能认根节点作为它的直接父节点。完了。<br>看官解代码：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> maxsize</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">checkWays</span>(<span class="params">self, pairs</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        adj = defaultdict(<span class="built_in">set</span>)</span><br><span class="line">        <span class="keyword">for</span> x, y <span class="keyword">in</span> pairs:</span><br><span class="line">            adj[x].add(y)</span><br><span class="line">            adj[y].add(x)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 检测是否存在根节点</span></span><br><span class="line">        root = <span class="built_in">next</span>((node <span class="keyword">for</span> node, neighbours <span class="keyword">in</span> adj.items() <span class="keyword">if</span> <span class="built_in">len</span>(neighbours) == <span class="built_in">len</span>(adj) - <span class="number">1</span>), -<span class="number">1</span>)</span><br><span class="line">        <span class="comment"># # 没有根节点</span></span><br><span class="line">        <span class="keyword">if</span> root == -<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        ans = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> node, neighbours <span class="keyword">in</span> adj.items():</span><br><span class="line">            <span class="keyword">if</span> node == root:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># # 遍历过程当中当前节点的Degree</span></span><br><span class="line">            currDegree = <span class="built_in">len</span>(neighbours)</span><br><span class="line">            parent = -<span class="number">1</span></span><br><span class="line">            parentDegree = maxsize</span><br><span class="line">            <span class="comment"># 根据 degree 的大小找到 node 的父节点 parent</span></span><br><span class="line">            <span class="comment"># # 遍历 adj[node] ,就是和 node 有关系的所有节点</span></span><br><span class="line">            <span class="keyword">for</span> neighbour <span class="keyword">in</span> neighbours:</span><br><span class="line">                <span class="comment"># # 找到 node 的可能父节点—— parentDegree &gt;= currDegree</span></span><br><span class="line">                <span class="keyword">if</span> currDegree &lt;= <span class="built_in">len</span>(adj[neighbour]) &lt; parentDegree:</span><br><span class="line">                    parent = neighbour</span><br><span class="line">                    parentDegree = <span class="built_in">len</span>(adj[neighbour])</span><br><span class="line">            <span class="comment"># 检测 neighbours 是否为 adj[parent] 的子集</span></span><br><span class="line">            <span class="comment"># # if parent == -1 or not neighbours.issubset(adj[parent]):</span></span><br><span class="line">            <span class="comment"># # ??</span></span><br><span class="line">            <span class="keyword">if</span> parent == -<span class="number">1</span> <span class="keyword">or</span> <span class="built_in">any</span>(neighbour != parent <span class="keyword">and</span> neighbour <span class="keyword">not</span> <span class="keyword">in</span> adj[parent] <span class="keyword">for</span> neighbour <span class="keyword">in</span> neighbours):</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> parentDegree == currDegree:</span><br><span class="line">                ans = <span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-<p>其中<code># #</code>是我的注释。<br>现在问题就是，</p>
-<pre><code># 检测 neighbours 是否为 adj[parent] 的子集
-# # if parent == -1 or not neighbours.issubset(adj[parent]):
-if parent == -1 or any(neighbour != parent and neighbour not in adj[parent] for neighbour in neighbours):
-return 0
-</code></pre><p>我用集合本身的判断是否为另一个集合的子集的函数，结果是错误的。<br>现在就是要重点理解<code>any(neighbour != parent and neighbour not in adj[parent] for neighbour in neighbours)</code>了。还有，<code>parent</code>什么时候会是<code>-1</code>呀？<br>不，在这里<code>parent</code>都不可能是<code>-1</code>，经代码提交确认也是这样。<br>    any(neighbour != parent and neighbour not in adj[parent] for neighbour in neighbours)</p>
-<ul>
-<li><code>any()</code>只要有一个是True，结果就是True。</li>
-<li>遍历当前<code>node</code>的<code>neighbours</code>，若出现一个节点不属于<code>parent</code>那个集合时，就可以证明这个<code>parent</code>不是这个<code>node</code>的父节点：<ul>
-<li>当遍历的<code>neighbour</code>不是<code>parent</code>(<code>neighbour != parent</code>为<code>True</code>)时,<code>neighbour</code>又不在<code>parent</code>的集合里，整体值为<code>True</code>，即<code>parent</code>不是当前<code>node</code>的父节点，<code>return 0</code>；</li>
-<li>当遍历的<code>neighbour</code>恰好时<code>parent</code>(<code>neighbour != parent</code>为<code>False</code>)时，<code>neighbour</code>也一定不在’parent<code>的集合里，因此整体值为</code>False`;</li>
-</ul>
-</li>
-</ul>
-<p>好家伙，总算是理清了。</p>
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>模拟</tag>
-        <tag>Leetcode困难</tag>
       </tags>
   </entry>
   <entry>
@@ -533,11 +533,6 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
       </tags>
   </entry>
   <entry>
-    <title>Leetcode_233. 数字 1 的个数</title>
-    <url>/2021/08/23/Leetcode-233-%E6%95%B0%E5%AD%97-1-%E7%9A%84%E4%B8%AA%E6%95%B0/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>Leetcode_345. 反转字符串中的元音字母</title>
     <url>/2021/08/19/Leetcode-345-%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D/</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>345. 反转字符串中的元音字母<br>难度：简单<br>编写一个函数，以字符串作为输入，反转该字符串中的元音字母。</p>
@@ -563,6 +558,11 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
         <tag>Leetcode简单</tag>
         <tag>双指针</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Leetcode_233. 数字 1 的个数</title>
+    <url>/2021/08/23/Leetcode-233-%E6%95%B0%E5%AD%97-1-%E7%9A%84%E4%B8%AA%E6%95%B0/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Leetcode_443. 压缩字符串</title>
@@ -707,8 +707,8 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
         <category>Leetcode</category>
       </categories>
       <tags>
-        <tag>Leetcode简单</tag>
         <tag>模拟</tag>
+        <tag>Leetcode简单</tag>
       </tags>
   </entry>
   <entry>
@@ -736,6 +736,55 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
       </categories>
       <tags>
         <tag>Leetcode简单</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode_57|. 出界的路径数</title>
+    <url>/2021/08/20/Leetcode-576-%E5%87%BA%E7%95%8C%E7%9A%84%E8%B7%AF%E5%BE%84%E6%95%B0/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><ol>
+<li>出界的路径数<br>难度：简单<p>给你一个大小为 <code>m x n</code> 的网格和一个球。球的起始坐标为 <code>[startRow, startColumn]</code> 。你可以将球移到在四个方向上相邻的单元格内（可以穿过网格边界到达网格之外）。你 <strong>最多</strong> 可以移动 <code>maxMove</code> 次球。</p>
+
+</li>
+</ol>
+<p>给你五个整数 <code>m</code>、<code>n</code>、<code>maxMove</code>、<code>startRow</code> 以及 <code>startColumn</code> ，找出并返回可以将球移出边界的路径数量。因为答案可能非常大，返回对 <code>10<sup>9</sup> + 7</code> <strong>取余</strong> 后的结果。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+<img style="width: 500px; height: 296px;" src="https://assets.leetcode.com/uploads/2021/04/28/out_of_boundary_paths_1.png" alt>
+<pre><strong>输入：</strong>m = 2, n = 2, maxMove = 2, startRow = 0, startColumn = 0
+<strong>输出：</strong>6
+</pre>
+
+<p><strong>示例 2：</strong></p>
+<img style="width: 500px; height: 293px;" src="https://assets.leetcode.com/uploads/2021/04/28/out_of_boundary_paths_2.png" alt>
+<pre><strong>输入：</strong>m = 1, n = 3, maxMove = 3, startRow = 0, startColumn = 1
+<strong>输出：</strong>12
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= m, n &lt;= 50</code></li>
+    <li><code>0 &lt;= maxMove &lt;= 50</code></li>
+    <li><code>0 &lt;= startRow &lt; m</code></li>
+    <li><code>0 &lt;= startColumn &lt; n</code></li>
+</ul>
+
+<h3 id="f方法一：-动态规划"><a href="#f方法一：-动态规划" class="headerlink" title="f方法一： 动态规划"></a>f方法一： 动态规划</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>这一题显然是要用动态规划来做。状态也不难写，<code>dp[move][r][c]</code>表示第<code>move</code>步走到第<code>r</code>行第<code>c</code>列的数量。状态转移方程也不难想到，即<code>dp[move][r][c]</code>等于<code>move-1</code>上一步步第<code>r</code>行第<code>c</code>列上下左右四个数的和，当然这是要在范围内，这里需要一个判断。而我的代码实现当中，是将这一步第<code>r</code>行第<code>c</code>列上下左右四个数加到下一步去。<br>较为复杂的我认为是在对于边界一圈的情况的考虑。如果球走到边界上了，剩余的步数至少还有一步，那他就可以出界，而且有多少种情况能走到边界的这个位置就有多少种出界的情况。但就如题目中的示例那样，边界的不同位置出界的可能i性是不同的。所以，我是在循环当中，先判断这个位置是不是边界以及是哪一种边界，如果是，再判断这个位置上是不是0，如果不是0，说明可以出界，那就将它加到出界总数去，一种边界加一次，这样就解决了边界不同位置有不同出界的可能性。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def findPaths(m, n, maxMove, startRow, startColumn):</span><br><span class="line">    if maxMove == 0:</span><br><span class="line">        return 0</span><br><span class="line">    dp = [[[0 for c in range(n)] for r in range(m)] for move in range(maxMove)]</span><br><span class="line">    outCounts = 0</span><br><span class="line">    dp[0][startRow][startColumn] = 1</span><br><span class="line">    for move in range(maxMove):</span><br><span class="line">        for r in range(m):</span><br><span class="line">            for c in range(n):</span><br><span class="line">                if r == 0 or c == 0 or r == m-1 or c == n-1:</span><br><span class="line">                    t = dp[move][r][c]</span><br><span class="line">                    if t != 0:</span><br><span class="line">                        if r-1 &lt; 0:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                        if c-1 &lt; 0:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                        if r+1 == m:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                        if c+1 == n:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                if move == maxMove-1:</span><br><span class="line">                    continue</span><br><span class="line">                for i, j in [(r-1, c), (r+1, c), (r, c-1), (r, c+1)]:</span><br><span class="line">                    if i &gt;= 0 and i &lt; m and j &gt;= 0 and j &lt; n:</span><br><span class="line">                        dp[move+1][r][c] += dp[move][i][j]</span><br><span class="line"></span><br><span class="line">    return outCounts % (10**9+7)</span><br></pre></td></tr></table></figure>
+<h3 id="方法二：-卷积"><a href="#方法二：-卷积" class="headerlink" title="方法二： 卷积"></a>方法二： 卷积</h3><p>大佬都在评论区。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">findPaths</span>(<span class="params">m, n, maxMove, startRow, startColumn</span>):</span><br><span class="line">    <span class="keyword">if</span> maxMove &lt;= <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    ans = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    a = numpy.zeros((m, n), )</span><br><span class="line">    a[startRow, startColumn] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    b = numpy.zeros((<span class="number">3</span>, <span class="number">3</span>), <span class="built_in">int</span>)</span><br><span class="line">    b[<span class="number">0</span>][<span class="number">1</span>] = b[<span class="number">1</span>][<span class="number">0</span>] = b[-<span class="number">1</span>][<span class="number">1</span>] = b[<span class="number">1</span>][-<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">    <span class="comment"># print(a)</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(maxMove):</span><br><span class="line">        ans += (a[:, <span class="number">0</span>].<span class="built_in">sum</span>() + a[:, -<span class="number">1</span>].<span class="built_in">sum</span>() +</span><br><span class="line">                a[<span class="number">0</span>, :].<span class="built_in">sum</span>() + a[-<span class="number">1</span>, :].<span class="built_in">sum</span>()) % <span class="number">1_000_000_007</span></span><br><span class="line">        a = scipy.signal.convolve2d(a, b, <span class="string">&#x27;same&#x27;</span>) % <span class="number">1_000_000_007</span></span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">int</span>(ans) % <span class="number">1_000_000_007</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/fXAdy9"><img src="https://z3.ax1x.com/2021/08/20/fXAdy9.jpg" alt="t提交记录1.jpg"></a><br><a href="https://imgtu.com/i/fXAaQJ"><img src="https://z3.ax1x.com/2021/08/20/fXAaQJ.jpg" alt="提交记录2.jpg"></a></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode简单</tag>
+        <tag>动态规划</tag>
+        <tag>卷积</tag>
       </tags>
   </entry>
   <entry>
@@ -820,55 +869,6 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
         <tag>Leetcode困难</tag>
         <tag>动态规划</tag>
         <tag>快速幂/矩阵快速幂</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode_57|. 出界的路径数</title>
-    <url>/2021/08/20/Leetcode-576-%E5%87%BA%E7%95%8C%E7%9A%84%E8%B7%AF%E5%BE%84%E6%95%B0/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><ol>
-<li>出界的路径数<br>难度：简单<p>给你一个大小为 <code>m x n</code> 的网格和一个球。球的起始坐标为 <code>[startRow, startColumn]</code> 。你可以将球移到在四个方向上相邻的单元格内（可以穿过网格边界到达网格之外）。你 <strong>最多</strong> 可以移动 <code>maxMove</code> 次球。</p>
-
-</li>
-</ol>
-<p>给你五个整数 <code>m</code>、<code>n</code>、<code>maxMove</code>、<code>startRow</code> 以及 <code>startColumn</code> ，找出并返回可以将球移出边界的路径数量。因为答案可能非常大，返回对 <code>10<sup>9</sup> + 7</code> <strong>取余</strong> 后的结果。</p>
-
-<p>&nbsp;</p>
-
-<p><strong>示例 1：</strong></p>
-<img style="width: 500px; height: 296px;" src="https://assets.leetcode.com/uploads/2021/04/28/out_of_boundary_paths_1.png" alt>
-<pre><strong>输入：</strong>m = 2, n = 2, maxMove = 2, startRow = 0, startColumn = 0
-<strong>输出：</strong>6
-</pre>
-
-<p><strong>示例 2：</strong></p>
-<img style="width: 500px; height: 293px;" src="https://assets.leetcode.com/uploads/2021/04/28/out_of_boundary_paths_2.png" alt>
-<pre><strong>输入：</strong>m = 1, n = 3, maxMove = 3, startRow = 0, startColumn = 1
-<strong>输出：</strong>12
-</pre>
-
-<p>&nbsp;</p>
-
-<p><strong>提示：</strong></p>
-
-<ul>
-    <li><code>1 &lt;= m, n &lt;= 50</code></li>
-    <li><code>0 &lt;= maxMove &lt;= 50</code></li>
-    <li><code>0 &lt;= startRow &lt; m</code></li>
-    <li><code>0 &lt;= startColumn &lt; n</code></li>
-</ul>
-
-<h3 id="f方法一：-动态规划"><a href="#f方法一：-动态规划" class="headerlink" title="f方法一： 动态规划"></a>f方法一： 动态规划</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>这一题显然是要用动态规划来做。状态也不难写，<code>dp[move][r][c]</code>表示第<code>move</code>步走到第<code>r</code>行第<code>c</code>列的数量。状态转移方程也不难想到，即<code>dp[move][r][c]</code>等于<code>move-1</code>上一步步第<code>r</code>行第<code>c</code>列上下左右四个数的和，当然这是要在范围内，这里需要一个判断。而我的代码实现当中，是将这一步第<code>r</code>行第<code>c</code>列上下左右四个数加到下一步去。<br>较为复杂的我认为是在对于边界一圈的情况的考虑。如果球走到边界上了，剩余的步数至少还有一步，那他就可以出界，而且有多少种情况能走到边界的这个位置就有多少种出界的情况。但就如题目中的示例那样，边界的不同位置出界的可能i性是不同的。所以，我是在循环当中，先判断这个位置是不是边界以及是哪一种边界，如果是，再判断这个位置上是不是0，如果不是0，说明可以出界，那就将它加到出界总数去，一种边界加一次，这样就解决了边界不同位置有不同出界的可能性。</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def findPaths(m, n, maxMove, startRow, startColumn):</span><br><span class="line">    if maxMove == 0:</span><br><span class="line">        return 0</span><br><span class="line">    dp = [[[0 for c in range(n)] for r in range(m)] for move in range(maxMove)]</span><br><span class="line">    outCounts = 0</span><br><span class="line">    dp[0][startRow][startColumn] = 1</span><br><span class="line">    for move in range(maxMove):</span><br><span class="line">        for r in range(m):</span><br><span class="line">            for c in range(n):</span><br><span class="line">                if r == 0 or c == 0 or r == m-1 or c == n-1:</span><br><span class="line">                    t = dp[move][r][c]</span><br><span class="line">                    if t != 0:</span><br><span class="line">                        if r-1 &lt; 0:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                        if c-1 &lt; 0:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                        if r+1 == m:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                        if c+1 == n:</span><br><span class="line">                            outCounts += t</span><br><span class="line">                if move == maxMove-1:</span><br><span class="line">                    continue</span><br><span class="line">                for i, j in [(r-1, c), (r+1, c), (r, c-1), (r, c+1)]:</span><br><span class="line">                    if i &gt;= 0 and i &lt; m and j &gt;= 0 and j &lt; n:</span><br><span class="line">                        dp[move+1][r][c] += dp[move][i][j]</span><br><span class="line"></span><br><span class="line">    return outCounts % (10**9+7)</span><br></pre></td></tr></table></figure>
-<h3 id="方法二：-卷积"><a href="#方法二：-卷积" class="headerlink" title="方法二： 卷积"></a>方法二： 卷积</h3><p>大佬都在评论区。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">findPaths</span>(<span class="params">m, n, maxMove, startRow, startColumn</span>):</span><br><span class="line">    <span class="keyword">if</span> maxMove &lt;= <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    ans = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    a = numpy.zeros((m, n), )</span><br><span class="line">    a[startRow, startColumn] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    b = numpy.zeros((<span class="number">3</span>, <span class="number">3</span>), <span class="built_in">int</span>)</span><br><span class="line">    b[<span class="number">0</span>][<span class="number">1</span>] = b[<span class="number">1</span>][<span class="number">0</span>] = b[-<span class="number">1</span>][<span class="number">1</span>] = b[<span class="number">1</span>][-<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">    <span class="comment"># print(a)</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(maxMove):</span><br><span class="line">        ans += (a[:, <span class="number">0</span>].<span class="built_in">sum</span>() + a[:, -<span class="number">1</span>].<span class="built_in">sum</span>() +</span><br><span class="line">                a[<span class="number">0</span>, :].<span class="built_in">sum</span>() + a[-<span class="number">1</span>, :].<span class="built_in">sum</span>()) % <span class="number">1_000_000_007</span></span><br><span class="line">        a = scipy.signal.convolve2d(a, b, <span class="string">&#x27;same&#x27;</span>) % <span class="number">1_000_000_007</span></span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">int</span>(ans) % <span class="number">1_000_000_007</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/fXAdy9"><img src="https://z3.ax1x.com/2021/08/20/fXAdy9.jpg" alt="t提交记录1.jpg"></a><br><a href="https://imgtu.com/i/fXAaQJ"><img src="https://z3.ax1x.com/2021/08/20/fXAaQJ.jpg" alt="提交记录2.jpg"></a></p>
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>Leetcode简单</tag>
-        <tag>动态规划</tag>
-        <tag>卷积</tag>
       </tags>
   </entry>
   <entry>
@@ -1173,20 +1173,6 @@ src = 0, dst = 2, k = 0
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-838-推多米诺</title>
-    <url>/2022/02/21/Leetcode-838-%E6%8E%A8%E5%A4%9A%E7%B1%B3%E8%AF%BA/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>模拟</tag>
-        <tag>Leetcode中等</tag>
-        <tag>双指针</tag>
-        <tag>广度优先搜索（BFS）</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode_881. 救生艇</title>
     <url>/2021/08/26/Leetcode-881-%E6%95%91%E7%94%9F%E8%89%87/</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>881. 救生艇<br>难度：中等</p>
@@ -1234,9 +1220,23 @@ src = 0, dst = 2, k = 0
         <category>Leetcode</category>
       </categories>
       <tags>
+        <tag>Leetcode中等</tag>
         <tag>贪心</tag>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-838-推多米诺</title>
+    <url>/2022/02/21/Leetcode-838-%E6%8E%A8%E5%A4%9A%E7%B1%B3%E8%AF%BA/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
         <tag>Leetcode中等</tag>
         <tag>双指针</tag>
+        <tag>广度优先搜索（BFS）</tag>
       </tags>
   </entry>
   <entry>
@@ -1324,34 +1324,6 @@ src = 0, dst = 2, k = 0
       </tags>
   </entry>
   <entry>
-    <title>Python的一些内建函数和基本句法</title>
-    <url>/2022/02/17/Python%E7%9A%84%E4%B8%80%E4%BA%9B%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0%E5%92%8C%E5%9F%BA%E6%9C%AC%E5%8F%A5%E6%B3%95/</url>
-    <content><![CDATA[<h3 id="any-和all"><a href="#any-和all" class="headerlink" title="any()和all()"></a><code>any()</code>和<code>all()</code></h3><h5 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h5><p><code>any()</code>函数用来判断给定的迭代参数<code>iterable</code>中是否含有<code>True</code>，如果有（只要有一个），则返回<code>True</code>.<br>函数等价于：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">any</span>(<span class="params">iterable</span>):</span><br><span class="line">    <span class="keyword">for</span> element <span class="keyword">in</span> iterable:</span><br><span class="line">        <span class="keyword">if</span> element:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure></p>
-<p><code>all()</code>函数用来判断给定的迭代参数<code>iterable</code>中是否全部是是<code>True</code>，如果是，则返回<code>True</code>。<br>函数等价于：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">all</span>(<span class="params">iterable</span>):</span><br><span class="line">    <span class="keyword">for</span> element <span class="keyword">in</span> iterable:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> element:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure><br><code>any()</code>：只要有一个<code>True</code>，就返回<code>True</code>；<br><code>all()</code>：全部是<code>True</code>，就返回<code>True</code>。<br><strong>注意</strong> ：空元组、空列表返回值为True，这里要特别注意。</p>
-<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p>示例来自菜鸟教程。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="built_in">any</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])  <span class="comment"># 列表list，元素都不为空或0</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])   <span class="comment"># 列表list，存在一个为空的元素</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>([<span class="number">0</span>, <span class="string">&#x27;&#x27;</span>, <span class="literal">False</span>])        <span class="comment"># 列表list,元素全为0,&#x27;&#x27;,false</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>((<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>))  <span class="comment"># 元组tuple，元素都不为空或0</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>((<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;d&#x27;</span>))   <span class="comment"># 元组tuple，存在一个为空的元素</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>((<span class="number">0</span>, <span class="string">&#x27;&#x27;</span>, <span class="literal">False</span>))        <span class="comment"># 元组tuple，元素全为0,&#x27;&#x27;,false</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line">  </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>([]) <span class="comment"># 空列表</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>(()) <span class="comment"># 空元组</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])  <span class="comment"># 列表list，元素都不为空或0</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])   <span class="comment"># 列表list，存在一个为空的元素</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>([<span class="number">0</span>, <span class="number">1</span>，<span class="number">2</span>, <span class="number">3</span>])          <span class="comment"># 列表list，存在一个为0的元素</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line">   </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>((<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>))  <span class="comment"># 元组tuple，元素都不为空或0</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>((<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;d&#x27;</span>))   <span class="comment"># 元组tuple，存在一个为空的元素</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>((<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>))          <span class="comment"># 元组tuple，存在一个为0的元素</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line">   </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>([])             <span class="comment"># 空列表</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>(())             <span class="comment"># 空元组</span></span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure><br>下面示例来自CSDN。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">any</span>(x**<span class="number">2</span> == <span class="number">16</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)))</span><br><span class="line"><span class="comment"># True</span></span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2022/02/09/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>cuda</title>
     <url>/2021/08/29/cuda/</url>
     <content><![CDATA[<p>pip安装<br>pip3 install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio===0.9.0 -f <a href="https://download.pytorch.org/whl/torch_stable.html">https://download.pytorch.org/whl/torch_stable.html</a></p>
@@ -1364,6 +1336,20 @@ src = 0, dst = 2, k = 0
       <tags>
         <tag>cuda</tag>
         <tag>深度学习</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python的一些内建函数和基本句法</title>
+    <url>/2022/02/17/Python%E7%9A%84%E4%B8%80%E4%BA%9B%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0%E5%92%8C%E5%9F%BA%E6%9C%AC%E5%8F%A5%E6%B3%95/</url>
+    <content><![CDATA[<h3 id="any-和all"><a href="#any-和all" class="headerlink" title="any()和all()"></a><code>any()</code>和<code>all()</code></h3><h5 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h5><p><code>any()</code>函数用来判断给定的迭代参数<code>iterable</code>中是否含有<code>True</code>，如果有（只要有一个），则返回<code>True</code>.<br>函数等价于：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">any</span>(<span class="params">iterable</span>):</span><br><span class="line">    <span class="keyword">for</span> element <span class="keyword">in</span> iterable:</span><br><span class="line">        <span class="keyword">if</span> element:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure></p>
+<p><code>all()</code>函数用来判断给定的迭代参数<code>iterable</code>中是否全部是是<code>True</code>，如果是，则返回<code>True</code>。<br>函数等价于：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">all</span>(<span class="params">iterable</span>):</span><br><span class="line">    <span class="keyword">for</span> element <span class="keyword">in</span> iterable:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> element:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure><br><code>any()</code>：只要有一个<code>True</code>，就返回<code>True</code>；<br><code>all()</code>：全部是<code>True</code>，就返回<code>True</code>。<br><strong>注意</strong> ：空元组、空列表返回值为True，这里要特别注意。</p>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p>示例来自菜鸟教程。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="built_in">any</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])  <span class="comment"># 列表list，元素都不为空或0</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])   <span class="comment"># 列表list，存在一个为空的元素</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>([<span class="number">0</span>, <span class="string">&#x27;&#x27;</span>, <span class="literal">False</span>])        <span class="comment"># 列表list,元素全为0,&#x27;&#x27;,false</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>((<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>))  <span class="comment"># 元组tuple，元素都不为空或0</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>((<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;d&#x27;</span>))   <span class="comment"># 元组tuple，存在一个为空的元素</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>((<span class="number">0</span>, <span class="string">&#x27;&#x27;</span>, <span class="literal">False</span>))        <span class="comment"># 元组tuple，元素全为0,&#x27;&#x27;,false</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line">  </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>([]) <span class="comment"># 空列表</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>(()) <span class="comment"># 空元组</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])  <span class="comment"># 列表list，元素都不为空或0</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])   <span class="comment"># 列表list，存在一个为空的元素</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>([<span class="number">0</span>, <span class="number">1</span>，<span class="number">2</span>, <span class="number">3</span>])          <span class="comment"># 列表list，存在一个为0的元素</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line">   </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>((<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>))  <span class="comment"># 元组tuple，元素都不为空或0</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>((<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;d&#x27;</span>))   <span class="comment"># 元组tuple，存在一个为空的元素</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>((<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>))          <span class="comment"># 元组tuple，存在一个为0的元素</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line">   </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>([])             <span class="comment"># 空列表</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>(())             <span class="comment"># 空元组</span></span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure><br>下面示例来自CSDN。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">any</span>(x**<span class="number">2</span> == <span class="number">16</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)))</span><br><span class="line"><span class="comment"># True</span></span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -1392,6 +1378,20 @@ src = 0, dst = 2, k = 0
       <tags>
         <tag>其他</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2022/02/09/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>markdown语法</title>
@@ -1607,7 +1607,7 @@ end tell
     <title>欧拉公式</title>
     <url>/2022/02/20/%E6%AC%A7%E6%8B%89%E5%85%AC%E5%BC%8F/</url>
     <content><![CDATA[<h3 id="欧拉公式"><a href="#欧拉公式" class="headerlink" title="欧拉公式"></a>欧拉公式</h3><p>$ e^{i\theta} = \cos\theta + i\sin\theta$ ，当 $\theta=\pi$ 时，$e^{i\pi} + 1 =0$.</p>
-<h3 id="证明一：求导"><a href="#证明一：求导" class="headerlink" title="证明一：求导"></a>证明一：求导</h3><p>设 $f(\theta)=\frac{e^i\theta}{i\sin\theta+\cos\theta}$,对 $ f(\theta)$ 求一阶导，</p>
+<h3 id="证明一：求导"><a href="#证明一：求导" class="headerlink" title="证明一：求导"></a>证明一：求导</h3><p>设 $f(\theta)=\frac{e^i\theta}{i\sin\theta+\cos\theta}$ ,对 $ f(\theta)$ 求一阶导，</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 f'(\theta)&=\frac{ie^{i\theta}(i\sin\theta+\cos\theta)-e^{i\theta}(i\cos\theta-\sin\theta)}{(i\sin\theta+\cos\theta)^{2}} \\
@@ -1619,24 +1619,48 @@ f'(\theta)&=\frac{ie^{i\theta}(i\sin\theta+\cos\theta)-e^{i\theta}(i\cos\theta-\
 f(0)&=\frac{e^{i·0}}{i\sin0+\cos0}\\
 &=\frac{1}{0+1}\\
 &=1\\
-\end{aligned}</script><p>所以，$e^{i\theta} = \cos\theta + i\sin\theta$。<br>同时，也容易得到 $e^{i\theta} $ 和 $  \cos\theta + i\sin\theta$ 都不等于0。<br>将 $f(\theta)设为f(\theta)=\frac{i\sin\theta+\cos\theta}{e^i\theta}$是一样的。</p>
-<h3 id="证明二：泰勒展开"><a href="#证明二：泰勒展开" class="headerlink" title="证明二：泰勒展开"></a>证明二：泰勒展开</h3><h5 id="泰勒公式的简单推导"><a href="#泰勒公式的简单推导" class="headerlink" title="泰勒公式的简单推导"></a>泰勒公式的简单推导</h5><h5 id="推导欧拉公式"><a href="#推导欧拉公式" class="headerlink" title="推导欧拉公式"></a>推导欧拉公式</h5><p>根据泰勒展开，我们可以有：</p>
+\end{aligned}</script><p>所以，$e^{i\theta} = \cos\theta + i\sin\theta$。<br>同时，也容易得到 $e^{i\theta} $ 和 $  \cos\theta + i\sin\theta$ 都不等于0。<br>将 $f(\theta)$ 设为 $f(\theta)=\frac{i\sin\theta+\cos\theta}{e^i\theta}$ 是一样的。</p>
+<h3 id="证明二：函数幂级数展开"><a href="#证明二：函数幂级数展开" class="headerlink" title="证明二：函数幂级数展开"></a>证明二：函数幂级数展开</h3><h5 id="泰勒展开式和麦克劳林展开式的简单推导"><a href="#泰勒展开式和麦克劳林展开式的简单推导" class="headerlink" title="泰勒展开式和麦克劳林展开式的简单推导"></a>泰勒展开式和麦克劳林展开式的简单推导</h5><p>将 $f(x)$ 展开为幂级数：</p>
+<script type="math/tex; mode=display">
+f(x)=a_0+a_1(x-x_0)+a_2(x-x_0)^2+a_3(x-x_0)^3+a_4(x-x_0)^4+a_5(x-x_0)^5+...+a_n(x-x_0)^n+...</script><p>对式子两边求导：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f'(x)&=a_1+2a_2(x-x_0)+3a_3(x-x_0)^2+4a_4(x-x_0)^3+...\\
+f''(x)&=2a_2+3·2a_3(x-x_0)+4·3(x-x_0)^2+5a_5(x-x_0)^4+...\\
+f'''(x)&=3·2a_3+4·3·2a_4(x-x_0)+5·4a_5(x-x_0)^3+...\\
+...\\
+\end{aligned}</script><p>令 $x=x_0$ ，计算 $a_0,a_1,a_3….$ ：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f(x_0)=a_0  &,a_0=f(x_0)\\
+f'(x_0)=a_1 &,a_1=f'(x_0)\\
+f''(x_0)=2a_2 &,a_2=\frac{f'(x_0)}{2!}\\
+f'''(x_0)=3·2a_3 &,a_3=\frac{f'''(x_0)}{3!}\\
+...\\
+f^n(x_0)=n!a_n &,a_n=\frac{f^n(x_0)}{n!}\\
+\end{aligned}</script><p>于是，</p>
+<script type="math/tex; mode=display">
+f(x)=\sum_{n=0}^{\infty}\frac{1}{n!}f^{(n)}(x_0)(x-x_0)^n,x\in U(x_0)</script><p>这就是泰勒级数。它成立的充要条件是它的余项极限是 0：</p>
+<script type="math/tex; mode=display">
+\lim_{n\to \infty}R_n(x)= \lim_{n\to\infty}\frac{1}{n!}f^{(n)}(x_0)(x-x_0)^n= 0</script><p>取 $x_0=0$ ，有麦克劳林展开式：</p>
+<script type="math/tex; mode=display">
+f(x)=\sum_{n=0}^{\infty}\frac{1}{n!}f^{(n)}(0)x^n ,x\in (-r,r)</script><h5 id="推导欧拉公式"><a href="#推导欧拉公式" class="headerlink" title="推导欧拉公式"></a>推导欧拉公式</h5><p>根据麦克劳林展开式，我们可以有：</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 \sin x&=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\frac{x^9}{9!}-...\\
 \cos x&=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+\frac{x^8}{8!}-...\\
 e^x&=1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\frac{x^4}{4!}+...
-\end{aligned}</script><p>计算$\sin x+\cos x$，得到：</p>
+\end{aligned}</script><p>计算 $\sin x+\cos x$ ，得到：</p>
 <script type="math/tex; mode=display">
-\sin x+\cos x=1+x-\frac{x^2}{2!}-\frac{x^3}{3!}+\frac{x^4}{4!}+\frac{x^5}{5!}-\frac{x^6}{6!}-\frac{x^7}{7!}+\frac{x^8}{8!}+...</script><p>这与$e^x$的区别在于符号上，随着$x$的次数增加，符号的变化规律时$+,-,-,+$，这正好符合虚数单位$i$的符号变化规律。因此，考虑计算$e^{ix}$:</p>
+\sin x+\cos x=1+x-\frac{x^2}{2!}-\frac{x^3}{3!}+\frac{x^4}{4!}+\frac{x^5}{5!}-\frac{x^6}{6!}-\frac{x^7}{7!}+\frac{x^8}{8!}+...</script><p>这与 $e^x$ 的区别在于符号上，随着 $x$ 的次数增加，符号的变化规律时 $+,-,-,+$ ，这正好符合虚数单位 $i$ 的符号变化规律。因此，考虑计算 $e^{ix}$ :</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 e^{ix}&=1+ix+\frac{(ix)^2}{2!}+\frac{(ix)^3}{3!}+\frac{(ix)^4}{4!}+...\\
 &=1+ix-\frac{x^2}{2!}-\frac{ix^3}{3!}+\frac{x^4}{4!}+\frac{ix^5}{5!}-\frac{x^6}{6!}-\frac{ix^7}{7!}+\frac{x^8}{8!}...\\
 &=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+\frac{x^8}{8!}-...\\
-& +i(x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\frac{x^9}{9!}-...)\\
+&   +i(x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\frac{x^9}{9!}-...)\\
 &=\cos x+i\sin x
-\end{aligned}</script><h3 id="应用：解方程-sin-x-2"><a href="#应用：解方程-sin-x-2" class="headerlink" title="应用：解方程 $ \sin x=2 $"></a>应用：解方程 $ \sin x=2 $</h3><p>其实就是想联系一下简单的Latex的公式编辑，这个直接放B站链接：<a href="https://www.bilibili.com/video/av32271249/">解方程 $ \sin x=2 $</a></p>
+\end{aligned}</script><h3 id="应用：解方程-sin-x-2"><a href="#应用：解方程-sin-x-2" class="headerlink" title="应用：解方程 $ \sin x=2 $"></a>应用：解方程 $ \sin x=2 $</h3><p>其实就是想练习一下简单的 Latex 的公式编辑，这个直接放B站链接：<a href="https://www.bilibili.com/video/av32271249/">解方程 $ \sin x=2 $</a></p>
 ]]></content>
       <categories>
         <category>数学</category>

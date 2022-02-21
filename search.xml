@@ -538,6 +538,33 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
     <content><![CDATA[]]></content>
   </entry>
   <entry>
+    <title>Leetcode_345. 反转字符串中的元音字母</title>
+    <url>/2021/08/19/Leetcode-345-%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>345. 反转字符串中的元音字母<br>难度：简单<br>编写一个函数，以字符串作为输入，反转该字符串中的元音字母。</p>
+<p>示例 1：</p>
+<p>输入：”hello”<br>输出：”holle”<br>示例 2：</p>
+<p>输入：”leetcode”<br>输出：”leotcede”</p>
+<p>提示：</p>
+<p>元音字母不包含字母 “y” 。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/reverse-vowels-of-a-string">https://leetcode-cn.com/problems/reverse-vowels-of-a-string</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h3 id="方法一：双指针"><a href="#方法一：双指针" class="headerlink" title="方法一：双指针"></a>方法一：双指针</h3><p>这提不难。<br>弄两个指针<code>i</code>和<code>j</code>，<code>i</code>从前往后走，<code>j</code>从后往前走，当遇到原因字母的时候，就停下来。当两个指针都停下来的时候，交换两个字母。使用<code>while</code>循环，退出条件是<code>i</code>和<code>j</code>重合。</p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><ul>
+<li>python<pre><code> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def reverseVowels(s):</span><br><span class="line">l = list(s)</span><br><span class="line">i, j = 0, len(s)-1</span><br><span class="line">Vowels = [&#x27;a&#x27;, &#x27;e&#x27;, &#x27;i&#x27;, &#x27;o&#x27;, &#x27;u&#x27;, &#x27;A&#x27;, &#x27;E&#x27;, &#x27;I&#x27;, &#x27;O&#x27;, &#x27;U&#x27;]</span><br><span class="line"># vowels = &quot;aeiouAEIOU&quot;</span><br><span class="line">i_step = 1</span><br><span class="line">j_step = -1</span><br><span class="line">while i &lt; j:</span><br><span class="line">    if l[i] in Vowels:</span><br><span class="line">        i_step = 0</span><br><span class="line">    if l[j] in Vowels:</span><br><span class="line">        j_step = 0</span><br><span class="line"></span><br><span class="line">    if i_step == j_step == 0:</span><br><span class="line">        l[i], l[j] = l[j], l[i]</span><br><span class="line">        i_step = 1</span><br><span class="line">        j_step = -1</span><br><span class="line">    i += i_step</span><br><span class="line">    j += j_step</span><br><span class="line">return &#x27;&#x27;.join(l)</span><br></pre></td></tr></table></figure>
+</code></pre>  和官方题解几乎一样。</li>
+<li>C<pre><code> <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">   	<span class="type">int</span> <span class="title function_">isVowel</span><span class="params">(<span class="type">char</span> ch)</span></span><br><span class="line">   &#123;</span><br><span class="line">	<span class="type">char</span> vowels[] = <span class="string">&quot;aeiouAEIOU&quot;</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; vowels[i]; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (ch == vowels[i])<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">char</span>* <span class="title function_">reverseVowels</span><span class="params">(<span class="type">char</span>* s)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>, j = <span class="built_in">strlen</span>(s)<span class="number">-1</span>;</span><br><span class="line">	<span class="type">char</span> tmp = s[<span class="number">0</span>];</span><br><span class="line">	<span class="type">int</span> i_step = <span class="number">1</span>, j_step = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span> (i &lt; j)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="number">1</span> == isVowel(s[i]))</span><br><span class="line">			i_step = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> (<span class="number">1</span> == isVowel(s[j]))</span><br><span class="line">			j_step = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> (i_step == <span class="number">0</span> &amp;&amp; j_step == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%c %c %s\n&quot;</span>, s[i], s[j], s);</span><br><span class="line">			tmp = s[i];</span><br><span class="line">			s[i] = s[j];</span><br><span class="line">			s[j] = tmp;</span><br><span class="line">			i_step = <span class="number">1</span>;</span><br><span class="line">			j_step = <span class="number">-1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		i += i_step;</span><br><span class="line">		j += j_step;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</code></pre></li>
+</ul>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/fHEmKP"><img src="https://z3.ax1x.com/2021/08/19/fHEmKP.jpg" alt="python提交记录"></a><br><a href="https://imgtu.com/i/fHEZvt"><img src="https://z3.ax1x.com/2021/08/19/fHEZvt.jpg" alt="C语言提交记录"></a></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode简单</tag>
+        <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode_443. 压缩字符串</title>
     <url>/2021/08/22/Leetcode-443-%E5%8E%8B%E7%BC%A9%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>443. 压缩字符串<br>难度：中等</p>
@@ -605,31 +632,9 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
       </tags>
   </entry>
   <entry>
-    <title>Leetcode_345. 反转字符串中的元音字母</title>
-    <url>/2021/08/19/Leetcode-345-%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>345. 反转字符串中的元音字母<br>难度：简单<br>编写一个函数，以字符串作为输入，反转该字符串中的元音字母。</p>
-<p>示例 1：</p>
-<p>输入：”hello”<br>输出：”holle”<br>示例 2：</p>
-<p>输入：”leetcode”<br>输出：”leotcede”</p>
-<p>提示：</p>
-<p>元音字母不包含字母 “y” 。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/reverse-vowels-of-a-string">https://leetcode-cn.com/problems/reverse-vowels-of-a-string</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h3 id="方法一：双指针"><a href="#方法一：双指针" class="headerlink" title="方法一：双指针"></a>方法一：双指针</h3><p>这提不难。<br>弄两个指针<code>i</code>和<code>j</code>，<code>i</code>从前往后走，<code>j</code>从后往前走，当遇到原因字母的时候，就停下来。当两个指针都停下来的时候，交换两个字母。使用<code>while</code>循环，退出条件是<code>i</code>和<code>j</code>重合。</p>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><ul>
-<li>python<pre><code> <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def reverseVowels(s):</span><br><span class="line">l = list(s)</span><br><span class="line">i, j = 0, len(s)-1</span><br><span class="line">Vowels = [&#x27;a&#x27;, &#x27;e&#x27;, &#x27;i&#x27;, &#x27;o&#x27;, &#x27;u&#x27;, &#x27;A&#x27;, &#x27;E&#x27;, &#x27;I&#x27;, &#x27;O&#x27;, &#x27;U&#x27;]</span><br><span class="line"># vowels = &quot;aeiouAEIOU&quot;</span><br><span class="line">i_step = 1</span><br><span class="line">j_step = -1</span><br><span class="line">while i &lt; j:</span><br><span class="line">    if l[i] in Vowels:</span><br><span class="line">        i_step = 0</span><br><span class="line">    if l[j] in Vowels:</span><br><span class="line">        j_step = 0</span><br><span class="line"></span><br><span class="line">    if i_step == j_step == 0:</span><br><span class="line">        l[i], l[j] = l[j], l[i]</span><br><span class="line">        i_step = 1</span><br><span class="line">        j_step = -1</span><br><span class="line">    i += i_step</span><br><span class="line">    j += j_step</span><br><span class="line">return &#x27;&#x27;.join(l)</span><br></pre></td></tr></table></figure>
-</code></pre>  和官方题解几乎一样。</li>
-<li>C<pre><code> <figure class="highlight c"><table><tr><td class="code"><pre><span class="line">   	<span class="type">int</span> <span class="title function_">isVowel</span><span class="params">(<span class="type">char</span> ch)</span></span><br><span class="line">   &#123;</span><br><span class="line">	<span class="type">char</span> vowels[] = <span class="string">&quot;aeiouAEIOU&quot;</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; vowels[i]; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (ch == vowels[i])<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">char</span>* <span class="title function_">reverseVowels</span><span class="params">(<span class="type">char</span>* s)</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>, j = <span class="built_in">strlen</span>(s)<span class="number">-1</span>;</span><br><span class="line">	<span class="type">char</span> tmp = s[<span class="number">0</span>];</span><br><span class="line">	<span class="type">int</span> i_step = <span class="number">1</span>, j_step = <span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">while</span> (i &lt; j)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (<span class="number">1</span> == isVowel(s[i]))</span><br><span class="line">			i_step = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> (<span class="number">1</span> == isVowel(s[j]))</span><br><span class="line">			j_step = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">if</span> (i_step == <span class="number">0</span> &amp;&amp; j_step == <span class="number">0</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;%c %c %s\n&quot;</span>, s[i], s[j], s);</span><br><span class="line">			tmp = s[i];</span><br><span class="line">			s[i] = s[j];</span><br><span class="line">			s[j] = tmp;</span><br><span class="line">			i_step = <span class="number">1</span>;</span><br><span class="line">			j_step = <span class="number">-1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		i += i_step;</span><br><span class="line">		j += j_step;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</code></pre></li>
-</ul>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/fHEmKP"><img src="https://z3.ax1x.com/2021/08/19/fHEmKP.jpg" alt="python提交记录"></a><br><a href="https://imgtu.com/i/fHEZvt"><img src="https://z3.ax1x.com/2021/08/19/fHEZvt.jpg" alt="C语言提交记录"></a></p>
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>Leetcode简单</tag>
-        <tag>双指针</tag>
-      </tags>
+    <title>Leetcode_502. IPO</title>
+    <url>/2021/09/08/Leetcode-502-IPO/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Leetcode_526. 优美的排列</title>
@@ -658,11 +663,6 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
         <tag>回溯</tag>
         <tag>动态规划</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Leetcode_502. IPO</title>
-    <url>/2021/09/08/Leetcode-502-IPO/</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Leetcode_541. 反转字符串 II</title>
@@ -1169,6 +1169,20 @@ src = 0, dst = 2, k = 0
         <tag>Leetcode中等</tag>
         <tag>回溯</tag>
         <tag>深度优先搜索（DFS）</tag>
+        <tag>广度优先搜索（BFS）</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-838-推多米诺</title>
+    <url>/2022/02/21/Leetcode-838-%E6%8E%A8%E5%A4%9A%E7%B1%B3%E8%AF%BA/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
+        <tag>Leetcode中等</tag>
+        <tag>双指针</tag>
         <tag>广度优先搜索（BFS）</tag>
       </tags>
   </entry>

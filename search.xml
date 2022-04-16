@@ -1860,6 +1860,20 @@ b4 球开始放在第 4 列上，会卡在第 2、3 列和第 1 行之间的 "V"
 <h5 id="网络拓扑-节点距离计算"><a href="#网络拓扑-节点距离计算" class="headerlink" title="网络拓扑-节点距离计算"></a>网络拓扑-节点距离计算</h5><p>节点距离：两个节点到达最近的共同祖先的距离总和。<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/HDFS读写数据-节点距离.137zn4lyrwa8.webp" alt="HDFS读写数据-节点距离"></p>
 <h5 id="机架感知（副本存储节点选择）"><a href="#机架感知（副本存储节点选择）" class="headerlink" title="机架感知（副本存储节点选择）"></a>机架感知（副本存储节点选择）</h5><p><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/HDFS读写流程-机架感知.8o1r32pms5s.webp" alt="HDFS读写流程-机架感知"><br>第一个副本：本地（如果客户端不在集群，随机算一个）<br>    本地是为了上传的速度<br>第二个副本：另一个机架里随机<br>    另一个机架是为了数据的可靠性<br>第三个副本：和第二个同一个机架随机<br>    兼顾可靠性和速度</p>
 <h4 id="HDFS读数据流程"><a href="#HDFS读数据流程" class="headerlink" title="HDFS读数据流程"></a>HDFS读数据流程</h4><p><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/HDFS读写流程-读数据.5k5bef6075s0.webp" alt="HDFS读写流程-读数据"><br>（1）客户端通过DistributedFileSystem向NameNode请求下载文件，NameNode通过查询元数据，找到文件块所在的DataNode地址。<br>（2）挑选一台DataNode（就近原则，然后随机）服务器，请求读取数据。<br>    节点距离最近，也考虑负载<br>（3）DataNode开始传输数据给客户端（从磁盘里面读取数据输入流，以Packet为单位来做校验）。<br>（4）客户端以Packet为单位接收，先在本地缓存，然后写入目标文件。<br>    串行读，先读第一块，再读第二块</p>
+<h3 id="其他（了解和理解）"><a href="#其他（了解和理解）" class="headerlink" title="其他（了解和理解）"></a>其他（了解和理解）</h3><ul>
+<li>NameNode和SecondaryNameNode<ul>
+<li>NN和2NN工作机制</li>
+<li>Fsimage和Edits解析</li>
+<li>CheckPoint时间设置</li>
+</ul>
+</li>
+<li>DataNode<ul>
+<li>DataNode工作机制</li>
+<li>数据完整性</li>
+<li>掉线时限参数设置</li>
+</ul>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>大数据Hadoop</category>

@@ -1,68 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Leetcode_1221. 分割平衡字符串</title>
-    <url>/2021/09/07/Leetcode-1221-%E5%88%86%E5%89%B2%E5%B9%B3%E8%A1%A1%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1221. 分割平衡字符串<br>难度：简单</p>
-<p>在一个 <strong>平衡字符串</strong> 中，<code>'L'</code> 和 <code>'R'</code> 字符的数量是相同的。</p>
-
-<p>给你一个平衡字符串&nbsp;<code>s</code>，请你将它分割成尽可能多的平衡字符串。</p>
-
-<p><strong>注意：</strong>分割得到的每个字符串都必须是平衡字符串。</p>
-
-<p>返回可以通过分割得到的平衡字符串的 <strong>最大数量</strong> <strong>。</strong></p>
-
-<p>&nbsp;</p>
-
-<p><strong>示例 1：</strong></p>
-
-<pre><strong>输入：</strong>s = "RLRRLLRLRL"
-<strong>输出：</strong>4
-<strong>解释：</strong>s 可以分割为 "RL"、"RRLL"、"RL"、"RL" ，每个子字符串中都包含相同数量的 'L' 和 'R' 。
-</pre>
-
-<p><strong>示例 2：</strong></p>
-
-<pre><strong>输入：</strong>s = "RLLLLRRRLR"
-<strong>输出：</strong>3
-<strong>解释：</strong>s 可以分割为 "RL"、"LLLRRR"、"LR" ，每个子字符串中都包含相同数量的 'L' 和 'R' 。
-</pre>
-
-<p><strong>示例 3：</strong></p>
-
-<pre><strong>输入：</strong>s = "LLLLRRRR"
-<strong>输出：</strong>1
-<strong>解释：</strong>s 只能保持原样 "LLLLRRRR".
-</pre>
-
-<p><strong>示例 4：</strong></p>
-
-<pre><strong>输入：</strong>s = "RLRRRLLRLL"
-<strong>输出：</strong>2
-<strong>解释：</strong>s 可以分割为 "RL"、"RRRLLRLL" ，每个子字符串中都包含相同数量的 'L' 和 'R' 。
-</pre>
-
-<p>&nbsp;</p>
-
-<p><strong>提示：</strong></p>
-
+    <title>Cpp OpenMP</title>
+    <url>/2022/04/28/Cpp-OpenMP/</url>
+    <content><![CDATA[<p>很少截图，因为懒。</p>
+<h3 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp parallel</span></span><br><span class="line">std::cout&lt;&lt;<span class="string">&quot;hello world&quot;</span>&lt;&lt;std::endl;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译：<br><code>g++ -o2 -std=c++14 -fopenmp hellp_world.cpp -o hello_world</code><br><code>-02</code>   哦二不是零二：<br>    -O0<br>    -O1<br>    -O2<br>    -O3<br>    编译器的优化选项的4个级别，-O0表示没有优化,-O1为缺省值，-O3优化级别最高<br>运行：</p>
 <ul>
-    <li><code>1 &lt;= s.length &lt;= 1000</code></li>
-    <li><code>s[i] = 'L' 或 'R'</code></li>
-    <li><code>s</code> 是一个 <strong>平衡</strong> 字符串</li>
+<li>`./hello_world’</li>
+<li><code>OPM_NUM_THREADS=2 ./hellp_world</code>设置环境变量，控制可以使用的线程数。<br>结果：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220428/Parallel_omp_helloworld.1u4hcpa3c280.webp" alt="Parallel_omp_helloworld"></li>
 </ul>
-
-
-<h3 id="方法一：-贪心"><a href="#方法一：-贪心" class="headerlink" title="方法一： 贪心"></a>方法一： 贪心</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">balancedStringSplit</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        l, r, ans = <span class="number">0</span> ,<span class="number">0</span>,<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> i == <span class="string">&#x27;L&#x27;</span>:</span><br><span class="line">                l += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> i == <span class="string">&#x27;R&#x27;</span>:</span><br><span class="line">                r += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> l == r:</span><br><span class="line">                ans += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">balancedStringSplit</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        ans, d = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> ch <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> ch == <span class="string">&#x27;L&#x27;</span>:</span><br><span class="line">                d += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                d -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> d == <span class="number">0</span>:</span><br><span class="line">                ans += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line">作者：LeetCode-Solution</span><br><span class="line">链接：https://leetcode-cn.com/problems/split-a-string-<span class="keyword">in</span>-balanced-strings/solution/fen-ge-ping-heng-zi-fu-chuan-by-leetcode-7y8u/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/hoq3tI"><img src="https://z3.ax1x.com/2021/09/07/hoq3tI.jpg" alt="平衡字符串提交记录.jpg"></a></p>
-]]></content>
+<h3 id="库函数"><a href="#库函数" class="headerlink" title="库函数"></a>库函数</h3><p>需要<code>#include &lt;omp.h&gt;</code></p>
+<p><code>#pragma omp parallel  num_threads(4)</code>设置生成的线程数量，这个应该不算库函数。<br>| 函数 |功能和作用  | 示例 |<br>|——-|——-| ——|<br>|<code>omp_get_thread_num()</code> | 获得当前这个线程的编号id | <code>int i = omp_get_thread_num();</code> |<br>|<code>omp_get_num_threads()</code> | 获得当前线程总数 | <code>int n = omp_get_num_threads();</code>|<br>| <code>omp_set_num_threads();</code>  | 在串行部分设置线程个数，优先级比环境变量高  |<code>omp_set_num_threads(6);</code> |<br>|<code>omp_get_max_threads()</code>   | 这是什么东西？？  | |</p>
+<p>线程数设置的优先级：指导语句的num_threads(),库函数omp_set_num_threads();环境变量；编译器默认。</p>
+<h3 id="parallel-for"><a href="#parallel-for" class="headerlink" title="parallel for"></a>parallel for</h3><p><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/parallel_for.1hx1c6guutkw.webp" alt="parallel_for"></p>
+<h3 id="隐含同步"><a href="#隐含同步" class="headerlink" title="隐含同步"></a>隐含同步</h3><p><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/隐含同步.1cq1y0wi7iu8.webp" alt="隐含同步"><br>将<code>#pragra omp parallel for</code>写成<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#pragra omp parallel</span></span><br><span class="line">&#123;</span><br><span class="line">	#<span class="meta">#pragra omp for</span></span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>前后数据、工作有关系的情况下。比如锁，数据的运算一定是在初始化之后，那之前参与初始化的线程肯定要同时结束才行。<br>在一些不需要隐含同步的地方，可以用<code>nowait</code>，即<code>#pragma omp for nowait</code>。<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/nowait.67awv6v73100.webp" alt="nowait"></p>
+<h3 id="变量共享和私有化"><a href="#变量共享和私有化" class="headerlink" title="变量共享和私有化"></a>变量共享和私有化</h3><h4 id="private"><a href="#private" class="headerlink" title="private"></a>private</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*变量共享和私有化*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;omp.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="meta">#<span class="keyword">pragma</span> omp parallel for num_threads(4)</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;id:%d %d %d\n&quot;</span>, <span class="built_in">omp_get_thread_num</span>(), i, j);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/共享变量和私有化1.65ux9gcq7i80.webp" alt="共享变量和私有化1"></p>
+<p>将i和j放在外面<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;omp.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="type">int</span> j = <span class="number">0</span>;</span><br><span class="line">	<span class="meta">#<span class="keyword">pragma</span> omp parallel for num_threads(4)</span></span><br><span class="line">	<span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">		<span class="keyword">for</span> ( j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;id:%d %d %d\n&quot;</span>, <span class="built_in">omp_get_thread_num</span>(), i, j);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>结果：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/共享变量和私有化2.zuz7962rsio.webp" alt="共享变量和私有化2"></p>
+<p>加入<code>private</code><br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;omp.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="type">int</span> j = <span class="number">0</span>;</span><br><span class="line">	<span class="meta">#<span class="keyword">pragma</span> omp parallel for  private(j)  num_threads(4)</span></span><br><span class="line">	<span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">		<span class="keyword">for</span> ( j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;id:%d %d %d\n&quot;</span>, <span class="built_in">omp_get_thread_num</span>(), i, j);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>之前在循环外先声明，那不同线程循环变量就会访问同一块内存，这样就会冲突。加入<code>private(j)</code>之后就会在每个线程生成一个副本，这样就正常了。</p>
+<h4 id="firstprivate"><a href="#firstprivate" class="headerlink" title="firstprivate"></a>firstprivate</h4><p>使用<code>firstprivate(j)</code>不仅有全局变量的副本，而且有他的值，在并行部分里对他进行修改不会影响全局变量的值。</p>
+<h4 id="捕捉私有变量"><a href="#捕捉私有变量" class="headerlink" title="捕捉私有变量"></a>捕捉私有变量</h4><p>用数组的方式<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;omp.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">const</span> <span class="type">int</span> num = <span class="built_in">omp_get_max_threads</span>();</span><br><span class="line">	<span class="type">int</span>* aux = <span class="keyword">new</span> <span class="type">int</span>[num];</span><br><span class="line">	<span class="type">int</span> i = <span class="number">1</span>;</span><br><span class="line">	<span class="meta">#<span class="keyword">pragma</span> omp parallel firstprivate(i) </span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">const</span> <span class="type">int</span> j = <span class="built_in">omp_get_thread_num</span>();</span><br><span class="line">		i += j;</span><br><span class="line">		aux[j] = i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; num; i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;aux[% d] = % d\n&quot;</span>, i, aux[i]);</span><br><span class="line">	<span class="keyword">delete</span>[] aux;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>运行结果<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/捕捉私有变量1.16ct3ecyuee.webp" alt="捕捉私有变量1"></p>
+<h4 id="lastprivate"><a href="#lastprivate" class="headerlink" title="lastprivate"></a>lastprivate</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;omp.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp parallel for  lastprivate(i)  num_threads(4) </span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++)</span><br><span class="line">		i = j;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, i);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以返回变量的值。<br>输出结果是3.</p>
+<p>改为：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp parallel for  lastprivate(i)  num_threads(4) </span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++)</span><br><span class="line">		i = j + <span class="built_in">omp_get_thread_num</span>();</span><br></pre></td></tr></table></figure><br>输出结果是6.</p>
+<h4 id="DMV"><a href="#DMV" class="headerlink" title="DMV"></a>DMV</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdint&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// hpc_helpers contains the TIMERSTART and TIMERSTOP macros</span></span><br><span class="line"><span class="comment">// and the no_init_t template that disables implicit type</span></span><br><span class="line"><span class="comment">// initialization</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;../include/hpc_helpers.hpp&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> <span class="type">value_t</span>,</span><br><span class="line">          <span class="keyword">typename</span> <span class="type">index_t</span>&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">(std::vector&lt;<span class="type">value_t</span>&gt;&amp; A,</span></span></span><br><span class="line"><span class="params"><span class="function">          std::vector&lt;<span class="type">value_t</span>&gt;&amp; x,</span></span></span><br><span class="line"><span class="params"><span class="function">          <span class="type">index_t</span> m,</span></span></span><br><span class="line"><span class="params"><span class="function">          <span class="type">index_t</span> n)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">index_t</span> row = <span class="number">0</span>; row &lt; m; row++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">index_t</span> col = <span class="number">0</span>; col &lt; n; col++)</span><br><span class="line">            A[row*n+col] = row &gt;= col ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">index_t</span> col = <span class="number">0</span>; col &lt; m; col++)</span><br><span class="line">        x[col] = col;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> <span class="type">value_t</span>,</span><br><span class="line">          <span class="keyword">typename</span> <span class="type">index_t</span>&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">mult</span><span class="params">(std::vector&lt;<span class="type">value_t</span>&gt;&amp; A,</span></span></span><br><span class="line"><span class="params"><span class="function">          std::vector&lt;<span class="type">value_t</span>&gt;&amp; x,</span></span></span><br><span class="line"><span class="params"><span class="function">          std::vector&lt;<span class="type">value_t</span>&gt;&amp; b,</span></span></span><br><span class="line"><span class="params"><span class="function">          <span class="type">index_t</span> m,</span></span></span><br><span class="line"><span class="params"><span class="function">          <span class="type">index_t</span> n,</span></span></span><br><span class="line"><span class="params"><span class="function">          <span class="type">bool</span> parallel)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">pragma</span> omp parallel for <span class="keyword">if</span>(parallel)</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">index_t</span> row = <span class="number">0</span>; row &lt; m; row++) &#123;</span><br><span class="line">        <span class="type">value_t</span> accum = <span class="built_in">value_t</span>(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">index_t</span> col = <span class="number">0</span>; col &lt; n; col++)</span><br><span class="line">            accum += A[row*n+col]*x[col];</span><br><span class="line">        b[row] = accum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">const</span> <span class="type">uint64_t</span> n = <span class="number">1UL</span> &lt;&lt; <span class="number">15</span>;</span><br><span class="line">    <span class="type">const</span> <span class="type">uint64_t</span> m = <span class="number">1UL</span> &lt;&lt; <span class="number">15</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">TIMERSTART</span>(overall)</span><br><span class="line">    <span class="comment">// memory allocation for the three vectors x, y, and z</span></span><br><span class="line">    <span class="comment">// with the no_init_t template as a wrapper for the actual type</span></span><br><span class="line">    <span class="built_in">TIMERSTART</span>(alloc)</span><br><span class="line">    std::vector&lt;<span class="type">no_init_t</span>&lt;<span class="type">uint64_t</span>&gt;&gt; <span class="built_in">A</span>(m*n);</span><br><span class="line">    std::vector&lt;<span class="type">no_init_t</span>&lt;<span class="type">uint64_t</span>&gt;&gt; <span class="built_in">x</span>(n);</span><br><span class="line">    std::vector&lt;<span class="type">no_init_t</span>&lt;<span class="type">uint64_t</span>&gt;&gt; <span class="built_in">b</span>(m);</span><br><span class="line">    <span class="built_in">TIMERSTOP</span>(alloc)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// manually initialize the input matrix A and vector x</span></span><br><span class="line">    <span class="built_in">TIMERSTART</span>(init)</span><br><span class="line">    <span class="built_in">init</span>(A, x, m, n);</span><br><span class="line">    <span class="built_in">TIMERSTOP</span>(init)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// compute A * x = b sequentially three times</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">uint64_t</span> k = <span class="number">0</span>; k &lt; <span class="number">3</span>; k++) &#123;</span><br><span class="line">        <span class="built_in">TIMERSTART</span>(mult_seq)</span><br><span class="line">        <span class="built_in">mult</span>(A, x, b, m, n, <span class="literal">false</span>);</span><br><span class="line">        <span class="built_in">TIMERSTOP</span>(mult_seq)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// compute A * x = b in parallel three times</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">uint64_t</span> k = <span class="number">0</span>; k &lt; <span class="number">3</span>; k++) &#123;</span><br><span class="line">        <span class="built_in">TIMERSTART</span>(mult_par)</span><br><span class="line">        <span class="built_in">mult</span>(A, x, b, m, n, <span class="literal">true</span>);</span><br><span class="line">        <span class="built_in">TIMERSTOP</span>(mult_par)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">TIMERSTOP</span>(overall)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// check if (last) result is correct</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">uint64_t</span> index = <span class="number">0</span>; index &lt; m; index++)</span><br><span class="line">        <span class="keyword">if</span> (b[index] != index*(index+<span class="number">1</span>)/<span class="number">2</span>)</span><br><span class="line">            std::cout &lt;&lt; <span class="string">&quot;error at position &quot;</span> &lt;&lt; index </span><br><span class="line">                      &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; b[index] &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br>自己电脑：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/捕捉私有变量1.16ct3ecyuee.webp" alt="捕捉私有变量1"><br>学校服务器：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/omp_DMV_学校服务器.7a3buzg96us0.webp" alt="omp_DMV_学校服务器"><br>看来是x64不行。我改回了x86，然后量改成了13次方，结果是这样：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/omp_DMV_自己电脑x86.18b18xc1glek.webp" alt="omp_DMV_自己电脑x86"></p>
+<h4 id="collapse"><a href="#collapse" class="headerlink" title="collapse"></a>collapse</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp parallel for collapse(2) <span class="keyword">if</span>(parallel)</span></span><br><span class="line">   <span class="keyword">for</span> (<span class="type">index_t</span> i = <span class="number">0</span>; i &lt; num_test; i++)</span><br><span class="line">       <span class="keyword">for</span> (<span class="type">index_t</span> j = <span class="number">0</span>; j &lt; num_train; j++) &#123;</span><br><span class="line">           <span class="type">value_t</span> accum = <span class="built_in">value_t</span>(<span class="number">0</span>);</span><br><span class="line">           <span class="comment">// fine-grained parallelism</span></span><br><span class="line">           <span class="comment">// #pragma omp parallel for reduction(+:accum) </span></span><br><span class="line">           <span class="keyword">for</span> (<span class="type">index_t</span> k = <span class="number">0</span>; k &lt; num_features; k++) &#123;</span><br><span class="line">               <span class="type">const</span> <span class="type">value_t</span> residue = test [i*num_features+k]</span><br><span class="line">                                     - train[j*num_features+k];</span><br><span class="line">               accum += residue*residue;</span><br><span class="line">           &#125;</span><br><span class="line">           delta[i*num_train+j] = accum;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<p>collapse折叠。因为这里钱两层循环紧挨着，所以可以“折叠起来”，超索引地给不同的线程分配任务。<br>有的时候，外层循环不多，但可用的线程非常你多的时候，可以用这种方法提高资源利用率。（解决负载不均衡。）</p>
+<h4 id="critical"><a href="#critical" class="headerlink" title="critical"></a>critical</h4><p><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/omp_critical.2j60nwrehwi0.webp" alt="omp_critical"></p>
+<p>就相当于锁。</p>
+<h4 id="1NN（最近邻）"><a href="#1NN（最近邻）" class="headerlink" title="1NN（最近邻）"></a>1NN（最近邻）</h4><h3 id="不平衡调度"><a href="#不平衡调度" class="headerlink" title="不平衡调度"></a>不平衡调度</h3><p>是来研究<code>parallel for</code>怎么调度的。<br>格式：<code>schedule(type[,size])</code>，<code>type</code>可选有<code>static , dynamic , guided ,runtime</code>，<code>size</code>是个整数，前三种的时候，可写可不写，<code>rumtime</code>无需写很具环境变量来。</p>
+<h4 id="static"><a href="#static" class="headerlink" title="static"></a>static</h4><p>没有<code>schedule</code>，默认是<code>static</code>。<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;omp.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp parallel  for schedule(static) num_threads(4)</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;i=%d,thread_id=%d\n&quot;</span>, i, <span class="built_in">omp_get_thread_num</span>());</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>如果带了参数<code>size</code>，那它就会按线程编号0、1、2..的顺序，每个线程分配size个任务，一轮不够重头再来。如果不带参数，那它会让每个线程的数量均衡，比如10个循环4个线程的情况，4个县城依次是3、3、2、2。感觉它是算好怎样分配每个线程任务均衡，然后分配那么多连续的任务。<br>如果size为1，那就像之前的循环调度；不设参数有点类似于区块分发；参数大于1，就有点类似于块循环了。</p>
+<h4 id="dynamic"><a href="#dynamic" class="headerlink" title="dynamic"></a>dynamic</h4><p>这种方式运行多次后给我的感觉是：</p>
+<ul>
+<li>不带参数和参数为1效果一样；</li>
+<li>带了参数之后，按任意编号顺序给每个线程分配<code>size</code>多;</li>
+<li>如果一次之后还有没分配完的，那就都给0号线程。</li>
+<li>但看mnist的运行结果和老师讲解，可能是谁闲下来谁上。<h4 id="guided"><a href="#guided" class="headerlink" title="guided"></a>guided</h4><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220503/omp_guided.yhg7r4qu768.webp" alt="omp_guided"><h4 id="runtime"><a href="#runtime" class="headerlink" title="runtime"></a>runtime</h4><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220503/omp_runtime.70mqq8vlqv80.webp" alt="omp_runtime"><h4 id="auto"><a href="#auto" class="headerlink" title="auto"></a>auto</h4>还有一种auto，由编译器和系统一起决定的。</li>
+</ul>
+<h3 id="归约"><a href="#归约" class="headerlink" title="归约"></a>归约</h3><p>竞争条件。容易理解。不同的线程访问在并行区域外声明的变量并修改。<br>解决方案一：critical<br>前面有提到，就相当于锁。<br>解决方案二：归约reduction<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220503/omp_reduction_1_min.40t3eh1ejl80.webp" alt="omp_reduction_1_min"><br>x结果是4。<br>分析：</p>
+<ol>
+<li>首先给每个线程分配任务，在这里因为没有schedule子句，所以按静态调度分，0号线程分前5个，1号线程分后五个；</li>
+<li>每个线程声明一个私有化变量，叫中性变量，并赋予初值，因为这里是求最小值，所以赋值为无符号整型的最大值（64个1）；</li>
+<li>对中性变量做5次加1，得到4；</li>
+<li>两个线程的结果和x的初始值取最小值返回给x。</li>
+</ol>
+<p>reduction的基本操作：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220503/omp_redution_基本操作.3d3etew2wac0.webp" alt="omp_redution_基本操作"></p>
+<h4 id="归约的数学性质或自定义归约的要求："><a href="#归约的数学性质或自定义归约的要求：" class="headerlink" title="归约的数学性质或自定义归约的要求："></a>归约的数学性质或自定义归约的要求：</h4><p><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220503/omp_reduction_性质或要求.37br1an6qhc0.webp" alt="omp_reduction_性质或要求"><br>结合律、交换律、与中性元素运算后还是副本的值。（a，b，c是副本的值）</p>
+<h4 id="自定义归约"><a href="#自定义归约" class="headerlink" title="自定义归约"></a>自定义归约</h4><p>结构：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp declare reduction</span></span><br><span class="line">	(indentifier:typelist:combiner)</span><br><span class="line">		[<span class="built_in">initializer</span>(initializer-expression)]</span><br></pre></td></tr></table></figure><br>可以理解为：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp declare（自定义的） reduction</span></span><br><span class="line">	(自定义归约名字:类型:参数（或简单的表达式）)</span><br><span class="line">		[初始化初值]</span><br></pre></td></tr></table></figure></p>
+<p>一个例子：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;limits.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//最大值返回函数</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">mymax</span><span class="params">(<span class="type">int</span> r, <span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> r &gt; n ? r : n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">const</span> <span class="type">int</span> num = <span class="number">100</span>;</span><br><span class="line">	<span class="type">int</span> data[num];</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; num; i++)</span><br><span class="line">		data[i] = i;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp declare reduction \</span></span><br><span class="line"><span class="meta">(rwz:int:omp_out=mymax(omp_out,omp_in))\</span></span><br><span class="line"><span class="meta">initializer(omp_priv=INT_MIN)</span></span><br><span class="line"></span><br><span class="line">	<span class="type">int</span> m = INT_MIN;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp parallel for reduction(rwz:m)</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; num; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		m = <span class="built_in">mymax</span>(m, data[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	std::cout &lt;&lt; <span class="string">&quot;max=&quot;</span> &lt;&lt; m &lt;&lt; std::endl;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><br>结果是99</p>
+<p>绝对值最大<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220503/omp_自定义归约绝对值最大.4vocxlaacja0.webp" alt="omp_自定义归约绝对值最大"></p>
+<h3 id="SIMD向量化"><a href="#SIMD向量化" class="headerlink" title="SIMD向量化"></a>SIMD向量化</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp simd</span></span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp parallel for simd</span></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>Leetcode</category>
+        <category>C++</category>
       </categories>
       <tags>
-        <tag>Leetcode简单</tag>
-        <tag>贪心</tag>
+        <tag>C++</tag>
+        <tag>parallel</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hadoop-HDFS</title>
+    <url>/2022/04/16/Hadoop-HDFS/</url>
+    <content><![CDATA[<h3 id="HDFS-的-Shell-操作"><a href="#HDFS-的-Shell-操作" class="headerlink" title="HDFS 的 Shell 操作"></a>HDFS 的 Shell 操作</h3><h4 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h4><p><code>hadoop fs ...</code>，或 <code>hdfs dfs ...</code>。<br>后面的命令用法和Linux命令操作用法基本差不多。</p>
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+<th>示例</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hadoop fs -mkdir 文件名</code></td>
+<td>创建文件夹</td>
+<td><code>hadoop fs -mkdir /xiyou/bajie</code></td>
+<td>创建<code>/xiyou/bajie</code>的文件夹</td>
+</tr>
+<tr>
+<td><code>hadoop fs -moveFromLocal</code></td>
+<td>剪切本地文件上传倒hdfs流经</td>
+<td><code>hadoop fs -moveFromLocal a.txt /xiyou</code></td>
+<td>将本地的a.txt剪切掉，上传到<code>/xiyou</code>目录下</td>
+</tr>
+<tr>
+<td><code>hadoop fs -copyFromLocal</code></td>
+<td>拷贝本地文件上传倒hdfs流经</td>
+<td><code>hadoop fs -copyFromLocal b.txt /xiyou</code></td>
+<td>将本地的b.txt上传到<code>/xiyou</code>目录下，本地文件还在</td>
+</tr>
+<tr>
+<td><code>hadoop fs -put</code></td>
+<td>同<code>-copyFromLocal</code></td>
+<td><code>hadoop fs -put wukong.txt /xiyou</code></td>
+<td>将本地的wukong.txt上传到<code>/xiyou</code>目录下，本地文件还在</td>
+</tr>
+<tr>
+<td><code>hadoop fs -appendToFile</code></td>
+<td>追加一个文件到已经存在的文件末尾</td>
+<td><code>hadoop fs -appendToFile jingubnag.txt /xiyou/wukong.txt</code></td>
+<td>将jingubang.txt里的内容追加到wukong.txt末尾</td>
+</tr>
+<tr>
+<td><code>hadoop fs -copyToLocal</code></td>
+<td>从HDFS拷贝到本地</td>
+<td><code>hadoop fs -copyToLocal /xiyou/a.txt  ./</code></td>
+<td>把a.txt下载到本地</td>
+</tr>
+<tr>
+<td><code>hadoop fs -get</code></td>
+<td>同<code>-CopyToLocal</code></td>
+<td>略</td>
+<td>略</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h4><ol>
+<li>-ls: 显示目录信息</li>
+<li>-cat：显示文件内容</li>
+<li>-chgrp、-chmod、-chown：Linux文件系统中的用法一样，修改文件所属权限</li>
+<li>-cp：从HDFS的一个路径拷贝到HDFS的另一个路径</li>
+<li>-mv：在HDFS目录中移动文件</li>
+<li>-tail：显示一个文件的末尾1kb的数据、</li>
+<li>-rm：删除文件或文件夹</li>
+<li>-rm -r：递归删除目录及目录里面内容</li>
+<li>-du统计文件夹的大小信息</li>
+<li>-setrep：设置HDFS中文件的副本数量</li>
+</ol>
+<h3 id="HDFS-的-API-操作"><a href="#HDFS-的-API-操作" class="headerlink" title="HDFS  的 API 操作"></a>HDFS  的 API 操作</h3><h4 id="Maven-和-idea-的安装与配置"><a href="#Maven-和-idea-的安装与配置" class="headerlink" title="Maven 和 idea 的安装与配置"></a>Maven 和 idea 的安装与配置</h4><ol>
+<li>下载maven，防灾一个没有中文没有空格的路径下；</li>
+<li>配置maven环境变量；</li>
+<li>修改本地仓库路径和镜像（要进入setting.xml去修改！！）；</li>
+<li>安装idea，并修改maven配置，在<code>File-New Projects Setup-Settings for New Projects...</code>里进行全局修改。</li>
+</ol>
+<h4 id="客户端代码操作常用套路"><a href="#客户端代码操作常用套路" class="headerlink" title="客户端代码操作常用套路"></a>客户端代码操作常用套路</h4><ol>
+<li>获取客户端对象</li>
+<li>执行操作命令</li>
+<li>关闭资源</li>
+</ol>
+<h4 id="以创建文件夹为例"><a href="#以创建文件夹为例" class="headerlink" title="以创建文件夹为例"></a>以创建文件夹为例</h4><ol>
+<li>先创建一个maven项目；</li>
+<li>添加相关依赖坐标：<dependencies>
+    <dependency>
+        <groupId>org.apache.hadoop</groupId>
+        <artifactId>hadoop-client</artifactId>
+        <version>3.1.3</version>
+    </dependency>
+    <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>4.12</version>
+    </dependency>
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>1.7.30</version>
+    </dependency>
+</dependencies></li>
+<li>日志添加。在项目的src/main/resources目录下，新建一个文件，命名为“log4j.properties”，在文件中填入<br>log4j.rootLogger=INFO, stdout<br>log4j.appender.stdout=org.apache.log4j.ConsoleAppender<br>log4j.appender.stdout.layout=org.apache.log4j.PatternLayout<br>log4j.appender.stdout.layout.ConversionPattern=%d %p [%c] - %m%n<br>log4j.appender.logfile=org.apache.log4j.FileAppender<br>log4j.appender.logfile.File=target/spring.log<br>log4j.appender.logfile.layout=org.apache.log4j.PatternLayout<br>log4j.appender.logfile.layout.ConversionPattern=%d %p [%c] - %m%n</li>
+<li>在 <code>/src/man/java</code>下创建一个 com.shengrihui.hdfs  包；</li>
+<li>创建 HDFSC列宁他 文件</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.shengrihui.hdfs;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.conf.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.FileSystem;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.Path;</span><br><span class="line"><span class="keyword">import</span> org.junit.After;</span><br><span class="line"><span class="keyword">import</span> org.junit.Before;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.net.URI;</span><br><span class="line"><span class="keyword">import</span> java.net.URISyntaxException;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 客户端代码操作常用套路</span></span><br><span class="line"><span class="comment"> * 1.获取客户端对象</span></span><br><span class="line"><span class="comment"> * 2.执行操作命令</span></span><br><span class="line"><span class="comment"> * 3.关闭资源</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HdfsClient</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> FileSystem fs;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException, IOException, InterruptedException &#123;</span><br><span class="line">        <span class="comment">// 链接集群的nn地址</span></span><br><span class="line">        <span class="type">URI</span> <span class="variable">uri</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">URI</span>(<span class="string">&quot;hdfs://hadoop102:8020&quot;</span>);</span><br><span class="line">        <span class="comment">// 创建一个配置文件</span></span><br><span class="line">        <span class="type">Configuration</span> <span class="variable">configuration</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Configuration</span>();</span><br><span class="line">        <span class="comment">// 用户</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">user</span> <span class="operator">=</span> <span class="string">&quot;shengrihui&quot;</span>;</span><br><span class="line">        <span class="comment">// 1.获取到了客户端对象</span></span><br><span class="line">        fs = FileSystem.get(uri, configuration, user);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@After</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">close</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">// 3.关闭资源</span></span><br><span class="line">        fs.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testMkdirs</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException, IOException, InterruptedException &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2.创建一个文件夹</span></span><br><span class="line">        fs.mkdirs(<span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/xiyou/wukong&quot;</span>));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>close()</code>,<code>init()</code>是为了封装代码。<br>运行后结果：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220412/创建文件夹.4ytaphns1eo0.webp" alt="创建文件夹"></p>
+<h4 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testPut</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 参数：</span></span><br><span class="line"><span class="comment">     * 参数1：是否删除源文件</span></span><br><span class="line"><span class="comment">     * 参数2：是否覆盖目标文件（如果已经有了）</span></span><br><span class="line"><span class="comment">     * 参数3：源数据路径</span></span><br><span class="line"><span class="comment">     * 参数4：目的地路径</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    fs.copyFromLocalFile(<span class="literal">false</span>, <span class="literal">true</span>, <span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;E:\\CS\\BigData\\hadoop\\笔记（word版本）\\笔记（word版本）&quot;</span>), <span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/&quot;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220412/上传代码运行结果.78jw6wcrta80.webp" alt="上传代码运行结果"><br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220412/上传结果.2b5iohrzlv8k.webp" alt="上传结果"></p>
+<h5 id="参数优先级"><a href="#参数优先级" class="headerlink" title="参数优先级"></a>参数优先级</h5><p>参数优先级排序：<br>（1）客户端代码中设置的值 &gt;<br>    在<code>init</code>里<code>configuration.set(&quot;dfs.replication&quot;,&quot;3&quot;);</code><br>（2）ClassPath下的用户自定义配置文件 &gt;<br>    在resource目录下新建文件hdfs-site.xml，写入内容；<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">     &lt;value&gt;1&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure><br>（3）然后是服务器的自义配置（xxx-site.xml） &gt;<br>（4）服务器的默认配置（xxx-default.xml）</p>
+<h4 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//文件下载</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testGet</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 参数1：源文件是否删除；参数2：源文件的路径（hdfs路径）；参数3：目标地址路径（Windows）</span></span><br><span class="line"><span class="comment">     * 参数4：是否文件校验，从hdfs下载来的数据可能会丢一些数据或错误，会带一个crc的校验码，</span></span><br><span class="line"><span class="comment">     * 再用crc算法算一个值，如果算出来的crc和传过来crc一样，就说明传来的一样</span></span><br><span class="line"><span class="comment">     * false是进行校验，一般不用这个参数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    fs.copyToLocalFile(<span class="literal">false</span>, <span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;hdfs://hadoop102/xiyouji&quot;</span>), <span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;E:\\&quot;</span>), <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：略</p>
+<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//删除</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testRm</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="comment">//参数1：要删除的路径；参数2：是否递归删除</span></span><br><span class="line">    <span class="comment">//删除文件</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//删除空目录</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//删除非空目录（必须递归）</span></span><br><span class="line">    <span class="comment">//fs.delete(new Path(&quot;hdfs://hadoop102/jinguo&quot;), true);</span></span><br><span class="line">    fs.delete(<span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;hdfs://hadoop102/xiyou&quot;</span>),<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：略</p>
+<h4 id="文件的更名和移动"><a href="#文件的更名和移动" class="headerlink" title="文件的更名和移动"></a>文件的更名和移动</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//文件的更名和移动</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testmv</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">//参数解读：参数1，原文件路径；参数2，目标文件路径</span></span><br><span class="line">        <span class="comment">//文件名称修改</span></span><br><span class="line">        <span class="comment">//fs.rename(new Path(&quot;hdfs://hadoop102/笔记（word版本）&quot;),new Path(&quot;hdfs://hadoop102/note&quot;));</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//文件更名移动</span></span><br><span class="line">        <span class="comment">//fs.rename(new Path(&quot;/wcinput/word.txt&quot;),new Path(&quot;/sanguo/a.txt&quot;));</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//目录更名</span></span><br><span class="line">        fs.rename(<span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/sanguo&quot;</span>),<span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/shuihu&quot;</span>));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="获取文件详细信息"><a href="#获取文件详细信息" class="headerlink" title="获取文件详细信息"></a>获取文件详细信息</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取文件详细信息</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">fileDetail</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="comment">// 获取所有文件信息</span></span><br><span class="line">    RemoteIterator&lt;LocatedFileStatus&gt; listFiles = fs.listFiles(<span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/&quot;</span>), <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 遍历文件</span></span><br><span class="line">    <span class="keyword">while</span> (listFiles.hasNext()) &#123;</span><br><span class="line">        <span class="type">LocatedFileStatus</span> <span class="variable">fileStatus</span> <span class="operator">=</span> listFiles.next();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;=======&quot;</span> + fileStatus.getPath() + <span class="string">&quot;=======&quot;</span>);</span><br><span class="line">        System.out.println(fileStatus.getPermission());<span class="comment">// 权限</span></span><br><span class="line">        System.out.println(fileStatus.getOwner());</span><br><span class="line">        System.out.println(fileStatus.getGroup());</span><br><span class="line">        System.out.println(fileStatus.getLen());</span><br><span class="line">        System.out.println(fileStatus.getModificationTime());<span class="comment">// 上次修改的时间</span></span><br><span class="line">        System.out.println(fileStatus.getReplication());</span><br><span class="line">        System.out.println(fileStatus.getBlockSize());</span><br><span class="line">        System.out.println(fileStatus.getPath().getName());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取块信息</span></span><br><span class="line">        BlockLocation[] blockLocations = fileStatus.getBlockLocations();</span><br><span class="line">        System.out.println(Arrays.toString(blockLocations));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220412/hdfs获取文件信息.3qy8actzeaw0.webp" alt="hdfs获取文件信息"><br>其中，大文件会按快大小128M分成好几个块；<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220412/hdfs大文件块信息.2cxiqknp7jvo.webp" alt="hdfs大文件块信息"></p>
+<h4 id="判断是文件夹还是文件"><a href="#判断是文件夹还是文件" class="headerlink" title="判断是文件夹还是文件"></a>判断是文件夹还是文件</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 判断是文件夹还是文件</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testFile</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    FileStatus[] listStatus = fs.listStatus(<span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/&quot;</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (FileStatus status : listStatus) &#123;</span><br><span class="line">        <span class="keyword">if</span> (status.isFile()) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;文件 &quot;</span> + status.getPath().getName());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;目录 &quot;</span> + status.getPath().getName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="HDFS读写流程"><a href="#HDFS读写流程" class="headerlink" title="HDFS读写流程"></a>HDFS读写流程</h3><h4 id="HDFS-写流程"><a href="#HDFS-写流程" class="headerlink" title="HDFS 写流程"></a>HDFS 写流程</h4><p><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/HDFS读写流程-总2.7ieye7u3oek0.webp" alt="HDFS读写流程-总"><br>（1）客户端通过Distributed FileSystem模块向NameNode请求上传文件，NameNode检查目标文件是否已存在，父目录是否存在。<br>    还有是否有权限上传<br>（2）NameNode返回是否可以上传。<br>（3）客户端请求第一个 Block上传到哪几个DataNode服务器上。<br>（4）NameNode返回3个DataNode节点，分别为dn1、dn2、dn3。<br>    节点的选择涉及到节点距离最近、负载均衡（如果多个客户端都在写，那就pass这个节点）<br>（5）客户端通过FSDataOutputStream模块请求dn1上传数据，dn1收到请求会继续调用dn2，然后dn2调用dn3，将这个通信管道建立完成。<br>（6）dn1、dn2、dn3逐级应答客户端。<br>（7）客户端开始往dn1上传第一个Block（先从磁盘读取数据放到一个本地内存缓存），以Packet为单位，dn1收到一个Packet就会传给dn2，dn2传给dn3；dn1每传一个packet会放入一个应答队列等待应答。<br>（8）当一个Block传输完成之后，客户端再次请求NameNode上传第二个Block的服务器。（重复执行3-7步）。<br>    为什么不是多个节点同时连接客户端？防止因为有任何一个节点没有完成而一直在等；<br>    到dn1的时候同时就往后倒dn2；<br>    最小单位是516字节（4个校验位），攒倒64kB的packet发送；<br>    ACK队列，接受下一端是否接受成功，用于备份。</p>
+<h5 id="网络拓扑-节点距离计算"><a href="#网络拓扑-节点距离计算" class="headerlink" title="网络拓扑-节点距离计算"></a>网络拓扑-节点距离计算</h5><p>节点距离：两个节点到达最近的共同祖先的距离总和。<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/HDFS读写数据-节点距离.137zn4lyrwa8.webp" alt="HDFS读写数据-节点距离"></p>
+<h5 id="机架感知（副本存储节点选择）"><a href="#机架感知（副本存储节点选择）" class="headerlink" title="机架感知（副本存储节点选择）"></a>机架感知（副本存储节点选择）</h5><p><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/HDFS读写流程-机架感知.8o1r32pms5s.webp" alt="HDFS读写流程-机架感知"><br>第一个副本：本地（如果客户端不在集群，随机算一个）<br>    本地是为了上传的速度<br>第二个副本：另一个机架里随机<br>    另一个机架是为了数据的可靠性<br>第三个副本：和第二个同一个机架随机<br>    兼顾可靠性和速度</p>
+<h4 id="HDFS读数据流程"><a href="#HDFS读数据流程" class="headerlink" title="HDFS读数据流程"></a>HDFS读数据流程</h4><p><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/HDFS读写流程-读数据.5k5bef6075s0.webp" alt="HDFS读写流程-读数据"><br>（1）客户端通过DistributedFileSystem向NameNode请求下载文件，NameNode通过查询元数据，找到文件块所在的DataNode地址。<br>（2）挑选一台DataNode（就近原则，然后随机）服务器，请求读取数据。<br>    节点距离最近，也考虑负载<br>（3）DataNode开始传输数据给客户端（从磁盘里面读取数据输入流，以Packet为单位来做校验）。<br>（4）客户端以Packet为单位接收，先在本地缓存，然后写入目标文件。<br>    串行读，先读第一块，再读第二块</p>
+<h3 id="其他（了解和理解）"><a href="#其他（了解和理解）" class="headerlink" title="其他（了解和理解）"></a>其他（了解和理解）</h3><ul>
+<li>NameNode和SecondaryNameNode<ul>
+<li>NN和2NN工作机制</li>
+<li>Fsimage和Edits解析</li>
+<li>CheckPoint时间设置</li>
+</ul>
+</li>
+<li>DataNode<ul>
+<li>DataNode工作机制</li>
+<li>数据完整性</li>
+<li>掉线时限参数设置</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>大数据Hadoop</category>
+        <category>HDFS</category>
+      </categories>
+      <tags>
+        <tag>Hadoop</tag>
+        <tag>HDFS</tag>
       </tags>
   </entry>
   <entry>
@@ -178,8 +323,73 @@
         <category>Leetcode</category>
       </categories>
       <tags>
-        <tag>Leetcode简单</tag>
         <tag>模拟</tag>
+        <tag>Leetcode简单</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode_1221. 分割平衡字符串</title>
+    <url>/2021/09/07/Leetcode-1221-%E5%88%86%E5%89%B2%E5%B9%B3%E8%A1%A1%E5%AD%97%E7%AC%A6%E4%B8%B2/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1221. 分割平衡字符串<br>难度：简单</p>
+<p>在一个 <strong>平衡字符串</strong> 中，<code>'L'</code> 和 <code>'R'</code> 字符的数量是相同的。</p>
+
+<p>给你一个平衡字符串&nbsp;<code>s</code>，请你将它分割成尽可能多的平衡字符串。</p>
+
+<p><strong>注意：</strong>分割得到的每个字符串都必须是平衡字符串。</p>
+
+<p>返回可以通过分割得到的平衡字符串的 <strong>最大数量</strong> <strong>。</strong></p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入：</strong>s = "RLRRLLRLRL"
+<strong>输出：</strong>4
+<strong>解释：</strong>s 可以分割为 "RL"、"RRLL"、"RL"、"RL" ，每个子字符串中都包含相同数量的 'L' 和 'R' 。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>s = "RLLLLRRRLR"
+<strong>输出：</strong>3
+<strong>解释：</strong>s 可以分割为 "RL"、"LLLRRR"、"LR" ，每个子字符串中都包含相同数量的 'L' 和 'R' 。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>s = "LLLLRRRR"
+<strong>输出：</strong>1
+<strong>解释：</strong>s 只能保持原样 "LLLLRRRR".
+</pre>
+
+<p><strong>示例 4：</strong></p>
+
+<pre><strong>输入：</strong>s = "RLRRRLLRLL"
+<strong>输出：</strong>2
+<strong>解释：</strong>s 可以分割为 "RL"、"RRRLLRLL" ，每个子字符串中都包含相同数量的 'L' 和 'R' 。
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= s.length &lt;= 1000</code></li>
+    <li><code>s[i] = 'L' 或 'R'</code></li>
+    <li><code>s</code> 是一个 <strong>平衡</strong> 字符串</li>
+</ul>
+
+
+<h3 id="方法一：-贪心"><a href="#方法一：-贪心" class="headerlink" title="方法一： 贪心"></a>方法一： 贪心</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">balancedStringSplit</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        l, r, ans = <span class="number">0</span> ,<span class="number">0</span>,<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> i == <span class="string">&#x27;L&#x27;</span>:</span><br><span class="line">                l += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> i == <span class="string">&#x27;R&#x27;</span>:</span><br><span class="line">                r += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> l == r:</span><br><span class="line">                ans += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">balancedStringSplit</span>(<span class="params">self, s: <span class="built_in">str</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        ans, d = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> ch <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> ch == <span class="string">&#x27;L&#x27;</span>:</span><br><span class="line">                d += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                d -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> d == <span class="number">0</span>:</span><br><span class="line">                ans += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line">作者：LeetCode-Solution</span><br><span class="line">链接：https://leetcode-cn.com/problems/split-a-string-<span class="keyword">in</span>-balanced-strings/solution/fen-ge-ping-heng-zi-fu-chuan-by-leetcode-7y8u/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/hoq3tI"><img src="https://z3.ax1x.com/2021/09/07/hoq3tI.jpg" alt="平衡字符串提交记录.jpg"></a></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode简单</tag>
+        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
@@ -385,6 +595,11 @@ return 0
       </tags>
   </entry>
   <entry>
+    <title>Leetcode_233. 数字 1 的个数</title>
+    <url>/2021/08/23/Leetcode-233-%E6%95%B0%E5%AD%97-1-%E7%9A%84%E4%B8%AA%E6%95%B0/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>Leetcode-2029-石子游戏 IX</title>
     <url>/2022/02/14/Leetcode-2029-%E7%9F%B3%E5%AD%90%E6%B8%B8%E6%88%8F-IX/</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>2029.石子游戏 IX 难度：中等</p>
@@ -533,11 +748,6 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
       </tags>
   </entry>
   <entry>
-    <title>Leetcode_233. 数字 1 的个数</title>
-    <url>/2021/08/23/Leetcode-233-%E6%95%B0%E5%AD%97-1-%E7%9A%84%E4%B8%AA%E6%95%B0/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>Leetcode_345. 反转字符串中的元音字母</title>
     <url>/2021/08/19/Leetcode-345-%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D/</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>345. 反转字符串中的元音字母<br>难度：简单<br>编写一个函数，以字符串作为输入，反转该字符串中的元音字母。</p>
@@ -565,9 +775,72 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
       </tags>
   </entry>
   <entry>
-    <title>Leetcode_502. IPO</title>
-    <url>/2021/09/08/Leetcode-502-IPO/</url>
-    <content><![CDATA[]]></content>
+    <title>Leetcode-1706-球会落何处</title>
+    <url>/2022/02/24/Leetcode-1706-%E7%90%83%E4%BC%9A%E8%90%BD%E4%BD%95%E5%A4%84/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1706. 球会落何处<br>难诉：中等</p>
+<p>用一个大小为 <code>m x n</code> 的二维网格 <code>grid</code> 表示一个箱子。你有 <code>n</code> 颗球。箱子的顶部和底部都是开着的。</p>
+
+<p>箱子中的每个单元格都有一个对角线挡板，跨过单元格的两个角，可以将球导向左侧或者右侧。</p>
+
+<ul>
+    <li>将球导向右侧的挡板跨过左上角和右下角，在网格中用 <code>1</code> 表示。</li>
+    <li>将球导向左侧的挡板跨过右上角和左下角，在网格中用 <code>-1</code> 表示。</li>
+</ul>
+
+<p>在箱子每一列的顶端各放一颗球。每颗球都可能卡在箱子里或从底部掉出来。如果球恰好卡在两块挡板之间的 "V" 形图案，或者被一块挡导向到箱子的任意一侧边上，就会卡住。</p>
+
+<p>返回一个大小为 <code>n</code> 的数组 <code>answer</code> ，其中 <code>answer[i]</code> 是球放在顶部的第 <code>i</code> 列后从底部掉出来的那一列对应的下标，如果球卡在盒子里，则返回 <code>-1</code> 。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<p><strong><img style="width: 500px; height: 385px;" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/12/26/ball.jpg" alt></strong></p>
+
+<pre><strong>输入：</strong>grid = [[1,1,1,-1,-1],[1,1,1,-1,-1],[-1,-1,-1,1,1],[1,1,1,1,-1],[-1,-1,-1,-1,-1]]
+<strong>输出：</strong>[1,-1,-1,-1,-1]
+<strong>解释：</strong>示例如图：
+b0 球开始放在第 0 列上，最终从箱子底部第 1 列掉出。
+b1 球开始放在第 1 列上，会卡在第 2、3 列和第 1 行之间的 "V" 形里。
+b2 球开始放在第 2 列上，会卡在第 2、3 列和第 0 行之间的 "V" 形里。
+b3 球开始放在第 3 列上，会卡在第 2、3 列和第 0 行之间的 "V" 形里。
+b4 球开始放在第 4 列上，会卡在第 2、3 列和第 1 行之间的 "V" 形里。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>grid = [[-1]]
+<strong>输出：</strong>[-1]
+<strong>解释：</strong>球被卡在箱子左侧边上。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>grid = [[1,1,1,1,1,1],[-1,-1,-1,-1,-1,-1],[1,1,1,1,1,1],[-1,-1,-1,-1,-1,-1]]
+<strong>输出：</strong>[0,1,2,3,4,-1]
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>m == grid.length</code></li>
+    <li><code>n == grid[i].length</code></li>
+    <li><code>1 &lt;= m, n &lt;= 100</code></li>
+    <li><code>grid[i][j]</code> 为 <code>1</code> 或 <code>-1</code></li>
+</ul>
+
+<h3 id="方法一：-模拟"><a href="#方法一：-模拟" class="headerlink" title="方法一： 模拟"></a>方法一： 模拟</h3><p>虽然是中等难度的题，但看完题后就马上想到了可以用DFS，不过再想想发现不是DFS而是模拟！<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findBall</span>(<span class="params">self, grid</span>):</span><br><span class="line">        m, n = <span class="built_in">len</span>(grid), <span class="built_in">len</span>(grid[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">DFS</span>(<span class="params">row, col</span>):</span><br><span class="line">            <span class="keyword">if</span> row == m :</span><br><span class="line">                <span class="keyword">return</span> col</span><br><span class="line">            <span class="keyword">if</span> grid[row][col] == <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">if</span> col == n - <span class="number">1</span> <span class="keyword">or</span> grid[row][col + <span class="number">1</span>] == -<span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> grid[row][col + <span class="number">1</span>] == <span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">return</span> DFS(row + <span class="number">1</span>, col + <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">elif</span> grid[row][col] == -<span class="number">1</span>:</span><br><span class="line">                <span class="keyword">if</span> col == <span class="number">0</span> <span class="keyword">or</span> grid[row][col - <span class="number">1</span>] == <span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> grid[row][col - <span class="number">1</span>] == -<span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">return</span> DFS(row + <span class="number">1</span>, col - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> [DFS(<span class="number">0</span>, i) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br></pre></td></tr></table></figure></p>
+<p>官解更简洁一些：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findBall</span>(<span class="params">self, grid: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        n = <span class="built_in">len</span>(grid[<span class="number">0</span>])</span><br><span class="line">        ans = [-<span class="number">1</span>] * n</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            col = j  <span class="comment"># 球的初始列</span></span><br><span class="line">            <span class="keyword">for</span> row <span class="keyword">in</span> grid:</span><br><span class="line">                <span class="built_in">dir</span> = row[col]</span><br><span class="line">                col += <span class="built_in">dir</span>  <span class="comment"># 移动球</span></span><br><span class="line">                <span class="keyword">if</span> col &lt; <span class="number">0</span> <span class="keyword">or</span> col == n <span class="keyword">or</span> row[col] != <span class="built_in">dir</span>:  <span class="comment"># 到达侧边或 V 形</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">else</span>:  <span class="comment"># 成功到达底部</span></span><br><span class="line">                ans[j] = col</span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line"><span class="comment"># 作者：LeetCode-Solution</span></span><br><span class="line"><span class="comment"># 链接：https://leetcode-cn.com/problems/where-will-the-ball-fall/solution/qiu-hui-luo-he-chu-by-leetcode-solution-xqop/</span></span><br><span class="line"><span class="comment"># 来源：力扣（LeetCode）</span></span><br><span class="line"><span class="comment"># 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span></span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
+        <tag>Leetcode中等</tag>
+      </tags>
   </entry>
   <entry>
     <title>Leetcode_443. 压缩字符串</title>
@@ -635,6 +908,11 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
         <tag>Leetcode中等</tag>
         <tag>双指针</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Leetcode_502. IPO</title>
+    <url>/2021/09/08/Leetcode-502-IPO/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Leetcode_526. 优美的排列</title>
@@ -707,8 +985,8 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
         <category>Leetcode</category>
       </categories>
       <tags>
-        <tag>Leetcode简单</tag>
         <tag>模拟</tag>
+        <tag>Leetcode简单</tag>
       </tags>
   </entry>
   <entry>
@@ -872,6 +1150,69 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
       </tags>
   </entry>
   <entry>
+    <title>Leetcode-688-骑士在棋盘上的概率</title>
+    <url>/2022/02/18/Leetcode-688-%E9%AA%91%E5%A3%AB%E5%9C%A8%E6%A3%8B%E7%9B%98%E4%B8%8A%E7%9A%84%E6%A6%82%E7%8E%87/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>688. 骑士在棋盘上的概率<br>难度：中等</p>
+<p>在一个&nbsp;<code>n x n</code>&nbsp;的国际象棋棋盘上，一个骑士从单元格 <code>(row, column)</code>&nbsp;开始，并尝试进行 <code>k</code> 次移动。行和列是 <strong>从 0 开始</strong> 的，所以左上单元格是 <code>(0,0)</code> ，右下单元格是 <code>(n - 1, n - 1)</code> 。</p>
+
+<p>象棋骑士有8种可能的走法，如下图所示。每次移动在基本方向上是两个单元格，然后在正交方向上是一个单元格。</p>
+
+<p><img style="height: 300px; width: 300px;" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/12/knight.png"></p>
+
+<p>每次骑士要移动时，它都会随机从8种可能的移动中选择一种(即使棋子会离开棋盘)，然后移动到那里。</p>
+
+<p>骑士继续移动，直到它走了 <code>k</code> 步或离开了棋盘。</p>
+
+<p>返回 <em>骑士在棋盘停止移动后仍留在棋盘上的概率</em> 。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入:</strong> n = 3, k = 2, row = 0, column = 0
+<strong>输出:</strong> 0.0625
+<strong>解释:</strong> 有两步(到(1,2)，(2,1))可以让骑士留在棋盘上。
+在每一个位置上，也有两种移动可以让骑士留在棋盘上。
+骑士留在棋盘上的总概率是0.0625。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入:</strong> n = 1, k = 0, row = 0, column = 0
+<strong>输出:</strong> 1.00000
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示:</strong></p>
+
+<ul>
+    <li><code>1 &lt;= n &lt;= 25</code></li>
+    <li><code>0 &lt;= k &lt;= 100</code></li>
+    <li><code>0 &lt;= row, column &lt;= n</code></li>
+</ul>
+
+<h3 id="思路一：广度优先搜索（BFS）"><a href="#思路一：广度优先搜索（BFS）" class="headerlink" title="思路一：广度优先搜索（BFS）"></a>思路一：广度优先搜索（BFS）</h3><p>题目不是很难理解，容易想到BFS。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">	    <span class="keyword">def</span> <span class="title function_">knightProbability</span>(<span class="params">self, n: <span class="built_in">int</span>, k: <span class="built_in">int</span>, row: <span class="built_in">int</span>, column: <span class="built_in">int</span></span>) -&gt; <span class="built_in">float</span>:</span><br><span class="line">        Dirs = [(-<span class="number">1</span>, -<span class="number">2</span>), (<span class="number">1</span>, -<span class="number">2</span>),</span><br><span class="line">                (-<span class="number">2</span>, -<span class="number">1</span>), (<span class="number">2</span>, -<span class="number">1</span>),</span><br><span class="line">                (-<span class="number">2</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">1</span>),</span><br><span class="line">                (-<span class="number">1</span>, <span class="number">2</span>), (<span class="number">1</span>, <span class="number">2</span>)]</span><br><span class="line">        q = deque()</span><br><span class="line">        q.append((row, column, k))</span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> q:</span><br><span class="line">            r, c, kk = q.popleft()</span><br><span class="line">            <span class="comment"># # 取出kk==0，cnt+1</span></span><br><span class="line">            <span class="comment"># # 也就是，走到最后一步再计数</span></span><br><span class="line">            <span class="keyword">if</span> kk == <span class="number">0</span>:</span><br><span class="line">                cnt += <span class="number">1</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">for</span> x, y <span class="keyword">in</span> Dirs:</span><br><span class="line">                <span class="keyword">if</span> <span class="number">0</span> &lt;= r + x &lt; n <span class="keyword">and</span> <span class="number">0</span> &lt;= c + y &lt; n:</span><br><span class="line">                    q.append((r + x, c + y, kk - <span class="number">1</span>))</span><br><span class="line">        <span class="keyword">return</span> cnt / <span class="built_in">pow</span>(<span class="number">8</span>, k)</span><br></pre></td></tr></table></figure>
+<p>但这也很容易地超出了时间限制。</p>
+<h3 id="思路二：动态规划"><a href="#思路二：动态规划" class="headerlink" title="思路二：动态规划"></a>思路二：动态规划</h3><p>看了一下官解，没想到用的是动态规划。尝试自己写了一下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">knightProbability</span>(<span class="params">self, n: <span class="built_in">int</span>, k: <span class="built_in">int</span>, row: <span class="built_in">int</span>, column: <span class="built_in">int</span></span>) -&gt; <span class="built_in">float</span>:</span><br><span class="line">        Dirs = [(-<span class="number">1</span>, -<span class="number">2</span>), (<span class="number">1</span>, -<span class="number">2</span>),</span><br><span class="line">                (-<span class="number">2</span>, -<span class="number">1</span>), (<span class="number">2</span>, -<span class="number">1</span>),</span><br><span class="line">                (-<span class="number">2</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">1</span>),</span><br><span class="line">                (-<span class="number">1</span>, <span class="number">2</span>), (<span class="number">1</span>, <span class="number">2</span>)]</span><br><span class="line">        dp=[[[<span class="number">0</span>]* n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)]<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(k+<span class="number">1</span>)]</span><br><span class="line">        dp[<span class="number">0</span>][row][column]=<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> step <span class="keyword">in</span> <span class="built_in">range</span>(k):</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                    <span class="keyword">if</span> dp[step][i][j]&gt;<span class="number">0</span>:</span><br><span class="line">                        <span class="keyword">for</span> di,dj <span class="keyword">in</span> Dirs:</span><br><span class="line">                            ni,nj=i+di,j+dj</span><br><span class="line">                            <span class="keyword">if</span> <span class="number">0</span>&lt;=ni&lt;n <span class="keyword">and</span> <span class="number">0</span>&lt;=nj&lt;n:</span><br><span class="line">                                dp[step+<span class="number">1</span>][ni][nj]+=<span class="number">1</span></span><br><span class="line">        cnt=<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            cnt+=<span class="built_in">sum</span>(dp[-<span class="number">1</span>][i])</span><br><span class="line">        <span class="built_in">print</span>(dp[-<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> cnt/<span class="built_in">pow</span>(<span class="number">8</span>,k)</span><br></pre></td></tr></table></figure>
+<p>但是这样出现了错误，原因是在最后一步（<code>step=k-1</code>）的<code>dp[step+1][ni][nj]+=1</code>，加的只是这一步的情况，没有算上之前其实还有很多能到<code>i</code>,<code>j</code>的情况。</p>
+<p>将<code>dp[step+1][ni][nj]+=1</code>修改为<code>dp[step + 1][ni][nj] += dp[step][i][j]</code>,成功通过！而且比官解的好！</p>
+<p>官解：<br>它的状态值<code>dp[step][i][j]</code>指的是从<code>(i,j)</code>出发第<code>step</code>步后还在棋盘上的概率，状态转移方程是： $ dp[step][i][j] += \frac{1}{8} + \sum_{di,dj} dp[step-1][i+di][j+dj] , (di,dj)\in \{(-2, -1), (-2, 1), (2, -1), (2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2)\}, 0\leq i,j,i+di,j+dj &lt;n $ 。<br>也不难理解，因为<code>(i,j)</code>下一步有8种可能的走法，那<code>(i+di,j+dj)</code>的概率就是 $\frac{1}{8}$ <code>(i,j)</code>的概率。换个角度讲也就是，有8种可能走到它<code>(i,j)</code>这，那走到<code>(i,j)</code>的概率就是$\sum_{di,dj} dp[step-1][i+di][j+dj]$。<br>那为什么最后只要输出<code>dp[k][row][column]</code>就好了呢？<br>我觉得可以倒过来走，以<code>n=3,k=1,row=0,colmn=0</code>为例，<code>(0,0)</code>在第1步往回走，有<code>0.25</code>的概率留在棋盘上，这就是答案。将初始值全部设为1，遍历所有点进行状态转移方程的计算，所得的结果<code>dp[k][i][j]</code>就是<code>(i,j)</code>走了<code>k</code>步之后仍然留在棋盘上的概率。将<code>k</code>扩展来解释状态转移方程，第<code>k</code>步<code>(i,j)</code>仍然留在棋盘的概率是由第<code>k-1</code>步对应8个点的状态值计算而来，每个点的状态值就是该店走那么多步仍然留在棋盘的概率。<br>当然了，超出棋盘范围的值都是0啦。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">knightProbability</span>(<span class="params">self, n: <span class="built_in">int</span>, k: <span class="built_in">int</span>, row: <span class="built_in">int</span>, column: <span class="built_in">int</span></span>) -&gt; <span class="built_in">float</span>:</span><br><span class="line">        dp = [[[<span class="number">0</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(k + <span class="number">1</span>)]</span><br><span class="line">        <span class="keyword">for</span> step <span class="keyword">in</span> <span class="built_in">range</span>(k + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                    <span class="keyword">if</span> step == <span class="number">0</span>:</span><br><span class="line">                        dp[step][i][j] = <span class="number">1</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        <span class="keyword">for</span> di, dj <span class="keyword">in</span> ((-<span class="number">2</span>, -<span class="number">1</span>), (-<span class="number">2</span>, <span class="number">1</span>), (<span class="number">2</span>, -<span class="number">1</span>), (<span class="number">2</span>, <span class="number">1</span>), (-<span class="number">1</span>, -<span class="number">2</span>), (-<span class="number">1</span>, <span class="number">2</span>), (<span class="number">1</span>, -<span class="number">2</span>), (<span class="number">1</span>, <span class="number">2</span>)):</span><br><span class="line">                            ni, nj = i + di, j + dj</span><br><span class="line">                            <span class="keyword">if</span> <span class="number">0</span> &lt;= ni &lt; n <span class="keyword">and</span> <span class="number">0</span> &lt;= nj &lt; n:</span><br><span class="line">                                dp[step][i][j] += dp[step - <span class="number">1</span>][ni][nj] / <span class="number">8</span></span><br><span class="line">        <span class="keyword">return</span> dp[k][row][column]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 作者：LeetCode-Solution</span></span><br><span class="line"><span class="comment"># 链接：https://leetcode-cn.com/problems/knight-probability-in-chessboard/solution/qi-shi-zai-qi-pan-shang-de-gai-lu-by-lee-2qhk/</span></span><br><span class="line"><span class="comment"># 来源：力扣（LeetCode）</span></span><br><span class="line"><span class="comment"># 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span></span><br></pre></td></tr></table></figure>
+<p>我对官解的优化<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def knightProbability(self, n: int, k: int, row: int, column: int) -&gt; float:</span><br><span class="line">        Dirs = ((-2, -1), (-2, 1), (2, -1), (2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2))</span><br><span class="line">        dp = [[[0] * (n + 4) for _ in range(n + 4)] for _ in range(2)]</span><br><span class="line">        for i in range(2, 2 + n):</span><br><span class="line">            for j in range(2, 2 + n):</span><br><span class="line">                dp[0][i][j] = 1</span><br><span class="line">        for step in range(1, k + 1):</span><br><span class="line">            for i in range(2, 2 + n):</span><br><span class="line">                for j in range(2, 2 + n):</span><br><span class="line">                    dp[step % 2][i][j] = 0</span><br><span class="line">                    for di, dj in Dirs:</span><br><span class="line">                        ni, nj = i + di, j + dj</span><br><span class="line">                        dp[step % 2][i][j] += dp[1 - step % 2][ni][nj] / 8</span><br><span class="line">        return dp[k % 2][row + 2][column + 2]</span><br></pre></td></tr></table></figure></p>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/H74Hte"><img src="https://s4.ax1x.com/2022/02/18/H74Hte.png" alt="提交记录.png"></a></p>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode中等</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode_787. K 站中转内最便宜的航班</title>
     <url>/2021/08/27/Leetcode-787-K-%E7%AB%99%E4%B8%AD%E8%BD%AC%E5%86%85%E6%9C%80%E4%BE%BF%E5%AE%9C%E7%9A%84%E8%88%AA%E7%8F%AD/</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>787. K 站中转内最便宜的航班<br>难度：中等</p>
@@ -1029,6 +1370,20 @@ src = 0, dst = 2, k = 0
       </tags>
   </entry>
   <entry>
+    <title>Leetcode-838-推多米诺</title>
+    <url>/2022/02/21/Leetcode-838-%E6%8E%A8%E5%A4%9A%E7%B1%B3%E8%AF%BA/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
+        <tag>Leetcode中等</tag>
+        <tag>双指针</tag>
+        <tag>广度优先搜索（BFS）</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode_797. 所有可能的路径</title>
     <url>/2021/08/26/Leetcode-797-%E6%89%80%E6%9C%89%E5%8F%AF%E8%83%BD%E7%9A%84%E8%B7%AF%E5%BE%84/</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>797. 所有可能的路径<br>难度：中等</p>
@@ -1105,85 +1460,8 @@ src = 0, dst = 2, k = 0
       <tags>
         <tag>Leetcode中等</tag>
         <tag>回溯</tag>
+        <tag>广度优先搜索（BFS）</tag>
         <tag>深度优先搜索（DFS）</tag>
-        <tag>广度优先搜索（BFS）</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-688-骑士在棋盘上的概率</title>
-    <url>/2022/02/18/Leetcode-688-%E9%AA%91%E5%A3%AB%E5%9C%A8%E6%A3%8B%E7%9B%98%E4%B8%8A%E7%9A%84%E6%A6%82%E7%8E%87/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>688. 骑士在棋盘上的概率<br>难度：中等</p>
-<p>在一个&nbsp;<code>n x n</code>&nbsp;的国际象棋棋盘上，一个骑士从单元格 <code>(row, column)</code>&nbsp;开始，并尝试进行 <code>k</code> 次移动。行和列是 <strong>从 0 开始</strong> 的，所以左上单元格是 <code>(0,0)</code> ，右下单元格是 <code>(n - 1, n - 1)</code> 。</p>
-
-<p>象棋骑士有8种可能的走法，如下图所示。每次移动在基本方向上是两个单元格，然后在正交方向上是一个单元格。</p>
-
-<p><img style="height: 300px; width: 300px;" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/12/knight.png"></p>
-
-<p>每次骑士要移动时，它都会随机从8种可能的移动中选择一种(即使棋子会离开棋盘)，然后移动到那里。</p>
-
-<p>骑士继续移动，直到它走了 <code>k</code> 步或离开了棋盘。</p>
-
-<p>返回 <em>骑士在棋盘停止移动后仍留在棋盘上的概率</em> 。</p>
-
-<p>&nbsp;</p>
-
-<p><strong>示例 1：</strong></p>
-
-<pre><strong>输入:</strong> n = 3, k = 2, row = 0, column = 0
-<strong>输出:</strong> 0.0625
-<strong>解释:</strong> 有两步(到(1,2)，(2,1))可以让骑士留在棋盘上。
-在每一个位置上，也有两种移动可以让骑士留在棋盘上。
-骑士留在棋盘上的总概率是0.0625。
-</pre>
-
-<p><strong>示例 2：</strong></p>
-
-<pre><strong>输入:</strong> n = 1, k = 0, row = 0, column = 0
-<strong>输出:</strong> 1.00000
-</pre>
-
-<p>&nbsp;</p>
-
-<p><strong>提示:</strong></p>
-
-<ul>
-    <li><code>1 &lt;= n &lt;= 25</code></li>
-    <li><code>0 &lt;= k &lt;= 100</code></li>
-    <li><code>0 &lt;= row, column &lt;= n</code></li>
-</ul>
-
-<h3 id="思路一：广度优先搜索（BFS）"><a href="#思路一：广度优先搜索（BFS）" class="headerlink" title="思路一：广度优先搜索（BFS）"></a>思路一：广度优先搜索（BFS）</h3><p>题目不是很难理解，容易想到BFS。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">	    <span class="keyword">def</span> <span class="title function_">knightProbability</span>(<span class="params">self, n: <span class="built_in">int</span>, k: <span class="built_in">int</span>, row: <span class="built_in">int</span>, column: <span class="built_in">int</span></span>) -&gt; <span class="built_in">float</span>:</span><br><span class="line">        Dirs = [(-<span class="number">1</span>, -<span class="number">2</span>), (<span class="number">1</span>, -<span class="number">2</span>),</span><br><span class="line">                (-<span class="number">2</span>, -<span class="number">1</span>), (<span class="number">2</span>, -<span class="number">1</span>),</span><br><span class="line">                (-<span class="number">2</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">1</span>),</span><br><span class="line">                (-<span class="number">1</span>, <span class="number">2</span>), (<span class="number">1</span>, <span class="number">2</span>)]</span><br><span class="line">        q = deque()</span><br><span class="line">        q.append((row, column, k))</span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> q:</span><br><span class="line">            r, c, kk = q.popleft()</span><br><span class="line">            <span class="comment"># # 取出kk==0，cnt+1</span></span><br><span class="line">            <span class="comment"># # 也就是，走到最后一步再计数</span></span><br><span class="line">            <span class="keyword">if</span> kk == <span class="number">0</span>:</span><br><span class="line">                cnt += <span class="number">1</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">for</span> x, y <span class="keyword">in</span> Dirs:</span><br><span class="line">                <span class="keyword">if</span> <span class="number">0</span> &lt;= r + x &lt; n <span class="keyword">and</span> <span class="number">0</span> &lt;= c + y &lt; n:</span><br><span class="line">                    q.append((r + x, c + y, kk - <span class="number">1</span>))</span><br><span class="line">        <span class="keyword">return</span> cnt / <span class="built_in">pow</span>(<span class="number">8</span>, k)</span><br></pre></td></tr></table></figure>
-<p>但这也很容易地超出了时间限制。</p>
-<h3 id="思路二：动态规划"><a href="#思路二：动态规划" class="headerlink" title="思路二：动态规划"></a>思路二：动态规划</h3><p>看了一下官解，没想到用的是动态规划。尝试自己写了一下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">knightProbability</span>(<span class="params">self, n: <span class="built_in">int</span>, k: <span class="built_in">int</span>, row: <span class="built_in">int</span>, column: <span class="built_in">int</span></span>) -&gt; <span class="built_in">float</span>:</span><br><span class="line">        Dirs = [(-<span class="number">1</span>, -<span class="number">2</span>), (<span class="number">1</span>, -<span class="number">2</span>),</span><br><span class="line">                (-<span class="number">2</span>, -<span class="number">1</span>), (<span class="number">2</span>, -<span class="number">1</span>),</span><br><span class="line">                (-<span class="number">2</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">1</span>),</span><br><span class="line">                (-<span class="number">1</span>, <span class="number">2</span>), (<span class="number">1</span>, <span class="number">2</span>)]</span><br><span class="line">        dp=[[[<span class="number">0</span>]* n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)]<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(k+<span class="number">1</span>)]</span><br><span class="line">        dp[<span class="number">0</span>][row][column]=<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> step <span class="keyword">in</span> <span class="built_in">range</span>(k):</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                    <span class="keyword">if</span> dp[step][i][j]&gt;<span class="number">0</span>:</span><br><span class="line">                        <span class="keyword">for</span> di,dj <span class="keyword">in</span> Dirs:</span><br><span class="line">                            ni,nj=i+di,j+dj</span><br><span class="line">                            <span class="keyword">if</span> <span class="number">0</span>&lt;=ni&lt;n <span class="keyword">and</span> <span class="number">0</span>&lt;=nj&lt;n:</span><br><span class="line">                                dp[step+<span class="number">1</span>][ni][nj]+=<span class="number">1</span></span><br><span class="line">        cnt=<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            cnt+=<span class="built_in">sum</span>(dp[-<span class="number">1</span>][i])</span><br><span class="line">        <span class="built_in">print</span>(dp[-<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> cnt/<span class="built_in">pow</span>(<span class="number">8</span>,k)</span><br></pre></td></tr></table></figure>
-<p>但是这样出现了错误，原因是在最后一步（<code>step=k-1</code>）的<code>dp[step+1][ni][nj]+=1</code>，加的只是这一步的情况，没有算上之前其实还有很多能到<code>i</code>,<code>j</code>的情况。</p>
-<p>将<code>dp[step+1][ni][nj]+=1</code>修改为<code>dp[step + 1][ni][nj] += dp[step][i][j]</code>,成功通过！而且比官解的好！</p>
-<p>官解：<br>它的状态值<code>dp[step][i][j]</code>指的是从<code>(i,j)</code>出发第<code>step</code>步后还在棋盘上的概率，状态转移方程是： $ dp[step][i][j] += \frac{1}{8} + \sum_{di,dj} dp[step-1][i+di][j+dj] , (di,dj)\in \{(-2, -1), (-2, 1), (2, -1), (2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2)\}, 0\leq i,j,i+di,j+dj &lt;n $ 。<br>也不难理解，因为<code>(i,j)</code>下一步有8种可能的走法，那<code>(i+di,j+dj)</code>的概率就是 $\frac{1}{8}$ <code>(i,j)</code>的概率。换个角度讲也就是，有8种可能走到它<code>(i,j)</code>这，那走到<code>(i,j)</code>的概率就是$\sum_{di,dj} dp[step-1][i+di][j+dj]$。<br>那为什么最后只要输出<code>dp[k][row][column]</code>就好了呢？<br>我觉得可以倒过来走，以<code>n=3,k=1,row=0,colmn=0</code>为例，<code>(0,0)</code>在第1步往回走，有<code>0.25</code>的概率留在棋盘上，这就是答案。将初始值全部设为1，遍历所有点进行状态转移方程的计算，所得的结果<code>dp[k][i][j]</code>就是<code>(i,j)</code>走了<code>k</code>步之后仍然留在棋盘上的概率。将<code>k</code>扩展来解释状态转移方程，第<code>k</code>步<code>(i,j)</code>仍然留在棋盘的概率是由第<code>k-1</code>步对应8个点的状态值计算而来，每个点的状态值就是该店走那么多步仍然留在棋盘的概率。<br>当然了，超出棋盘范围的值都是0啦。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">knightProbability</span>(<span class="params">self, n: <span class="built_in">int</span>, k: <span class="built_in">int</span>, row: <span class="built_in">int</span>, column: <span class="built_in">int</span></span>) -&gt; <span class="built_in">float</span>:</span><br><span class="line">        dp = [[[<span class="number">0</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(k + <span class="number">1</span>)]</span><br><span class="line">        <span class="keyword">for</span> step <span class="keyword">in</span> <span class="built_in">range</span>(k + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                    <span class="keyword">if</span> step == <span class="number">0</span>:</span><br><span class="line">                        dp[step][i][j] = <span class="number">1</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        <span class="keyword">for</span> di, dj <span class="keyword">in</span> ((-<span class="number">2</span>, -<span class="number">1</span>), (-<span class="number">2</span>, <span class="number">1</span>), (<span class="number">2</span>, -<span class="number">1</span>), (<span class="number">2</span>, <span class="number">1</span>), (-<span class="number">1</span>, -<span class="number">2</span>), (-<span class="number">1</span>, <span class="number">2</span>), (<span class="number">1</span>, -<span class="number">2</span>), (<span class="number">1</span>, <span class="number">2</span>)):</span><br><span class="line">                            ni, nj = i + di, j + dj</span><br><span class="line">                            <span class="keyword">if</span> <span class="number">0</span> &lt;= ni &lt; n <span class="keyword">and</span> <span class="number">0</span> &lt;= nj &lt; n:</span><br><span class="line">                                dp[step][i][j] += dp[step - <span class="number">1</span>][ni][nj] / <span class="number">8</span></span><br><span class="line">        <span class="keyword">return</span> dp[k][row][column]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 作者：LeetCode-Solution</span></span><br><span class="line"><span class="comment"># 链接：https://leetcode-cn.com/problems/knight-probability-in-chessboard/solution/qi-shi-zai-qi-pan-shang-de-gai-lu-by-lee-2qhk/</span></span><br><span class="line"><span class="comment"># 来源：力扣（LeetCode）</span></span><br><span class="line"><span class="comment"># 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span></span><br></pre></td></tr></table></figure>
-<p>我对官解的优化<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def knightProbability(self, n: int, k: int, row: int, column: int) -&gt; float:</span><br><span class="line">        Dirs = ((-2, -1), (-2, 1), (2, -1), (2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2))</span><br><span class="line">        dp = [[[0] * (n + 4) for _ in range(n + 4)] for _ in range(2)]</span><br><span class="line">        for i in range(2, 2 + n):</span><br><span class="line">            for j in range(2, 2 + n):</span><br><span class="line">                dp[0][i][j] = 1</span><br><span class="line">        for step in range(1, k + 1):</span><br><span class="line">            for i in range(2, 2 + n):</span><br><span class="line">                for j in range(2, 2 + n):</span><br><span class="line">                    dp[step % 2][i][j] = 0</span><br><span class="line">                    for di, dj in Dirs:</span><br><span class="line">                        ni, nj = i + di, j + dj</span><br><span class="line">                        dp[step % 2][i][j] += dp[1 - step % 2][ni][nj] / 8</span><br><span class="line">        return dp[k % 2][row + 2][column + 2]</span><br></pre></td></tr></table></figure></p>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/H74Hte"><img src="https://s4.ax1x.com/2022/02/18/H74Hte.png" alt="提交记录.png"></a></p>
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>Leetcode中等</tag>
-        <tag>动态规划</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-838-推多米诺</title>
-    <url>/2022/02/21/Leetcode-838-%E6%8E%A8%E5%A4%9A%E7%B1%B3%E8%AF%BA/</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>模拟</tag>
-        <tag>Leetcode中等</tag>
-        <tag>双指针</tag>
-        <tag>广度优先搜索（BFS）</tag>
       </tags>
   </entry>
   <entry>
@@ -1305,6 +1583,39 @@ src = 0, dst = 2, k = 0
       </tags>
   </entry>
   <entry>
+    <title>Leetcode题解</title>
+    <url>/2021/08/17/Leetcode%E9%A2%98%E8%A7%A3/</url>
+    <content><![CDATA[<p>因为既想在Github上传题解思路和代码，又想在博客上传，但保证两边同步好麻烦，所以这里列一个列表，链接到Github上。</p>
+<h3 id="301-400"><a href="#301-400" class="headerlink" title="301-400"></a>301-400</h3><ul>
+<li><a href="https://github.com/shengrihui/Leetcode/blob/c396f399bcca39c40923411eabf0306c7d89739f/3/345.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D/345.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D.md">345. 反转字符串中的元音字母</a><h3 id="501-600"><a href="#501-600" class="headerlink" title="501~600"></a>501~600</h3></li>
+<li><a href="https://github.com/shengrihui/Leetcode/blob/5acbc6232b0a90c9cf3beaaa4972ba3e9174d7ab/5/526.%20%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97/526.%20%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97.md">526.优美的排列</a></li>
+<li>[541. 反转字符串 ](<a href="https://github.com/shengrihui/Leetcode/blob/c5b27e27baac035e0fddb3e64867fab88630da82/5/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II.md">https://github.com/shengrihui/Leetcode/blob/c5b27e27baac035e0fddb3e64867fab88630da82/5/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II.md</a></li>
+<li><a href="https://github.com/shengrihui/Leetcode/blob/96ca3695c85441f9cc189b123944249f5bb81bbc/5/551.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20I/551.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20I_%E9%A2%98%E8%A7%A3.md">551. 学生出勤记录 I_题解</a></li>
+<li><a href="https://github.com/shengrihui/Leetcode/blob/c396f399bcca39c40923411eabf0306c7d89739f/5/552.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20II/552.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20II.md">552. 学生出勤记录 II</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>Leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python的一些内建函数和基本句法</title>
+    <url>/2030/02/17/Python%E7%9A%84%E4%B8%80%E4%BA%9B%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0%E5%92%8C%E5%9F%BA%E6%9C%AC%E5%8F%A5%E6%B3%95/</url>
+    <content><![CDATA[<h3 id="any-和all"><a href="#any-和all" class="headerlink" title="any()和all()"></a><code>any()</code>和<code>all()</code></h3><h5 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h5><p><code>any()</code>函数用来判断给定的迭代参数<code>iterable</code>中是否含有<code>True</code>，如果有（只要有一个），则返回<code>True</code>.<br>函数等价于：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">any</span>(<span class="params">iterable</span>):</span><br><span class="line">    <span class="keyword">for</span> element <span class="keyword">in</span> iterable:</span><br><span class="line">        <span class="keyword">if</span> element:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure></p>
+<p><code>all()</code>函数用来判断给定的迭代参数<code>iterable</code>中是否全部是是<code>True</code>，如果是，则返回<code>True</code>。<br>函数等价于：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">all</span>(<span class="params">iterable</span>):</span><br><span class="line">    <span class="keyword">for</span> element <span class="keyword">in</span> iterable:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> element:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure><br><code>any()</code>：只要有一个<code>True</code>，就返回<code>True</code>；<br><code>all()</code>：全部是<code>True</code>，就返回<code>True</code>。<br><strong>注意</strong> ：空元组、空列表返回值为True，这里要特别注意。</p>
+<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p>示例来自菜鸟教程。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="built_in">any</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])  <span class="comment"># 列表list，元素都不为空或0</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])   <span class="comment"># 列表list，存在一个为空的元素</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>([<span class="number">0</span>, <span class="string">&#x27;&#x27;</span>, <span class="literal">False</span>])        <span class="comment"># 列表list,元素全为0,&#x27;&#x27;,false</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>((<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>))  <span class="comment"># 元组tuple，元素都不为空或0</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>((<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;d&#x27;</span>))   <span class="comment"># 元组tuple，存在一个为空的元素</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>((<span class="number">0</span>, <span class="string">&#x27;&#x27;</span>, <span class="literal">False</span>))        <span class="comment"># 元组tuple，元素全为0,&#x27;&#x27;,false</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line">  </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>([]) <span class="comment"># 空列表</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>(()) <span class="comment"># 空元组</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])  <span class="comment"># 列表list，元素都不为空或0</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])   <span class="comment"># 列表list，存在一个为空的元素</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>([<span class="number">0</span>, <span class="number">1</span>，<span class="number">2</span>, <span class="number">3</span>])          <span class="comment"># 列表list，存在一个为0的元素</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line">   </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>((<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>))  <span class="comment"># 元组tuple，元素都不为空或0</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>((<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;d&#x27;</span>))   <span class="comment"># 元组tuple，存在一个为空的元素</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>((<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>))          <span class="comment"># 元组tuple，存在一个为0的元素</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line">   </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>([])             <span class="comment"># 空列表</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>(())             <span class="comment"># 空元组</span></span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure><br>下面示例来自CSDN。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">any</span>(x**<span class="number">2</span> == <span class="number">16</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)))</span><br><span class="line"><span class="comment"># True</span></span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>cuda</title>
     <url>/2021/08/29/cuda/</url>
     <content><![CDATA[<p>pip安装<br>pip3 install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio===0.9.0 -f <a href="https://download.pytorch.org/whl/torch_stable.html">https://download.pytorch.org/whl/torch_stable.html</a></p>
@@ -1347,23 +1658,18 @@ src = 0, dst = 2, k = 0
       </tags>
   </entry>
   <entry>
-    <title>Leetcode题解</title>
-    <url>/2021/08/17/Leetcode%E9%A2%98%E8%A7%A3/</url>
-    <content><![CDATA[<p>因为既想在Github上传题解思路和代码，又想在博客上传，但保证两边同步好麻烦，所以这里列一个列表，链接到Github上。</p>
-<h3 id="301-400"><a href="#301-400" class="headerlink" title="301-400"></a>301-400</h3><ul>
-<li><a href="https://github.com/shengrihui/Leetcode/blob/c396f399bcca39c40923411eabf0306c7d89739f/3/345.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D/345.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D.md">345. 反转字符串中的元音字母</a><h3 id="501-600"><a href="#501-600" class="headerlink" title="501~600"></a>501~600</h3></li>
-<li><a href="https://github.com/shengrihui/Leetcode/blob/5acbc6232b0a90c9cf3beaaa4972ba3e9174d7ab/5/526.%20%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97/526.%20%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97.md">526.优美的排列</a></li>
-<li>[541. 反转字符串 ](<a href="https://github.com/shengrihui/Leetcode/blob/c5b27e27baac035e0fddb3e64867fab88630da82/5/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II.md">https://github.com/shengrihui/Leetcode/blob/c5b27e27baac035e0fddb3e64867fab88630da82/5/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II.md</a></li>
-<li><a href="https://github.com/shengrihui/Leetcode/blob/96ca3695c85441f9cc189b123944249f5bb81bbc/5/551.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20I/551.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20I_%E9%A2%98%E8%A7%A3.md">551. 学生出勤记录 I_题解</a></li>
-<li><a href="https://github.com/shengrihui/Leetcode/blob/c396f399bcca39c40923411eabf0306c7d89739f/5/552.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20II/552.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20II.md">552. 学生出勤记录 II</a></li>
-</ul>
+    <title>Hello World</title>
+    <url>/2022/02/09/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>Leetcode</tag>
-      </tags>
   </entry>
   <entry>
     <title>markdown语法</title>
@@ -1535,6 +1841,47 @@ end tell
       </tags>
   </entry>
   <entry>
+    <title>next主题配置</title>
+    <url>/2021/08/20/next%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h4 id="04-正确姿势打开标签页和分类页"><a href="#04-正确姿势打开标签页和分类页" class="headerlink" title="04 正确姿势打开标签页和分类页"></a>04 正确姿势打开标签页和分类页</h4><ol>
+<li>命令<code>hexo n page tags</code>,source文件夹中多出一个包含index.html的tags文件夹。这时候博客中的“标签就能打开了。</li>
+<li>修改index.html文件。<code>title</code>改为<code>标签</code>，增加一行<code>type: tags</code>（这句不写标签页不会有标签）。</li>
+<li>命令：<code>hexo n page categories</code>创建分类页。</li>
+<li>修改categories里的index.html ，与之前类似。</li>
+</ol>
+<h4 id="05-主题样式的更改"><a href="#05-主题样式的更改" class="headerlink" title="05 主题样式的更改"></a>05 主题样式的更改</h4><p>在样式配置文件中修改<code>Schemes</code>项。</p>
+<h4 id="04-设置主题头像"><a href="#04-设置主题头像" class="headerlink" title="04 设置主题头像"></a>04 设置主题头像</h4><p>主题配置文件中<code>Avatar</code>项</p>
+<h4 id="07-更改作者和标题以及链接"><a href="#07-更改作者和标题以及链接" class="headerlink" title="07 更改作者和标题以及链接"></a>07 更改作者和标题以及链接</h4><h4 id="08-启用侧边栏社交链接"><a href="#08-启用侧边栏社交链接" class="headerlink" title="08 启用侧边栏社交链接"></a>08 启用侧边栏社交链接</h4><ul>
+<li>主题配置文件的<code>Social</code>项。</li>
+</ul>
+<h4 id="09-启用友情链接"><a href="#09-启用友情链接" class="headerlink" title="09 启用友情链接"></a>09 启用友情链接</h4><p>主题配置文件中<code>links_settings</code>项。</p>
+<h4 id="10-新建一篇文章"><a href="#10-新建一篇文章" class="headerlink" title="10 新建一篇文章"></a>10 新建一篇文章</h4><ul>
+<li><code>hexo n 文章名</code> 新建一篇文章</li>
+<li>在文章里添加标签和分类：<br>  tags:<pre><code> - xx
+ - xx
+    categories:
+    xx
+</code></pre></li>
+</ul>
+<h4 id="11-Markdown的使用"><a href="#11-Markdown的使用" class="headerlink" title="11 Markdown的使用"></a>11 Markdown的使用</h4><h4 id="12-开启文章打赏功能"><a href="#12-开启文章打赏功能" class="headerlink" title="12 开启文章打赏功能"></a>12 开启文章打赏功能</h4><p>主题配置文件中<code>reward</code>项。</p>
+<h4 id="13-开启订阅公众号"><a href="#13-开启订阅公众号" class="headerlink" title="13 开启订阅公众号"></a>13 开启订阅公众号</h4><p>主题配置文件中<code>wechat Subscriber</code>项。</p>
+<h4 id="14-设置头像是圆形可旋转"><a href="#14-设置头像是圆形可旋转" class="headerlink" title="14 设置头像是圆形可旋转"></a>14 设置头像是圆形可旋转</h4><ul>
+<li>打开文件<code>..\themes\hexo-theme-next\source\css\_common\outline\sidebar\sidebar-author.sty</code>，对其中的参数进行修改。</li>
+<li>在主题配置文件中修改： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># If true, the avatar will be dispalyed in circle.</span><br><span class="line">rounded: true</span><br><span class="line"># If true, the avatar will be rotated with the cursor.</span><br><span class="line">rotated: true</span><br></pre></td></tr></table></figure>
+第一个是让头像在圆中显示，第二个是鼠标移上去后旋转。</li>
+</ul>
+<h4 id="15-首页设置文章阅读全文"><a href="#15-首页设置文章阅读全文" class="headerlink" title="15 首页设置文章阅读全文"></a>15 首页设置文章阅读全文</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">excerpt:</span><br><span class="line">  depth: 3  #按层来算，也就是按代码块来算</span><br><span class="line">  excerpt_excludes: []</span><br><span class="line">  more_excludes: []</span><br><span class="line">  hideWholePostExcerpts: true</span><br></pre></td></tr></table></figure>
+<h4 id="背景黑色"><a href="#背景黑色" class="headerlink" title="背景黑色"></a>背景黑色</h4><h4 id="fork-Github"><a href="#fork-Github" class="headerlink" title="fork Github"></a>fork Github</h4><p>打开<code>..\themes\hexo-theme-next\layout</code>中的文件<code>_layout.swig</code>。<br>在<a href="https://tholman.com/github-corners/">https://tholman.com/github-corners/</a> 中选一个样式，将代码复制到文件中的<code>&lt;/header&gt;</code>前，并修改称自己的GitHub链接。</p>
+<h4 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h4><p>按官方文档的local search来。<a href="http://theme-next.iissnan.com/third-party-services.html">http://theme-next.iissnan.com/third-party-services.html</a></p>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>欧拉公式</title>
     <url>/2022/02/20/%E6%AC%A7%E6%8B%89%E5%85%AC%E5%BC%8F/</url>
     <content><![CDATA[<h3 id="欧拉公式"><a href="#欧拉公式" class="headerlink" title="欧拉公式"></a>欧拉公式</h3><p>$ e^{i\theta} = \cos\theta + i\sin\theta$ ，当 $\theta=\pi$ 时，$e^{i\pi} + 1 =0$.</p>
@@ -1598,328 +1945,6 @@ e^{ix}&=1+ix+\frac{(ix)^2}{2!}+\frac{(ix)^3}{3!}+\frac{(ix)^4}{4!}+...\\
       </categories>
       <tags>
         <tag>数学</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>next主题配置</title>
-    <url>/2021/08/20/next%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h4 id="04-正确姿势打开标签页和分类页"><a href="#04-正确姿势打开标签页和分类页" class="headerlink" title="04 正确姿势打开标签页和分类页"></a>04 正确姿势打开标签页和分类页</h4><ol>
-<li>命令<code>hexo n page tags</code>,source文件夹中多出一个包含index.html的tags文件夹。这时候博客中的“标签就能打开了。</li>
-<li>修改index.html文件。<code>title</code>改为<code>标签</code>，增加一行<code>type: tags</code>（这句不写标签页不会有标签）。</li>
-<li>命令：<code>hexo n page categories</code>创建分类页。</li>
-<li>修改categories里的index.html ，与之前类似。</li>
-</ol>
-<h4 id="05-主题样式的更改"><a href="#05-主题样式的更改" class="headerlink" title="05 主题样式的更改"></a>05 主题样式的更改</h4><p>在样式配置文件中修改<code>Schemes</code>项。</p>
-<h4 id="04-设置主题头像"><a href="#04-设置主题头像" class="headerlink" title="04 设置主题头像"></a>04 设置主题头像</h4><p>主题配置文件中<code>Avatar</code>项</p>
-<h4 id="07-更改作者和标题以及链接"><a href="#07-更改作者和标题以及链接" class="headerlink" title="07 更改作者和标题以及链接"></a>07 更改作者和标题以及链接</h4><h4 id="08-启用侧边栏社交链接"><a href="#08-启用侧边栏社交链接" class="headerlink" title="08 启用侧边栏社交链接"></a>08 启用侧边栏社交链接</h4><ul>
-<li>主题配置文件的<code>Social</code>项。</li>
-</ul>
-<h4 id="09-启用友情链接"><a href="#09-启用友情链接" class="headerlink" title="09 启用友情链接"></a>09 启用友情链接</h4><p>主题配置文件中<code>links_settings</code>项。</p>
-<h4 id="10-新建一篇文章"><a href="#10-新建一篇文章" class="headerlink" title="10 新建一篇文章"></a>10 新建一篇文章</h4><ul>
-<li><code>hexo n 文章名</code> 新建一篇文章</li>
-<li>在文章里添加标签和分类：<br>  tags:<pre><code> - xx
- - xx
-    categories:
-    xx
-</code></pre></li>
-</ul>
-<h4 id="11-Markdown的使用"><a href="#11-Markdown的使用" class="headerlink" title="11 Markdown的使用"></a>11 Markdown的使用</h4><h4 id="12-开启文章打赏功能"><a href="#12-开启文章打赏功能" class="headerlink" title="12 开启文章打赏功能"></a>12 开启文章打赏功能</h4><p>主题配置文件中<code>reward</code>项。</p>
-<h4 id="13-开启订阅公众号"><a href="#13-开启订阅公众号" class="headerlink" title="13 开启订阅公众号"></a>13 开启订阅公众号</h4><p>主题配置文件中<code>wechat Subscriber</code>项。</p>
-<h4 id="14-设置头像是圆形可旋转"><a href="#14-设置头像是圆形可旋转" class="headerlink" title="14 设置头像是圆形可旋转"></a>14 设置头像是圆形可旋转</h4><ul>
-<li>打开文件<code>..\themes\hexo-theme-next\source\css\_common\outline\sidebar\sidebar-author.sty</code>，对其中的参数进行修改。</li>
-<li>在主题配置文件中修改： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># If true, the avatar will be dispalyed in circle.</span><br><span class="line">rounded: true</span><br><span class="line"># If true, the avatar will be rotated with the cursor.</span><br><span class="line">rotated: true</span><br></pre></td></tr></table></figure>
-第一个是让头像在圆中显示，第二个是鼠标移上去后旋转。</li>
-</ul>
-<h4 id="15-首页设置文章阅读全文"><a href="#15-首页设置文章阅读全文" class="headerlink" title="15 首页设置文章阅读全文"></a>15 首页设置文章阅读全文</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">excerpt:</span><br><span class="line">  depth: 3  #按层来算，也就是按代码块来算</span><br><span class="line">  excerpt_excludes: []</span><br><span class="line">  more_excludes: []</span><br><span class="line">  hideWholePostExcerpts: true</span><br></pre></td></tr></table></figure>
-<h4 id="背景黑色"><a href="#背景黑色" class="headerlink" title="背景黑色"></a>背景黑色</h4><h4 id="fork-Github"><a href="#fork-Github" class="headerlink" title="fork Github"></a>fork Github</h4><p>打开<code>..\themes\hexo-theme-next\layout</code>中的文件<code>_layout.swig</code>。<br>在<a href="https://tholman.com/github-corners/">https://tholman.com/github-corners/</a> 中选一个样式，将代码复制到文件中的<code>&lt;/header&gt;</code>前，并修改称自己的GitHub链接。</p>
-<h4 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h4><p>按官方文档的local search来。<a href="http://theme-next.iissnan.com/third-party-services.html">http://theme-next.iissnan.com/third-party-services.html</a></p>
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-      <tags>
-        <tag>其他</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2022/02/09/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>Python的一些内建函数和基本句法</title>
-    <url>/2030/02/17/Python%E7%9A%84%E4%B8%80%E4%BA%9B%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0%E5%92%8C%E5%9F%BA%E6%9C%AC%E5%8F%A5%E6%B3%95/</url>
-    <content><![CDATA[<h3 id="any-和all"><a href="#any-和all" class="headerlink" title="any()和all()"></a><code>any()</code>和<code>all()</code></h3><h5 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h5><p><code>any()</code>函数用来判断给定的迭代参数<code>iterable</code>中是否含有<code>True</code>，如果有（只要有一个），则返回<code>True</code>.<br>函数等价于：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">any</span>(<span class="params">iterable</span>):</span><br><span class="line">    <span class="keyword">for</span> element <span class="keyword">in</span> iterable:</span><br><span class="line">        <span class="keyword">if</span> element:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure></p>
-<p><code>all()</code>函数用来判断给定的迭代参数<code>iterable</code>中是否全部是是<code>True</code>，如果是，则返回<code>True</code>。<br>函数等价于：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">all</span>(<span class="params">iterable</span>):</span><br><span class="line">    <span class="keyword">for</span> element <span class="keyword">in</span> iterable:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> element:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure><br><code>any()</code>：只要有一个<code>True</code>，就返回<code>True</code>；<br><code>all()</code>：全部是<code>True</code>，就返回<code>True</code>。<br><strong>注意</strong> ：空元组、空列表返回值为True，这里要特别注意。</p>
-<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p>示例来自菜鸟教程。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="built_in">any</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])  <span class="comment"># 列表list，元素都不为空或0</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])   <span class="comment"># 列表list，存在一个为空的元素</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>([<span class="number">0</span>, <span class="string">&#x27;&#x27;</span>, <span class="literal">False</span>])        <span class="comment"># 列表list,元素全为0,&#x27;&#x27;,false</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>((<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>))  <span class="comment"># 元组tuple，元素都不为空或0</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>((<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;d&#x27;</span>))   <span class="comment"># 元组tuple，存在一个为空的元素</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>((<span class="number">0</span>, <span class="string">&#x27;&#x27;</span>, <span class="literal">False</span>))        <span class="comment"># 元组tuple，元素全为0,&#x27;&#x27;,false</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line">  </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>([]) <span class="comment"># 空列表</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>(()) <span class="comment"># 空元组</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])  <span class="comment"># 列表list，元素都不为空或0</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])   <span class="comment"># 列表list，存在一个为空的元素</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>([<span class="number">0</span>, <span class="number">1</span>，<span class="number">2</span>, <span class="number">3</span>])          <span class="comment"># 列表list，存在一个为0的元素</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line">   </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>((<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>))  <span class="comment"># 元组tuple，元素都不为空或0</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>((<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;d&#x27;</span>))   <span class="comment"># 元组tuple，存在一个为空的元素</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>((<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>))          <span class="comment"># 元组tuple，存在一个为0的元素</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line">   </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>([])             <span class="comment"># 空列表</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>(())             <span class="comment"># 空元组</span></span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure><br>下面示例来自CSDN。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">any</span>(x**<span class="number">2</span> == <span class="number">16</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)))</span><br><span class="line"><span class="comment"># True</span></span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-1706-球会落何处</title>
-    <url>/2022/02/24/Leetcode-1706-%E7%90%83%E4%BC%9A%E8%90%BD%E4%BD%95%E5%A4%84/</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1706. 球会落何处<br>难诉：中等</p>
-<p>用一个大小为 <code>m x n</code> 的二维网格 <code>grid</code> 表示一个箱子。你有 <code>n</code> 颗球。箱子的顶部和底部都是开着的。</p>
-
-<p>箱子中的每个单元格都有一个对角线挡板，跨过单元格的两个角，可以将球导向左侧或者右侧。</p>
-
-<ul>
-    <li>将球导向右侧的挡板跨过左上角和右下角，在网格中用 <code>1</code> 表示。</li>
-    <li>将球导向左侧的挡板跨过右上角和左下角，在网格中用 <code>-1</code> 表示。</li>
-</ul>
-
-<p>在箱子每一列的顶端各放一颗球。每颗球都可能卡在箱子里或从底部掉出来。如果球恰好卡在两块挡板之间的 "V" 形图案，或者被一块挡导向到箱子的任意一侧边上，就会卡住。</p>
-
-<p>返回一个大小为 <code>n</code> 的数组 <code>answer</code> ，其中 <code>answer[i]</code> 是球放在顶部的第 <code>i</code> 列后从底部掉出来的那一列对应的下标，如果球卡在盒子里，则返回 <code>-1</code> 。</p>
-
-<p>&nbsp;</p>
-
-<p><strong>示例 1：</strong></p>
-
-<p><strong><img style="width: 500px; height: 385px;" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/12/26/ball.jpg" alt></strong></p>
-
-<pre><strong>输入：</strong>grid = [[1,1,1,-1,-1],[1,1,1,-1,-1],[-1,-1,-1,1,1],[1,1,1,1,-1],[-1,-1,-1,-1,-1]]
-<strong>输出：</strong>[1,-1,-1,-1,-1]
-<strong>解释：</strong>示例如图：
-b0 球开始放在第 0 列上，最终从箱子底部第 1 列掉出。
-b1 球开始放在第 1 列上，会卡在第 2、3 列和第 1 行之间的 "V" 形里。
-b2 球开始放在第 2 列上，会卡在第 2、3 列和第 0 行之间的 "V" 形里。
-b3 球开始放在第 3 列上，会卡在第 2、3 列和第 0 行之间的 "V" 形里。
-b4 球开始放在第 4 列上，会卡在第 2、3 列和第 1 行之间的 "V" 形里。
-</pre>
-
-<p><strong>示例 2：</strong></p>
-
-<pre><strong>输入：</strong>grid = [[-1]]
-<strong>输出：</strong>[-1]
-<strong>解释：</strong>球被卡在箱子左侧边上。
-</pre>
-
-<p><strong>示例 3：</strong></p>
-
-<pre><strong>输入：</strong>grid = [[1,1,1,1,1,1],[-1,-1,-1,-1,-1,-1],[1,1,1,1,1,1],[-1,-1,-1,-1,-1,-1]]
-<strong>输出：</strong>[0,1,2,3,4,-1]
-</pre>
-
-<p>&nbsp;</p>
-
-<p><strong>提示：</strong></p>
-
-<ul>
-    <li><code>m == grid.length</code></li>
-    <li><code>n == grid[i].length</code></li>
-    <li><code>1 &lt;= m, n &lt;= 100</code></li>
-    <li><code>grid[i][j]</code> 为 <code>1</code> 或 <code>-1</code></li>
-</ul>
-
-<h3 id="方法一：-模拟"><a href="#方法一：-模拟" class="headerlink" title="方法一： 模拟"></a>方法一： 模拟</h3><p>虽然是中等难度的题，但看完题后就马上想到了可以用DFS，不过再想想发现不是DFS而是模拟！<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findBall</span>(<span class="params">self, grid</span>):</span><br><span class="line">        m, n = <span class="built_in">len</span>(grid), <span class="built_in">len</span>(grid[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">DFS</span>(<span class="params">row, col</span>):</span><br><span class="line">            <span class="keyword">if</span> row == m :</span><br><span class="line">                <span class="keyword">return</span> col</span><br><span class="line">            <span class="keyword">if</span> grid[row][col] == <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">if</span> col == n - <span class="number">1</span> <span class="keyword">or</span> grid[row][col + <span class="number">1</span>] == -<span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> grid[row][col + <span class="number">1</span>] == <span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">return</span> DFS(row + <span class="number">1</span>, col + <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">elif</span> grid[row][col] == -<span class="number">1</span>:</span><br><span class="line">                <span class="keyword">if</span> col == <span class="number">0</span> <span class="keyword">or</span> grid[row][col - <span class="number">1</span>] == <span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> grid[row][col - <span class="number">1</span>] == -<span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">return</span> DFS(row + <span class="number">1</span>, col - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> [DFS(<span class="number">0</span>, i) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br></pre></td></tr></table></figure></p>
-<p>官解更简洁一些：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findBall</span>(<span class="params">self, grid: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        n = <span class="built_in">len</span>(grid[<span class="number">0</span>])</span><br><span class="line">        ans = [-<span class="number">1</span>] * n</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            col = j  <span class="comment"># 球的初始列</span></span><br><span class="line">            <span class="keyword">for</span> row <span class="keyword">in</span> grid:</span><br><span class="line">                <span class="built_in">dir</span> = row[col]</span><br><span class="line">                col += <span class="built_in">dir</span>  <span class="comment"># 移动球</span></span><br><span class="line">                <span class="keyword">if</span> col &lt; <span class="number">0</span> <span class="keyword">or</span> col == n <span class="keyword">or</span> row[col] != <span class="built_in">dir</span>:  <span class="comment"># 到达侧边或 V 形</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">else</span>:  <span class="comment"># 成功到达底部</span></span><br><span class="line">                ans[j] = col</span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line"><span class="comment"># 作者：LeetCode-Solution</span></span><br><span class="line"><span class="comment"># 链接：https://leetcode-cn.com/problems/where-will-the-ball-fall/solution/qiu-hui-luo-he-chu-by-leetcode-solution-xqop/</span></span><br><span class="line"><span class="comment"># 来源：力扣（LeetCode）</span></span><br><span class="line"><span class="comment"># 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span></span><br></pre></td></tr></table></figure></p>
-]]></content>
-      <categories>
-        <category>Leetcode</category>
-      </categories>
-      <tags>
-        <tag>模拟</tag>
-        <tag>Leetcode中等</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hadoop-HDFS</title>
-    <url>/2022/04/16/Hadoop-HDFS/</url>
-    <content><![CDATA[<h3 id="HDFS-的-Shell-操作"><a href="#HDFS-的-Shell-操作" class="headerlink" title="HDFS 的 Shell 操作"></a>HDFS 的 Shell 操作</h3><h4 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h4><p><code>hadoop fs ...</code>，或 <code>hdfs dfs ...</code>。<br>后面的命令用法和Linux命令操作用法基本差不多。</p>
-<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>作用</th>
-<th>示例</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>hadoop fs -mkdir 文件名</code></td>
-<td>创建文件夹</td>
-<td><code>hadoop fs -mkdir /xiyou/bajie</code></td>
-<td>创建<code>/xiyou/bajie</code>的文件夹</td>
-</tr>
-<tr>
-<td><code>hadoop fs -moveFromLocal</code></td>
-<td>剪切本地文件上传倒hdfs流经</td>
-<td><code>hadoop fs -moveFromLocal a.txt /xiyou</code></td>
-<td>将本地的a.txt剪切掉，上传到<code>/xiyou</code>目录下</td>
-</tr>
-<tr>
-<td><code>hadoop fs -copyFromLocal</code></td>
-<td>拷贝本地文件上传倒hdfs流经</td>
-<td><code>hadoop fs -copyFromLocal b.txt /xiyou</code></td>
-<td>将本地的b.txt上传到<code>/xiyou</code>目录下，本地文件还在</td>
-</tr>
-<tr>
-<td><code>hadoop fs -put</code></td>
-<td>同<code>-copyFromLocal</code></td>
-<td><code>hadoop fs -put wukong.txt /xiyou</code></td>
-<td>将本地的wukong.txt上传到<code>/xiyou</code>目录下，本地文件还在</td>
-</tr>
-<tr>
-<td><code>hadoop fs -appendToFile</code></td>
-<td>追加一个文件到已经存在的文件末尾</td>
-<td><code>hadoop fs -appendToFile jingubnag.txt /xiyou/wukong.txt</code></td>
-<td>将jingubang.txt里的内容追加到wukong.txt末尾</td>
-</tr>
-<tr>
-<td><code>hadoop fs -copyToLocal</code></td>
-<td>从HDFS拷贝到本地</td>
-<td><code>hadoop fs -copyToLocal /xiyou/a.txt  ./</code></td>
-<td>把a.txt下载到本地</td>
-</tr>
-<tr>
-<td><code>hadoop fs -get</code></td>
-<td>同<code>-CopyToLocal</code></td>
-<td>略</td>
-<td>略</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h4 id="其他命令"><a href="#其他命令" class="headerlink" title="其他命令"></a>其他命令</h4><ol>
-<li>-ls: 显示目录信息</li>
-<li>-cat：显示文件内容</li>
-<li>-chgrp、-chmod、-chown：Linux文件系统中的用法一样，修改文件所属权限</li>
-<li>-cp：从HDFS的一个路径拷贝到HDFS的另一个路径</li>
-<li>-mv：在HDFS目录中移动文件</li>
-<li>-tail：显示一个文件的末尾1kb的数据、</li>
-<li>-rm：删除文件或文件夹</li>
-<li>-rm -r：递归删除目录及目录里面内容</li>
-<li>-du统计文件夹的大小信息</li>
-<li>-setrep：设置HDFS中文件的副本数量</li>
-</ol>
-<h3 id="HDFS-的-API-操作"><a href="#HDFS-的-API-操作" class="headerlink" title="HDFS  的 API 操作"></a>HDFS  的 API 操作</h3><h4 id="Maven-和-idea-的安装与配置"><a href="#Maven-和-idea-的安装与配置" class="headerlink" title="Maven 和 idea 的安装与配置"></a>Maven 和 idea 的安装与配置</h4><ol>
-<li>下载maven，防灾一个没有中文没有空格的路径下；</li>
-<li>配置maven环境变量；</li>
-<li>修改本地仓库路径和镜像（要进入setting.xml去修改！！）；</li>
-<li>安装idea，并修改maven配置，在<code>File-New Projects Setup-Settings for New Projects...</code>里进行全局修改。</li>
-</ol>
-<h4 id="客户端代码操作常用套路"><a href="#客户端代码操作常用套路" class="headerlink" title="客户端代码操作常用套路"></a>客户端代码操作常用套路</h4><ol>
-<li>获取客户端对象</li>
-<li>执行操作命令</li>
-<li>关闭资源</li>
-</ol>
-<h4 id="以创建文件夹为例"><a href="#以创建文件夹为例" class="headerlink" title="以创建文件夹为例"></a>以创建文件夹为例</h4><ol>
-<li>先创建一个maven项目；</li>
-<li>添加相关依赖坐标：<dependencies>
-    <dependency>
-        <groupId>org.apache.hadoop</groupId>
-        <artifactId>hadoop-client</artifactId>
-        <version>3.1.3</version>
-    </dependency>
-    <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.12</version>
-    </dependency>
-    <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-log4j12</artifactId>
-        <version>1.7.30</version>
-    </dependency>
-</dependencies></li>
-<li>日志添加。在项目的src/main/resources目录下，新建一个文件，命名为“log4j.properties”，在文件中填入<br>log4j.rootLogger=INFO, stdout<br>log4j.appender.stdout=org.apache.log4j.ConsoleAppender<br>log4j.appender.stdout.layout=org.apache.log4j.PatternLayout<br>log4j.appender.stdout.layout.ConversionPattern=%d %p [%c] - %m%n<br>log4j.appender.logfile=org.apache.log4j.FileAppender<br>log4j.appender.logfile.File=target/spring.log<br>log4j.appender.logfile.layout=org.apache.log4j.PatternLayout<br>log4j.appender.logfile.layout.ConversionPattern=%d %p [%c] - %m%n</li>
-<li>在 <code>/src/man/java</code>下创建一个 com.shengrihui.hdfs  包；</li>
-<li>创建 HDFSC列宁他 文件</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.shengrihui.hdfs;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.conf.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.FileSystem;</span><br><span class="line"><span class="keyword">import</span> org.apache.hadoop.fs.Path;</span><br><span class="line"><span class="keyword">import</span> org.junit.After;</span><br><span class="line"><span class="keyword">import</span> org.junit.Before;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.net.URI;</span><br><span class="line"><span class="keyword">import</span> java.net.URISyntaxException;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 客户端代码操作常用套路</span></span><br><span class="line"><span class="comment"> * 1.获取客户端对象</span></span><br><span class="line"><span class="comment"> * 2.执行操作命令</span></span><br><span class="line"><span class="comment"> * 3.关闭资源</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HdfsClient</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> FileSystem fs;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException, IOException, InterruptedException &#123;</span><br><span class="line">        <span class="comment">// 链接集群的nn地址</span></span><br><span class="line">        <span class="type">URI</span> <span class="variable">uri</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">URI</span>(<span class="string">&quot;hdfs://hadoop102:8020&quot;</span>);</span><br><span class="line">        <span class="comment">// 创建一个配置文件</span></span><br><span class="line">        <span class="type">Configuration</span> <span class="variable">configuration</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Configuration</span>();</span><br><span class="line">        <span class="comment">// 用户</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">user</span> <span class="operator">=</span> <span class="string">&quot;shengrihui&quot;</span>;</span><br><span class="line">        <span class="comment">// 1.获取到了客户端对象</span></span><br><span class="line">        fs = FileSystem.get(uri, configuration, user);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@After</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">close</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">// 3.关闭资源</span></span><br><span class="line">        fs.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testMkdirs</span><span class="params">()</span> <span class="keyword">throws</span> URISyntaxException, IOException, InterruptedException &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 2.创建一个文件夹</span></span><br><span class="line">        fs.mkdirs(<span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/xiyou/wukong&quot;</span>));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>close()</code>,<code>init()</code>是为了封装代码。<br>运行后结果：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220412/创建文件夹.4ytaphns1eo0.webp" alt="创建文件夹"></p>
-<h4 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testPut</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 参数：</span></span><br><span class="line"><span class="comment">     * 参数1：是否删除源文件</span></span><br><span class="line"><span class="comment">     * 参数2：是否覆盖目标文件（如果已经有了）</span></span><br><span class="line"><span class="comment">     * 参数3：源数据路径</span></span><br><span class="line"><span class="comment">     * 参数4：目的地路径</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    fs.copyFromLocalFile(<span class="literal">false</span>, <span class="literal">true</span>, <span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;E:\\CS\\BigData\\hadoop\\笔记（word版本）\\笔记（word版本）&quot;</span>), <span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/&quot;</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220412/上传代码运行结果.78jw6wcrta80.webp" alt="上传代码运行结果"><br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220412/上传结果.2b5iohrzlv8k.webp" alt="上传结果"></p>
-<h5 id="参数优先级"><a href="#参数优先级" class="headerlink" title="参数优先级"></a>参数优先级</h5><p>参数优先级排序：<br>（1）客户端代码中设置的值 &gt;<br>    在<code>init</code>里<code>configuration.set(&quot;dfs.replication&quot;,&quot;3&quot;);</code><br>（2）ClassPath下的用户自定义配置文件 &gt;<br>    在resource目录下新建文件hdfs-site.xml，写入内容；<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;?xml-stylesheet type=&quot;text/xsl&quot; href=&quot;configuration.xsl&quot;?&gt;</span><br><span class="line"></span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">&lt;property&gt;</span><br><span class="line">	&lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">     &lt;value&gt;1&lt;/value&gt;</span><br><span class="line">&lt;/property&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure><br>（3）然后是服务器的自义配置（xxx-site.xml） &gt;<br>（4）服务器的默认配置（xxx-default.xml）</p>
-<h4 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//文件下载</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testGet</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 参数1：源文件是否删除；参数2：源文件的路径（hdfs路径）；参数3：目标地址路径（Windows）</span></span><br><span class="line"><span class="comment">     * 参数4：是否文件校验，从hdfs下载来的数据可能会丢一些数据或错误，会带一个crc的校验码，</span></span><br><span class="line"><span class="comment">     * 再用crc算法算一个值，如果算出来的crc和传过来crc一样，就说明传来的一样</span></span><br><span class="line"><span class="comment">     * false是进行校验，一般不用这个参数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    fs.copyToLocalFile(<span class="literal">false</span>, <span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;hdfs://hadoop102/xiyouji&quot;</span>), <span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;E:\\&quot;</span>), <span class="literal">false</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：略</p>
-<h4 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//删除</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testRm</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="comment">//参数1：要删除的路径；参数2：是否递归删除</span></span><br><span class="line">    <span class="comment">//删除文件</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//删除空目录</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">//删除非空目录（必须递归）</span></span><br><span class="line">    <span class="comment">//fs.delete(new Path(&quot;hdfs://hadoop102/jinguo&quot;), true);</span></span><br><span class="line">    fs.delete(<span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;hdfs://hadoop102/xiyou&quot;</span>),<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：略</p>
-<h4 id="文件的更名和移动"><a href="#文件的更名和移动" class="headerlink" title="文件的更名和移动"></a>文件的更名和移动</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//文件的更名和移动</span></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testmv</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">//参数解读：参数1，原文件路径；参数2，目标文件路径</span></span><br><span class="line">        <span class="comment">//文件名称修改</span></span><br><span class="line">        <span class="comment">//fs.rename(new Path(&quot;hdfs://hadoop102/笔记（word版本）&quot;),new Path(&quot;hdfs://hadoop102/note&quot;));</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//文件更名移动</span></span><br><span class="line">        <span class="comment">//fs.rename(new Path(&quot;/wcinput/word.txt&quot;),new Path(&quot;/sanguo/a.txt&quot;));</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//目录更名</span></span><br><span class="line">        fs.rename(<span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/sanguo&quot;</span>),<span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/shuihu&quot;</span>));</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="获取文件详细信息"><a href="#获取文件详细信息" class="headerlink" title="获取文件详细信息"></a>获取文件详细信息</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 获取文件详细信息</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">fileDetail</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="comment">// 获取所有文件信息</span></span><br><span class="line">    RemoteIterator&lt;LocatedFileStatus&gt; listFiles = fs.listFiles(<span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/&quot;</span>), <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 遍历文件</span></span><br><span class="line">    <span class="keyword">while</span> (listFiles.hasNext()) &#123;</span><br><span class="line">        <span class="type">LocatedFileStatus</span> <span class="variable">fileStatus</span> <span class="operator">=</span> listFiles.next();</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;=======&quot;</span> + fileStatus.getPath() + <span class="string">&quot;=======&quot;</span>);</span><br><span class="line">        System.out.println(fileStatus.getPermission());<span class="comment">// 权限</span></span><br><span class="line">        System.out.println(fileStatus.getOwner());</span><br><span class="line">        System.out.println(fileStatus.getGroup());</span><br><span class="line">        System.out.println(fileStatus.getLen());</span><br><span class="line">        System.out.println(fileStatus.getModificationTime());<span class="comment">// 上次修改的时间</span></span><br><span class="line">        System.out.println(fileStatus.getReplication());</span><br><span class="line">        System.out.println(fileStatus.getBlockSize());</span><br><span class="line">        System.out.println(fileStatus.getPath().getName());</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取块信息</span></span><br><span class="line">        BlockLocation[] blockLocations = fileStatus.getBlockLocations();</span><br><span class="line">        System.out.println(Arrays.toString(blockLocations));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220412/hdfs获取文件信息.3qy8actzeaw0.webp" alt="hdfs获取文件信息"><br>其中，大文件会按快大小128M分成好几个块；<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220412/hdfs大文件块信息.2cxiqknp7jvo.webp" alt="hdfs大文件块信息"></p>
-<h4 id="判断是文件夹还是文件"><a href="#判断是文件夹还是文件" class="headerlink" title="判断是文件夹还是文件"></a>判断是文件夹还是文件</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 判断是文件夹还是文件</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">testFile</span><span class="params">()</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    FileStatus[] listStatus = fs.listStatus(<span class="keyword">new</span> <span class="title class_">Path</span>(<span class="string">&quot;/&quot;</span>));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (FileStatus status : listStatus) &#123;</span><br><span class="line">        <span class="keyword">if</span> (status.isFile()) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;文件 &quot;</span> + status.getPath().getName());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;目录 &quot;</span> + status.getPath().getName());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="HDFS读写流程"><a href="#HDFS读写流程" class="headerlink" title="HDFS读写流程"></a>HDFS读写流程</h3><h4 id="HDFS-写流程"><a href="#HDFS-写流程" class="headerlink" title="HDFS 写流程"></a>HDFS 写流程</h4><p><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/HDFS读写流程-总2.7ieye7u3oek0.webp" alt="HDFS读写流程-总"><br>（1）客户端通过Distributed FileSystem模块向NameNode请求上传文件，NameNode检查目标文件是否已存在，父目录是否存在。<br>    还有是否有权限上传<br>（2）NameNode返回是否可以上传。<br>（3）客户端请求第一个 Block上传到哪几个DataNode服务器上。<br>（4）NameNode返回3个DataNode节点，分别为dn1、dn2、dn3。<br>    节点的选择涉及到节点距离最近、负载均衡（如果多个客户端都在写，那就pass这个节点）<br>（5）客户端通过FSDataOutputStream模块请求dn1上传数据，dn1收到请求会继续调用dn2，然后dn2调用dn3，将这个通信管道建立完成。<br>（6）dn1、dn2、dn3逐级应答客户端。<br>（7）客户端开始往dn1上传第一个Block（先从磁盘读取数据放到一个本地内存缓存），以Packet为单位，dn1收到一个Packet就会传给dn2，dn2传给dn3；dn1每传一个packet会放入一个应答队列等待应答。<br>（8）当一个Block传输完成之后，客户端再次请求NameNode上传第二个Block的服务器。（重复执行3-7步）。<br>    为什么不是多个节点同时连接客户端？防止因为有任何一个节点没有完成而一直在等；<br>    到dn1的时候同时就往后倒dn2；<br>    最小单位是516字节（4个校验位），攒倒64kB的packet发送；<br>    ACK队列，接受下一端是否接受成功，用于备份。</p>
-<h5 id="网络拓扑-节点距离计算"><a href="#网络拓扑-节点距离计算" class="headerlink" title="网络拓扑-节点距离计算"></a>网络拓扑-节点距离计算</h5><p>节点距离：两个节点到达最近的共同祖先的距离总和。<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/HDFS读写数据-节点距离.137zn4lyrwa8.webp" alt="HDFS读写数据-节点距离"></p>
-<h5 id="机架感知（副本存储节点选择）"><a href="#机架感知（副本存储节点选择）" class="headerlink" title="机架感知（副本存储节点选择）"></a>机架感知（副本存储节点选择）</h5><p><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/HDFS读写流程-机架感知.8o1r32pms5s.webp" alt="HDFS读写流程-机架感知"><br>第一个副本：本地（如果客户端不在集群，随机算一个）<br>    本地是为了上传的速度<br>第二个副本：另一个机架里随机<br>    另一个机架是为了数据的可靠性<br>第三个副本：和第二个同一个机架随机<br>    兼顾可靠性和速度</p>
-<h4 id="HDFS读数据流程"><a href="#HDFS读数据流程" class="headerlink" title="HDFS读数据流程"></a>HDFS读数据流程</h4><p><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/HDFS读写流程-读数据.5k5bef6075s0.webp" alt="HDFS读写流程-读数据"><br>（1）客户端通过DistributedFileSystem向NameNode请求下载文件，NameNode通过查询元数据，找到文件块所在的DataNode地址。<br>（2）挑选一台DataNode（就近原则，然后随机）服务器，请求读取数据。<br>    节点距离最近，也考虑负载<br>（3）DataNode开始传输数据给客户端（从磁盘里面读取数据输入流，以Packet为单位来做校验）。<br>（4）客户端以Packet为单位接收，先在本地缓存，然后写入目标文件。<br>    串行读，先读第一块，再读第二块</p>
-<h3 id="其他（了解和理解）"><a href="#其他（了解和理解）" class="headerlink" title="其他（了解和理解）"></a>其他（了解和理解）</h3><ul>
-<li>NameNode和SecondaryNameNode<ul>
-<li>NN和2NN工作机制</li>
-<li>Fsimage和Edits解析</li>
-<li>CheckPoint时间设置</li>
-</ul>
-</li>
-<li>DataNode<ul>
-<li>DataNode工作机制</li>
-<li>数据完整性</li>
-<li>掉线时限参数设置</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>大数据Hadoop</category>
-        <category>HDFS</category>
-      </categories>
-      <tags>
-        <tag>Hadoop</tag>
-        <tag>HDFS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Cpp OpenMP</title>
-    <url>/2022/04/28/Cpp-OpenMP/</url>
-    <content><![CDATA[<p>很少截图，因为懒。</p>
-<h3 id="hello-world"><a href="#hello-world" class="headerlink" title="hello world"></a>hello world</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp parallel</span></span><br><span class="line">std::cout&lt;&lt;<span class="string">&quot;hello world&quot;</span>&lt;&lt;std::endl;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>编译：<br><code>g++ -o2 -std=c++14 -fopenmp hellp_world.cpp -o hello_world</code><br><code>-02</code>   哦二不是零二：<br>    -O0<br>    -O1<br>    -O2<br>    -O3<br>    编译器的优化选项的4个级别，-O0表示没有优化,-O1为缺省值，-O3优化级别最高<br>运行：</p>
-<ul>
-<li>`./hello_world’</li>
-<li><code>OPM_NUM_THREADS=2 ./hellp_world</code>设置环境变量，控制可以使用的线程数。<br>结果：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220428/Parallel_omp_helloworld.1u4hcpa3c280.webp" alt="Parallel_omp_helloworld"></li>
-</ul>
-<h3 id="库函数"><a href="#库函数" class="headerlink" title="库函数"></a>库函数</h3><p>需要<code>#include &lt;omp.h&gt;</code></p>
-<p><code>#pragma omp parallel  num_threads(4)</code>设置生成的线程数量，这个应该不算库函数。<br>| 函数 |功能和作用  | 示例 |<br>|——-|——-| ——|<br>|<code>omp_get_thread_num()</code> | 获得当前这个线程的编号id | <code>int i = omp_get_thread_num();</code> |<br>|<code>omp_get_num_threads()</code> | 获得当前线程总数 | <code>int n = omp_get_num_threads();</code>|<br>| <code>omp_set_num_threads();</code>  | 在串行部分设置线程个数，优先级比环境变量高  |<code>omp_set_num_threads(6);</code> |<br>|<code>omp_get_max_threads()</code>   | 这是什么东西？？  | |</p>
-<p>线程数设置的优先级：指导语句的num_threads(),库函数omp_set_num_threads();环境变量；编译器默认。</p>
-<h3 id="parallel-for"><a href="#parallel-for" class="headerlink" title="parallel for"></a>parallel for</h3><p><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/parallel_for.1hx1c6guutkw.webp" alt="parallel_for"></p>
-<h3 id="隐含同步"><a href="#隐含同步" class="headerlink" title="隐含同步"></a>隐含同步</h3><p><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/隐含同步.1cq1y0wi7iu8.webp" alt="隐含同步"><br>将<code>#pragra omp parallel for</code>写成<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#pragra omp parallel</span></span><br><span class="line">&#123;</span><br><span class="line">	#<span class="meta">#pragra omp for</span></span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>前后数据、工作有关系的情况下。比如锁，数据的运算一定是在初始化之后，那之前参与初始化的线程肯定要同时结束才行。<br>在一些不需要隐含同步的地方，可以用<code>nowait</code>，即<code>#pragma omp for nowait</code>。<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/nowait.67awv6v73100.webp" alt="nowait"></p>
-<h3 id="变量共享和私有化"><a href="#变量共享和私有化" class="headerlink" title="变量共享和私有化"></a>变量共享和私有化</h3><h4 id="private"><a href="#private" class="headerlink" title="private"></a>private</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*变量共享和私有化*/</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;omp.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="meta">#<span class="keyword">pragma</span> omp parallel for num_threads(4)</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;id:%d %d %d\n&quot;</span>, <span class="built_in">omp_get_thread_num</span>(), i, j);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>输出：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/共享变量和私有化1.65ux9gcq7i80.webp" alt="共享变量和私有化1"></p>
-<p>将i和j放在外面<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;omp.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="type">int</span> j = <span class="number">0</span>;</span><br><span class="line">	<span class="meta">#<span class="keyword">pragma</span> omp parallel for num_threads(4)</span></span><br><span class="line">	<span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">		<span class="keyword">for</span> ( j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;id:%d %d %d\n&quot;</span>, <span class="built_in">omp_get_thread_num</span>(), i, j);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>结果：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/共享变量和私有化2.zuz7962rsio.webp" alt="共享变量和私有化2"></p>
-<p>加入<code>private</code><br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;omp.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="type">int</span> j = <span class="number">0</span>;</span><br><span class="line">	<span class="meta">#<span class="keyword">pragma</span> omp parallel for  private(j)  num_threads(4)</span></span><br><span class="line">	<span class="keyword">for</span> ( i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">		<span class="keyword">for</span> ( j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++)</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">&quot;id:%d %d %d\n&quot;</span>, <span class="built_in">omp_get_thread_num</span>(), i, j);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>之前在循环外先声明，那不同线程循环变量就会访问同一块内存，这样就会冲突。加入<code>private(j)</code>之后就会在每个线程生成一个副本，这样就正常了。</p>
-<h4 id="firstprivate"><a href="#firstprivate" class="headerlink" title="firstprivate"></a>firstprivate</h4><p>使用<code>firstprivate(j)</code>不仅有全局变量的副本，而且有他的值，在并行部分里对他进行修改不会影响全局变量的值。</p>
-<h4 id="捕捉私有变量"><a href="#捕捉私有变量" class="headerlink" title="捕捉私有变量"></a>捕捉私有变量</h4><p>用数组的方式<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;omp.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">const</span> <span class="type">int</span> num = <span class="built_in">omp_get_max_threads</span>();</span><br><span class="line">	<span class="type">int</span>* aux = <span class="keyword">new</span> <span class="type">int</span>[num];</span><br><span class="line">	<span class="type">int</span> i = <span class="number">1</span>;</span><br><span class="line">	<span class="meta">#<span class="keyword">pragma</span> omp parallel firstprivate(i) </span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="type">const</span> <span class="type">int</span> j = <span class="built_in">omp_get_thread_num</span>();</span><br><span class="line">		i += j;</span><br><span class="line">		aux[j] = i;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; num; i++)</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">&quot;aux[% d] = % d\n&quot;</span>, i, aux[i]);</span><br><span class="line">	<span class="keyword">delete</span>[] aux;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>运行结果<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/捕捉私有变量1.16ct3ecyuee.webp" alt="捕捉私有变量1"></p>
-<h4 id="lastprivate"><a href="#lastprivate" class="headerlink" title="lastprivate"></a>lastprivate</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;omp.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp parallel for  lastprivate(i)  num_threads(4) </span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++)</span><br><span class="line">		i = j;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, i);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>可以返回变量的值。<br>输出结果是3.</p>
-<p>改为：<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">pragma</span> omp parallel for  lastprivate(i)  num_threads(4) </span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++)</span><br><span class="line">		i = j + <span class="built_in">omp_get_thread_num</span>();</span><br></pre></td></tr></table></figure><br>输出结果是6.</p>
-<h4 id="DMV"><a href="#DMV" class="headerlink" title="DMV"></a>DMV</h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdint&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// hpc_helpers contains the TIMERSTART and TIMERSTOP macros</span></span><br><span class="line"><span class="comment">// and the no_init_t template that disables implicit type</span></span><br><span class="line"><span class="comment">// initialization</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;../include/hpc_helpers.hpp&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> <span class="type">value_t</span>,</span><br><span class="line">          <span class="keyword">typename</span> <span class="type">index_t</span>&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">(std::vector&lt;<span class="type">value_t</span>&gt;&amp; A,</span></span></span><br><span class="line"><span class="params"><span class="function">          std::vector&lt;<span class="type">value_t</span>&gt;&amp; x,</span></span></span><br><span class="line"><span class="params"><span class="function">          <span class="type">index_t</span> m,</span></span></span><br><span class="line"><span class="params"><span class="function">          <span class="type">index_t</span> n)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">index_t</span> row = <span class="number">0</span>; row &lt; m; row++)</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">index_t</span> col = <span class="number">0</span>; col &lt; n; col++)</span><br><span class="line">            A[row*n+col] = row &gt;= col ? <span class="number">1</span> : <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">index_t</span> col = <span class="number">0</span>; col &lt; m; col++)</span><br><span class="line">        x[col] = col;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> <span class="type">value_t</span>,</span><br><span class="line">          <span class="keyword">typename</span> <span class="type">index_t</span>&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">mult</span><span class="params">(std::vector&lt;<span class="type">value_t</span>&gt;&amp; A,</span></span></span><br><span class="line"><span class="params"><span class="function">          std::vector&lt;<span class="type">value_t</span>&gt;&amp; x,</span></span></span><br><span class="line"><span class="params"><span class="function">          std::vector&lt;<span class="type">value_t</span>&gt;&amp; b,</span></span></span><br><span class="line"><span class="params"><span class="function">          <span class="type">index_t</span> m,</span></span></span><br><span class="line"><span class="params"><span class="function">          <span class="type">index_t</span> n,</span></span></span><br><span class="line"><span class="params"><span class="function">          <span class="type">bool</span> parallel)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">#<span class="keyword">pragma</span> omp parallel for <span class="keyword">if</span>(parallel)</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">index_t</span> row = <span class="number">0</span>; row &lt; m; row++) &#123;</span><br><span class="line">        <span class="type">value_t</span> accum = <span class="built_in">value_t</span>(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">index_t</span> col = <span class="number">0</span>; col &lt; n; col++)</span><br><span class="line">            accum += A[row*n+col]*x[col];</span><br><span class="line">        b[row] = accum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">const</span> <span class="type">uint64_t</span> n = <span class="number">1UL</span> &lt;&lt; <span class="number">15</span>;</span><br><span class="line">    <span class="type">const</span> <span class="type">uint64_t</span> m = <span class="number">1UL</span> &lt;&lt; <span class="number">15</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">TIMERSTART</span>(overall)</span><br><span class="line">    <span class="comment">// memory allocation for the three vectors x, y, and z</span></span><br><span class="line">    <span class="comment">// with the no_init_t template as a wrapper for the actual type</span></span><br><span class="line">    <span class="built_in">TIMERSTART</span>(alloc)</span><br><span class="line">    std::vector&lt;<span class="type">no_init_t</span>&lt;<span class="type">uint64_t</span>&gt;&gt; <span class="built_in">A</span>(m*n);</span><br><span class="line">    std::vector&lt;<span class="type">no_init_t</span>&lt;<span class="type">uint64_t</span>&gt;&gt; <span class="built_in">x</span>(n);</span><br><span class="line">    std::vector&lt;<span class="type">no_init_t</span>&lt;<span class="type">uint64_t</span>&gt;&gt; <span class="built_in">b</span>(m);</span><br><span class="line">    <span class="built_in">TIMERSTOP</span>(alloc)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// manually initialize the input matrix A and vector x</span></span><br><span class="line">    <span class="built_in">TIMERSTART</span>(init)</span><br><span class="line">    <span class="built_in">init</span>(A, x, m, n);</span><br><span class="line">    <span class="built_in">TIMERSTOP</span>(init)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// compute A * x = b sequentially three times</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">uint64_t</span> k = <span class="number">0</span>; k &lt; <span class="number">3</span>; k++) &#123;</span><br><span class="line">        <span class="built_in">TIMERSTART</span>(mult_seq)</span><br><span class="line">        <span class="built_in">mult</span>(A, x, b, m, n, <span class="literal">false</span>);</span><br><span class="line">        <span class="built_in">TIMERSTOP</span>(mult_seq)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// compute A * x = b in parallel three times</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">uint64_t</span> k = <span class="number">0</span>; k &lt; <span class="number">3</span>; k++) &#123;</span><br><span class="line">        <span class="built_in">TIMERSTART</span>(mult_par)</span><br><span class="line">        <span class="built_in">mult</span>(A, x, b, m, n, <span class="literal">true</span>);</span><br><span class="line">        <span class="built_in">TIMERSTOP</span>(mult_par)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">TIMERSTOP</span>(overall)</span><br><span class="line"></span><br><span class="line">    <span class="comment">// check if (last) result is correct</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">uint64_t</span> index = <span class="number">0</span>; index &lt; m; index++)</span><br><span class="line">        <span class="keyword">if</span> (b[index] != index*(index+<span class="number">1</span>)/<span class="number">2</span>)</span><br><span class="line">            std::cout &lt;&lt; <span class="string">&quot;error at position &quot;</span> &lt;&lt; index </span><br><span class="line">                      &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; b[index] &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>运行结果：<br>自己电脑：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/捕捉私有变量1.16ct3ecyuee.webp" alt="捕捉私有变量1"><br>学校服务器：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/omp_DMV_学校服务器.7a3buzg96us0.webp" alt="omp_DMV_学校服务器"><br>看来是x64不行。我改回了x86，然后量改成了13次方，结果是这样：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/omp_DMV_自己电脑x86.18b18xc1glek.webp" alt="omp_DMV_自己电脑x86"></p>
-<h4 id="1NN（最近邻）"><a href="#1NN（最近邻）" class="headerlink" title="1NN（最近邻）"></a>1NN（最近邻）</h4><h3 id="归约"><a href="#归约" class="headerlink" title="归约"></a>归约</h3>]]></content>
-      <categories>
-        <category>C++</category>
-      </categories>
-      <tags>
-        <tag>C++</tag>
-        <tag>parallel</tag>
       </tags>
   </entry>
 </search>

@@ -45,7 +45,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220503/omp_reduction_性质或要求.37br1an6qhc0.webp">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220503/omp_自定义归约绝对值最大.4vocxlaacja0.webp">
 <meta property="article:published_time" content="2022-04-28T09:24:12.000Z">
-<meta property="article:modified_time" content="2022-05-04T05:24:59.324Z">
+<meta property="article:modified_time" content="2022-06-18T14:13:32.057Z">
 <meta property="article:author" content="盛日辉">
 <meta property="article:tag" content="C++">
 <meta property="article:tag" content="parallel">
@@ -239,7 +239,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-05-04 13:24:59" itemprop="dateModified" datetime="2022-05-04T13:24:59+08:00">2022-05-04</time>
+                <time title="修改时间：2022-06-18 22:13:32" itemprop="dateModified" datetime="2022-06-18T22:13:32+08:00">2022-06-18</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -270,7 +270,7 @@
 <li><code>OPM_NUM_THREADS=2 ./hellp_world</code>设置环境变量，控制可以使用的线程数。<br>结果：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220428/Parallel_omp_helloworld.1u4hcpa3c280.webp" alt="Parallel_omp_helloworld"></li>
 </ul>
 <h3 id="库函数"><a href="#库函数" class="headerlink" title="库函数"></a>库函数</h3><p>需要<code>#include &lt;omp.h&gt;</code></p>
-<p><code>#pragma omp parallel  num_threads(4)</code>设置生成的线程数量，这个应该不算库函数。<br>| 函数 |功能和作用  | 示例 |<br>|——-|——-| ——|<br>|<code>omp_get_thread_num()</code> | 获得当前这个线程的编号id | <code>int i = omp_get_thread_num();</code> |<br>|<code>omp_get_num_threads()</code> | 获得当前线程总数 | <code>int n = omp_get_num_threads();</code>|<br>| <code>omp_set_num_threads();</code>  | 在串行部分设置线程个数，优先级比环境变量高  |<code>omp_set_num_threads(6);</code> |<br>|<code>omp_get_max_threads()</code>   | 这是什么东西？？  | |</p>
+<p><code>#pragma omp parallel  num_threads(4)</code>设置生成的线程数量，这个应该不算库函数。<br>| 函数 |功能和作用  | 示例 |<br>| ——- | ——- | —— |<br>|<code>omp_get_thread_num()</code> | 获得当前这个线程的编号id | <code>int i = omp_get_thread_num();</code> |<br>|<code>omp_get_num_threads()</code> | 获得当前线程总数 | <code>int n = omp_get_num_threads();</code>|<br>| <code>omp_set_num_threads();</code>  | 在串行部分设置线程个数，优先级比环境变量高  |<code>omp_set_num_threads(6);</code> |<br>|<code>omp_get_max_threads()</code>   | 这是什么东西？？  | .. |</p>
 <p>线程数设置的优先级：指导语句的num_threads(),库函数omp_set_num_threads();环境变量；编译器默认。</p>
 <h3 id="parallel-for"><a href="#parallel-for" class="headerlink" title="parallel for"></a>parallel for</h3><p><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/parallel_for.1hx1c6guutkw.webp" alt="parallel_for"></p>
 <h3 id="隐含同步"><a href="#隐含同步" class="headerlink" title="隐含同步"></a>隐含同步</h3><p><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/隐含同步.1cq1y0wi7iu8.webp" alt="隐含同步"><br>将<code>#pragra omp parallel for</code>写成<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#pragra omp parallel</span></span><br><span class="line">&#123;</span><br><span class="line">	#<span class="meta">#pragra omp for</span></span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>

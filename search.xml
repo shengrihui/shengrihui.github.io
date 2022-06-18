@@ -11,7 +11,7 @@
 <li><code>OPM_NUM_THREADS=2 ./hellp_world</code>设置环境变量，控制可以使用的线程数。<br>结果：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220428/Parallel_omp_helloworld.1u4hcpa3c280.webp" alt="Parallel_omp_helloworld"></li>
 </ul>
 <h3 id="库函数"><a href="#库函数" class="headerlink" title="库函数"></a>库函数</h3><p>需要<code>#include &lt;omp.h&gt;</code></p>
-<p><code>#pragma omp parallel  num_threads(4)</code>设置生成的线程数量，这个应该不算库函数。<br>| 函数 |功能和作用  | 示例 |<br>|——-|——-| ——|<br>|<code>omp_get_thread_num()</code> | 获得当前这个线程的编号id | <code>int i = omp_get_thread_num();</code> |<br>|<code>omp_get_num_threads()</code> | 获得当前线程总数 | <code>int n = omp_get_num_threads();</code>|<br>| <code>omp_set_num_threads();</code>  | 在串行部分设置线程个数，优先级比环境变量高  |<code>omp_set_num_threads(6);</code> |<br>|<code>omp_get_max_threads()</code>   | 这是什么东西？？  | |</p>
+<p><code>#pragma omp parallel  num_threads(4)</code>设置生成的线程数量，这个应该不算库函数。<br>| 函数 |功能和作用  | 示例 |<br>| ——- | ——- | —— |<br>|<code>omp_get_thread_num()</code> | 获得当前这个线程的编号id | <code>int i = omp_get_thread_num();</code> |<br>|<code>omp_get_num_threads()</code> | 获得当前线程总数 | <code>int n = omp_get_num_threads();</code>|<br>| <code>omp_set_num_threads();</code>  | 在串行部分设置线程个数，优先级比环境变量高  |<code>omp_set_num_threads(6);</code> |<br>|<code>omp_get_max_threads()</code>   | 这是什么东西？？  | .. |</p>
 <p>线程数设置的优先级：指导语句的num_threads(),库函数omp_set_num_threads();环境变量；编译器默认。</p>
 <h3 id="parallel-for"><a href="#parallel-for" class="headerlink" title="parallel for"></a>parallel for</h3><p><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/parallel_for.1hx1c6guutkw.webp" alt="parallel_for"></p>
 <h3 id="隐含同步"><a href="#隐含同步" class="headerlink" title="隐含同步"></a>隐含同步</h3><p><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220502/隐含同步.1cq1y0wi7iu8.webp" alt="隐含同步"><br>将<code>#pragra omp parallel for</code>写成<br><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#pragra omp parallel</span></span><br><span class="line">&#123;</span><br><span class="line">	#<span class="meta">#pragra omp for</span></span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
@@ -1618,7 +1618,8 @@ src = 0, dst = 2, k = 0
   <entry>
     <title>cuda</title>
     <url>/2021/08/29/cuda/</url>
-    <content><![CDATA[<p>pip安装<br>pip3 install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio===0.9.0 -f <a href="https://download.pytorch.org/whl/torch_stable.html">https://download.pytorch.org/whl/torch_stable.html</a></p>
+    <content><![CDATA[<p>nvcc -v 查看cuda版本<br>nvidia-smi 查看cuda版本<br>这俩有些区别</p>
+<p>pip安装<br>pip3 install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio===0.9.0 -f <a href="https://download.pytorch.org/whl/torch_stable.html">https://download.pytorch.org/whl/torch_stable.html</a></p>
 <p>conda<br>NOTE: ‘conda-forge’ channel is required for cudatoolkit 11.1<br>conda install pytorch torchvision torchaudio cudatoolkit=11.1 -c pytorch -c conda-forge</p>
 <p><a href="https://pytorch.org/">https://pytorch.org/</a></p>
 ]]></content>

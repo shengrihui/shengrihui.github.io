@@ -2405,4 +2405,43 @@ e^{ix}&=1+ix+\frac{(ix)^2}{2!}+\frac{(ix)^3}{3!}+\frac{(ix)^4}{4!}+...\\
         <tag>大数据</tag>
       </tags>
   </entry>
+  <entry>
+    <title>django学习</title>
+    <url>/2022/07/11/django%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h3 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install django</span><br></pre></td></tr></table></figure>
+<p>安装完之后在环境目录<code>D:\Users\11200\anaconda3\envs\web</code>下会有：</p>
+<pre><code>- python.exe
+- Scripts
+    - pip.exe
+    - django-admin.exe
+- Lib
+    - 内置模块
+    - site-packages
+        - 第三方模块 
+        - django
+</code></pre><h3 id="2-创建项目"><a href="#2-创建项目" class="headerlink" title="2 创建项目"></a>2 创建项目</h3><h4 id="2-1-终端"><a href="#2-1-终端" class="headerlink" title="2.1 终端"></a>2.1 终端</h4><ol>
+<li>进入终端</li>
+<li>进入想把项目放在的目录下</li>
+<li>执行命令<code>django-admin startproject 项目名</code><br> <code>django-admin</code>要进入这个环境当中。</li>
+</ol>
+<h4 id="2-2-pycharm创建"><a href="#2-2-pycharm创建" class="headerlink" title="2.2 pycharm创建"></a>2.2 pycharm创建</h4><p>选好解释器，删除<code>templates</code>文件夹，将57行改为<code>&#39;DIRS&#39;: [],</code>，为了和终端创建的保持一致。</p>
+<h4 id="2-3-项目结构"><a href="#2-3-项目结构" class="headerlink" title="2.3 项目结构"></a>2.3 项目结构</h4><pre><code>└─test01
+    │  manage.py        【项目管理，启动项目、创建app、数据库管理】
+    │
+    └─test01            【与项目同名】
+            asgi.py     【接受网络请求】【异步】
+            settings.py 【配置文件】
+            urls.py     【URL与函数的对应关系】
+            wsgi.py     【接受网络请求】【同步】
+            __init__.py
+</code></pre><h3 id="3-APP"><a href="#3-APP" class="headerlink" title="3. APP"></a>3. APP</h3>]]></content>
+      <categories>
+        <category>python</category>
+        <category>django</category>
+      </categories>
+      <tags>
+        <tag>django</tag>
+        <tag>web框架</tag>
+      </tags>
+  </entry>
 </search>

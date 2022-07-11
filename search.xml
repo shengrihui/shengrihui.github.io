@@ -139,12 +139,12 @@
 </ul>
 ]]></content>
       <categories>
-        <category>大数据Hadoop</category>
-        <category>HDFS</category>
+        <category>大数据</category>
+        <category>Hadoop</category>
       </categories>
       <tags>
         <tag>Hadoop</tag>
-        <tag>HDFS</tag>
+        <tag>大数据</tag>
       </tags>
   </entry>
   <entry>
@@ -2316,6 +2316,93 @@ e^{ix}&=1+ix+\frac{(ix)^2}{2!}+\frac{(ix)^3}{3!}+\frac{(ix)^4}{4!}+...\\
       </categories>
       <tags>
         <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hadoop-相关知识</title>
+    <url>/2022/07/11/Hadoop-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/</url>
+    <content><![CDATA[<h2 id="大数据"><a href="#大数据" class="headerlink" title="大数据"></a>大数据</h2><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>略。<br>大数据主要解决，海量数据的<strong>采集</strong>、<strong>存储</strong>和<strong>分析计算</strong>问题。</p>
+<h4 id="提点"><a href="#提点" class="headerlink" title="提点"></a>提点</h4><p>1.大量（Volume）：数据量大；<br>2.高速（Velocity）：数据产生快，计算速度快；<br>3.多样（Variety）：数据烈性多样，结构化和非结构化；<br>4.低价值密度（Value）：海量数据里真正有价值的不多。</p>
+<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>抖音推荐，电商推荐，零售，物流，保险，人工智能+5G+物联网+虚拟与现实……</p>
+<h4 id="发展前景"><a href="#发展前景" class="headerlink" title="发展前景"></a>发展前景</h4><p>好。人才紧缺。</p>
+<h4 id="大数据部门间业务流程"><a href="#大数据部门间业务流程" class="headerlink" title="大数据部门间业务流程"></a>大数据部门间业务流程</h4><p>产品经理+程序员+前端。<br>大数据内部：还有好多。</p>
+<h4 id="大数据生态圈与Hadoop"><a href="#大数据生态圈与Hadoop" class="headerlink" title="大数据生态圈与Hadoop"></a>大数据生态圈与Hadoop</h4><h2 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h2><h4 id="Hadoop是什么"><a href="#Hadoop是什么" class="headerlink" title="Hadoop是什么"></a>Hadoop是什么</h4><h4 id="发展历史"><a href="#发展历史" class="headerlink" title="发展历史"></a>发展历史</h4><h4 id="三大发行版本"><a href="#三大发行版本" class="headerlink" title="三大发行版本"></a>三大发行版本</h4><h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><p>1.高可靠性：不容易错，错了有备份；<br>2.高扩展性：任意临时加服务器；<br>3.高效性：并行计算；<br>4.高容错性：自动讲错了的任务重新分配。</p>
+<h4 id="Hadoop组成"><a href="#Hadoop组成" class="headerlink" title="==Hadoop组成=="></a>==Hadoop组成==</h4><h5 id="Hadoop-1-X-组成"><a href="#Hadoop-1-X-组成" class="headerlink" title="Hadoop 1.X 组成"></a>Hadoop 1.X 组成</h5><ul>
+<li>Commin辅助工具</li>
+<li>HDFS 数据存储</li>
+<li>MapReduce 计算+资源调度<h5 id="Hadoop-2-X-组成"><a href="#Hadoop-2-X-组成" class="headerlink" title="Hadoop 2.X 组成"></a>Hadoop 2.X 组成</h5></li>
+<li>Commin辅助工具</li>
+<li>HDFS 数据存储</li>
+<li>Yarn 资源调度</li>
+<li>MapReduce 计算<h5 id="Hadoop-3-X"><a href="#Hadoop-3-X" class="headerlink" title="Hadoop 3.X"></a>Hadoop 3.X</h5>Hadoop 3.X 在组成上没有变化。<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/Hadoop不同版本呢组成.44jhx6qkvxu0.webp" alt="Hadoop不同版本呢组成"></li>
+</ul>
+<h4 id="HDFS架构"><a href="#HDFS架构" class="headerlink" title="HDFS架构"></a>HDFS架构</h4><p>Hadoop Distributed FIle System 分布式文件系统。</p>
+<h4 id="Yarn"><a href="#Yarn" class="headerlink" title="Yarn"></a>Yarn</h4><h4 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h4><h4 id="HDFS-Yarn-Mapduce三者来联系"><a href="#HDFS-Yarn-Mapduce三者来联系" class="headerlink" title="HDFS/Yarn/Mapduce三者来联系"></a>HDFS/Yarn/Mapduce三者来联系</h4>]]></content>
+      <categories>
+        <category>大数据</category>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>Hadoop</tag>
+        <tag>大数据</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hadoop-配置（极简版）</title>
+    <url>/2022/07/11/Hadoop-%E9%85%8D%E7%BD%AE%EF%BC%88%E6%9E%81%E7%AE%80%E7%89%88%EF%BC%89/</url>
+    <content><![CDATA[<h3 id="模板虚拟机环境准备"><a href="#模板虚拟机环境准备" class="headerlink" title="模板虚拟机环境准备"></a>模板虚拟机环境准备</h3><h4 id="VMware安装"><a href="#VMware安装" class="headerlink" title="VMware安装"></a>VMware安装</h4><h4 id="Xfpt与Xshell安装"><a href="#Xfpt与Xshell安装" class="headerlink" title="Xfpt与Xshell安装"></a>Xfpt与Xshell安装</h4><h4 id="电脑虚拟化准备好"><a href="#电脑虚拟化准备好" class="headerlink" title="电脑虚拟化准备好"></a>电脑虚拟化准备好</h4><h4 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h4><ul>
+<li>cpu、内存根据自己电脑改；</li>
+<li>网络用NAT模式；</li>
+<li>硬盘尽量大（50GB或40GB）；</li>
+<li>其他默认。<h4 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h4></li>
+<li>软件选择：最小安装/GNOME桌面</li>
+<li>安装位置：<ul>
+<li>我要配置分区-&gt;完成；</li>
+<li>添加<code>/boot</code>分区，是系统启动时需要的内存，1G，修改文件类型为<code>ext4</code>;</li>
+<li>添加<code>swap</code>分区，是内存不够时用硬盘冒充内存，4G;</li>
+<li>添加<code>/</code>根目录，剩余所有空间。</li>
+</ul>
+</li>
+<li>关闭KDUMP。这是假如系统崩了，备份用的一块区域，学习阶段不开。</li>
+<li>打开以太网，设置主机名为`hadoop100’。</li>
+<li>默认安全策略。</li>
+<li>开始安装。</li>
+<li>设置简单的root密码。</li>
+<li>重启。</li>
+<li>重启后，创建个普通用户，其他默认走就行。</li>
+</ul>
+<h4 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h4><h5 id="VM网络设置"><a href="#VM网络设置" class="headerlink" title="VM网络设置"></a>VM网络设置</h5><h5 id="Windows设置"><a href="#Windows设置" class="headerlink" title="Windows设置"></a>Windows设置</h5><h5 id="CentOS设置"><a href="#CentOS设置" class="headerlink" title="CentOS设置"></a>CentOS设置</h5><ol>
+<li>切到root用户 <code>su root</code>，输入密码；</li>
+<li><code>vim /etc/sysconfig/network-scripts/ifcfg-ens33</code>进入网络配置的文件；</li>
+<li>将<code>BOOTPROTO=&quot;dhcp&quot;</code>修改为<code>BOOTPROTO=&quot;static&quot;</code>，也就是设置静态IP；</li>
+<li>在最后增加：<br> IPADDR=192.168.100.100<br> GATEWAY=192.168.100.2<br> DNS1=192.168.100.2<br>分别是IP地址，网关，域名。</li>
+<li>修改主机名：<code>vim /etc/hostname</code>，写上主机名。</li>
+<li>配置主机名称映射：<code>vim /etc/hosts</code>，在后面假如：<br> 192.168.100.100 hadoop100<br> 192.168.100.101 hadoop101<br> 192.168.100.102 hadoop102<br> 192.168.100.103 hadoop103<br> 192.168.100.104 hadoop104<br> 192.168.100.105 hadoop105<br> 192.168.100.106 hadoop106<br> 192.168.100.107 hadoop107<br> 192.168.100.108 hadoop108</li>
+<li><code>reboot</code>命令重启。</li>
+<li>以root权限登录。</li>
+<li>检查ip地址与主机名是否配置好：<ol>
+<li><code>ifconfig</code>命令查看IP地址；</li>
+<li><code>ping www.baidu.com</code>看能否ping成功。</li>
+<li><code>hostname</code>查看主机名。<h4 id="用Xshell进行远程链接"><a href="#用Xshell进行远程链接" class="headerlink" title="用Xshell进行远程链接"></a>用Xshell进行远程链接</h4></li>
+</ol>
+</li>
+<li>用Xshell链接</li>
+<li>主机映射<h4 id="安装一些包和关闭防火墙和一些其他设置"><a href="#安装一些包和关闭防火墙和一些其他设置" class="headerlink" title="安装一些包和关闭防火墙和一些其他设置"></a>安装一些包和关闭防火墙和一些其他设置</h4></li>
+<li><code>yum install -y epel-release</code>提供需要的包</li>
+<li><code>yum install -y net-tools</code>网络</li>
+<li></li>
+<li><code>systemctl stop firewalld</code>关闭防火墙</li>
+<li><code>systemctl disable firewalld.service</code>开机时关闭防火墙</li>
+<li>给永辉root权限</li>
+</ol>
+<h3 id="克隆虚拟机"><a href="#克隆虚拟机" class="headerlink" title="克隆虚拟机"></a>克隆虚拟机</h3><h3 id="在hadoop102上安装jdk和环境配置"><a href="#在hadoop102上安装jdk和环境配置" class="headerlink" title="在hadoop102上安装jdk和环境配置"></a>在hadoop102上安装jdk和环境配置</h3><h3 id="在hadoop102上安装hadoop和环境配置"><a href="#在hadoop102上安装hadoop和环境配置" class="headerlink" title="在hadoop102上安装hadoop和环境配置"></a>在hadoop102上安装hadoop和环境配置</h3><h3 id="本地运行"><a href="#本地运行" class="headerlink" title="本地运行"></a>本地运行</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">#1. 判断参数个数</span><br><span class="line">if [ $# -lt 1 ]</span><br><span class="line">then</span><br><span class="line"> echo Not Enough Arguement!</span><br><span class="line"> exit;</span><br><span class="line">fi</span><br><span class="line">#2. 遍历集群所有机器</span><br><span class="line">for host in hadoop102 hadoop103 hadoop104</span><br><span class="line">do</span><br><span class="line"> echo ==================== $host ====================</span><br><span class="line"> #3. 遍历所有目录，挨个发送</span><br><span class="line"> for file in $@</span><br><span class="line"> do</span><br><span class="line"> #4. 判断文件是否存在</span><br><span class="line"> if [ -e $file ]</span><br><span class="line"> then</span><br><span class="line"> #5. 获取父目录</span><br><span class="line"> pdir=$(cd -P $(dirname $file); pwd)</span><br><span class="line"> #6. 获取当前文件的名称</span><br><span class="line"> fname=$(basename $file)</span><br><span class="line"> ssh $host &quot;mkdir -p $pdir&quot;</span><br><span class="line"> rsync -av $pdir/$fname $host:$pdir</span><br><span class="line"> else</span><br><span class="line"> echo $file does not exists!</span><br><span class="line"> fi</span><br><span class="line"> done</span><br><span class="line">done</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>大数据</category>
+        <category>Hadoop</category>
+      </categories>
+      <tags>
+        <tag>Hadoop</tag>
+        <tag>大数据</tag>
       </tags>
   </entry>
 </search>

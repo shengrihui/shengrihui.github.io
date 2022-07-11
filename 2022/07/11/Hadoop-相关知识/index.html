@@ -20,20 +20,23 @@
     var CONFIG = {"hostname":"shengrihui.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="any()和all()说明any()函数用来判断给定的迭代参数iterable中是否含有True，如果有（只要有一个），则返回True.函数等价于：">
+  <meta name="description" content="大数据概念略。大数据主要解决，海量数据的采集、存储和分析计算问题。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python的一些内建函数和基本句法">
-<meta property="og:url" content="https://shengrihui.github.io/2030/02/17/Python%E7%9A%84%E4%B8%80%E4%BA%9B%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0%E5%92%8C%E5%9F%BA%E6%9C%AC%E5%8F%A5%E6%B3%95/index.html">
+<meta property="og:title" content="Hadoop-相关知识">
+<meta property="og:url" content="https://shengrihui.github.io/2022/07/11/Hadoop-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/index.html">
 <meta property="og:site_name" content="盛日辉的博客">
-<meta property="og:description" content="any()和all()说明any()函数用来判断给定的迭代参数iterable中是否含有True，如果有（只要有一个），则返回True.函数等价于：">
+<meta property="og:description" content="大数据概念略。大数据主要解决，海量数据的采集、存储和分析计算问题。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2030-02-17T09:59:23.000Z">
-<meta property="article:modified_time" content="2022-04-28T09:22:15.394Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/Hadoop不同版本呢组成.44jhx6qkvxu0.webp">
+<meta property="article:published_time" content="2022-07-11T14:07:54.000Z">
+<meta property="article:modified_time" content="2022-07-11T14:08:29.153Z">
 <meta property="article:author" content="盛日辉">
-<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Hadoop">
+<meta property="article:tag" content="大数据">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/Hadoop不同版本呢组成.44jhx6qkvxu0.webp">
 
-<link rel="canonical" href="https://shengrihui.github.io/2030/02/17/Python%E7%9A%84%E4%B8%80%E4%BA%9B%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0%E5%92%8C%E5%9F%BA%E6%9C%AC%E5%8F%A5%E6%B3%95/">
+<link rel="canonical" href="https://shengrihui.github.io/2022/07/11/Hadoop-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">
 
 
 <script id="page-configurations">
@@ -46,7 +49,7 @@
   };
 </script>
 
-  <title>Python的一些内建函数和基本句法 | 盛日辉的博客</title>
+  <title>Hadoop-相关知识 | 盛日辉的博客</title>
   
 
 
@@ -190,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/2030/02/17/Python%E7%9A%84%E4%B8%80%E4%BA%9B%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0%E5%92%8C%E5%9F%BA%E6%9C%AC%E5%8F%A5%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/2022/07/11/Hadoop-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -203,7 +206,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Python的一些内建函数和基本句法
+          Hadoop-相关知识
         </h1>
 
         <div class="post-meta">
@@ -212,23 +215,21 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2030-02-17 17:59:23" itemprop="dateCreated datePublished" datetime="2030-02-17T17:59:23+08:00">2030-02-17</time>
+              <time title="创建时间：2022-07-11 22:07:54 / 修改时间：22:08:29" itemprop="dateCreated datePublished" datetime="2022-07-11T22:07:54+08:00">2022-07-11</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-28 17:22:15" itemprop="dateModified" datetime="2022-04-28T17:22:15+08:00">2022-04-28</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/" itemprop="url" rel="index"><span itemprop="name">大数据</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%A4%A7%E6%95%B0%E6%8D%AE/Hadoop/" itemprop="url" rel="index"><span itemprop="name">Hadoop</span></a>
                 </span>
             </span>
 
@@ -243,10 +244,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="any-和all"><a href="#any-和all" class="headerlink" title="any()和all()"></a><code>any()</code>和<code>all()</code></h3><h5 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h5><p><code>any()</code>函数用来判断给定的迭代参数<code>iterable</code>中是否含有<code>True</code>，如果有（只要有一个），则返回<code>True</code>.<br>函数等价于：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">any</span>(<span class="params">iterable</span>):</span><br><span class="line">    <span class="keyword">for</span> element <span class="keyword">in</span> iterable:</span><br><span class="line">        <span class="keyword">if</span> element:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure></p>
-<p><code>all()</code>函数用来判断给定的迭代参数<code>iterable</code>中是否全部是是<code>True</code>，如果是，则返回<code>True</code>。<br>函数等价于：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">all</span>(<span class="params">iterable</span>):</span><br><span class="line">    <span class="keyword">for</span> element <span class="keyword">in</span> iterable:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> element:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure><br><code>any()</code>：只要有一个<code>True</code>，就返回<code>True</code>；<br><code>all()</code>：全部是<code>True</code>，就返回<code>True</code>。<br><strong>注意</strong> ：空元组、空列表返回值为True，这里要特别注意。</p>
-<h5 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h5><p>示例来自菜鸟教程。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="built_in">any</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])  <span class="comment"># 列表list，元素都不为空或0</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])   <span class="comment"># 列表list，存在一个为空的元素</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>([<span class="number">0</span>, <span class="string">&#x27;&#x27;</span>, <span class="literal">False</span>])        <span class="comment"># 列表list,元素全为0,&#x27;&#x27;,false</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>((<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>))  <span class="comment"># 元组tuple，元素都不为空或0</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>((<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;d&#x27;</span>))   <span class="comment"># 元组tuple，存在一个为空的元素</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>((<span class="number">0</span>, <span class="string">&#x27;&#x27;</span>, <span class="literal">False</span>))        <span class="comment"># 元组tuple，元素全为0,&#x27;&#x27;,false</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line">  </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>([]) <span class="comment"># 空列表</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"> </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">any</span>(()) <span class="comment"># 空元组</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])  <span class="comment"># 列表list，元素都不为空或0</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>([<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;d&#x27;</span>])   <span class="comment"># 列表list，存在一个为空的元素</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>([<span class="number">0</span>, <span class="number">1</span>，<span class="number">2</span>, <span class="number">3</span>])          <span class="comment"># 列表list，存在一个为0的元素</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line">   </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>((<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>, <span class="string">&#x27;d&#x27;</span>))  <span class="comment"># 元组tuple，元素都不为空或0</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>((<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;&#x27;</span>, <span class="string">&#x27;d&#x27;</span>))   <span class="comment"># 元组tuple，存在一个为空的元素</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>((<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>))          <span class="comment"># 元组tuple，存在一个为0的元素</span></span><br><span class="line"><span class="literal">False</span></span><br><span class="line">   </span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>([])             <span class="comment"># 空列表</span></span><br><span class="line"><span class="literal">True</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">all</span>(())             <span class="comment"># 空元组</span></span><br><span class="line"><span class="literal">True</span></span><br></pre></td></tr></table></figure><br>下面示例来自CSDN。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">any</span>(x**<span class="number">2</span> == <span class="number">16</span> <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">10</span>)))</span><br><span class="line"><span class="comment"># True</span></span><br></pre></td></tr></table></figure></p>
-
+        <h2 id="大数据"><a href="#大数据" class="headerlink" title="大数据"></a>大数据</h2><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>略。<br>大数据主要解决，海量数据的<strong>采集</strong>、<strong>存储</strong>和<strong>分析计算</strong>问题。</p>
+<h4 id="提点"><a href="#提点" class="headerlink" title="提点"></a>提点</h4><p>1.大量（Volume）：数据量大；<br>2.高速（Velocity）：数据产生快，计算速度快；<br>3.多样（Variety）：数据烈性多样，结构化和非结构化；<br>4.低价值密度（Value）：海量数据里真正有价值的不多。</p>
+<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>抖音推荐，电商推荐，零售，物流，保险，人工智能+5G+物联网+虚拟与现实……</p>
+<h4 id="发展前景"><a href="#发展前景" class="headerlink" title="发展前景"></a>发展前景</h4><p>好。人才紧缺。</p>
+<h4 id="大数据部门间业务流程"><a href="#大数据部门间业务流程" class="headerlink" title="大数据部门间业务流程"></a>大数据部门间业务流程</h4><p>产品经理+程序员+前端。<br>大数据内部：还有好多。</p>
+<h4 id="大数据生态圈与Hadoop"><a href="#大数据生态圈与Hadoop" class="headerlink" title="大数据生态圈与Hadoop"></a>大数据生态圈与Hadoop</h4><h2 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h2><h4 id="Hadoop是什么"><a href="#Hadoop是什么" class="headerlink" title="Hadoop是什么"></a>Hadoop是什么</h4><h4 id="发展历史"><a href="#发展历史" class="headerlink" title="发展历史"></a>发展历史</h4><h4 id="三大发行版本"><a href="#三大发行版本" class="headerlink" title="三大发行版本"></a>三大发行版本</h4><h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><p>1.高可靠性：不容易错，错了有备份；<br>2.高扩展性：任意临时加服务器；<br>3.高效性：并行计算；<br>4.高容错性：自动讲错了的任务重新分配。</p>
+<h4 id="Hadoop组成"><a href="#Hadoop组成" class="headerlink" title="==Hadoop组成=="></a>==Hadoop组成==</h4><h5 id="Hadoop-1-X-组成"><a href="#Hadoop-1-X-组成" class="headerlink" title="Hadoop 1.X 组成"></a>Hadoop 1.X 组成</h5><ul>
+<li>Commin辅助工具</li>
+<li>HDFS 数据存储</li>
+<li>MapReduce 计算+资源调度<h5 id="Hadoop-2-X-组成"><a href="#Hadoop-2-X-组成" class="headerlink" title="Hadoop 2.X 组成"></a>Hadoop 2.X 组成</h5></li>
+<li>Commin辅助工具</li>
+<li>HDFS 数据存储</li>
+<li>Yarn 资源调度</li>
+<li>MapReduce 计算<h5 id="Hadoop-3-X"><a href="#Hadoop-3-X" class="headerlink" title="Hadoop 3.X"></a>Hadoop 3.X</h5>Hadoop 3.X 在组成上没有变化。<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/Hadoop不同版本呢组成.44jhx6qkvxu0.webp" alt="Hadoop不同版本呢组成"></li>
+</ul>
+<h4 id="HDFS架构"><a href="#HDFS架构" class="headerlink" title="HDFS架构"></a>HDFS架构</h4><p>Hadoop Distributed FIle System 分布式文件系统。</p>
+<h4 id="Yarn"><a href="#Yarn" class="headerlink" title="Yarn"></a>Yarn</h4><h4 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h4><h4 id="HDFS-Yarn-Mapduce三者来联系"><a href="#HDFS-Yarn-Mapduce三者来联系" class="headerlink" title="HDFS/Yarn/Mapduce三者来联系"></a>HDFS/Yarn/Mapduce三者来联系</h4>
     </div>
 
     
@@ -275,7 +289,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Python/" rel="tag"># Python</a>
+              <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+              <a href="/tags/%E5%A4%A7%E6%95%B0%E6%8D%AE/" rel="tag"># 大数据</a>
           </div>
 
         
@@ -284,10 +299,13 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/07/11/Hadoop-%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" rel="prev" title="Hadoop-相关知识">
-      <i class="fa fa-chevron-left"></i> Hadoop-相关知识
+    <a href="/2022/07/11/Hadoop-%E9%85%8D%E7%BD%AE%EF%BC%88%E6%9E%81%E7%AE%80%E7%89%88%EF%BC%89/" rel="prev" title="Hadoop-配置（极简版）">
+      <i class="fa fa-chevron-left"></i> Hadoop-配置（极简版）
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2030/02/17/Python%E7%9A%84%E4%B8%80%E4%BA%9B%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0%E5%92%8C%E5%9F%BA%E6%9C%AC%E5%8F%A5%E6%B3%95/" rel="next" title="Python的一些内建函数和基本句法">
+      Python的一些内建函数和基本句法 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -346,7 +364,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#any-%E5%92%8Call"><span class="nav-number">1.</span> <span class="nav-text">any()和all()</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%B4%E6%98%8E"><span class="nav-number">1.0.1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">1.0.2.</span> <span class="nav-text">示例</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%A7%E6%95%B0%E6%8D%AE"><span class="nav-number">1.</span> <span class="nav-text">大数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">1.0.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8F%90%E7%82%B9"><span class="nav-number">1.0.2.</span> <span class="nav-text">提点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="nav-number">1.0.3.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%91%E5%B1%95%E5%89%8D%E6%99%AF"><span class="nav-number">1.0.4.</span> <span class="nav-text">发展前景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%83%A8%E9%97%A8%E9%97%B4%E4%B8%9A%E5%8A%A1%E6%B5%81%E7%A8%8B"><span class="nav-number">1.0.5.</span> <span class="nav-text">大数据部门间业务流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%94%9F%E6%80%81%E5%9C%88%E4%B8%8EHadoop"><span class="nav-number">1.0.6.</span> <span class="nav-text">大数据生态圈与Hadoop</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hadoop"><span class="nav-number">2.</span> <span class="nav-text">Hadoop</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Hadoop%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">2.0.1.</span> <span class="nav-text">Hadoop是什么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2"><span class="nav-number">2.0.2.</span> <span class="nav-text">发展历史</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E5%A4%A7%E5%8F%91%E8%A1%8C%E7%89%88%E6%9C%AC"><span class="nav-number">2.0.3.</span> <span class="nav-text">三大发行版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E5%8A%BF"><span class="nav-number">2.0.4.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hadoop%E7%BB%84%E6%88%90"><span class="nav-number">2.0.5.</span> <span class="nav-text">&#x3D;&#x3D;Hadoop组成&#x3D;&#x3D;</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Hadoop-1-X-%E7%BB%84%E6%88%90"><span class="nav-number">2.0.5.1.</span> <span class="nav-text">Hadoop 1.X 组成</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Hadoop-2-X-%E7%BB%84%E6%88%90"><span class="nav-number">2.0.5.2.</span> <span class="nav-text">Hadoop 2.X 组成</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Hadoop-3-X"><span class="nav-number">2.0.5.3.</span> <span class="nav-text">Hadoop 3.X</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HDFS%E6%9E%B6%E6%9E%84"><span class="nav-number">2.0.6.</span> <span class="nav-text">HDFS架构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Yarn"><span class="nav-number">2.0.7.</span> <span class="nav-text">Yarn</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MapReduce"><span class="nav-number">2.0.8.</span> <span class="nav-text">MapReduce</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HDFS-Yarn-Mapduce%E4%B8%89%E8%80%85%E6%9D%A5%E8%81%94%E7%B3%BB"><span class="nav-number">2.0.9.</span> <span class="nav-text">HDFS&#x2F;Yarn&#x2F;Mapduce三者来联系</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

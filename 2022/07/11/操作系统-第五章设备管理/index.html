@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shengrihui.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="设备管理的主要目标是屏蔽I&#x2F;O设备的硬件特性，向用户提供使用I&#x2F;O设备的方便接口，充分发挥设备的利用率。  就是提供用户一个按钮，不用考虑硬件具体的。 设备管理的主要功能有：缓冲区的管理、设备分配、设备处理、虚拟设备及实现设备独立性等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统-第五章设备管理">
+<meta property="og:url" content="https://shengrihui.github.io/2022/07/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%94%E7%AB%A0%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="盛日辉的博客">
+<meta property="og:description" content="设备管理的主要目标是屏蔽I&#x2F;O设备的硬件特性，向用户提供使用I&#x2F;O设备的方便接口，充分发挥设备的利用率。  就是提供用户一个按钮，不用考虑硬件具体的。 设备管理的主要功能有：缓冲区的管理、设备分配、设备处理、虚拟设备及实现设备独立性等。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220613/字    节多路通道.49vsqc7gr940.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220613/瓶颈问题.1clfcfk7eo00.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220613/程序I/O方式.208g81f7jmf4.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/中断驱动.7i0z1rf2m3k0.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/DMA组成.6iiwsem01b00.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/I/O软件.6h7xyqv5qiw0.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/设备分配个数据结构之间的关系.3116o8gehxs0.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/SPOOLing组成.kileux4v63k.webp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/磁盘结构.14w904dm23ek.webp">
+<meta property="article:published_time" content="2022-07-11T14:02:33.000Z">
+<meta property="article:modified_time" content="2022-07-11T14:03:11.560Z">
+<meta property="article:author" content="盛日辉">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220613/字    节多路通道.49vsqc7gr940.webp">
+
+<link rel="canonical" href="https://shengrihui.github.io/2022/07/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%94%E7%AB%A0%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>操作系统-第五章设备管理 | 盛日辉的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">盛日辉的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+     <a target="_blank" rel="noopener" href="https://github.com/shengrihui" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/2022/07/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E4%BA%94%E7%AB%A0%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          操作系统-第五章设备管理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-11 22:02:33 / 修改时间：22:03:11" itemprop="dateCreated datePublished" datetime="2022-07-11T22:02:33+08:00">2022-07-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <pre><code>设备管理的主要目标是屏蔽I/O设备的硬件特性，向用户提供使用I/O设备的方便接口，充分发挥设备的利用率。 
+</code></pre><p>就是提供用户一个按钮，不用考虑硬件具体的。</p>
+<pre><code>设备管理的主要功能有：缓冲区的管理、设备分配、设备处理、虚拟设备及实现设备独立性等。
+</code></pre><p>缓冲区的管理：只要有（主机和输入输出）速度不一致，就可以有缓冲；<br>设备处理：设备也是一种资源；</p>
+<h3 id="5-1-I-O-系-统"><a href="#5-1-I-O-系-统" class="headerlink" title="5.1   I/O  系  统"></a>5.1   I/O  系  统</h3><p>I/O设备——分类<br>　　分类目的：简化设备管理程序，不同的设备对应不同的管理程序，但对于同类设备可利用相同的程序或少量的修改即可。<br>1.数据传输速率:低速设备、中速设备、高速设备。<br>2.数据的传输单位：块设备、字符设备。<br>3.设备的共享属性：独占设备、共享设备、虚拟设备。 </p>
+<p>设备控制器<br>链接CPU和设备，接受CPU的指令，控制设备，让CPU不那么繁忙。</p>
+<p>I/O通道：一种特殊的处理机，只有输入输出指令，没有内存，与CPU共享内存。</p>
+<ul>
+<li>字节多路通道(Byte Multiplexor Channel)<br>  <img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220613/字    节多路通道.49vsqc7gr940.webp" alt="字节多路通道"><br>  时间片轮转，一次一个子通道传输一个字节的数据，然后下一个子通道。</li>
+<li>数组选择通道(Block Selector Channel)<br>  和上一个相比，一个子通道会独占主通道，传输完为止。</li>
+<li>数组多路通道(Block Multiplexor Channel)</li>
+</ul>
+<p>“瓶颈”问题<br>通道也是硬件，硬件价格高。<br>解决一个设备只能一个通道的问题，可以通过增加通路的方式。<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220613/瓶颈问题.1clfcfk7eo00.webp" alt="瓶颈问题"></p>
+<p>小总结<br>最开始是I/O设备、CPU直接连设备总线，后来加入设备管理器、通道，就是为了减少CPU繁忙的事务。</p>
+<h3 id="5-2-I-O控制方式"><a href="#5-2-I-O控制方式" class="headerlink" title="5.2   I/O控制方式"></a>5.2   I/O控制方式</h3><p>所谓I/O控制方式是指CPU何时以及如何去驱动I/O设备、如何控制I/O设备与主机之间进行数据传输。<br>主要区别在于I/O过程中的CPU干预程度。</p>
+<h4 id="程序I-O方式"><a href="#程序I-O方式" class="headerlink" title="程序I/O方式"></a>程序I/O方式</h4><p><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220613/程序I/O方式.208g81f7jmf4.webp" alt="O方式"></p>
+<p>在这个过CPU始终在等待外设准备好，直到设备的标志位为0。</p>
+<p>在该方式中，CPU之所以要不断地测试I/O设备的状态，就是因为在CPU中无中断机构 使I/O设备无法向CPU报告它已完成了一个字符的输入操作。<br>意思就是，CPU要一直盯着外设的状态，CPU不能在这段时间去干别的事情。】</p>
+<h4 id="中断驱动I-O控制方式"><a href="#中断驱动I-O控制方式" class="headerlink" title="中断驱动I/O控制方式"></a>中断驱动I/O控制方式</h4><p>在程序I/O方式的基础上加入中断驱动。<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/中断驱动.7i0z1rf2m3k0.webp" alt="中断驱动"></p>
+<p>CPU将中断位置为1，就相当于手机调到了响铃的状态，外设讲数据传输好了，或者寄存器满了，就通知CPU来处理。<br>CPU和外设传输数据是并行的。<br>因为数据是存在寄存器上，单位是字节，所以非常容易发生中断。</p>
+<h4 id="直接存储器访问DMA控制方式"><a href="#直接存储器访问DMA控制方式" class="headerlink" title="直接存储器访问DMA控制方式"></a>直接存储器访问DMA控制方式</h4><p>该方式的特点是：<br>① 数据传输的基本单位是数据块，即在CPU与I/O设备之间，每次传送至少一个数据块；<br>② 所传送的数据是从设备直接送入内存的，或者相反；<br>③ 仅在传送一个或多个数据块的开始和结束时，才需CPU干预，整块数据的传送是在控制器的控制下完成的。<br>可见，DMA方式较之中断驱动方式，又是成百倍地减少了CPU对I/O的干预，进一步提高了CPU与I/O设备的并行操作程度。 </p>
+<p>DMA控制器的组成：<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/DMA组成.6iiwsem01b00.webp" alt="DMA组成"></p>
+<p>控制器中需要4个寄存器：</p>
+<ol>
+<li>) 命令/状态寄存器CR。用于接收从CPU发来的I/O命令或有关控制信息， 或设备的状态。</li>
+<li>内存地址寄存器MAR。在输入时，它存放把数据从设备传送到内存的起始目标地址；在输出时，它存放由内存到设备的内存源地址。</li>
+<li>数据寄存器DR。用于暂存从设备到内存，或从内存到设备的数据。</li>
+<li>数据计数器DC。 存放本次CPU要读或写的字(节)数。 </li>
+</ol>
+<p>缺点：<br>1）可能会引起内存地址的冲突；<br>2）需要DMA控制器硬件支持。</p>
+<h4 id="I-O通道控制方式"><a href="#I-O通道控制方式" class="headerlink" title="I/O通道控制方式"></a>I/O通道控制方式</h4><p>这是对DMA的进一步扩展。</p>
+<p>通道程序</p>
+<ol>
+<li>操作码。规定了指令所执行的操作，如读、写操作。</li>
+<li>内存地址。标明字符送入内存和从内存取出时的内存首址。</li>
+<li>计数。本条指令所要读或写数据的字节数。</li>
+<li>通道程序结束位P。表示通道程序是否结束。P=1表示本条指令时通道程序的最后一条指令。</li>
+<li>记录结束标志R。R=0表明本通道指令与下一条指令所处理的数据是属于同一个记录；R=1表示这是处理某记录的最后一条指令。</li>
+</ol>
+<p>与DMA的区别：<br>1）没有计数寄存器、内存地址寄存器，连接有通道设备控制器，有指令执行机构。<br>2）传送数据完全由通道指令来控制，一次可以连续传送多个数据块。<br>3）DMA只和一个设备相连，通道可控制多台设备。 </p>
+<h3 id="5-3-缓冲管理"><a href="#5-3-缓冲管理" class="headerlink" title="5.3 缓冲管理"></a>5.3 缓冲管理</h3><p>引入缓冲的原因：</p>
+<ul>
+<li>缓和CPU与I/O设备间速度不匹配的矛盾。</li>
+<li>减少对CPU的中断频率， 放宽对CPU中断响应时间的限制。</li>
+<li>提高CPU和I/O设备之间的并行性。 </li>
+</ul>
+<p>不同的缓冲方式：</p>
+<ul>
+<li>单缓冲</li>
+<li>双缓冲</li>
+<li>循环缓冲</li>
+<li>缓冲池</li>
+<li>用户层软件</li>
+</ul>
+<h3 id="5-4-I-O软件"><a href="#5-4-I-O软件" class="headerlink" title="5.4 I/O软件"></a>5.4 I/O软件</h3><p>I/O软件的层次<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/I/O软件.6h7xyqv5qiw0.webp" alt="O软件"></p>
+<ul>
+<li>硬件</li>
+<li>中断处理程序</li>
+<li>设备驱动程序</li>
+<li>设备独立性软件</li>
+<li></li>
+</ul>
+<h3 id="5-5-设备分配"><a href="#5-5-设备分配" class="headerlink" title="5.5 设备分配"></a>5.5 设备分配</h3><p>分配：设备、控制器和通道<br>需要记录与它们相关的信息。包括：资源标识、物理连接情况、占有进程、等待进程等。<br>具体实现时，可以将其分为设备控制块、控制器控制块和通道控制块。<br>这些控制块中包含的信息在不同的系统中会有所不同。</p>
+<h4 id="各种数据结构："><a href="#各种数据结构：" class="headerlink" title="各种数据结构："></a>各种数据结构：</h4><ul>
+<li>设备控制表DCT</li>
+<li>设备表控制器SD控制表COCT</li>
+<li>通道控制表CHCT</li>
+<li>系统T<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/设备分配个数据结构之间的关系.3116o8gehxs0.webp" alt="设备分配个数据结构之间的关系"></li>
+</ul>
+<h4 id="设备分配时应考虑的因素"><a href="#设备分配时应考虑的因素" class="headerlink" title="设备分配时应考虑的因素"></a>设备分配时应考虑的因素</h4><ul>
+<li>设备的固有属性<ul>
+<li>独享设备</li>
+<li>共享设备</li>
+<li>虚拟设备</li>
+</ul>
+</li>
+<li>设备分配算法<ul>
+<li>先来先服务</li>
+<li>优先级高者优先</li>
+</ul>
+</li>
+<li>设备分配中的安全性<ul>
+<li>安全分配方式 </li>
+<li>不安全分配方式 </li>
+</ul>
+</li>
+</ul>
+<h4 id="SPOOLing技术"><a href="#SPOOLing技术" class="headerlink" title="SPOOLing技术"></a>SPOOLing技术</h4><p>SPOOLing组成六部分：<br>输入、输出进程（模拟外围机），输入、输出井（两个磁盘），输入、输出缓冲（缓存数据）。<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/SPOOLing组成.kileux4v63k.webp" alt="SPOOLing组成"></p>
+<p>共享打印机的运用<br>共享打印机技术已被广泛地用于多用户系统和局域网络中。<br>当用户进程请求打印输出时， SPOOLing系统同意为它打印输出， 但并不真正立即把打印机分配给该用户进程， 而只为它做两件事：<br>① 由输出进程在输出井中为之申请一个空闲磁盘块区， 并将要打印的数据送入其中；<br>② 输出进程再为用户进程申请一张空白的用户请求打印表，并将用户的打印要求填入其中， 再将该表挂到请求打印队列上。 </p>
+<h3 id="5-6-磁盘存储器管理"><a href="#5-6-磁盘存储器管理" class="headerlink" title="5.6  磁盘存储器管理"></a>5.6  磁盘存储器管理</h3><p><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/20220416/磁盘结构.14w904dm23ek.webp" alt="磁盘结构"></p>
+<p>数据存储在某个盘片的某个盘面的某个磁道的某个扇区上。</p>
+<p>类型有：固定头磁盘、移动头磁盘。</p>
+<h4 id="磁盘访问时间"><a href="#磁盘访问时间" class="headerlink" title="磁盘访问时间"></a>磁盘访问时间</h4><ol>
+<li>寻道时间<br> 该时间是启动磁臂的时间s与磁头移动n条磁道所花费的时间之和， 即 Ts=m×n+s</li>
+<li>旋转延迟 </li>
+<li>传输时间 </li>
+</ol>
+<h4 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h4><ol>
+<li>先来先服务FCFS</li>
+<li>最短寻道时间优先SSTF：每次都找最近的。优点：平均最短。缺点：有些进程会“饥饿”。</li>
+<li>扫描(SCAN)算法 。来回扫描。缺点：电梯，刚走，来人。</li>
+<li>循环扫描(CSCAN)算法 。和扫描相比，只往一个方向。</li>
+<li>……</li>
+</ol>
+<h4 id="磁盘高速缓存"><a href="#磁盘高速缓存" class="headerlink" title="磁盘高速缓存"></a>磁盘高速缓存</h4><p>将内存作为磁盘高速缓存，逻辑上是磁盘的，物理上是内存的。</p>
+<h3 id="本章重点掌握"><a href="#本章重点掌握" class="headerlink" title="本章重点掌握"></a>本章重点掌握</h3><p>4种控制方式<br>引入缓冲原因<br>I/O软件层次，独立性<br>四种调度算法</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="盛日辉 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="盛日辉 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag"># 操作系统</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/07/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%AD%98%E5%82%A8%E5%99%A8%E7%AE%A1%E7%90%86/" rel="prev" title="操作系统-第四章存储器管理">
+      <i class="fa fa-chevron-left"></i> 操作系统-第四章存储器管理
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2030/02/17/Python%E7%9A%84%E4%B8%80%E4%BA%9B%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0%E5%92%8C%E5%9F%BA%E6%9C%AC%E5%8F%A5%E6%B3%95/" rel="next" title="Python的一些内建函数和基本句法">
+      Python的一些内建函数和基本句法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-I-O-%E7%B3%BB-%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">5.1   I&#x2F;O  系  统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-I-O%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F"><span class="nav-number">2.</span> <span class="nav-text">5.2   I&#x2F;O控制方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A8%8B%E5%BA%8FI-O%E6%96%B9%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">程序I&#x2F;O方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E9%A9%B1%E5%8A%A8I-O%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F"><span class="nav-number">2.2.</span> <span class="nav-text">中断驱动I&#x2F;O控制方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%B4%E6%8E%A5%E5%AD%98%E5%82%A8%E5%99%A8%E8%AE%BF%E9%97%AEDMA%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text">直接存储器访问DMA控制方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#I-O%E9%80%9A%E9%81%93%E6%8E%A7%E5%88%B6%E6%96%B9%E5%BC%8F"><span class="nav-number">2.4.</span> <span class="nav-text">I&#x2F;O通道控制方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E7%BC%93%E5%86%B2%E7%AE%A1%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">5.3 缓冲管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-I-O%E8%BD%AF%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">5.4 I&#x2F;O软件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-5-%E8%AE%BE%E5%A4%87%E5%88%86%E9%85%8D"><span class="nav-number">5.</span> <span class="nav-text">5.5 设备分配</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%84%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%9A"><span class="nav-number">5.1.</span> <span class="nav-text">各种数据结构：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87%E5%88%86%E9%85%8D%E6%97%B6%E5%BA%94%E8%80%83%E8%99%91%E7%9A%84%E5%9B%A0%E7%B4%A0"><span class="nav-number">5.2.</span> <span class="nav-text">设备分配时应考虑的因素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SPOOLing%E6%8A%80%E6%9C%AF"><span class="nav-number">5.3.</span> <span class="nav-text">SPOOLing技术</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-6-%E7%A3%81%E7%9B%98%E5%AD%98%E5%82%A8%E5%99%A8%E7%AE%A1%E7%90%86"><span class="nav-number">6.</span> <span class="nav-text">5.6  磁盘存储器管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E8%AE%BF%E9%97%AE%E6%97%B6%E9%97%B4"><span class="nav-number">6.1.</span> <span class="nav-text">磁盘访问时间</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="nav-number">6.2.</span> <span class="nav-text">调度算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E9%AB%98%E9%80%9F%E7%BC%93%E5%AD%98"><span class="nav-number">6.3.</span> <span class="nav-text">磁盘高速缓存</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%AC%E7%AB%A0%E9%87%8D%E7%82%B9%E6%8E%8C%E6%8F%A1"><span class="nav-number">7.</span> <span class="nav-text">本章重点掌握</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="盛日辉"
+      src="/images/SNNZ5107.JPG">
+  <p class="site-author-name" itemprop="name">盛日辉</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shengrihui" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;shengrihui" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://goat2003.github.io/" title="https:&#x2F;&#x2F;goat2003.github.io" rel="noopener" target="_blank">goat2003</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">盛日辉</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    const options = {
+      bottom: '64px', // default: '32px'
+      right: '32px', // default: '32px'
+      left: 'unset', // default: 'unset'
+      time: '0.5s', // default: '0.3s'
+      mixColor: '#fff', // default: '#fff'
+      backgroundColor: '#fff',  // default: '#fff'
+      buttonColorDark: '#100f2c',  // default: '#100f2c'
+      buttonColorLight: '#fff', // default: '#fff'
+      saveInCookies: false, // default: true,
+      label: '🌓', // default: ''
+      autoMatchOsTheme: true // default: true
+    }
+    const darkmode = new Darkmode(options);
+    darkmode.showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

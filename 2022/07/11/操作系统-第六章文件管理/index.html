@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shengrihui.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="6.1 文件和文件系统文件：有结构文件，无结构文件。有结构文件：数据项，记录。无结构文件：字符流。文件的属性和类型文件系统和文件系统模型 。文件系统：是操作系统中负责管理和存取文件的程序模块。文件操作 6.2 文件的逻辑结构">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统-第六章文件管理">
+<meta property="og:url" content="https://shengrihui.github.io/2022/07/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E5%85%AD%E7%AB%A0%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="盛日辉的博客">
+<meta property="og:description" content="6.1 文件和文件系统文件：有结构文件，无结构文件。有结构文件：数据项，记录。无结构文件：字符流。文件的属性和类型文件系统和文件系统模型 。文件系统：是操作系统中负责管理和存取文件的程序模块。文件操作 6.2 文件的逻辑结构">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-07-11T14:00:14.000Z">
+<meta property="article:modified_time" content="2022-07-11T14:01:01.244Z">
+<meta property="article:author" content="盛日辉">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://shengrihui.github.io/2022/07/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E5%85%AD%E7%AB%A0%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>操作系统-第六章文件管理 | 盛日辉的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">盛日辉的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+     <a target="_blank" rel="noopener" href="https://github.com/shengrihui" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/2022/07/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E5%85%AD%E7%AB%A0%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          操作系统-第六章文件管理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-07-11 22:00:14 / 修改时间：22:01:01" itemprop="dateCreated datePublished" datetime="2022-07-11T22:00:14+08:00">2022-07-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="6-1-文件和文件系统"><a href="#6-1-文件和文件系统" class="headerlink" title="6.1 文件和文件系统"></a>6.1 文件和文件系统</h3><p>文件：有结构文件，无结构文件。<br>有结构文件：数据项，记录。<br>无结构文件：字符流。<br>文件的属性和类型<br>文件系统和文件系统模型 。文件系统：是操作系统中负责管理和存取文件的程序模块。<br>文件操作</p>
+<h3 id="6-2-文件的逻辑结构"><a href="#6-2-文件的逻辑结构" class="headerlink" title="6.2 文件的逻辑结构"></a>6.2 文件的逻辑结构</h3><p>对文件逻辑结构的基本要求：提高检索速度；便于修改；降低文件的存储费用。</p>
+<h4 id="文件逻辑结构的类型"><a href="#文件逻辑结构的类型" class="headerlink" title="文件逻辑结构的类型"></a>文件逻辑结构的类型</h4><ul>
+<li>有结构文件：指由一个以上的记录构成的文件，故又称为记录式文件。<ul>
+<li>根据记录长度：定长记录和变长记录</li>
+<li>根据记录的组织方式：顺序文件、索引文件和索引顺序文件</li>
+</ul>
+</li>
+<li>无结构文件：指由字符流构成的文件，故又称为流式文件。</li>
+</ul>
+<h4 id="顺序文件"><a href="#顺序文件" class="headerlink" title="顺序文件"></a>顺序文件</h4><p>串结构：按时间网后跟上。<br>顺序结构：按记录的某个顺序。<br>优点：管理简单，系统开销小；适用于大批量数据的存取，此时顺序文件的存取效率是所有逻辑文件中最高的；顺序文件是唯一的一种同时适合在磁盘和磁带中存储的文件。<br>缺点：顺序文件的顺序查找效率低和更新性能差。</p>
+<h4 id="索引文件"><a href="#索引文件" class="headerlink" title="索引文件"></a>索引文件</h4><p>对顺序文件定长可以随机读写，不定唱的只能顺序读写。<br>因此加上索引。</p>
+<h4 id="索引顺序文件"><a href="#索引顺序文件" class="headerlink" title="索引顺序文件"></a>索引顺序文件</h4><p>文件本身非常大，索引表也会非常大，因此对文件分组索引，有索引顺序文件。<br>还可以多级索引。</p>
+<h3 id="6-3-外存分配方式"><a href="#6-3-外存分配方式" class="headerlink" title="6.3 外存分配方式"></a>6.3 外存分配方式</h3><p>内存中以字节为单位存，外存中以盘块存。</p>
+<h4 id="连续分配"><a href="#连续分配" class="headerlink" title="连续分配"></a>连续分配</h4><p>放：要求为每一个文件分配一组相邻接的盘块。<br>找：文件目录。<br>优点：<br>顺序访问容易；支持直接存取；顺序访问速度快（顺序存放也一般会在相邻的磁道上，磁头移动较少距离；可以随机存取）。<br>缺点：<br>要求有连续的存储空间，有碎片；<br>必须事先知道文件的长度。</p>
+<h4 id="链接分配"><a href="#链接分配" class="headerlink" title="链接分配"></a>链接分配</h4><p>放：离散的放。<br>隐式链接：将下一个盘块的地址存在上一个盘块中。缺点：就只能顺序找下去；一处断了，就完了，可靠性较差。目录里记录文件、开始盘块号、结束盘块号。<br>显式链接：显式地存放在内存的一张链接表（文件分配表，FAT）。<strong>FAT表在整个磁盘仅设置一张。</strong><br>显式和隐式相比，在内存中，快依稀嗯，但依然是顺序的，还占空间。</p>
+<h4 id="索引分配"><a href="#索引分配" class="headerlink" title="索引分配"></a>索引分配</h4><p>索引分配是为每个文件分配一个利用专门的索引结点（索引块），用于存放该文件所对应的所有盘块号，在建立文件时只需在为之建立的目录项中填上指向该索引块的指针即可。<br>索引分配方式支持直接访问。当要读文件的第i个盘块时，可以方便地直接从索引块中找到第i个盘块的盘块号。不会产生外部碎片。<br>索引分配索引——多级索引。<br>索引分配索引——混合分配</p>
+<h3 id="6-5-文件存储空间的管理"><a href="#6-5-文件存储空间的管理" class="headerlink" title="6.5 文件存储空间的管理"></a>6.5 文件存储空间的管理</h3><h4 id="空闲表法"><a href="#空闲表法" class="headerlink" title="空闲表法"></a>空闲表法</h4><p>优点：具有较高的分配速度，可减少访问磁盘的I/O频率。<br>缺点：为了获得足够大的连续存储区，需定时进行碎片整理。因而，空闲表法不适于文件频繁进行动态增长和缩短的文件系统，且要求用户在分配前知道文件长度。</p>
+<h4 id="空闲链表法"><a href="#空闲链表法" class="headerlink" title="空闲链表法"></a>空闲链表法</h4><p>空闲盘块链：将磁盘上的所有空闲空间，以盘块为单位拉成一条链。<br>空闲盘区链。</p>
+<h4 id="位示图法"><a href="#位示图法" class="headerlink" title="位示图法"></a>位示图法</h4><p>基本思想：位示图中用二进制位状态表示磁盘中一个盘块的使用情况，可用“0”表示对应的盘块空闲；“1”表示被分配。<br>位示图中的行号、列号和盘块号都从0开始编号，m行n列位示图中的m×n个位数可表示m×n块盘块的使用情况。<br>分配：顺序找位示图，找到一个或一组0，然后算出对应的盘块号，放完修改位示图。<br>回收：修改位示图</p>
+<h4 id="成组链接法"><a href="#成组链接法" class="headerlink" title="成组链接法"></a>成组链接法</h4><h3 id="6-4-目录管理"><a href="#6-4-目录管理" class="headerlink" title="6.4 目录管理"></a>6.4 目录管理</h3><h3 id="6-6-文件共享与文件保护"><a href="#6-6-文件共享与文件保护" class="headerlink" title="6.6 文件共享与文件保护"></a>6.6 文件共享与文件保护</h3>
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="盛日辉 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="盛日辉 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag"># 操作系统</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/07/11/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="prev" title="数据库">
+      <i class="fa fa-chevron-left"></i> 数据库
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/07/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%AD%98%E5%82%A8%E5%99%A8%E7%AE%A1%E7%90%86/" rel="next" title="操作系统-第四章存储器管理">
+      操作系统-第四章存储器管理 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E6%96%87%E4%BB%B6%E5%92%8C%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">1.</span> <span class="nav-text">6.1 文件和文件系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E6%96%87%E4%BB%B6%E7%9A%84%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84"><span class="nav-number">2.</span> <span class="nav-text">6.2 文件的逻辑结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E9%80%BB%E8%BE%91%E7%BB%93%E6%9E%84%E7%9A%84%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.1.</span> <span class="nav-text">文件逻辑结构的类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E6%96%87%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">顺序文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E6%96%87%E4%BB%B6"><span class="nav-number">2.3.</span> <span class="nav-text">索引文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E9%A1%BA%E5%BA%8F%E6%96%87%E4%BB%B6"><span class="nav-number">2.4.</span> <span class="nav-text">索引顺序文件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-%E5%A4%96%E5%AD%98%E5%88%86%E9%85%8D%E6%96%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">6.3 外存分配方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%9E%E7%BB%AD%E5%88%86%E9%85%8D"><span class="nav-number">3.1.</span> <span class="nav-text">连续分配</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E5%88%86%E9%85%8D"><span class="nav-number">3.2.</span> <span class="nav-text">链接分配</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B4%A2%E5%BC%95%E5%88%86%E9%85%8D"><span class="nav-number">3.3.</span> <span class="nav-text">索引分配</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-5-%E6%96%87%E4%BB%B6%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4%E7%9A%84%E7%AE%A1%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">6.5 文件存储空间的管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A9%BA%E9%97%B2%E8%A1%A8%E6%B3%95"><span class="nav-number">4.1.</span> <span class="nav-text">空闲表法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A9%BA%E9%97%B2%E9%93%BE%E8%A1%A8%E6%B3%95"><span class="nav-number">4.2.</span> <span class="nav-text">空闲链表法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%8D%E7%A4%BA%E5%9B%BE%E6%B3%95"><span class="nav-number">4.3.</span> <span class="nav-text">位示图法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%88%90%E7%BB%84%E9%93%BE%E6%8E%A5%E6%B3%95"><span class="nav-number">4.4.</span> <span class="nav-text">成组链接法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-4-%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86"><span class="nav-number">5.</span> <span class="nav-text">6.4 目录管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-6-%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB%E4%B8%8E%E6%96%87%E4%BB%B6%E4%BF%9D%E6%8A%A4"><span class="nav-number">6.</span> <span class="nav-text">6.6 文件共享与文件保护</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="盛日辉"
+      src="/images/SNNZ5107.JPG">
+  <p class="site-author-name" itemprop="name">盛日辉</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shengrihui" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;shengrihui" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://goat2003.github.io/" title="https:&#x2F;&#x2F;goat2003.github.io" rel="noopener" target="_blank">goat2003</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">盛日辉</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    const options = {
+      bottom: '64px', // default: '32px'
+      right: '32px', // default: '32px'
+      left: 'unset', // default: 'unset'
+      time: '0.5s', // default: '0.3s'
+      mixColor: '#fff', // default: '#fff'
+      backgroundColor: '#fff',  // default: '#fff'
+      buttonColorDark: '#100f2c',  // default: '#100f2c'
+      buttonColorLight: '#fff', // default: '#fff'
+      saveInCookies: false, // default: true,
+      label: '🌓', // default: ''
+      autoMatchOsTheme: true // default: true
+    }
+    const darkmode = new Darkmode(options);
+    darkmode.showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

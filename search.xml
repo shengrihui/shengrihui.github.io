@@ -2736,4 +2736,287 @@ e^{ix}&=1+ix+\frac{(ix)^2}{2!}+\frac{(ix)^3}{3!}+\frac{(ix)^4}{4!}+...\\
         <tag>数学</tag>
       </tags>
   </entry>
+  <entry>
+    <title>matlab-pspectrum函数.md</title>
+    <url>/2022/11/10/matlab-pspectrum%E5%87%BD%E6%95%B0-md/</url>
+    <content><![CDATA[<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<li><code>x</code>——输入的信号</li>
+<li><code>fs</code>——采样率，默认$2\pi$，正数标量</li>
+<li><code>t</code>——时间，向量，或者是datetime类型duration类型的数据，或者表示每个样本之间差值</li>
+<li><code>type</code>——用什么方式计算，可选是<code>&#39;power&#39;</code> (default) | <code>&#39;spectrogram&#39;</code> | <code>&#39;persistence&#39;</code></li>
+</ul>
+<p>以下是要写出名字的参数：</p>
+<ul>
+<li><p><code>FrequencyLimits</code>——频带限制</p>
+<p>默认；[0   fs/2]   二元向量</p>
+</li>
+<li><p><code>FrequencyResolution</code> — Frequency resolution bandwidth频率分辨率</p>
+<p>实数标量，不能和时间分辨率一起指定。</p>
+</li>
+<li><p><code>Leakage</code>— Spectral leakage 泄漏量</p>
+<p>默认0.5</p>
+</li>
+<li><p><code>MinThreshold</code>— Lower bound for nonzero values 非零值的下限</p>
+<p>默认 <code>-Inf</code></p>
+</li>
+<li><p><code>NumPowerBins</code> — Number of power bins for persistence spectrum</p>
+<p>默认256</p>
+</li>
+<li><p><code>OverlapPercent</code> — Overlap between adjoining segments 重叠率</p>
+<p>[0,100)</p>
+</li>
+<li><p><code>Reassign</code> — Reassignment option 重新分配？？</p>
+<p>默认 false</p>
+</li>
+<li><p><code>TimeResolution</code> 时间分辨率</p>
+</li>
+<li><p><code>TwoSided</code> — Two-sided spectral estimate</p>
+</li>
+</ul>
+<h3 id="Spectrogram-Computation-spectrogram的计算"><a href="#Spectrogram-Computation-spectrogram的计算" class="headerlink" title="Spectrogram Computation spectrogram的计算"></a>Spectrogram Computation spectrogram的计算</h3><p>To compute the time-dependent spectrum of a nonstationary signal, <code>pspectrum</code> divides the signal into overlapping segments, windows each segment with a Kaiser window, computes the short-time Fourier transform, and then concatenates the transforms to form a matrix. For more information, see <a href="https://ww2.mathworks.cn/help/signal/ug/spectrogram-computation-with-signal-processing-toolbox.html">Spectrogram Computation with Signal Processing Toolbox</a>.</p>
+<p>A nonstationary signal is a signal whose frequency content changes with time. The <em>spectrogram</em> of a nonstationary signal is an estimate of the time evolution of its frequency content. To construct the spectrogram of a nonstationary signal, <code>pspectrum</code> follows these steps:</p>
+<ol>
+<li><p>Divide the signal into equal-length segments. The segments must be short enough that the frequency content of the signal does not change appreciably within a segment. The segments may or may not overlap.</p>
+</li>
+<li><p>Window each segment and compute its spectrum to get the <em>short-time Fourier transform</em>.</p>
+</li>
+<li><p>Use the segment spectra to construct the spectrogram:</p>
+<ul>
+<li>If called with output arguments, concatenate the spectra to form a matrix.</li>
+<li>If called with no output arguments, display the power of each spectrum in decibels segment by segment. Depict the magnitudes side-by-side as an image with magnitude-dependent colormap.</li>
+</ul>
+</li>
+</ol>
+<p>The function can compute the spectrogram only for single-channel signals.</p>
+<p><strong>Divide Signal into Segments</strong></p>
+<p>To construct a spectrogram, first divide the signal into possibly overlapping segments. With the <code>pspectrum</code> function, you can control the length of the segments and the amount of overlap between adjoining segments using the <code>&#39;TimeResolution&#39;</code> and <code>&#39;OverlapPercent&#39;</code> name-value pair arguments. If you do not specify the length and overlap, the function chooses a length based on the entire length of the signal and an overlap percentage given by</p>
+<p>(1−12×ENBW−1)×100,</p>
+<p>where ENBW is the <em>equivalent noise bandwidth</em> of the spectral window. See <a href="https://ww2.mathworks.cn/help/signal/ref/enbw.html"><code>enbw</code></a> and <a href="https://ww2.mathworks.cn/help/signal/ref/pspectrum.html#mw_9274fcbe-75d0-491e-ac4b-0c8e06543935">Spectrum Computation</a> for more information.</p>
+<p><em>Specified Time Resolution</em></p>
+<ul>
+<li><p>If the signal does not have time information, specify the time resolution (segment length) in samples. The time resolution must be an integer greater than or equal to 1 and smaller than or equal to the signal length.</p>
+<p>If the signal has time information, specify the time resolution in seconds. The function converts the result into a number of samples and rounds it to the nearest integer that is less than or equal to the number but not smaller than 1. The time resolution must be smaller than or equal to the signal duration.</p>
+</li>
+<li><p>Specify the overlap as a percentage of the segment length. The function converts the result into a number of samples and rounds it to the nearest integer that is less than or equal to the number.</p>
+</li>
+</ul>
+<p><em>Default Time Resolution</em></p>
+<p>If you do not specify a time resolution, then <code>pspectrum</code> uses the length of the entire signal to choose the length of the segments. The function sets the time resolution as ⌈<em>N</em>/<em>d</em>⌉ samples, where the ⌈⌉ symbols denote the ceiling function, <em>N</em> is the length of the signal, and <em>d</em> is a divisor that depends on <em>N</em>:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Signal Length (<em>N</em>)</th>
+<th style="text-align:left">Divisor (<em>d</em>)</th>
+<th style="text-align:left">Segment Length</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>2</code> samples – <code>63</code> samples</td>
+<td style="text-align:left"><code>2</code></td>
+<td style="text-align:left"><code>1</code> sample – <code>32</code> samples</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>64</code> samples – <code>255</code> samples</td>
+<td style="text-align:left"><code>8</code></td>
+<td style="text-align:left"><code>8</code> samples – <code>32</code> samples</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>256</code> samples – <code>2047</code> samples</td>
+<td style="text-align:left"><code>8</code></td>
+<td style="text-align:left"><code>32</code> samples – <code>256</code> samples</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>2048</code> samples – <code>4095</code> samples</td>
+<td style="text-align:left"><code>16</code></td>
+<td style="text-align:left"><code>128</code> samples – <code>256</code> samples</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>4096</code> samples – <code>8191</code> samples</td>
+<td style="text-align:left"><code>32</code></td>
+<td style="text-align:left"><code>128</code> samples – <code>256</code> samples</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>8192</code> samples – <code>16383</code> samples</td>
+<td style="text-align:left"><code>64</code></td>
+<td style="text-align:left"><code>128</code> samples – <code>256</code> samples</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>16384</code> samples – <em>N</em> samples</td>
+<td style="text-align:left"><code>128</code></td>
+<td style="text-align:left"><code>128</code> samples – ⌈<em>N</em> / <code>128</code>⌉ samples</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>You can still specify the overlap between adjoining segments. Specifying the overlap changes the number of segments. Segments that extend beyond the signal endpoint are zero-padded.</p>
+<p>Consider the seven-sample signal <code>[s0 s1 s2 s3 s4 s5 s6]</code>. Because ⌈7/2⌉ = ⌈3.5⌉ = 4, the function divides the signal into two segments of length four when there is no overlap. The number of segments changes as the overlap increases.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Number of Overlapping Samples</th>
+<th style="text-align:left">Resulting Segments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>0</code></td>
+<td style="text-align:left"><code>s0 s1 s2 s3            s4 s5 s6 0</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>1</code></td>
+<td style="text-align:left"><code>s0 s1 s2 s3         s3 s4 s5 s6</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>2</code></td>
+<td style="text-align:left"><code>s0 s1 s2 s3      s2 s3 s4 s5            s4 s5 s6 0</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><code>3</code></td>
+<td style="text-align:left"><code>s0 s1 s2 s3   s1 s2 s3 s4      s2 s3 s4 s5         s3 s4 s5 s6</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><code>pspectrum</code> zero-pads the signal if the last segment extends beyond the signal endpoint. The function returns <a href="https://ww2.mathworks.cn/help/signal/ref/pspectrum.html#mw_e554f022-56f0-44a7-8976-c59bab64715c"><code>t</code></a>, a vector of time instants corresponding to the centers of the segments.</p>
+<p><strong>Window the Segments and Compute Spectra</strong></p>
+<p>After <code>pspectrum</code> divides the signal into overlapping segments, the function windows each segment with a Kaiser window. The shape factor <em>β</em> of the window, and therefore the leakage, can be adjusted using the <code>&#39;Leakage&#39;</code> name-value pair. The function then computes the spectrum of each segment and concatenates the spectra to form the spectrogram matrix. To compute the segment spectra, <code>pspectrum</code> follows the procedure described in <a href="https://ww2.mathworks.cn/help/signal/ref/pspectrum.html#mw_9274fcbe-75d0-491e-ac4b-0c8e06543935">Spectrum Computation</a>, except that the lower limit of the resolution bandwidth is</p>
+<p>RBWperformance=4×<em>f</em>span1024−1.</p>
+<p><strong>Display Spectrum Power</strong></p>
+<p>If called with no output arguments, the function displays the power of the short-time Fourier transform in decibels, using a color bar with the default MATLAB colormap. The color bar comprises the full power range of the spectrogram.</p>
+]]></content>
+      <categories>
+        <category>MATLAB</category>
+      </categories>
+      <tags>
+        <tag>MATLAB</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>二分法.md</title>
+    <url>/2023/02/06/%E4%BA%8C%E5%88%86%E6%B3%95/</url>
+    <content><![CDATA[<h3 id="扫地机器人"><a href="#扫地机器人" class="headerlink" title="扫地机器人"></a>扫地机器人</h3><p>题目：<a href="https://www.lanqiao.cn/problems/199/learning/">https://www.lanqiao.cn/problems/199/learning/</a></p>
+<ul>
+<li>每个机器人“负责”的区域（包括他自己的）*2=他的时间</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># n, k = map(int, input().split())</span><br><span class="line"># # n, k = 10, 3</span><br><span class="line"># arr = [False] * (n + 1)</span><br><span class="line">#</span><br><span class="line"># for i in range(k):</span><br><span class="line">#     arr[int(input())] = True</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># # for i in [5, 2, 10]:</span><br><span class="line"># #     arr[i] = True</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># def check(d):</span><br><span class="line">#     i = 1</span><br><span class="line">#     while i &lt;= n:</span><br><span class="line">#         # print(d, i, i + d, arr[i:i + d])</span><br><span class="line">#         if not any(arr[i:i + d]):</span><br><span class="line">#             return False</span><br><span class="line">#         i += d</span><br><span class="line">#     return True</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># l, r = 1, n</span><br><span class="line"># while l &lt; r:</span><br><span class="line">#     mid = (l + r) // 2</span><br><span class="line">#     print(l, r, mid)</span><br><span class="line">#     if check(mid):</span><br><span class="line">#         r = mid</span><br><span class="line">#     else:</span><br><span class="line">#         l = mid + 1</span><br><span class="line"># print((l - 1) * 2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n, k = map(int, input().split())</span><br><span class="line">a = [0]</span><br><span class="line">for i in range(k):</span><br><span class="line">    a.append(int(input()))</span><br><span class="line">a.sort()</span><br><span class="line"></span><br><span class="line">print(a)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def check(d):</span><br><span class="line">    len = 0  # 覆盖长度，从最左端开始一直到最右端</span><br><span class="line">    for i in range(1, k + 1):</span><br><span class="line">        if len + d &gt;= a[i]:  # 当前覆盖长度加上d之后，是否包括了a[i]</span><br><span class="line">            if len &gt; a[i]:  # 当前覆盖长度是否已经包括了a[i]</span><br><span class="line">                # 如果当前覆盖长度已经包括了，说明a[i]之前的机器人已经负责了到len这块的区域</span><br><span class="line">                # 那a[i]就可以负责len往后再加d的部分</span><br><span class="line">                len = a[i] + d - 1  # 减1是因为还要算上自己</span><br><span class="line">            else:</span><br><span class="line">                # 如果当前覆盖长度没有包括a[i]，那就让a[i]负责[len+1,len+d]</span><br><span class="line">                len += d</span><br><span class="line">        else:</span><br><span class="line">            return False</span><br><span class="line">    return len &gt;= n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">l, r = 1, n</span><br><span class="line">mid = 0</span><br><span class="line">while l &lt; r:</span><br><span class="line">    mid = (l + r) // 2</span><br><span class="line">    print(l, r, mid)</span><br><span class="line">    if check(mid):</span><br><span class="line">        r = mid</span><br><span class="line">    else:</span><br><span class="line">        l = mid + 1</span><br><span class="line">print((l - 1) * 2)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">
+\sum_{i=ln}^{rn}\frac{i(i+1)}{2}
+=\frac{1}{2}(\sum_{i=ln}^{rn}i^2+\sum_{i=ln}^{rn}i)</script>]]></content>
+      <categories>
+        <category>蓝桥</category>
+        <category>二分法</category>
+      </categories>
+      <tags>
+        <tag>蓝桥</tag>
+        <tag>二分法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>蓝桥-灵能传输</title>
+    <url>/2023/02/07/%E8%93%9D%E6%A1%A5-%E7%81%B5%E8%83%BD%E4%BC%A0%E8%BE%93/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a href="https://www.lanqiao.cn/problems/196/learning/">https://www.lanqiao.cn/problems/196/learning/</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ol>
+<li>所有操作都是在数组内进行的，整个数组的和不变；</li>
+<li>每次操作的三个数的和不变，因此考虑到用前缀和。</li>
+<li>一次更新后，<code>s[i-1]</code>变为原来的<code>s[i]</code>,<code>s[i]</code>变为原来的<code>s[i-1]</code>,<code>s[i+1]</code>不变；</li>
+<li>因此“一次加减操作”转变为“前两个前缀和的交换”。</li>
+<li>两端的武士不向外传递灵能，但他们的灵能值也会改变，而<code>s[n]</code>是所有的和，不变。因此，<code>s[0]=0</code>，<code>s[1]</code>到<code>s[n-1]</code>可以交换到任意位置。</li>
+<li>要求的东西就变成了求<code>max&#123;|s[i]-s[i-1|&#125;</code>尽量小。</li>
+<li>先考虑简单情况，<code>s[]</code>都是正的，将他排序，相邻差最大的就是结果，因为如果不排序，相邻相减会大；</li>
+<li><a href="https://blog.csdn.net/xuxiaobo1234/article/details/108095193">https://blog.csdn.net/xuxiaobo1234/article/details/108095193</a></li>
+<li>最后一步，我只能理解成：小于<code>s[0]</code>大于min部分的值要排列起来，使得相邻两数的差最大值最小化，从图像上想象就是，<code>s[0]</code>固定住，<code>s[1]</code>到<code>s[p]</code>（假设是这样的下标）升序排序，但都小于<code>s[0]</code>，然后隔一个的将数拆开成两部分，一部分降序地排列在<code>s[0]</code>后面，然后另一部分更在后面，这样能“使得相邻两数的差最大值最小化”。</li>
+</ol>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 灵能传输</span></span><br><span class="line"></span><br><span class="line">T = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(T):</span><br><span class="line">    n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    arr = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split()))</span><br><span class="line">    <span class="comment"># 计算前缀和</span></span><br><span class="line">    s = [<span class="number">0</span>] * (n + <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i, x <span class="keyword">in</span> <span class="built_in">enumerate</span>(arr):</span><br><span class="line">        s[i + <span class="number">1</span>] = s[i] + x</span><br><span class="line">    s0, sn = s[<span class="number">0</span>], s[-<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">if</span> s0 &gt; sn:</span><br><span class="line">        s0, sn = sn, s0</span><br><span class="line">    <span class="comment"># print(s)</span></span><br><span class="line">    s.sort()</span><br><span class="line">    s0_idx = s.index(s0)</span><br><span class="line">    sn_idx = s.index(sn)</span><br><span class="line">    <span class="comment"># print(s)</span></span><br><span class="line">    <span class="comment"># print(s0_idx)</span></span><br><span class="line">    <span class="comment"># print(sn_idx)</span></span><br><span class="line">    res_sum = s.copy()</span><br><span class="line">    L, R = <span class="number">0</span>, n</span><br><span class="line">    vis = [<span class="literal">True</span>] * (n + <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(s0_idx, -<span class="number">1</span>, -<span class="number">2</span>):</span><br><span class="line">        res_sum[L] = s[i]</span><br><span class="line">        L += <span class="number">1</span></span><br><span class="line">        vis[i] = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(sn_idx, n + <span class="number">1</span>, <span class="number">2</span>):</span><br><span class="line">        res_sum[R] = s[i]</span><br><span class="line">        R -= <span class="number">1</span></span><br><span class="line">        vis[i] = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> vis[i]:</span><br><span class="line">            res_sum[L] = s[i]</span><br><span class="line">            L += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(res_sum)):</span><br><span class="line">        res = <span class="built_in">max</span>(res, <span class="built_in">abs</span>(res_sum[i] - res_sum[i - <span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(res)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>蓝桥</category>
+        <category>前缀和</category>
+      </categories>
+      <tags>
+        <tag>前缀和</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>蓝桥-统计子矩阵</title>
+    <url>/2023/02/08/%E8%93%9D%E6%A1%A5-%E7%BB%9F%E8%AE%A1%E5%AD%90%E7%9F%A9%E9%98%B5/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a href="https://www.lanqiao.cn/problems/2109/learning/">https://www.lanqiao.cn/problems/2109/learning/</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>思路并不难理解，要非常注意的是二维前缀和的区间计算的下标。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 统计子矩阵</span></span><br><span class="line"></span><br><span class="line">n, m, k = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line"></span><br><span class="line"><span class="comment"># matrix = [[0 for _ in range(m + 1)]] + [[0] for _ in range(n)]</span></span><br><span class="line"><span class="comment"># # print(matrix)</span></span><br><span class="line"><span class="comment"># for i in range(n):</span></span><br><span class="line"><span class="comment">#     matrix[i + 1].extend(map(int, input().split()))</span></span><br><span class="line"><span class="comment"># # print(matrix)</span></span><br><span class="line"><span class="comment"># # 计算前缀和</span></span><br><span class="line"><span class="comment"># pre_sum = [[0 for _ in range(m+1)] for _ in range(n+1)]</span></span><br><span class="line"><span class="comment"># for i in range(1,n + 1):</span></span><br><span class="line"><span class="comment">#     for j in range(1,m + 1):</span></span><br><span class="line"><span class="comment">#         pre_sum[i][j]=pre_sum[i-1][j]+pre_sum[i][j-1]-pre_sum[i-1][j-1]+matrix[i][j]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 因为后面用不到原始矩阵值，所以用另一种初始化前缀和的方法</span></span><br><span class="line">pre_sum = [[<span class="number">0</span> <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(m + <span class="number">1</span>)]]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">    pre_sum.append([<span class="number">0</span>] + <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())))</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, m + <span class="number">1</span>):</span><br><span class="line">        pre_sum[i][j] += pre_sum[i - <span class="number">1</span>][j] + pre_sum[i][j - <span class="number">1</span>] - pre_sum[i - <span class="number">1</span>][j - <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># for i in pre_sum:</span></span><br><span class="line"><span class="comment">#     print(i)</span></span><br><span class="line"></span><br><span class="line">res = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i1 <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> i2 <span class="keyword">in</span> <span class="built_in">range</span>(i1, n + <span class="number">1</span>):</span><br><span class="line">        z = <span class="number">0</span></span><br><span class="line">        j1 = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> j2 <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, m + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">while</span> pre_sum[i2][j2] - pre_sum[i1 - <span class="number">1</span>][j2] - pre_sum[i2][j1 - <span class="number">1</span>] \</span><br><span class="line">                    + pre_sum[i1 - <span class="number">1</span>][j1 - <span class="number">1</span>] &gt; k:  <span class="comment"># 某一个的区间和比k大了，移动j1，缩小区间</span></span><br><span class="line">                j1 += <span class="number">1</span></span><br><span class="line">            <span class="comment">#     print(&quot;z=&quot;,z,i1, i2, j1, j2)</span></span><br><span class="line">            <span class="comment"># print(i1, i2, j1, j2)</span></span><br><span class="line">            res += j2 - j1 + <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
+<p>上面是我的，用二维前缀和做的，下面是别人在计算前缀和的时候只对列上做了计算。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">n, m, k = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line">a = [[<span class="number">0</span>] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line">a.insert(<span class="number">0</span>, [<span class="number">0</span>] * (m + <span class="number">1</span>))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):  <span class="comment"># 从a[1][]开始，读矩阵</span></span><br><span class="line">    a[i].extend(<span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split()))</span><br><span class="line">s = [[<span class="number">0</span>] * (m + <span class="number">1</span>) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n + <span class="number">1</span>)]</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, m + <span class="number">1</span>):</span><br><span class="line">        s[i][j] = s[i - <span class="number">1</span>][j] + a[i][j]</span><br><span class="line">ans = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">    <span class="built_in">print</span>(i)</span><br><span class="line"><span class="keyword">for</span> i1 <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, n + <span class="number">1</span>):</span><br><span class="line">    <span class="keyword">for</span> i2 <span class="keyword">in</span> <span class="built_in">range</span>(i1, n + <span class="number">1</span>):</span><br><span class="line">        j1 = <span class="number">1</span>;</span><br><span class="line">        z = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> j2 <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, m + <span class="number">1</span>):</span><br><span class="line">            z += s[i2][j2] - s[i1 - <span class="number">1</span>][j2]</span><br><span class="line">            <span class="keyword">while</span> z &gt; k:</span><br><span class="line">                z -= s[i2][j1] - s[i1 - <span class="number">1</span>][j1]</span><br><span class="line">                j1 += <span class="number">1</span></span><br><span class="line">            ans += j2 - j1 + <span class="number">1</span></span><br><span class="line">            <span class="built_in">print</span>(i1, i2, j1, j2, j2 - j1 + <span class="number">1</span>, z)</span><br><span class="line"><span class="built_in">print</span>(ans)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>蓝桥</category>
+        <category>前缀和</category>
+        <category>双指针</category>
+      </categories>
+      <tags>
+        <tag>双指针</tag>
+        <tag>蓝桥</tag>
+        <tag>前缀和</tag>
+        <tag>尺取法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>蓝桥-防御力</title>
+    <url>/2023/02/11/%E8%93%9D%E6%A1%A5-%E9%98%B2%E5%BE%A1%E5%8A%9B/</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a href="https://www.lanqiao.cn/problems/226/learning/">https://www.lanqiao.cn/problems/226/learning/</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>这其实是一道排序题，要让B从小到大排，A从大到小牌。</p>
+<p>但是为什么呢？</p>
+<p>让我来数学证明一下~</p>
+<p>首先，规定一下符号。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+A_0,B_0表示道具A,B的初始值，
+a_1,a_2...,b_1,b_2...表示增加A或B的增加量，
+A_1,A_2...,B_1,B_2...表示增加了某个量之后A，B的值
+\end{aligned}</script><p>和别的地方说的一样，容易说明，连续的增加A或B，顺序是不影响最后的结果的。假设连续增加A，那么$A_n=\log_2{(A_0+a_1+a_2+…)}$，改变顺序不影响$A_n$的值。所以只需要讨论A和B的增加量交替出现的时候如何选择了。</p>
+<p>推一下A和B的关系。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+d=\log_2A=\log_3B \\
+\frac{\ln A}{\ln2}=\frac{\ln B}{\ln3} \\
+\ln A=\ln (B^{\frac{\ln2}{\ln3}}) \\
+A=B^{\log_3{2}}\\
+同理可得，B=A^{\log_2{3}}
+\end{aligned}</script><p>现在，有$b_1,a_1,b_2$三个增加量，$b_1,b_2$不一样大，先放谁呢？</p>
+<p>先算一下先放$b_1$的情况，</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+加上b_1:
+B_1 &= B_0+b_1 \\
+A_1 &= B_1^{\log_3{2}}= (B_0+b_1)^{\log_3{2}}\\
+加上a_1:
+A_2 &= A_1 + a_1 =  (B_0+b_1)^{\log_3{2}} + a_1 \\
+B_2 &= A_2^(\log_2{3}) = ( (B_0+b_1)^{\log_3{2}} + a_1 ) ^{\log_2{3}} \\
+加上b_2:
+B_3 &= B_2 + b_2=((B_0+b_1)^{\log_3{2}}+ a_1 )^{\log_2{3}} + b_2 \\
+A_3 &= ...
+\end{aligned}</script><p>因为我们最终要d最大，那也就是要A和B最大，所以我们这里就算到$B_3$，如果能让$B_3$尽可能大，那A和d也大了。</p>
+<p>同样的可以算一下先放$b_2$的情况，$B_3^{\prime} = ( (B_0+b_2)^{\log_3{2}} + a_1 ) ^{\log_2{3}} + b_1$.</p>
+<p>现在假设$B_3^{\prime} \gt B_3^{\prime}$，也就是先放$b_1$使得最后结果更大，求$b_1$和$b_2$谁大了。</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+B_3 =((B_0+b_1)^{\log_3{2}} + a_1 ) ^{\log_2{3}} + b_2 \\
+B_3^{\prime} = ( (B_0+b_2)^{\log_3{2}} + a_1 ) ^{\log_2{3}} + b_1 \\
+B_3 - B_3^{\prime} \gt 0 \\
+( (B_0+b_1)^{\log_3{2}} + a_1 ) ^{\log_2{3}} - ( (B_0+b_2)^{\log_3{2}} + a_1 ) ^{\log_2{3}} \gt b_1 - b_2 \\
+\end{aligned}</script><p>设$f(x)=((B_0+x)^{\log_3{2}} + a_1 ) ^{\log_2{3}}$，因为$\log_2{3}\gt 1$，所以$\frac{f(b_1)-f(b_2)}{b_1-b_2} \gt 1  \$,又有假设$f(b_1)-f(b_2) \gt b_1-b_2$，所以得到 $b_1 \gt b_2$。</p>
+<p>也就是说，B的增加量是先放大的后放小的。</p>
+<p>同理可以说明A是反着的。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 防御力</span></span><br><span class="line"></span><br><span class="line">n1, n2 = <span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())</span><br><span class="line">A = <span class="built_in">list</span>(<span class="built_in">enumerate</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())))</span><br><span class="line">B = <span class="built_in">list</span>(<span class="built_in">enumerate</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split())))</span><br><span class="line">A.sort(key=<span class="keyword">lambda</span> x: x[<span class="number">1</span>])</span><br><span class="line">B.sort(key=<span class="keyword">lambda</span> x: -x[<span class="number">1</span>])</span><br><span class="line">order = <span class="built_in">input</span>()</span><br><span class="line">a = b = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> order:</span><br><span class="line">    <span class="keyword">if</span> c == <span class="string">&quot;1&quot;</span>:  <span class="comment"># B</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;B<span class="subst">&#123;B[b][<span class="number">0</span>] + <span class="number">1</span>&#125;</span>&quot;</span>)</span><br><span class="line">        b += <span class="number">1</span></span><br><span class="line">    <span class="keyword">elif</span> c == <span class="string">&quot;0&quot;</span>:  <span class="comment"># A</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;A<span class="subst">&#123;A[a][<span class="number">0</span>] + <span class="number">1</span>&#125;</span>&quot;</span>)</span><br><span class="line">        a += <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;E&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">1 2</span></span><br><span class="line"><span class="string">4</span></span><br><span class="line"><span class="string">2 8</span></span><br><span class="line"><span class="string">101</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>蓝桥</category>
+        <category>贪心</category>
+      </categories>
+      <tags>
+        <tag>贪心</tag>
+        <tag>数学</tag>
+        <tag>蓝桥</tag>
+      </tags>
+  </entry>
 </search>

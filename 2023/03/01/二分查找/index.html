@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"shengrihui.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="记录一下抠二分查找细节的过程。 &#x2F;&#x2F; 运算符是除了之后向下取整。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二分查找">
+<meta property="og:url" content="https://shengrihui.github.io/2023/03/01/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/index.html">
+<meta property="og:site_name" content="盛日辉的博客">
+<meta property="og:description" content="记录一下抠二分查找细节的过程。 &#x2F;&#x2F; 运算符是除了之后向下取整。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-01T06:45:14.000Z">
+<meta property="article:modified_time" content="2023-03-02T09:12:15.909Z">
+<meta property="article:author" content="盛日辉">
+<meta property="article:tag" content="二分">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://shengrihui.github.io/2023/03/01/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>二分查找 | 盛日辉的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">盛日辉的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+     <a target="_blank" rel="noopener" href="https://github.com/shengrihui" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/2023/03/01/%E4%BA%8C%E5%88%86%E6%9F%A5%E6%89%BE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          二分查找
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-01 14:45:14" itemprop="dateCreated datePublished" datetime="2023-03-01T14:45:14+08:00">2023-03-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-03-02 17:12:15" itemprop="dateModified" datetime="2023-03-02T17:12:15+08:00">2023-03-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%8C%E5%88%86/" itemprop="url" rel="index"><span itemprop="name">二分</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>记录一下抠二分查找细节的过程。</p>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="// 运算符"></a>// 运算符</h3><p>是除了之后向下取整。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">5</span>//<span class="number">2</span></span><br><span class="line">Out[<span class="number">2</span>]: <span class="number">2</span></span><br><span class="line"><span class="number">12</span>//<span class="number">5</span></span><br><span class="line">Out[<span class="number">3</span>]: <span class="number">2</span></span><br><span class="line"><span class="number">14</span>//<span class="number">5</span></span><br><span class="line">Out[<span class="number">4</span>]: <span class="number">2</span></span><br><span class="line"><span class="number">1</span>//<span class="number">2</span></span><br><span class="line">Out[<span class="number">5</span>]: <span class="number">0</span></span><br><span class="line">-<span class="number">1</span>//<span class="number">2</span></span><br><span class="line">Out[<span class="number">6</span>]: -<span class="number">1</span></span><br><span class="line">(-<span class="number">1</span>)//<span class="number">2</span></span><br><span class="line">Out[<span class="number">7</span>]: -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>对于<code>(left+right)//2</code>来说，奇数个就正好是中间，偶数个会更靠近<code>left</code>一些。</p>
+<h3 id="关于区间的讨论"><a href="#关于区间的讨论" class="headerlink" title="关于区间的讨论"></a>关于区间的讨论</h3><h4 id="左闭右闭"><a href="#左闭右闭" class="headerlink" title="左闭右闭"></a>左闭右闭</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">search</span>(<span class="params">arr, x</span>):</span><br><span class="line">    left = <span class="number">0</span></span><br><span class="line">    right = <span class="built_in">len</span>(arr) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">        mid = (left + right) // <span class="number">2</span></span><br><span class="line">        <span class="built_in">print</span>(left, mid, right)</span><br><span class="line">        <span class="keyword">if</span> arr[mid] &lt; x:</span><br><span class="line">            left = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> arr[mid] &gt; x:</span><br><span class="line">            right = mid - <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="built_in">print</span>(left, mid, right)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    a = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line">    x = <span class="number">5</span></span><br><span class="line">    <span class="built_in">print</span>(a)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;===================================&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;x =&quot;</span>,i)</span><br><span class="line">        search(a, i)</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">0</span></span><br><span class="line"><span class="number">0</span> <span class="number">3</span> <span class="number">6</span></span><br><span class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">2</span></span><br><span class="line"><span class="number">0</span> <span class="number">0</span> <span class="number">0</span></span><br><span class="line"><span class="number">0</span> <span class="number">0</span> <span class="number">0</span></span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">1</span></span><br><span class="line"><span class="number">0</span> <span class="number">3</span> <span class="number">6</span></span><br><span class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">2</span></span><br><span class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">2</span></span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">2</span></span><br><span class="line"><span class="number">0</span> <span class="number">3</span> <span class="number">6</span></span><br><span class="line"><span class="number">0</span> <span class="number">1</span> <span class="number">2</span></span><br><span class="line"><span class="number">2</span> <span class="number">2</span> <span class="number">2</span></span><br><span class="line"><span class="number">2</span> <span class="number">2</span> <span class="number">2</span></span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">3</span></span><br><span class="line"><span class="number">0</span> <span class="number">3</span> <span class="number">6</span></span><br><span class="line"><span class="number">0</span> <span class="number">3</span> <span class="number">6</span></span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">4</span></span><br><span class="line"><span class="number">0</span> <span class="number">3</span> <span class="number">6</span></span><br><span class="line"><span class="number">4</span> <span class="number">5</span> <span class="number">6</span></span><br><span class="line"><span class="number">4</span> <span class="number">4</span> <span class="number">4</span></span><br><span class="line"><span class="number">4</span> <span class="number">4</span> <span class="number">4</span></span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">5</span></span><br><span class="line"><span class="number">0</span> <span class="number">3</span> <span class="number">6</span></span><br><span class="line"><span class="number">4</span> <span class="number">5</span> <span class="number">6</span></span><br><span class="line"><span class="number">4</span> <span class="number">5</span> <span class="number">6</span></span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">6</span></span><br><span class="line"><span class="number">0</span> <span class="number">3</span> <span class="number">6</span></span><br><span class="line"><span class="number">4</span> <span class="number">5</span> <span class="number">6</span></span><br><span class="line"><span class="number">6</span> <span class="number">6</span> <span class="number">6</span></span><br><span class="line"><span class="number">6</span> <span class="number">6</span> <span class="number">6</span></span><br></pre></td></tr></table></figure>
+<p>因为当<code>arr[mid] == x</code>的时候，<code>break</code>了循环，所以最终如果要查找的数在数组中，<code>mid</code>就是结果的位置，如果不在（改了一下输出）：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">18</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">2</span>, right:<span class="number">5</span></span><br><span class="line">left:<span class="number">3</span>, mid:<span class="number">4</span>, right:<span class="number">5</span></span><br><span class="line">left:<span class="number">5</span>, mid:<span class="number">5</span>, right:<span class="number">5</span></span><br><span class="line">循环结束，left:<span class="number">6</span>, mid:<span class="number">5</span>, right:<span class="number">5</span></span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">4</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">2</span>, right:<span class="number">5</span></span><br><span class="line">left:<span class="number">3</span>, mid:<span class="number">4</span>, right:<span class="number">5</span></span><br><span class="line">left:<span class="number">3</span>, mid:<span class="number">3</span>, right:<span class="number">3</span></span><br><span class="line">循环结束，left:<span class="number">4</span>, mid:<span class="number">3</span>, right:<span class="number">3</span></span><br><span class="line">===================================</span><br><span class="line">x = -<span class="number">1</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">2</span>, right:<span class="number">5</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">0</span>, right:<span class="number">1</span></span><br><span class="line">循环结束，left:<span class="number">0</span>, mid:<span class="number">0</span>, right:-<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>退出循环后，<code>left</code>指向的是<code>x</code>应该在的位置</li>
+<li>在退出循环的前一步，<code>left</code>和<code>rignt</code>会指向同一个位置，那<code>mid</code>也是<ul>
+<li>如果<code>arr[mid] &lt; x</code>，<code>x</code>应当在当前位置的右边，移动<code>left</code>，这时候<code>left</code>就是<code>x</code>该在的位置；</li>
+<li>如果<code>arr[mid] &gt; x</code>，<code>x</code>比左边的数大比右边的小，所以<code>left</code>就是<code>x</code>该在的位置，移动<code>right</code>后退出循环;</li>
+</ul>
+</li>
+</ul>
+<h5 id="如果没有单独的else即arr-mid-x这一分支呢？"><a href="#如果没有单独的else即arr-mid-x这一分支呢？" class="headerlink" title="如果没有单独的else即arr[mid] == x这一分支呢？"></a>如果没有单独的<code>else</code>即<code>arr[mid] == x</code>这一分支呢？</h5><p>将等于加到大于上：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">search</span>(<span class="params">arr, x</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;===================================&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x =&quot;</span>, x)</span><br><span class="line">    left = <span class="number">0</span></span><br><span class="line">    right = <span class="built_in">len</span>(arr) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">        mid = (left + right) // <span class="number">2</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;left:<span class="subst">&#123;left&#125;</span>, mid:<span class="subst">&#123;mid&#125;</span>, right:<span class="subst">&#123;right&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> arr[mid] &lt; x:</span><br><span class="line">            left = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> arr[mid] &gt;= x:</span><br><span class="line">            right = mid - <span class="number">1</span></span><br><span class="line">        <span class="comment"># else:</span></span><br><span class="line">        <span class="comment">#     break</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;循环结束，left:<span class="subst">&#123;left&#125;</span>, mid:<span class="subst">&#123;mid&#125;</span>, right:<span class="subst">&#123;right&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    a = [<span class="number">0</span>, <span class="number">2</span>, <span class="number">4</span>,  <span class="number">6</span>]</span><br><span class="line">    x = <span class="number">5</span></span><br><span class="line">    <span class="built_in">print</span>(a)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> a:</span><br><span class="line">        search(a, i)</span><br><span class="line">    search(a, <span class="number">1</span>)</span><br><span class="line">    search(a, <span class="number">5</span>)</span><br><span class="line">    search(a, -<span class="number">1</span>)</span><br><span class="line">    search(a, <span class="number">18</span>)</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">0</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>]</span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">0</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">1</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">0</span>, right:<span class="number">0</span></span><br><span class="line">循环结束，left:<span class="number">0</span>, mid:<span class="number">0</span>, right:-<span class="number">1</span></span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">2</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">1</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">0</span>, right:<span class="number">0</span></span><br><span class="line">循环结束，left:<span class="number">1</span>, mid:<span class="number">0</span>, right:<span class="number">0</span></span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">4</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">1</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">2</span>, mid:<span class="number">2</span>, right:<span class="number">3</span></span><br><span class="line">循环结束，left:<span class="number">2</span>, mid:<span class="number">2</span>, right:<span class="number">1</span></span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">6</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">1</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">2</span>, mid:<span class="number">2</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">3</span>, mid:<span class="number">3</span>, right:<span class="number">3</span></span><br><span class="line">循环结束，left:<span class="number">3</span>, mid:<span class="number">3</span>, right:<span class="number">2</span></span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">1</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">1</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">0</span>, right:<span class="number">0</span></span><br><span class="line">循环结束，left:<span class="number">1</span>, mid:<span class="number">0</span>, right:<span class="number">0</span></span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">5</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">1</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">2</span>, mid:<span class="number">2</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">3</span>, mid:<span class="number">3</span>, right:<span class="number">3</span></span><br><span class="line">循环结束，left:<span class="number">3</span>, mid:<span class="number">3</span>, right:<span class="number">2</span></span><br><span class="line">===================================</span><br><span class="line">x = -<span class="number">1</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">1</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">0</span>, right:<span class="number">0</span></span><br><span class="line">循环结束，left:<span class="number">0</span>, mid:<span class="number">0</span>, right:-<span class="number">1</span></span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">18</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">1</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">2</span>, mid:<span class="number">2</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">3</span>, mid:<span class="number">3</span>, right:<span class="number">3</span></span><br><span class="line">循环结束，left:<span class="number">4</span>, mid:<span class="number">3</span>, right:<span class="number">3</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这个好像所有的都是<code>left</code>指向答案。</p>
+<p>但如果改成</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> arr[mid] &lt;= x:</span><br><span class="line">    left = mid + <span class="number">1</span></span><br><span class="line"><span class="keyword">elif</span> arr[mid] &gt; x:</span><br><span class="line">    right = mid - <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">0</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>]</span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">0</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">1</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">0</span>, right:<span class="number">0</span></span><br><span class="line">循环结束，left:<span class="number">1</span>, mid:<span class="number">0</span>, right:<span class="number">0</span></span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">2</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">1</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">2</span>, mid:<span class="number">2</span>, right:<span class="number">3</span></span><br><span class="line">循环结束，left:<span class="number">2</span>, mid:<span class="number">2</span>, right:<span class="number">1</span></span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">4</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">1</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">2</span>, mid:<span class="number">2</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">3</span>, mid:<span class="number">3</span>, right:<span class="number">3</span></span><br><span class="line">循环结束，left:<span class="number">3</span>, mid:<span class="number">3</span>, right:<span class="number">2</span></span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">6</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">1</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">2</span>, mid:<span class="number">2</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">3</span>, mid:<span class="number">3</span>, right:<span class="number">3</span></span><br><span class="line">循环结束，left:<span class="number">4</span>, mid:<span class="number">3</span>, right:<span class="number">3</span></span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">1</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">1</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">0</span>, right:<span class="number">0</span></span><br><span class="line">循环结束，left:<span class="number">1</span>, mid:<span class="number">0</span>, right:<span class="number">0</span></span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">5</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">1</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">2</span>, mid:<span class="number">2</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">3</span>, mid:<span class="number">3</span>, right:<span class="number">3</span></span><br><span class="line">循环结束，left:<span class="number">3</span>, mid:<span class="number">3</span>, right:<span class="number">2</span></span><br><span class="line">===================================</span><br><span class="line">x = -<span class="number">1</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">1</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">0</span>, right:<span class="number">0</span></span><br><span class="line">循环结束，left:<span class="number">0</span>, mid:<span class="number">0</span>, right:-<span class="number">1</span></span><br><span class="line">===================================</span><br><span class="line">x = <span class="number">18</span></span><br><span class="line">left:<span class="number">0</span>, mid:<span class="number">1</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">2</span>, mid:<span class="number">2</span>, right:<span class="number">3</span></span><br><span class="line">left:<span class="number">3</span>, mid:<span class="number">3</span>, right:<span class="number">3</span></span><br><span class="line">循环结束，left:<span class="number">4</span>, mid:<span class="number">3</span>, right:<span class="number">3</span></span><br></pre></td></tr></table></figure>
+<p>这就像是如果在，是<code>right</code>指向，如果不在，是<code>left</code>指向。</p>
+<p>。。。</p>
+<p>。。。</p>
+<p>我知道了！我要得有个问题先！</p>
+<p><strong>问题：找到第一个大于等于<code>x</code>的位置</strong></p>
+<p>思考的步骤应该是这样的：</p>
+<ol>
+<li>闭区间<code>[left,right]</code>，这是每一次查询的区间，循环退出的条件是区间为空，也就是<code>left</code>在<code>right</code>的右边；</li>
+<li>找到<code>mid</code>，与要寻找的<code>x</code>进行比较，将区间分成两部分，一部分符合条件（<code>大于等于x</code>），另一部分是不符合条件的（小于<code>x</code>）</li>
+<li>根据比较的结果，调整<code>left</code>或者<code>right</code></li>
+<li>因为<code>mid</code>在比较了之后，就可以将它划分到其中的一个部分，又因为是闭区间，所以调整后的区间就不包括<code>mid</code></li>
+<li>根据这道题的要求，就有了一个非常重要的事情：<code>left</code>左边的一定都比<code>x</code>小，<code>right</code>右边的一定都大于等于<code>x</code>，这两个点不确定</li>
+<li>最后一定是<code>left == right</code><ol>
+<li><code>arr[mid] &gt;= x</code>，调整<code>right</code>后退出循环，<code>left</code>是结果，因为<code>right</code>右边的一定都大于等于<code>x</code>，而整个区间已经全部划分完了，题目要求的第一个大于等于<code>x</code>的位置就是<code>right + 1</code>，也就是<code>left</code>;</li>
+<li><code>arr[mid] &lt; x</code>，调整<code>left</code>后退出循环，<code>left</code>是结果，原因和上面差不多。</li>
+</ol>
+</li>
+</ol>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">search</span>(<span class="params">arr, x</span>):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;===================================&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(arr)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;x =&quot;</span>, x)</span><br><span class="line">    left = <span class="number">0</span></span><br><span class="line">    right = <span class="built_in">len</span>(arr) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">        mid = (left + right) // <span class="number">2</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;left:<span class="subst">&#123;left&#125;</span>, mid:<span class="subst">&#123;mid&#125;</span>, right:<span class="subst">&#123;right&#125;</span>&quot;</span>)</span><br><span class="line">        <span class="keyword">if</span> arr[mid] &gt;= x:</span><br><span class="line">            right = mid - <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> arr[mid] &lt; x:</span><br><span class="line">            left = mid + <span class="number">1</span></span><br><span class="line">        <span class="comment"># else:</span></span><br><span class="line">        <span class="comment">#     break</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">f&quot;循环结束，left:<span class="subst">&#123;left&#125;</span>, mid:<span class="subst">&#123;mid&#125;</span>, right:<span class="subst">&#123;right&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> left</span><br></pre></td></tr></table></figure>
+<p>同样的思考过程可以写出：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 二分查找</span></span><br><span class="line"><span class="comment"># &gt;=x</span></span><br><span class="line"><span class="comment"># 第一个大于等于 x 的位置</span></span><br><span class="line"><span class="comment"># x 的第一个位置</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">lower_bound</span>(<span class="params">arr, x</span>):</span><br><span class="line">    left = <span class="number">0</span></span><br><span class="line">    right = <span class="built_in">len</span>(arr) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">        mid = (left + right) // <span class="number">2</span></span><br><span class="line">        <span class="comment"># print(f&quot;left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">        <span class="keyword">if</span> arr[mid] &gt;= x:</span><br><span class="line">            right = mid - <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> arr[mid] &lt; x:</span><br><span class="line">            left = mid + <span class="number">1</span></span><br><span class="line">    <span class="comment"># print(f&quot;循环结束，left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">return</span> left</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt;=x</span></span><br><span class="line"><span class="comment"># x 的最后一个位置</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">upper_bound</span>(<span class="params">arr, x</span>):</span><br><span class="line">    left = <span class="number">0</span></span><br><span class="line">    right = <span class="built_in">len</span>(arr) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">        mid = (left + right) // <span class="number">2</span></span><br><span class="line">        <span class="comment"># print(f&quot;left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">        <span class="keyword">if</span> arr[mid] &lt;= x:</span><br><span class="line">            left = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            right = mid - <span class="number">1</span></span><br><span class="line">    <span class="comment"># print(f&quot;循环结束，left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">return</span> right</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一个小于 x 的位置</span></span><br><span class="line"><span class="comment"># x 的前一个位置</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">lower_bound2</span>(<span class="params">arr, x</span>):</span><br><span class="line">    left = <span class="number">0</span></span><br><span class="line">    right = <span class="built_in">len</span>(arr) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">        mid = (left + right) // <span class="number">2</span></span><br><span class="line">        <span class="comment"># print(f&quot;left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">        <span class="keyword">if</span> arr[mid] &lt; x:</span><br><span class="line">            left = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            right = mid - <span class="number">1</span></span><br><span class="line">    <span class="comment"># print(f&quot;循环结束，left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">return</span> right</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># &gt;x</span></span><br><span class="line"><span class="comment"># 第一个大于 x 的位置，x 的后一个位置</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">upper_bound2</span>(<span class="params">arr, x</span>):</span><br><span class="line">    left = <span class="number">0</span></span><br><span class="line">    right = <span class="built_in">len</span>(arr) - <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> left &lt;= right:</span><br><span class="line">        mid = (left + right) // <span class="number">2</span></span><br><span class="line">        <span class="comment"># print(f&quot;left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">        <span class="keyword">if</span> arr[mid] &gt; x:</span><br><span class="line">            right = mid - <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            left = mid + <span class="number">1</span></span><br><span class="line">    <span class="comment"># print(f&quot;循环结束，left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">return</span> left</span><br></pre></td></tr></table></figure>
+<h3 id="开区间"><a href="#开区间" class="headerlink" title="开区间"></a>开区间</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开区间</span></span><br><span class="line"><span class="comment"># &gt;=x</span></span><br><span class="line"><span class="comment"># 第一个大于等于 x 的位置</span></span><br><span class="line"><span class="comment"># x 的第一个位置</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">lower_bound</span>(<span class="params">arr, x</span>):</span><br><span class="line">    <span class="comment"># 开区间</span></span><br><span class="line">    left = -<span class="number">1</span></span><br><span class="line">    right = <span class="built_in">len</span>(arr)</span><br><span class="line">    <span class="keyword">while</span> left +<span class="number">1</span>&lt; right:  <span class="comment"># 这时候，区间就空了，比如（2，3）</span></span><br><span class="line">        mid = (left + right) // <span class="number">2</span></span><br><span class="line">        <span class="comment"># print(f&quot;left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">        <span class="keyword">if</span> arr[mid] &gt;= x:</span><br><span class="line">            right = mid</span><br><span class="line">        <span class="keyword">elif</span> arr[mid] &lt; x:</span><br><span class="line">            left = mid</span><br><span class="line">    <span class="comment"># print(f&quot;循环结束，left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">return</span> right</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt;=x</span></span><br><span class="line"><span class="comment"># x 的最后一个位置</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">upper_bound</span>(<span class="params">arr, x</span>):</span><br><span class="line">    left = -<span class="number">1</span></span><br><span class="line">    right = <span class="built_in">len</span>(arr)</span><br><span class="line">    <span class="keyword">while</span> left +<span class="number">1</span>&lt; right:</span><br><span class="line">        mid = (left + right) // <span class="number">2</span></span><br><span class="line">        <span class="comment"># print(f&quot;left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">        <span class="keyword">if</span> arr[mid] &lt;= x:</span><br><span class="line">            left = mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            right = mid</span><br><span class="line">    <span class="comment"># print(f&quot;循环结束，left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">return</span> left</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt;x</span></span><br><span class="line"><span class="comment"># 第一个小于 x 的位置</span></span><br><span class="line"><span class="comment"># x 的前一个位置</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">lower_bound2</span>(<span class="params">arr, x</span>):</span><br><span class="line">    left = -<span class="number">1</span></span><br><span class="line">    right = <span class="built_in">len</span>(arr)</span><br><span class="line">    <span class="keyword">while</span> left +<span class="number">1</span>&lt; right:</span><br><span class="line">        mid = (left + right) // <span class="number">2</span></span><br><span class="line">        <span class="comment"># print(f&quot;left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">        <span class="keyword">if</span> arr[mid] &lt; x:</span><br><span class="line">            left = mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            right = mid</span><br><span class="line">    <span class="comment"># print(f&quot;循环结束，left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">return</span> left</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># &gt;x</span></span><br><span class="line"><span class="comment"># 第一个大于 x 的位置，x 的后一个位置</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">upper_bound2</span>(<span class="params">arr, x</span>):</span><br><span class="line">    left = -<span class="number">1</span></span><br><span class="line">    right = <span class="built_in">len</span>(arr)</span><br><span class="line">    <span class="keyword">while</span> left +<span class="number">1</span>&lt; right:</span><br><span class="line">        mid = (left + right) // <span class="number">2</span></span><br><span class="line">        <span class="comment"># print(f&quot;left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">        <span class="keyword">if</span> arr[mid] &gt; x:</span><br><span class="line">            right = mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            left = mid</span><br><span class="line">    <span class="comment"># print(f&quot;循环结束，left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">return</span> right</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    a = [<span class="number">0</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">6</span>]</span><br><span class="line">    x_list = a + [-<span class="number">1</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> x_list:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;===================================&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(a)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;x =&quot;</span>, i)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&gt;=x，第一个大于等于 x 的位置&quot;</span>)</span><br><span class="line">        <span class="comment"># &gt;=x，第一个大于等于 x 的位置</span></span><br><span class="line">        <span class="comment"># x 的第一个位置</span></span><br><span class="line">        <span class="built_in">print</span>(lower_bound(a, i))</span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&lt;=x x的最后一个位置&quot;</span>)</span><br><span class="line">        <span class="comment"># &lt;=x x的最后一个位置</span></span><br><span class="line">        <span class="built_in">print</span>(upper_bound(a, i))</span><br><span class="line">        <span class="comment"># 可以转换为求 x+1 的第一个位置 -1</span></span><br><span class="line">        <span class="built_in">print</span>(lower_bound(a, i + <span class="number">1</span>) - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&lt;x 第一个小于 x 的位置，x 的前一个位置&quot;</span>)</span><br><span class="line">        <span class="comment"># &lt;x 第一个小于 x 的位置，x 的前一个位置</span></span><br><span class="line">        <span class="built_in">print</span>(lower_bound2(a, i))</span><br><span class="line">        <span class="comment"># 可以传唤为 x-1 的最后一个位置</span></span><br><span class="line">        <span class="comment"># 最后一个位置转换成 x+1 的第一个位置 -1</span></span><br><span class="line">        <span class="comment"># 所以最后转换成 x 的第一个位置 -1</span></span><br><span class="line">        <span class="built_in">print</span>(lower_bound(a, i) - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;&gt;x，第一个大于 x 的位置，x 的后一个位置&quot;</span>)</span><br><span class="line">        <span class="comment"># &gt;x，第一个大于 x 的位置，x 的后一个位置</span></span><br><span class="line">        <span class="built_in">print</span>(upper_bound2(a, i))</span><br><span class="line">        <span class="comment"># 可以转换为求 x+1 的第一个位置</span></span><br><span class="line">        <span class="built_in">print</span>(lower_bound(a, i + <span class="number">1</span>))</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>发现，在开区间里，符合条件的时候调整谁最后就返回谁，闭区间就相反。</p>
+<h3 id="左闭右开"><a href="#左闭右开" class="headerlink" title="左闭右开"></a>左闭右开</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &gt;=x</span></span><br><span class="line"><span class="comment"># 第一个大于等于 x 的位置</span></span><br><span class="line"><span class="comment"># x 的第一个位置</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">lower_bound</span>(<span class="params">arr, x</span>):</span><br><span class="line">    left = <span class="number">0</span></span><br><span class="line">    right = <span class="built_in">len</span>(arr)</span><br><span class="line">    <span class="keyword">while</span> left &lt; right:  <span class="comment"># 等于了区间就空了，比如[2，2）</span></span><br><span class="line">        mid = (left + right) // <span class="number">2</span></span><br><span class="line">        <span class="comment"># print(f&quot;left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">        <span class="keyword">if</span> arr[mid] &gt;= x:</span><br><span class="line">            right = mid</span><br><span class="line">        <span class="keyword">elif</span> arr[mid] &lt; x:</span><br><span class="line">            left = mid + <span class="number">1</span></span><br><span class="line">    <span class="comment"># print(f&quot;循环结束，left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">return</span> right</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt;=x</span></span><br><span class="line"><span class="comment"># x 的最后一个位置</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">upper_bound</span>(<span class="params">arr, x</span>):</span><br><span class="line">    left = <span class="number">0</span></span><br><span class="line">    right = <span class="built_in">len</span>(arr)</span><br><span class="line">    <span class="keyword">while</span> left &lt; right:</span><br><span class="line">        mid = (left + right) // <span class="number">2</span></span><br><span class="line">        <span class="comment"># print(f&quot;left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">        <span class="keyword">if</span> arr[mid] &lt;= x:</span><br><span class="line">            left = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            right = mid</span><br><span class="line">    <span class="comment"># print(f&quot;循环结束，left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">return</span> left - <span class="number">1</span>  <span class="comment"># right - 1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># &lt;x</span></span><br><span class="line"><span class="comment"># 第一个小于 x 的位置</span></span><br><span class="line"><span class="comment"># x 的前一个位置</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">lower_bound2</span>(<span class="params">arr, x</span>):</span><br><span class="line">    left = <span class="number">0</span></span><br><span class="line">    right = <span class="built_in">len</span>(arr)</span><br><span class="line">    <span class="keyword">while</span> left &lt; right:</span><br><span class="line">        mid = (left + right) // <span class="number">2</span></span><br><span class="line">        <span class="comment"># print(f&quot;left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">        <span class="keyword">if</span> arr[mid] &lt; x:</span><br><span class="line">            left = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            right = mid</span><br><span class="line">    <span class="comment"># print(f&quot;循环结束，left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">return</span> left - <span class="number">1</span>  <span class="comment"># right - 1</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># &gt;x</span></span><br><span class="line"><span class="comment"># 第一个大于 x 的位置，x 的后一个位置</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">upper_bound2</span>(<span class="params">arr, x</span>):</span><br><span class="line">    left = <span class="number">0</span></span><br><span class="line">    right = <span class="built_in">len</span>(arr)</span><br><span class="line">    <span class="keyword">while</span> left &lt; right:</span><br><span class="line">        mid = (left + right) // <span class="number">2</span></span><br><span class="line">        <span class="comment"># print(f&quot;left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">        <span class="keyword">if</span> arr[mid] &gt; x:</span><br><span class="line">            right = mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            left = mid + <span class="number">1</span></span><br><span class="line">    <span class="comment"># print(f&quot;循环结束，left:&#123;left&#125;, mid:&#123;mid&#125;, right:&#123;right&#125;&quot;)</span></span><br><span class="line">    <span class="keyword">return</span> left   <span class="comment"># right </span></span><br></pre></td></tr></table></figure>
+<p>考虑输出什么的时候，就想</p>
+<ol>
+<li><code>left</code>（或者<code>right</code>)本身因为开或闭是否要算，闭不算开要算</li>
+<li>然后看它或者它那一边是符合条件的就输出。</li>
+</ol>
+<h3 id="关于-left-right-1-2"><a href="#关于-left-right-1-2" class="headerlink" title="关于(left + right + 1) // 2"></a>关于<code>(left + right + 1) // 2</code></h3><p>我觉得这不重要，重要的是根据上面的步骤考虑清楚区间的范围以及<code>left</code>和<code>right</code>指向的情况就行，保证<code>mid</code>在区间里就行。</p>
+<p>奥，因为向上取整，所以左闭右开不能这么做。怪不得向下取整的时候没有左开右闭呢。</p>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechatpay.png" alt="盛日辉 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.png" alt="盛日辉 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%8C%E5%88%86/" rel="tag"># 二分</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/02/21/%E8%93%9D%E6%A1%A5%E7%9A%84%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA/" rel="prev" title="蓝桥的输入输出">
+      <i class="fa fa-chevron-left"></i> 蓝桥的输入输出
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2030/02/17/Python%E7%9A%84%E4%B8%80%E4%BA%9B%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0%E5%92%8C%E5%9F%BA%E6%9C%AC%E5%8F%A5%E6%B3%95/" rel="next" title="Python的一些内建函数和基本句法">
+      Python的一些内建函数和基本句法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.</span> <span class="nav-text">&#x2F;&#x2F; 运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%8C%BA%E9%97%B4%E7%9A%84%E8%AE%A8%E8%AE%BA"><span class="nav-number">2.</span> <span class="nav-text">关于区间的讨论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A6%E9%97%AD%E5%8F%B3%E9%97%AD"><span class="nav-number">2.1.</span> <span class="nav-text">左闭右闭</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E5%8D%95%E7%8B%AC%E7%9A%84else%E5%8D%B3arr-mid-x%E8%BF%99%E4%B8%80%E5%88%86%E6%94%AF%E5%91%A2%EF%BC%9F"><span class="nav-number">2.1.1.</span> <span class="nav-text">如果没有单独的else即arr[mid] &#x3D;&#x3D; x这一分支呢？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%8C%BA%E9%97%B4"><span class="nav-number">3.</span> <span class="nav-text">开区间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A6%E9%97%AD%E5%8F%B3%E5%BC%80"><span class="nav-number">4.</span> <span class="nav-text">左闭右开</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E-left-right-1-2"><span class="nav-number">5.</span> <span class="nav-text">关于(left + right + 1) &#x2F;&#x2F; 2</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="盛日辉"
+      src="/images/SNNZ5107.JPG">
+  <p class="site-author-name" itemprop="name">盛日辉</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">56</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/shengrihui" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;shengrihui" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友情链接
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://goat2003.github.io/" title="https:&#x2F;&#x2F;goat2003.github.io" rel="noopener" target="_blank">goat2003</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">盛日辉</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+<script>
+  function addDarkmodeWidget() {
+    const options = {
+      bottom: '64px', // default: '32px'
+      right: '32px', // default: '32px'
+      left: 'unset', // default: 'unset'
+      time: '0.5s', // default: '0.3s'
+      mixColor: '#fff', // default: '#fff'
+      backgroundColor: '#fff',  // default: '#fff'
+      buttonColorDark: '#100f2c',  // default: '#100f2c'
+      buttonColorLight: '#fff', // default: '#fff'
+      saveInCookies: false, // default: true,
+      label: '🌓', // default: ''
+      autoMatchOsTheme: true // default: true
+    }
+    const darkmode = new Darkmode(options);
+    darkmode.showWidget();
+  }
+  window.addEventListener('load', addDarkmodeWidget);
+</script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -215,7 +215,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-28 17:22:15" itemprop="dateModified" datetime="2022-04-28T17:22:15+08:00">2022-04-28</time>
+                <time title="修改时间：2023-09-24 00:08:48" itemprop="dateModified" datetime="2023-09-24T00:08:48+08:00">2023-09-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -238,7 +238,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="any-和all"><a href="#any-和all" class="headerlink" title="any()和all()"></a><code>any()</code>和<code>all()</code></h3><h5 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h5><p><code>any()</code>函数用来判断给定的迭代参数<code>iterable</code>中是否含有<code>True</code>，如果有（只要有一个），则返回<code>True</code>.<br>函数等价于：<br></p>
+          <h3 id="二进制"><a href="#二进制" class="headerlink" title="二进制"></a>二进制</h3><p>python的<code>bin()</code>函数返回的是<code>符号+&#39;0b&#39;+无符号下的原码</code>，但用<code>x &gt;&gt; i &amp; 1</code>求第<code>i</code>为的二进制表示时，是补码形式。<br></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">bin(5)</span><br><span class="line">Out[2]: &#x27;0b101&#x27;</span><br><span class="line">bin(-5)</span><br><span class="line">Out[3]: &#x27;-0b101&#x27;</span><br><span class="line">bin(-7)</span><br><span class="line">Out[4]: &#x27;-0b111&#x27;</span><br><span class="line">[ 5 &gt;&gt; i &amp; 1 for i in range(8,-1,-1)]</span><br><span class="line">Out[5]: [0, 0, 0, 0, 0, 0, 1, 0, 1]</span><br><span class="line">for x in [-5,-27,7,15]:</span><br><span class="line">    print(x,[x &gt;&gt; i &amp; 1 for i in range(8, -1, -1)])</span><br><span class="line">    </span><br><span class="line">-5 [1, 1, 1, 1, 1, 1, 0, 1, 1]</span><br><span class="line">-27 [1, 1, 1, 1, 0, 0, 1, 0, 1]</span><br><span class="line">7 [0, 0, 0, 0, 0, 0, 1, 1, 1]</span><br><span class="line">15 [0, 0, 0, 0, 0, 1, 1, 1, 1]</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2030/02/17/Python%E7%9A%84%E4%B8%80%E4%BA%9B%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0%E5%92%8C%E5%9F%BA%E6%9C%AC%E5%8F%A5%E6%B3%95/#more" rel="contents">

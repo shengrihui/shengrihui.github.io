@@ -3430,7 +3430,8 @@ django底层会执行这样的sql语句，创建的表名是app名加下划线�
   <entry>
     <title>Datawhale AI春训营</title>
     <url>/2025/04/19/Datawhale-AI%E6%98%A5%E8%AE%AD%E8%90%A5/</url>
-    <content><![CDATA[<h2 id="0419"><a href="#0419" class="headerlink" title="0419"></a>0419</h2><h3 id="数据的初步认识"><a href="#数据的初步认识" class="headerlink" title="数据的初步认识"></a>数据的初步认识</h3><h4 id="nc-文件"><a href="#nc-文件" class="headerlink" title="nc 文件"></a>nc 文件</h4><p><code>nc</code> 文件我总感觉我已经接触过，但为什么这次感觉这么不一样呢。😕</p>
+    <content><![CDATA[<p>要不是有打卡的·DDL·，都不知道要拖到什么时候学呢。那既然打卡的任务是笔记，那这笔记就做成学习记录持续更新吧~😎</p>
+<h2 id="0419"><a href="#0419" class="headerlink" title="0419"></a>0419</h2><h3 id="数据的初步认识"><a href="#数据的初步认识" class="headerlink" title="数据的初步认识"></a>数据的初步认识</h3><h4 id="nc-文件"><a href="#nc-文件" class="headerlink" title="nc 文件"></a>nc 文件</h4><p><code>nc</code> 文件我总感觉我以前接触过，但为什么这次感觉这么不一样呢。😕</p>
 <p>这一次的数据每一个文件里的<code>data</code>维度是<code>(1, 24, 8, 11, 11)</code>，其中：</p>
 <ul>
 <li>第一个维度的 <code>1</code>  大家都说没啥用，但我觉得它的理解就是“这一天”的意思，假如吧好多文件的好多天的拼在一起，这第一个维度不就有意义了么~</li>
@@ -3442,7 +3443,10 @@ django底层会执行这样的sql语句，创建的表名是app名加下划线�
 <p>这三个气象站数据怎么处理？</p>
 <p>异常值还没有发现。</p>
 <h4 id="模型选择"><a href="#模型选择" class="headerlink" title="模型选择"></a>模型选择</h4><p>因为刚看到数据的时候，见是时间序列的，然后还是预测的，我立刻想到了<code>LSTM</code>。</p>
-<p>但是 baseline 里用的是 <code>lightgbm</code>，一个机器学习模型，不太熟悉。前</p>
+<p>但是 baseline 里用的是 <code>lightgbm</code>，一个机器学习模型，不太熟悉，查了一下是决策树那一系列的。前两天浅浅学了一下决策树，不太明白「一棵树」怎么去做回归任务。这个可以学一下再结合自己数据处理的想法，然后再试试。</p>
+<p>既然说是”回归“任务，那我去年做的 <code>SVR</code> 是不是也可以用？</p>
+<p>分享会上也有人提到了，觉得这个任务似乎没有特别的”时序“特征，我也这么觉得，感觉就是拿那一刻的气象数据来计算发电功率。如果是这样的话，那就没有必要用<code>LSTM</code>了。</p>
+<p>那 $11 \times 11$ 的数据的处理，有人也尝试采用了<code>CNN</code>来做「加权平均」得到不同类别的气象数据的特征。但后面吴嘉丽（第一次分享会上除主持人外唯一的女生，还说自己不吃学计算机的，但她太厉害了）有提到，这 121 个点在真实世界中不一定是</p>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -3451,5 +3455,10 @@ django底层会执行这样的sql语句，创建的表名是app名加下划线�
         <tag>算法</tag>
         <tag>AI竞赛</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>DataWhale AI春训营创新药赛道</title>
+    <url>/2025/04/19/DataWhale-AI%E6%98%A5%E8%AE%AD%E8%90%A5%E5%88%9B%E6%96%B0%E8%8D%AF%E8%B5%9B%E9%81%93/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>

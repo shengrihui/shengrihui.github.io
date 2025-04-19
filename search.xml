@@ -3427,4 +3427,29 @@ django底层会执行这样的sql语句，创建的表名是app名加下划线�
         <tag>Django</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Datawhale AI春训营</title>
+    <url>/2025/04/19/Datawhale-AI%E6%98%A5%E8%AE%AD%E8%90%A5/</url>
+    <content><![CDATA[<h2 id="0419"><a href="#0419" class="headerlink" title="0419"></a>0419</h2><h3 id="数据的初步认识"><a href="#数据的初步认识" class="headerlink" title="数据的初步认识"></a>数据的初步认识</h3><h4 id="nc-文件"><a href="#nc-文件" class="headerlink" title="nc 文件"></a>nc 文件</h4><p><code>nc</code> 文件我总感觉我已经接触过，但为什么这次感觉这么不一样呢。😕</p>
+<p>这一次的数据每一个文件里的<code>data</code>维度是<code>(1, 24, 8, 11, 11)</code>，其中：</p>
+<ul>
+<li>第一个维度的 <code>1</code>  大家都说没啥用，但我觉得它的理解就是“这一天”的意思，假如吧好多文件的好多天的拼在一起，这第一个维度不就有意义了么~</li>
+<li>第二个维度是一天的 24 小时；</li>
+<li>第三个维度是 8 个类别的气象数据；</li>
+<li>后面的 $11 \times 11$ 的是这个场站边上的 $11 \times 11$ 个气象数据采集点。</li>
+</ul>
+<h4 id="数据融合和处理"><a href="#数据融合和处理" class="headerlink" title="数据融合和处理"></a>数据融合和处理</h4><p>三个气象数据源种，<code>NWP_2</code> 和 <code>NWP_1</code> 、<code>NWP_3</code> 有不一样，<code>NWP_2</code> 里有个是<code>msl</code> 海平面气压，领两个对应的是 <code>sp</code>地面气压。</p>
+<p>这三个气象站数据怎么处理？</p>
+<p>异常值还没有发现。</p>
+<h4 id="模型选择"><a href="#模型选择" class="headerlink" title="模型选择"></a>模型选择</h4><p>因为刚看到数据的时候，见是时间序列的，然后还是预测的，我立刻想到了<code>LSTM</code>。</p>
+<p>但是 baseline 里用的是 <code>lightgbm</code>，一个机器学习模型，不太熟悉。前</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>AI竞赛</tag>
+      </tags>
+  </entry>
 </search>

@@ -28,7 +28,7 @@
 <meta property="og:description" content="解决什么问题？单点更新，计算前缀和。 原理">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-01-08T03:28:15.000Z">
-<meta property="article:modified_time" content="2026-01-08T08:11:28.660Z">
+<meta property="article:modified_time" content="2026-01-08T08:47:58.011Z">
 <meta property="article:author" content="盛日辉">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="树状数组">
@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2026-01-08 11:28:15 / 修改时间：16:11:28" itemprop="dateCreated datePublished" datetime="2026-01-08T11:28:15+08:00">2026-01-08</time>
+              <time title="创建时间：2026-01-08 11:28:15 / 修改时间：16:47:58" itemprop="dateCreated datePublished" datetime="2026-01-08T11:28:15+08:00">2026-01-08</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -265,6 +265,9 @@
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="lowbit-相关"><a href="#lowbit-相关" class="headerlink" title="lowbit 相关"></a>lowbit 相关</h3><h4 id="求lowbit"><a href="#求lowbit" class="headerlink" title="求lowbit:"></a>求<code>lowbit</code>:</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lowbit = s &amp; -s</span><br></pre></td></tr></table></figure>
 <p>解释：<code>-s = ~s + 1</code>，即<code>s</code>的负数是所有位按位取反末尾加一，得到的结果和原来的<code>s</code>相比除了最右边的<code>1</code>一样，其他都相反，那再和<code>s</code>按位与，就得到了<code>lowbit</code>。</p>
 <h4 id="减去lowbit"><a href="#减去lowbit" class="headerlink" title="减去lowbit"></a>减去<code>lowbit</code></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i &amp;= i - <span class="number">1</span>  <span class="comment"># i -= i &amp; -i 的另一种写法</span></span><br></pre></td></tr></table></figure>
+<h3 id="下标问题"><a href="#下标问题" class="headerlink" title="下标问题"></a>下标问题</h3><p>在代码中，<code>tree</code>开$n+1$位置，询和更新的时候，认为它是下标从$1$开始，即只用$[1,n]$部分。</p>
+<p>而且，<code>tree</code>下标是必须从$1$开始，因为当$i=0$的时候，$lowbit(i)=0$，会发生死循环。</p>
+<p>而外面（题目中）的数组的下标可以从$0$也可以从$1$开始，如果从$0$开始，则需要$+1$，从$1$开始就不用了。</p>
 <h3 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h3><p>这是从空开始不断侯建的。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 模板来源 https://leetcode.cn/circle/discuss/mOr1u6/</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FenwickTree</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, n: <span class="built_in">int</span></span>):</span><br><span class="line">        <span class="variable language_">self</span>.tree = [<span class="number">0</span>] * (n + <span class="number">1</span>)  <span class="comment"># 使用下标 1 到 n</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># a[i] 增加 val</span></span><br><span class="line">    <span class="comment"># 1 &lt;= i &lt;= n</span></span><br><span class="line">    <span class="comment"># 时间复杂度 O(log n)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">update</span>(<span class="params">self, i: <span class="built_in">int</span>, val: <span class="built_in">int</span></span>) -&gt; <span class="literal">None</span>:</span><br><span class="line">        t = <span class="variable language_">self</span>.tree</span><br><span class="line">        <span class="keyword">while</span> i &lt; <span class="built_in">len</span>(t):</span><br><span class="line">            t[i] += val</span><br><span class="line">            i += i &amp; -i</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 计算前缀和 a[1] + ... + a[i]</span></span><br><span class="line">    <span class="comment"># 1 &lt;= i &lt;= n</span></span><br><span class="line">    <span class="comment"># 时间复杂度 O(log n)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">pre</span>(<span class="params">self, i: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        t = <span class="variable language_">self</span>.tree</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i &gt; <span class="number">0</span>:</span><br><span class="line">            res += t[i]</span><br><span class="line">            i &amp;= i - <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 计算区间和 a[l] + ... + a[r]</span></span><br><span class="line">    <span class="comment"># 1 &lt;= l &lt;= r &lt;= n</span></span><br><span class="line">    <span class="comment"># 时间复杂度 O(log n)</span></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">query</span>(<span class="params">self, l: <span class="built_in">int</span>, r: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        <span class="keyword">if</span> r &lt; l:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">self</span>.pre(r) - <span class="variable language_">self</span>.pre(l - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 作者：灵茶山艾府</span></span><br><span class="line"><span class="comment"># 链接：https://leetcode.cn/discuss/post/3583665/fen-xiang-gun-ti-dan-chang-yong-shu-ju-j-bvmv/</span></span><br><span class="line"><span class="comment"># 来源：力扣（LeetCode）</span></span><br><span class="line"><span class="comment"># 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span></span><br></pre></td></tr></table></figure>
 <p>这是有初始值的$O(nlog\ n)$的做法</p>
@@ -382,7 +385,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">解决什么问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%81%B5%E7%A5%9E%E8%AE%B2%E8%A7%A3"><span class="nav-number">2.1.</span> <span class="nav-text">灵神讲解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%90%86%E8%A7%A3%E4%B8%8E%E6%80%BB%E7%BB%93"><span class="nav-number">2.2.</span> <span class="nav-text">理解与总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%9F%A5%E8%AF%A2-1-i-%E7%9A%84%E5%85%83%E7%B4%A0%E5%92%8C"><span class="nav-number">2.2.1.</span> <span class="nav-text">如何查询$[1,i]$的元素和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%9B%B4%E6%96%B0%E5%8D%95%E7%82%B9-i"><span class="nav-number">2.2.2.</span> <span class="nav-text">如何更新单点$i$</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lowbit-%E7%9B%B8%E5%85%B3"><span class="nav-number">3.1.</span> <span class="nav-text">lowbit 相关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B1%82lowbit"><span class="nav-number">3.1.1.</span> <span class="nav-text">求lowbit:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%8F%E5%8E%BBlowbit"><span class="nav-number">3.1.2.</span> <span class="nav-text">减去lowbit</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF"><span class="nav-number">3.2.</span> <span class="nav-text">模板</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%8D%95"><span class="nav-number">4.</span> <span class="nav-text">题单</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">解决什么问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%81%B5%E7%A5%9E%E8%AE%B2%E8%A7%A3"><span class="nav-number">2.1.</span> <span class="nav-text">灵神讲解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%90%86%E8%A7%A3%E4%B8%8E%E6%80%BB%E7%BB%93"><span class="nav-number">2.2.</span> <span class="nav-text">理解与总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%9F%A5%E8%AF%A2-1-i-%E7%9A%84%E5%85%83%E7%B4%A0%E5%92%8C"><span class="nav-number">2.2.1.</span> <span class="nav-text">如何查询$[1,i]$的元素和</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%9B%B4%E6%96%B0%E5%8D%95%E7%82%B9-i"><span class="nav-number">2.2.2.</span> <span class="nav-text">如何更新单点$i$</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lowbit-%E7%9B%B8%E5%85%B3"><span class="nav-number">3.1.</span> <span class="nav-text">lowbit 相关</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B1%82lowbit"><span class="nav-number">3.1.1.</span> <span class="nav-text">求lowbit:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%87%8F%E5%8E%BBlowbit"><span class="nav-number">3.1.2.</span> <span class="nav-text">减去lowbit</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E6%A0%87%E9%97%AE%E9%A2%98"><span class="nav-number">3.2.</span> <span class="nav-text">下标问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF"><span class="nav-number">3.3.</span> <span class="nav-text">模板</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E5%8D%95"><span class="nav-number">4.</span> <span class="nav-text">题单</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -538,6 +541,59 @@
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

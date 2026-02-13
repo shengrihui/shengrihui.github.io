@@ -406,26 +406,6 @@ django底层会执行这样的sql语句，创建的表名是app名加下划线�
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/posts/1243066710.html</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-      <tags>
-        <tag>其他</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>hexo命令.md</title>
     <url>/posts/3720729547.html</url>
     <content><![CDATA[<p>B站视频：<a href="https://www.bilibili.com/video/BV1Yb411a7ty?spm_id_from=333.999.0.0">https://www.bilibili.com/video/BV1Yb411a7ty?spm_id_from=333.999.0.0</a></p>
@@ -450,6 +430,26 @@ django底层会执行这样的sql语句，创建的表名是app名加下划线�
       </categories>
       <tags>
         <tag>命令</tag>
+        <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/posts/1243066710.html</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
         <tag>其他</tag>
       </tags>
   </entry>
@@ -623,6 +623,46 @@ end tell
       </tags>
   </entry>
   <entry>
+    <title>next主题配置</title>
+    <url>/posts/3330001796.html</url>
+    <content><![CDATA[<h4 id="04-正确姿势打开标签页和分类页"><a href="#04-正确姿势打开标签页和分类页" class="headerlink" title="04 正确姿势打开标签页和分类页"></a>04 正确姿势打开标签页和分类页</h4><ol>
+<li>命令<code>hexo n page tags</code>,source文件夹中多出一个包含index.html的tags文件夹。这时候博客中的“标签就能打开了。</li>
+<li>修改index.html文件。<code>title</code>改为<code>标签</code>，增加一行<code>type: tags</code>（这句不写标签页不会有标签）。</li>
+<li>命令：<code>hexo n page categories</code>创建分类页。</li>
+<li>修改categories里的index.html ，与之前类似。</li>
+</ol>
+<h4 id="05-主题样式的更改"><a href="#05-主题样式的更改" class="headerlink" title="05 主题样式的更改"></a>05 主题样式的更改</h4><p>在样式配置文件中修改<code>Schemes</code>项。</p>
+<h4 id="04-设置主题头像"><a href="#04-设置主题头像" class="headerlink" title="04 设置主题头像"></a>04 设置主题头像</h4><p>主题配置文件中<code>Avatar</code>项</p>
+<h4 id="07-更改作者和标题以及链接"><a href="#07-更改作者和标题以及链接" class="headerlink" title="07 更改作者和标题以及链接"></a>07 更改作者和标题以及链接</h4><h4 id="08-启用侧边栏社交链接"><a href="#08-启用侧边栏社交链接" class="headerlink" title="08 启用侧边栏社交链接"></a>08 启用侧边栏社交链接</h4><ul>
+<li>主题配置文件的<code>Social</code>项。</li>
+</ul>
+<h4 id="09-启用友情链接"><a href="#09-启用友情链接" class="headerlink" title="09 启用友情链接"></a>09 启用友情链接</h4><p>主题配置文件中<code>links_settings</code>项。</p>
+<h4 id="10-新建一篇文章"><a href="#10-新建一篇文章" class="headerlink" title="10 新建一篇文章"></a>10 新建一篇文章</h4><ul>
+<li><code>hexo n 文章名</code> 新建一篇文章</li>
+<li>在文章里添加标签和分类：<br>  tags:<pre><code> - xx
+ - xx
+    categories:
+    xx
+</code></pre></li>
+</ul>
+<h4 id="11-Markdown的使用"><a href="#11-Markdown的使用" class="headerlink" title="11 Markdown的使用"></a>11 Markdown的使用</h4><h4 id="12-开启文章打赏功能"><a href="#12-开启文章打赏功能" class="headerlink" title="12 开启文章打赏功能"></a>12 开启文章打赏功能</h4><p>主题配置文件中<code>reward</code>项。</p>
+<h4 id="13-开启订阅公众号"><a href="#13-开启订阅公众号" class="headerlink" title="13 开启订阅公众号"></a>13 开启订阅公众号</h4><p>主题配置文件中<code>wechat Subscriber</code>项。</p>
+<h4 id="14-设置头像是圆形可旋转"><a href="#14-设置头像是圆形可旋转" class="headerlink" title="14 设置头像是圆形可旋转"></a>14 设置头像是圆形可旋转</h4><ul>
+<li>打开文件<code>..\themes\hexo-theme-next\source\css\_common\outline\sidebar\sidebar-author.sty</code>，对其中的参数进行修改。</li>
+<li>在主题配置文件中修改： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># If true, the avatar will be dispalyed in circle.</span><br><span class="line">rounded: true</span><br><span class="line"># If true, the avatar will be rotated with the cursor.</span><br><span class="line">rotated: true</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  第一个是让头像在圆中显示，第二个是鼠标移上去后旋转。</span><br><span class="line"></span><br><span class="line">#### 15 首页设置文章阅读全文</span><br></pre></td></tr></table></figure>
+excerpt:<br>depth: 3  #按层来算，也就是按代码块来算<br>excerpt_excludes: []<br>more_excludes: []<br>hideWholePostExcerpts: true<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">#### 背景黑色</span><br><span class="line"></span><br><span class="line">#### fork Github</span><br><span class="line">打开``..\themes\hexo-theme-next\layout``中的文件`_layout.swig`。</span><br><span class="line">在https://tholman.com/github-corners/ 中选一个样式，将代码复制到文件中的`&lt;/header&gt;`前，并修改称自己的GitHub链接。</span><br><span class="line"></span><br><span class="line">#### 搜索功能</span><br><span class="line">按官方文档的local search来。http://theme-next.iissnan.com/third-party-services.html</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>其他</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>matlab-pspectrum函数.md</title>
     <url>/posts/3710154345.html</url>
     <content><![CDATA[<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
@@ -781,46 +821,6 @@ end tell
       </tags>
   </entry>
   <entry>
-    <title>next主题配置</title>
-    <url>/posts/3330001796.html</url>
-    <content><![CDATA[<h4 id="04-正确姿势打开标签页和分类页"><a href="#04-正确姿势打开标签页和分类页" class="headerlink" title="04 正确姿势打开标签页和分类页"></a>04 正确姿势打开标签页和分类页</h4><ol>
-<li>命令<code>hexo n page tags</code>,source文件夹中多出一个包含index.html的tags文件夹。这时候博客中的“标签就能打开了。</li>
-<li>修改index.html文件。<code>title</code>改为<code>标签</code>，增加一行<code>type: tags</code>（这句不写标签页不会有标签）。</li>
-<li>命令：<code>hexo n page categories</code>创建分类页。</li>
-<li>修改categories里的index.html ，与之前类似。</li>
-</ol>
-<h4 id="05-主题样式的更改"><a href="#05-主题样式的更改" class="headerlink" title="05 主题样式的更改"></a>05 主题样式的更改</h4><p>在样式配置文件中修改<code>Schemes</code>项。</p>
-<h4 id="04-设置主题头像"><a href="#04-设置主题头像" class="headerlink" title="04 设置主题头像"></a>04 设置主题头像</h4><p>主题配置文件中<code>Avatar</code>项</p>
-<h4 id="07-更改作者和标题以及链接"><a href="#07-更改作者和标题以及链接" class="headerlink" title="07 更改作者和标题以及链接"></a>07 更改作者和标题以及链接</h4><h4 id="08-启用侧边栏社交链接"><a href="#08-启用侧边栏社交链接" class="headerlink" title="08 启用侧边栏社交链接"></a>08 启用侧边栏社交链接</h4><ul>
-<li>主题配置文件的<code>Social</code>项。</li>
-</ul>
-<h4 id="09-启用友情链接"><a href="#09-启用友情链接" class="headerlink" title="09 启用友情链接"></a>09 启用友情链接</h4><p>主题配置文件中<code>links_settings</code>项。</p>
-<h4 id="10-新建一篇文章"><a href="#10-新建一篇文章" class="headerlink" title="10 新建一篇文章"></a>10 新建一篇文章</h4><ul>
-<li><code>hexo n 文章名</code> 新建一篇文章</li>
-<li>在文章里添加标签和分类：<br>  tags:<pre><code> - xx
- - xx
-    categories:
-    xx
-</code></pre></li>
-</ul>
-<h4 id="11-Markdown的使用"><a href="#11-Markdown的使用" class="headerlink" title="11 Markdown的使用"></a>11 Markdown的使用</h4><h4 id="12-开启文章打赏功能"><a href="#12-开启文章打赏功能" class="headerlink" title="12 开启文章打赏功能"></a>12 开启文章打赏功能</h4><p>主题配置文件中<code>reward</code>项。</p>
-<h4 id="13-开启订阅公众号"><a href="#13-开启订阅公众号" class="headerlink" title="13 开启订阅公众号"></a>13 开启订阅公众号</h4><p>主题配置文件中<code>wechat Subscriber</code>项。</p>
-<h4 id="14-设置头像是圆形可旋转"><a href="#14-设置头像是圆形可旋转" class="headerlink" title="14 设置头像是圆形可旋转"></a>14 设置头像是圆形可旋转</h4><ul>
-<li>打开文件<code>..\themes\hexo-theme-next\source\css\_common\outline\sidebar\sidebar-author.sty</code>，对其中的参数进行修改。</li>
-<li>在主题配置文件中修改： <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># If true, the avatar will be dispalyed in circle.</span><br><span class="line">rounded: true</span><br><span class="line"># If true, the avatar will be rotated with the cursor.</span><br><span class="line">rotated: true</span><br></pre></td></tr></table></figure>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">  第一个是让头像在圆中显示，第二个是鼠标移上去后旋转。</span><br><span class="line"></span><br><span class="line">#### 15 首页设置文章阅读全文</span><br></pre></td></tr></table></figure>
-excerpt:<br>depth: 3  #按层来算，也就是按代码块来算<br>excerpt_excludes: []<br>more_excludes: []<br>hideWholePostExcerpts: true<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">#### 背景黑色</span><br><span class="line"></span><br><span class="line">#### fork Github</span><br><span class="line">打开``..\themes\hexo-theme-next\layout``中的文件`_layout.swig`。</span><br><span class="line">在https://tholman.com/github-corners/ 中选一个样式，将代码复制到文件中的`&lt;/header&gt;`前，并修改称自己的GitHub链接。</span><br><span class="line"></span><br><span class="line">#### 搜索功能</span><br><span class="line">按官方文档的local search来。http://theme-next.iissnan.com/third-party-services.html</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-      <tags>
-        <tag>其他</tag>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>欧拉公式</title>
     <url>/posts/2483153324.html</url>
     <content><![CDATA[<h3 id="欧拉公式"><a href="#欧拉公式" class="headerlink" title="欧拉公式"></a>欧拉公式</h3><p>$ e^{i\theta} = \cos\theta + i\sin\theta$ ，当 $\theta=\pi$ 时，$e^{i\pi} + 1 =0$.</p>
@@ -947,6 +947,35 @@ e^{ix}&=1+ix+\frac{(ix)^2}{2!}+\frac{(ix)^3}{3!}+\frac{(ix)^4}{4!}+...\\
       <tags>
         <tag>C++</tag>
         <tag>parallel</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hadoop-相关知识</title>
+    <url>/posts/2686450373.html</url>
+    <content><![CDATA[<h2 id="大数据"><a href="#大数据" class="headerlink" title="大数据"></a>大数据</h2><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>略。<br>大数据主要解决，海量数据的<strong>采集</strong>、<strong>存储</strong>和<strong>分析计算</strong>问题。</p>
+<h4 id="提点"><a href="#提点" class="headerlink" title="提点"></a>提点</h4><p>1.大量（Volume）：数据量大；<br>2.高速（Velocity）：数据产生快，计算速度快；<br>3.多样（Variety）：数据烈性多样，结构化和非结构化；<br>4.低价值密度（Value）：海量数据里真正有价值的不多。</p>
+<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>抖音推荐，电商推荐，零售，物流，保险，人工智能+5G+物联网+虚拟与现实……</p>
+<h4 id="发展前景"><a href="#发展前景" class="headerlink" title="发展前景"></a>发展前景</h4><p>好。人才紧缺。</p>
+<h4 id="大数据部门间业务流程"><a href="#大数据部门间业务流程" class="headerlink" title="大数据部门间业务流程"></a>大数据部门间业务流程</h4><p>产品经理+程序员+前端。<br>大数据内部：还有好多。</p>
+<h4 id="大数据生态圈与Hadoop"><a href="#大数据生态圈与Hadoop" class="headerlink" title="大数据生态圈与Hadoop"></a>大数据生态圈与Hadoop</h4><h2 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h2><h4 id="Hadoop是什么"><a href="#Hadoop是什么" class="headerlink" title="Hadoop是什么"></a>Hadoop是什么</h4><h4 id="发展历史"><a href="#发展历史" class="headerlink" title="发展历史"></a>发展历史</h4><h4 id="三大发行版本"><a href="#三大发行版本" class="headerlink" title="三大发行版本"></a>三大发行版本</h4><h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><p>1.高可靠性：不容易错，错了有备份；<br>2.高扩展性：任意临时加服务器；<br>3.高效性：并行计算；<br>4.高容错性：自动讲错了的任务重新分配。</p>
+<h4 id="Hadoop组成"><a href="#Hadoop组成" class="headerlink" title="==Hadoop组成=="></a>==Hadoop组成==</h4><h5 id="Hadoop-1-X-组成"><a href="#Hadoop-1-X-组成" class="headerlink" title="Hadoop 1.X 组成"></a>Hadoop 1.X 组成</h5><ul>
+<li>Commin辅助工具</li>
+<li>HDFS 数据存储</li>
+<li>MapReduce 计算+资源调度<h5 id="Hadoop-2-X-组成"><a href="#Hadoop-2-X-组成" class="headerlink" title="Hadoop 2.X 组成"></a>Hadoop 2.X 组成</h5></li>
+<li>Commin辅助工具</li>
+<li>HDFS 数据存储</li>
+<li>Yarn 资源调度</li>
+<li>MapReduce 计算<h5 id="Hadoop-3-X"><a href="#Hadoop-3-X" class="headerlink" title="Hadoop 3.X"></a>Hadoop 3.X</h5>Hadoop 3.X 在组成上没有变化。<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/Hadoop不同版本呢组成.44jhx6qkvxu0.webp" alt="Hadoop不同版本呢组成"></li>
+</ul>
+<h4 id="HDFS架构"><a href="#HDFS架构" class="headerlink" title="HDFS架构"></a>HDFS架构</h4><p>Hadoop Distributed FIle System 分布式文件系统。</p>
+<h4 id="Yarn"><a href="#Yarn" class="headerlink" title="Yarn"></a>Yarn</h4><h4 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h4><h4 id="HDFS-Yarn-Mapduce三者来联系"><a href="#HDFS-Yarn-Mapduce三者来联系" class="headerlink" title="HDFS/Yarn/Mapduce三者来联系"></a>HDFS/Yarn/Mapduce三者来联系</h4>]]></content>
+      <categories>
+        <category>学校课程</category>
+      </categories>
+      <tags>
+        <tag>学校课程</tag>
+        <tag>大数据</tag>
+        <tag>Hadoop</tag>
       </tags>
   </entry>
   <entry>
@@ -1097,25 +1126,54 @@ e^{ix}&=1+ix+\frac{(ix)^2}{2!}+\frac{(ix)^3}{3!}+\frac{(ix)^4}{4!}+...\\
       </tags>
   </entry>
   <entry>
-    <title>Hadoop-相关知识</title>
-    <url>/posts/2686450373.html</url>
-    <content><![CDATA[<h2 id="大数据"><a href="#大数据" class="headerlink" title="大数据"></a>大数据</h2><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>略。<br>大数据主要解决，海量数据的<strong>采集</strong>、<strong>存储</strong>和<strong>分析计算</strong>问题。</p>
-<h4 id="提点"><a href="#提点" class="headerlink" title="提点"></a>提点</h4><p>1.大量（Volume）：数据量大；<br>2.高速（Velocity）：数据产生快，计算速度快；<br>3.多样（Variety）：数据烈性多样，结构化和非结构化；<br>4.低价值密度（Value）：海量数据里真正有价值的不多。</p>
-<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>抖音推荐，电商推荐，零售，物流，保险，人工智能+5G+物联网+虚拟与现实……</p>
-<h4 id="发展前景"><a href="#发展前景" class="headerlink" title="发展前景"></a>发展前景</h4><p>好。人才紧缺。</p>
-<h4 id="大数据部门间业务流程"><a href="#大数据部门间业务流程" class="headerlink" title="大数据部门间业务流程"></a>大数据部门间业务流程</h4><p>产品经理+程序员+前端。<br>大数据内部：还有好多。</p>
-<h4 id="大数据生态圈与Hadoop"><a href="#大数据生态圈与Hadoop" class="headerlink" title="大数据生态圈与Hadoop"></a>大数据生态圈与Hadoop</h4><h2 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h2><h4 id="Hadoop是什么"><a href="#Hadoop是什么" class="headerlink" title="Hadoop是什么"></a>Hadoop是什么</h4><h4 id="发展历史"><a href="#发展历史" class="headerlink" title="发展历史"></a>发展历史</h4><h4 id="三大发行版本"><a href="#三大发行版本" class="headerlink" title="三大发行版本"></a>三大发行版本</h4><h4 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h4><p>1.高可靠性：不容易错，错了有备份；<br>2.高扩展性：任意临时加服务器；<br>3.高效性：并行计算；<br>4.高容错性：自动讲错了的任务重新分配。</p>
-<h4 id="Hadoop组成"><a href="#Hadoop组成" class="headerlink" title="==Hadoop组成=="></a>==Hadoop组成==</h4><h5 id="Hadoop-1-X-组成"><a href="#Hadoop-1-X-组成" class="headerlink" title="Hadoop 1.X 组成"></a>Hadoop 1.X 组成</h5><ul>
-<li>Commin辅助工具</li>
-<li>HDFS 数据存储</li>
-<li>MapReduce 计算+资源调度<h5 id="Hadoop-2-X-组成"><a href="#Hadoop-2-X-组成" class="headerlink" title="Hadoop 2.X 组成"></a>Hadoop 2.X 组成</h5></li>
-<li>Commin辅助工具</li>
-<li>HDFS 数据存储</li>
-<li>Yarn 资源调度</li>
-<li>MapReduce 计算<h5 id="Hadoop-3-X"><a href="#Hadoop-3-X" class="headerlink" title="Hadoop 3.X"></a>Hadoop 3.X</h5>Hadoop 3.X 在组成上没有变化。<br><img src="https://cdn.jsdelivr.net/gh/shengrihui/Image-hosting@master/Hadoop不同版本呢组成.44jhx6qkvxu0.webp" alt="Hadoop不同版本呢组成"></li>
+    <title>Hadoop-配置（极简版）</title>
+    <url>/posts/104810387.html</url>
+    <content><![CDATA[<h3 id="模板虚拟机环境准备"><a href="#模板虚拟机环境准备" class="headerlink" title="模板虚拟机环境准备"></a>模板虚拟机环境准备</h3><h4 id="VMware安装"><a href="#VMware安装" class="headerlink" title="VMware安装"></a>VMware安装</h4><h4 id="Xfpt与Xshell安装"><a href="#Xfpt与Xshell安装" class="headerlink" title="Xfpt与Xshell安装"></a>Xfpt与Xshell安装</h4><h4 id="电脑虚拟化准备好"><a href="#电脑虚拟化准备好" class="headerlink" title="电脑虚拟化准备好"></a>电脑虚拟化准备好</h4><h4 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h4><ul>
+<li>cpu、内存根据自己电脑改；</li>
+<li>网络用NAT模式；</li>
+<li>硬盘尽量大（50GB或40GB）；</li>
+<li>其他默认。<h4 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h4></li>
+<li>软件选择：最小安装/GNOME桌面</li>
+<li>安装位置：<ul>
+<li>我要配置分区-&gt;完成；</li>
+<li>添加<code>/boot</code>分区，是系统启动时需要的内存，1G，修改文件类型为<code>ext4</code>;</li>
+<li>添加<code>swap</code>分区，是内存不够时用硬盘冒充内存，4G;</li>
+<li>添加<code>/</code>根目录，剩余所有空间。</li>
 </ul>
-<h4 id="HDFS架构"><a href="#HDFS架构" class="headerlink" title="HDFS架构"></a>HDFS架构</h4><p>Hadoop Distributed FIle System 分布式文件系统。</p>
-<h4 id="Yarn"><a href="#Yarn" class="headerlink" title="Yarn"></a>Yarn</h4><h4 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h4><h4 id="HDFS-Yarn-Mapduce三者来联系"><a href="#HDFS-Yarn-Mapduce三者来联系" class="headerlink" title="HDFS/Yarn/Mapduce三者来联系"></a>HDFS/Yarn/Mapduce三者来联系</h4>]]></content>
+</li>
+<li>关闭KDUMP。这是假如系统崩了，备份用的一块区域，学习阶段不开。</li>
+<li>打开以太网，设置主机名为`hadoop100’。</li>
+<li>默认安全策略。</li>
+<li>开始安装。</li>
+<li>设置简单的root密码。</li>
+<li>重启。</li>
+<li>重启后，创建个普通用户，其他默认走就行。</li>
+</ul>
+<h4 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h4><h5 id="VM网络设置"><a href="#VM网络设置" class="headerlink" title="VM网络设置"></a>VM网络设置</h5><h5 id="Windows设置"><a href="#Windows设置" class="headerlink" title="Windows设置"></a>Windows设置</h5><h5 id="CentOS设置"><a href="#CentOS设置" class="headerlink" title="CentOS设置"></a>CentOS设置</h5><ol>
+<li>切到root用户 <code>su root</code>，输入密码；</li>
+<li><code>vim /etc/sysconfig/network-scripts/ifcfg-ens33</code>进入网络配置的文件；</li>
+<li>将<code>BOOTPROTO=&quot;dhcp&quot;</code>修改为<code>BOOTPROTO=&quot;static&quot;</code>，也就是设置静态IP；</li>
+<li>在最后增加：<br> IPADDR=192.168.100.100<br> GATEWAY=192.168.100.2<br> DNS1=192.168.100.2<br>分别是IP地址，网关，域名。</li>
+<li>修改主机名：<code>vim /etc/hostname</code>，写上主机名。</li>
+<li>配置主机名称映射：<code>vim /etc/hosts</code>，在后面假如：<br> 192.168.100.100 hadoop100<br> 192.168.100.101 hadoop101<br> 192.168.100.102 hadoop102<br> 192.168.100.103 hadoop103<br> 192.168.100.104 hadoop104<br> 192.168.100.105 hadoop105<br> 192.168.100.106 hadoop106<br> 192.168.100.107 hadoop107<br> 192.168.100.108 hadoop108</li>
+<li><code>reboot</code>命令重启。</li>
+<li>以root权限登录。</li>
+<li>检查ip地址与主机名是否配置好：<ol>
+<li><code>ifconfig</code>命令查看IP地址；</li>
+<li><code>ping www.baidu.com</code>看能否ping成功。</li>
+<li><code>hostname</code>查看主机名。<h4 id="用Xshell进行远程链接"><a href="#用Xshell进行远程链接" class="headerlink" title="用Xshell进行远程链接"></a>用Xshell进行远程链接</h4></li>
+</ol>
+</li>
+<li>用Xshell链接</li>
+<li>主机映射<h4 id="安装一些包和关闭防火墙和一些其他设置"><a href="#安装一些包和关闭防火墙和一些其他设置" class="headerlink" title="安装一些包和关闭防火墙和一些其他设置"></a>安装一些包和关闭防火墙和一些其他设置</h4></li>
+<li><code>yum install -y epel-release</code>提供需要的包</li>
+<li><code>yum install -y net-tools</code>网络</li>
+<li></li>
+<li><code>systemctl stop firewalld</code>关闭防火墙</li>
+<li><code>systemctl disable firewalld.service</code>开机时关闭防火墙</li>
+<li>给永辉root权限</li>
+</ol>
+<h3 id="克隆虚拟机"><a href="#克隆虚拟机" class="headerlink" title="克隆虚拟机"></a>克隆虚拟机</h3><h3 id="在hadoop102上安装jdk和环境配置"><a href="#在hadoop102上安装jdk和环境配置" class="headerlink" title="在hadoop102上安装jdk和环境配置"></a>在hadoop102上安装jdk和环境配置</h3><h3 id="在hadoop102上安装hadoop和环境配置"><a href="#在hadoop102上安装hadoop和环境配置" class="headerlink" title="在hadoop102上安装hadoop和环境配置"></a>在hadoop102上安装hadoop和环境配置</h3><h3 id="本地运行"><a href="#本地运行" class="headerlink" title="本地运行"></a>本地运行</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">#1. 判断参数个数</span><br><span class="line">if [ $# -lt 1 ]</span><br><span class="line">then</span><br><span class="line"> echo Not Enough Arguement!</span><br><span class="line"> exit;</span><br><span class="line">fi</span><br><span class="line">#2. 遍历集群所有机器</span><br><span class="line">for host in hadoop102 hadoop103 hadoop104</span><br><span class="line">do</span><br><span class="line"> echo ==================== $host ====================</span><br><span class="line"> #3. 遍历所有目录，挨个发送</span><br><span class="line"> for file in $@</span><br><span class="line"> do</span><br><span class="line"> #4. 判断文件是否存在</span><br><span class="line"> if [ -e $file ]</span><br><span class="line"> then</span><br><span class="line"> #5. 获取父目录</span><br><span class="line"> pdir=$(cd -P $(dirname $file); pwd)</span><br><span class="line"> #6. 获取当前文件的名称</span><br><span class="line"> fname=$(basename $file)</span><br><span class="line"> ssh $host &quot;mkdir -p $pdir&quot;</span><br><span class="line"> rsync -av $pdir/$fname $host:$pdir</span><br><span class="line"> else</span><br><span class="line"> echo $file does not exists!</span><br><span class="line"> fi</span><br><span class="line"> done</span><br><span class="line">done</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>学校课程</category>
       </categories>
@@ -1123,6 +1181,38 @@ e^{ix}&=1+ix+\frac{(ix)^2}{2!}+\frac{(ix)^3}{3!}+\frac{(ix)^4}{4!}+...\\
         <tag>学校课程</tag>
         <tag>大数据</tag>
         <tag>Hadoop</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>操作系统-第六章文件管理</title>
+    <url>/posts/2914024077.html</url>
+    <content><![CDATA[<h3 id="6-1-文件和文件系统"><a href="#6-1-文件和文件系统" class="headerlink" title="6.1 文件和文件系统"></a>6.1 文件和文件系统</h3><p>文件：有结构文件，无结构文件。<br>有结构文件：数据项，记录。<br>无结构文件：字符流。<br>文件的属性和类型<br>文件系统和文件系统模型 。文件系统：是操作系统中负责管理和存取文件的程序模块。<br>文件操作</p>
+<h3 id="6-2-文件的逻辑结构"><a href="#6-2-文件的逻辑结构" class="headerlink" title="6.2 文件的逻辑结构"></a>6.2 文件的逻辑结构</h3><p>对文件逻辑结构的基本要求：提高检索速度；便于修改；降低文件的存储费用。</p>
+<h4 id="文件逻辑结构的类型"><a href="#文件逻辑结构的类型" class="headerlink" title="文件逻辑结构的类型"></a>文件逻辑结构的类型</h4><ul>
+<li>有结构文件：指由一个以上的记录构成的文件，故又称为记录式文件。<ul>
+<li>根据记录长度：定长记录和变长记录</li>
+<li>根据记录的组织方式：顺序文件、索引文件和索引顺序文件</li>
+</ul>
+</li>
+<li>无结构文件：指由字符流构成的文件，故又称为流式文件。</li>
+</ul>
+<h4 id="顺序文件"><a href="#顺序文件" class="headerlink" title="顺序文件"></a>顺序文件</h4><p>串结构：按时间网后跟上。<br>顺序结构：按记录的某个顺序。<br>优点：管理简单，系统开销小；适用于大批量数据的存取，此时顺序文件的存取效率是所有逻辑文件中最高的；顺序文件是唯一的一种同时适合在磁盘和磁带中存储的文件。<br>缺点：顺序文件的顺序查找效率低和更新性能差。</p>
+<h4 id="索引文件"><a href="#索引文件" class="headerlink" title="索引文件"></a>索引文件</h4><p>对顺序文件定长可以随机读写，不定唱的只能顺序读写。<br>因此加上索引。</p>
+<h4 id="索引顺序文件"><a href="#索引顺序文件" class="headerlink" title="索引顺序文件"></a>索引顺序文件</h4><p>文件本身非常大，索引表也会非常大，因此对文件分组索引，有索引顺序文件。<br>还可以多级索引。</p>
+<h3 id="6-3-外存分配方式"><a href="#6-3-外存分配方式" class="headerlink" title="6.3 外存分配方式"></a>6.3 外存分配方式</h3><p>内存中以字节为单位存，外存中以盘块存。</p>
+<h4 id="连续分配"><a href="#连续分配" class="headerlink" title="连续分配"></a>连续分配</h4><p>放：要求为每一个文件分配一组相邻接的盘块。<br>找：文件目录。<br>优点：<br>顺序访问容易；支持直接存取；顺序访问速度快（顺序存放也一般会在相邻的磁道上，磁头移动较少距离；可以随机存取）。<br>缺点：<br>要求有连续的存储空间，有碎片；<br>必须事先知道文件的长度。</p>
+<h4 id="链接分配"><a href="#链接分配" class="headerlink" title="链接分配"></a>链接分配</h4><p>放：离散的放。<br>隐式链接：将下一个盘块的地址存在上一个盘块中。缺点：就只能顺序找下去；一处断了，就完了，可靠性较差。目录里记录文件、开始盘块号、结束盘块号。<br>显式链接：显式地存放在内存的一张链接表（文件分配表，FAT）。<strong>FAT表在整个磁盘仅设置一张。</strong><br>显式和隐式相比，在内存中，快依稀嗯，但依然是顺序的，还占空间。</p>
+<h4 id="索引分配"><a href="#索引分配" class="headerlink" title="索引分配"></a>索引分配</h4><p>索引分配是为每个文件分配一个利用专门的索引结点（索引块），用于存放该文件所对应的所有盘块号，在建立文件时只需在为之建立的目录项中填上指向该索引块的指针即可。<br>索引分配方式支持直接访问。当要读文件的第i个盘块时，可以方便地直接从索引块中找到第i个盘块的盘块号。不会产生外部碎片。<br>索引分配索引——多级索引。<br>索引分配索引——混合分配</p>
+<h3 id="6-5-文件存储空间的管理"><a href="#6-5-文件存储空间的管理" class="headerlink" title="6.5 文件存储空间的管理"></a>6.5 文件存储空间的管理</h3><h4 id="空闲表法"><a href="#空闲表法" class="headerlink" title="空闲表法"></a>空闲表法</h4><p>优点：具有较高的分配速度，可减少访问磁盘的I/O频率。<br>缺点：为了获得足够大的连续存储区，需定时进行碎片整理。因而，空闲表法不适于文件频繁进行动态增长和缩短的文件系统，且要求用户在分配前知道文件长度。</p>
+<h4 id="空闲链表法"><a href="#空闲链表法" class="headerlink" title="空闲链表法"></a>空闲链表法</h4><p>空闲盘块链：将磁盘上的所有空闲空间，以盘块为单位拉成一条链。<br>空闲盘区链。</p>
+<h4 id="位示图法"><a href="#位示图法" class="headerlink" title="位示图法"></a>位示图法</h4><p>基本思想：位示图中用二进制位状态表示磁盘中一个盘块的使用情况，可用“0”表示对应的盘块空闲；“1”表示被分配。<br>位示图中的行号、列号和盘块号都从0开始编号，m行n列位示图中的m×n个位数可表示m×n块盘块的使用情况。<br>分配：顺序找位示图，找到一个或一组0，然后算出对应的盘块号，放完修改位示图。<br>回收：修改位示图</p>
+<h4 id="成组链接法"><a href="#成组链接法" class="headerlink" title="成组链接法"></a>成组链接法</h4><h3 id="6-4-目录管理"><a href="#6-4-目录管理" class="headerlink" title="6.4 目录管理"></a>6.4 目录管理</h3><h3 id="6-6-文件共享与文件保护"><a href="#6-6-文件共享与文件保护" class="headerlink" title="6.6 文件共享与文件保护"></a>6.6 文件共享与文件保护</h3>]]></content>
+      <categories>
+        <category>学校课程</category>
+      </categories>
+      <tags>
+        <tag>学校课程</tag>
+        <tag>操作系统</tag>
       </tags>
   </entry>
   <entry>
@@ -1235,96 +1325,6 @@ e^{ix}&=1+ix+\frac{(ix)^2}{2!}+\frac{(ix)^3}{3!}+\frac{(ix)^4}{4!}+...\\
 <h4 id="磁盘高速缓存"><a href="#磁盘高速缓存" class="headerlink" title="磁盘高速缓存"></a>磁盘高速缓存</h4><p>将内存作为磁盘高速缓存，逻辑上是磁盘的，物理上是内存的。</p>
 <h3 id="本章重点掌握"><a href="#本章重点掌握" class="headerlink" title="本章重点掌握"></a>本章重点掌握</h3><p>4种控制方式<br>引入缓冲原因<br>I/O软件层次，独立性<br>四种调度算法</p>
 ]]></content>
-      <categories>
-        <category>学校课程</category>
-      </categories>
-      <tags>
-        <tag>学校课程</tag>
-        <tag>操作系统</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hadoop-配置（极简版）</title>
-    <url>/posts/104810387.html</url>
-    <content><![CDATA[<h3 id="模板虚拟机环境准备"><a href="#模板虚拟机环境准备" class="headerlink" title="模板虚拟机环境准备"></a>模板虚拟机环境准备</h3><h4 id="VMware安装"><a href="#VMware安装" class="headerlink" title="VMware安装"></a>VMware安装</h4><h4 id="Xfpt与Xshell安装"><a href="#Xfpt与Xshell安装" class="headerlink" title="Xfpt与Xshell安装"></a>Xfpt与Xshell安装</h4><h4 id="电脑虚拟化准备好"><a href="#电脑虚拟化准备好" class="headerlink" title="电脑虚拟化准备好"></a>电脑虚拟化准备好</h4><h4 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h4><ul>
-<li>cpu、内存根据自己电脑改；</li>
-<li>网络用NAT模式；</li>
-<li>硬盘尽量大（50GB或40GB）；</li>
-<li>其他默认。<h4 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h4></li>
-<li>软件选择：最小安装/GNOME桌面</li>
-<li>安装位置：<ul>
-<li>我要配置分区-&gt;完成；</li>
-<li>添加<code>/boot</code>分区，是系统启动时需要的内存，1G，修改文件类型为<code>ext4</code>;</li>
-<li>添加<code>swap</code>分区，是内存不够时用硬盘冒充内存，4G;</li>
-<li>添加<code>/</code>根目录，剩余所有空间。</li>
-</ul>
-</li>
-<li>关闭KDUMP。这是假如系统崩了，备份用的一块区域，学习阶段不开。</li>
-<li>打开以太网，设置主机名为`hadoop100’。</li>
-<li>默认安全策略。</li>
-<li>开始安装。</li>
-<li>设置简单的root密码。</li>
-<li>重启。</li>
-<li>重启后，创建个普通用户，其他默认走就行。</li>
-</ul>
-<h4 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h4><h5 id="VM网络设置"><a href="#VM网络设置" class="headerlink" title="VM网络设置"></a>VM网络设置</h5><h5 id="Windows设置"><a href="#Windows设置" class="headerlink" title="Windows设置"></a>Windows设置</h5><h5 id="CentOS设置"><a href="#CentOS设置" class="headerlink" title="CentOS设置"></a>CentOS设置</h5><ol>
-<li>切到root用户 <code>su root</code>，输入密码；</li>
-<li><code>vim /etc/sysconfig/network-scripts/ifcfg-ens33</code>进入网络配置的文件；</li>
-<li>将<code>BOOTPROTO=&quot;dhcp&quot;</code>修改为<code>BOOTPROTO=&quot;static&quot;</code>，也就是设置静态IP；</li>
-<li>在最后增加：<br> IPADDR=192.168.100.100<br> GATEWAY=192.168.100.2<br> DNS1=192.168.100.2<br>分别是IP地址，网关，域名。</li>
-<li>修改主机名：<code>vim /etc/hostname</code>，写上主机名。</li>
-<li>配置主机名称映射：<code>vim /etc/hosts</code>，在后面假如：<br> 192.168.100.100 hadoop100<br> 192.168.100.101 hadoop101<br> 192.168.100.102 hadoop102<br> 192.168.100.103 hadoop103<br> 192.168.100.104 hadoop104<br> 192.168.100.105 hadoop105<br> 192.168.100.106 hadoop106<br> 192.168.100.107 hadoop107<br> 192.168.100.108 hadoop108</li>
-<li><code>reboot</code>命令重启。</li>
-<li>以root权限登录。</li>
-<li>检查ip地址与主机名是否配置好：<ol>
-<li><code>ifconfig</code>命令查看IP地址；</li>
-<li><code>ping www.baidu.com</code>看能否ping成功。</li>
-<li><code>hostname</code>查看主机名。<h4 id="用Xshell进行远程链接"><a href="#用Xshell进行远程链接" class="headerlink" title="用Xshell进行远程链接"></a>用Xshell进行远程链接</h4></li>
-</ol>
-</li>
-<li>用Xshell链接</li>
-<li>主机映射<h4 id="安装一些包和关闭防火墙和一些其他设置"><a href="#安装一些包和关闭防火墙和一些其他设置" class="headerlink" title="安装一些包和关闭防火墙和一些其他设置"></a>安装一些包和关闭防火墙和一些其他设置</h4></li>
-<li><code>yum install -y epel-release</code>提供需要的包</li>
-<li><code>yum install -y net-tools</code>网络</li>
-<li></li>
-<li><code>systemctl stop firewalld</code>关闭防火墙</li>
-<li><code>systemctl disable firewalld.service</code>开机时关闭防火墙</li>
-<li>给永辉root权限</li>
-</ol>
-<h3 id="克隆虚拟机"><a href="#克隆虚拟机" class="headerlink" title="克隆虚拟机"></a>克隆虚拟机</h3><h3 id="在hadoop102上安装jdk和环境配置"><a href="#在hadoop102上安装jdk和环境配置" class="headerlink" title="在hadoop102上安装jdk和环境配置"></a>在hadoop102上安装jdk和环境配置</h3><h3 id="在hadoop102上安装hadoop和环境配置"><a href="#在hadoop102上安装hadoop和环境配置" class="headerlink" title="在hadoop102上安装hadoop和环境配置"></a>在hadoop102上安装hadoop和环境配置</h3><h3 id="本地运行"><a href="#本地运行" class="headerlink" title="本地运行"></a>本地运行</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">#1. 判断参数个数</span><br><span class="line">if [ $# -lt 1 ]</span><br><span class="line">then</span><br><span class="line"> echo Not Enough Arguement!</span><br><span class="line"> exit;</span><br><span class="line">fi</span><br><span class="line">#2. 遍历集群所有机器</span><br><span class="line">for host in hadoop102 hadoop103 hadoop104</span><br><span class="line">do</span><br><span class="line"> echo ==================== $host ====================</span><br><span class="line"> #3. 遍历所有目录，挨个发送</span><br><span class="line"> for file in $@</span><br><span class="line"> do</span><br><span class="line"> #4. 判断文件是否存在</span><br><span class="line"> if [ -e $file ]</span><br><span class="line"> then</span><br><span class="line"> #5. 获取父目录</span><br><span class="line"> pdir=$(cd -P $(dirname $file); pwd)</span><br><span class="line"> #6. 获取当前文件的名称</span><br><span class="line"> fname=$(basename $file)</span><br><span class="line"> ssh $host &quot;mkdir -p $pdir&quot;</span><br><span class="line"> rsync -av $pdir/$fname $host:$pdir</span><br><span class="line"> else</span><br><span class="line"> echo $file does not exists!</span><br><span class="line"> fi</span><br><span class="line"> done</span><br><span class="line">done</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>学校课程</category>
-      </categories>
-      <tags>
-        <tag>学校课程</tag>
-        <tag>大数据</tag>
-        <tag>Hadoop</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>操作系统-第六章文件管理</title>
-    <url>/posts/2914024077.html</url>
-    <content><![CDATA[<h3 id="6-1-文件和文件系统"><a href="#6-1-文件和文件系统" class="headerlink" title="6.1 文件和文件系统"></a>6.1 文件和文件系统</h3><p>文件：有结构文件，无结构文件。<br>有结构文件：数据项，记录。<br>无结构文件：字符流。<br>文件的属性和类型<br>文件系统和文件系统模型 。文件系统：是操作系统中负责管理和存取文件的程序模块。<br>文件操作</p>
-<h3 id="6-2-文件的逻辑结构"><a href="#6-2-文件的逻辑结构" class="headerlink" title="6.2 文件的逻辑结构"></a>6.2 文件的逻辑结构</h3><p>对文件逻辑结构的基本要求：提高检索速度；便于修改；降低文件的存储费用。</p>
-<h4 id="文件逻辑结构的类型"><a href="#文件逻辑结构的类型" class="headerlink" title="文件逻辑结构的类型"></a>文件逻辑结构的类型</h4><ul>
-<li>有结构文件：指由一个以上的记录构成的文件，故又称为记录式文件。<ul>
-<li>根据记录长度：定长记录和变长记录</li>
-<li>根据记录的组织方式：顺序文件、索引文件和索引顺序文件</li>
-</ul>
-</li>
-<li>无结构文件：指由字符流构成的文件，故又称为流式文件。</li>
-</ul>
-<h4 id="顺序文件"><a href="#顺序文件" class="headerlink" title="顺序文件"></a>顺序文件</h4><p>串结构：按时间网后跟上。<br>顺序结构：按记录的某个顺序。<br>优点：管理简单，系统开销小；适用于大批量数据的存取，此时顺序文件的存取效率是所有逻辑文件中最高的；顺序文件是唯一的一种同时适合在磁盘和磁带中存储的文件。<br>缺点：顺序文件的顺序查找效率低和更新性能差。</p>
-<h4 id="索引文件"><a href="#索引文件" class="headerlink" title="索引文件"></a>索引文件</h4><p>对顺序文件定长可以随机读写，不定唱的只能顺序读写。<br>因此加上索引。</p>
-<h4 id="索引顺序文件"><a href="#索引顺序文件" class="headerlink" title="索引顺序文件"></a>索引顺序文件</h4><p>文件本身非常大，索引表也会非常大，因此对文件分组索引，有索引顺序文件。<br>还可以多级索引。</p>
-<h3 id="6-3-外存分配方式"><a href="#6-3-外存分配方式" class="headerlink" title="6.3 外存分配方式"></a>6.3 外存分配方式</h3><p>内存中以字节为单位存，外存中以盘块存。</p>
-<h4 id="连续分配"><a href="#连续分配" class="headerlink" title="连续分配"></a>连续分配</h4><p>放：要求为每一个文件分配一组相邻接的盘块。<br>找：文件目录。<br>优点：<br>顺序访问容易；支持直接存取；顺序访问速度快（顺序存放也一般会在相邻的磁道上，磁头移动较少距离；可以随机存取）。<br>缺点：<br>要求有连续的存储空间，有碎片；<br>必须事先知道文件的长度。</p>
-<h4 id="链接分配"><a href="#链接分配" class="headerlink" title="链接分配"></a>链接分配</h4><p>放：离散的放。<br>隐式链接：将下一个盘块的地址存在上一个盘块中。缺点：就只能顺序找下去；一处断了，就完了，可靠性较差。目录里记录文件、开始盘块号、结束盘块号。<br>显式链接：显式地存放在内存的一张链接表（文件分配表，FAT）。<strong>FAT表在整个磁盘仅设置一张。</strong><br>显式和隐式相比，在内存中，快依稀嗯，但依然是顺序的，还占空间。</p>
-<h4 id="索引分配"><a href="#索引分配" class="headerlink" title="索引分配"></a>索引分配</h4><p>索引分配是为每个文件分配一个利用专门的索引结点（索引块），用于存放该文件所对应的所有盘块号，在建立文件时只需在为之建立的目录项中填上指向该索引块的指针即可。<br>索引分配方式支持直接访问。当要读文件的第i个盘块时，可以方便地直接从索引块中找到第i个盘块的盘块号。不会产生外部碎片。<br>索引分配索引——多级索引。<br>索引分配索引——混合分配</p>
-<h3 id="6-5-文件存储空间的管理"><a href="#6-5-文件存储空间的管理" class="headerlink" title="6.5 文件存储空间的管理"></a>6.5 文件存储空间的管理</h3><h4 id="空闲表法"><a href="#空闲表法" class="headerlink" title="空闲表法"></a>空闲表法</h4><p>优点：具有较高的分配速度，可减少访问磁盘的I/O频率。<br>缺点：为了获得足够大的连续存储区，需定时进行碎片整理。因而，空闲表法不适于文件频繁进行动态增长和缩短的文件系统，且要求用户在分配前知道文件长度。</p>
-<h4 id="空闲链表法"><a href="#空闲链表法" class="headerlink" title="空闲链表法"></a>空闲链表法</h4><p>空闲盘块链：将磁盘上的所有空闲空间，以盘块为单位拉成一条链。<br>空闲盘区链。</p>
-<h4 id="位示图法"><a href="#位示图法" class="headerlink" title="位示图法"></a>位示图法</h4><p>基本思想：位示图中用二进制位状态表示磁盘中一个盘块的使用情况，可用“0”表示对应的盘块空闲；“1”表示被分配。<br>位示图中的行号、列号和盘块号都从0开始编号，m行n列位示图中的m×n个位数可表示m×n块盘块的使用情况。<br>分配：顺序找位示图，找到一个或一组0，然后算出对应的盘块号，放完修改位示图。<br>回收：修改位示图</p>
-<h4 id="成组链接法"><a href="#成组链接法" class="headerlink" title="成组链接法"></a>成组链接法</h4><h3 id="6-4-目录管理"><a href="#6-4-目录管理" class="headerlink" title="6.4 目录管理"></a>6.4 目录管理</h3><h3 id="6-6-文件共享与文件保护"><a href="#6-6-文件共享与文件保护" class="headerlink" title="6.6 文件共享与文件保护"></a>6.6 文件共享与文件保护</h3>]]></content>
       <categories>
         <category>学校课程</category>
       </categories>
@@ -1559,6 +1559,32 @@ e^{ix}&=1+ix+\frac{(ix)^2}{2!}+\frac{(ix)^3}{3!}+\frac{(ix)^4}{4!}+...\\
       </tags>
   </entry>
   <entry>
+    <title>EOJ 1836. 表达式</title>
+    <url>/posts/196086287.html</url>
+    <content><![CDATA[<p>一道用 Python 一下子就一行带走的题，但竟然还有高级做法……</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a href="https://acm.ecnu.edu.cn/problem/1836/">题目链接</a></p>
+<h2 id="Python-一行流"><a href="#Python-一行流" class="headerlink" title="Python 一行流"></a>Python 一行流</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="built_in">eval</span>(<span class="built_in">input</span>().replace(<span class="string">&quot;/&quot;</span>, <span class="string">&quot;//&quot;</span>)))</span><br></pre></td></tr></table></figure>
+<p>也有写成 <code>print(int(eval(input())))</code> 这样的。但我觉得题目里的 <code>/</code> 应当是 <strong>整除</strong> ，最好换成 Python 的 <code>//</code> 更好一些。</p>
+<h2 id="双栈模拟"><a href="#双栈模拟" class="headerlink" title="双栈模拟"></a>双栈模拟</h2><div class="tabs" id="stacks"><ul class="nav-tabs"><li class="tab active"><a href="#stacks-1">一坨混乱版</a></li><li class="tab"><a href="#stacks-2">稍微优雅版</a></li></ul><div class="tab-content"><div class="tab-pane active" id="stacks-1"><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">const</span> unordered_map&lt;<span class="type">char</span>, <span class="type">int</span>&gt;</span><br><span class="line">        op_priority = &#123;</span><br><span class="line">            &#123;<span class="string">&#x27;+&#x27;</span>, <span class="number">0</span>&#125;,</span><br><span class="line">            &#123;<span class="string">&#x27;-&#x27;</span>, <span class="number">0</span>&#125;,</span><br><span class="line">            &#123;<span class="string">&#x27;*&#x27;</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="string">&#x27;/&#x27;</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="string">&#x27;(&#x27;</span>, <span class="number">-1</span>&#125;&#125;;</span><br><span class="line">    string s;</span><br><span class="line">    cin &gt;&gt; s;</span><br><span class="line">    vector&lt;<span class="type">char</span>&gt; op;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; num;</span><br><span class="line">    <span class="keyword">auto</span> func = [&amp;]() &#123;</span><br><span class="line">        <span class="type">int</span> y = num.<span class="built_in">back</span>();</span><br><span class="line">        num.<span class="built_in">pop_back</span>();</span><br><span class="line">        <span class="type">int</span> x = num.<span class="built_in">back</span>();</span><br><span class="line">        num.<span class="built_in">pop_back</span>();</span><br><span class="line">        <span class="type">char</span> o = op.<span class="built_in">back</span>();</span><br><span class="line">        op.<span class="built_in">pop_back</span>();</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (o == <span class="string">&#x27;+&#x27;</span>) res = x + y;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (o == <span class="string">&#x27;-&#x27;</span>) res = x - y;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (o == <span class="string">&#x27;*&#x27;</span>) res = x * y;</span><br><span class="line">        <span class="keyword">else</span> res = x / y;</span><br><span class="line">        num.<span class="built_in">push_back</span>(res);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    num.<span class="built_in">push_back</span>(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> idx = <span class="number">0</span>; idx &lt; s.<span class="built_in">size</span>(); idx++) &#123;</span><br><span class="line">        <span class="type">char</span> c = s[idx];</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">isdigit</span>(c)) &#123;</span><br><span class="line">            <span class="type">int</span> x = num.<span class="built_in">back</span>() * <span class="number">10</span> + c - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            num[num.<span class="built_in">size</span>() - <span class="number">1</span>] = x;</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;(&#x27;</span>) &#123;</span><br><span class="line">            op.<span class="built_in">push_back</span>(c);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;)&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span> (op.<span class="built_in">back</span>() != <span class="string">&#x27;(&#x27;</span>) &#123;</span><br><span class="line">                <span class="built_in">func</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            op.<span class="built_in">pop_back</span>();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;-&#x27;</span> &amp;&amp; (op.<span class="built_in">empty</span>() || s[idx - <span class="number">1</span>] == <span class="string">&#x27;(&#x27;</span>)) &#123;</span><br><span class="line">            <span class="comment">// 负数</span></span><br><span class="line">            num.<span class="built_in">push_back</span>(<span class="number">0</span>);</span><br><span class="line">            op.<span class="built_in">push_back</span>(<span class="string">&#x27;-&#x27;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!op.<span class="built_in">empty</span>() &amp;&amp; op_priority.<span class="built_in">at</span>(c) &lt;= op_priority.<span class="built_in">at</span>(op.<span class="built_in">back</span>())) &#123;</span><br><span class="line">            <span class="keyword">while</span> (!op.<span class="built_in">empty</span>() &amp;&amp; op_priority.<span class="built_in">at</span>(c) &lt;= op_priority.<span class="built_in">at</span>(op.<span class="built_in">back</span>()))</span><br><span class="line">                <span class="built_in">func</span>();</span><br><span class="line">            op.<span class="built_in">push_back</span>(c);</span><br><span class="line">            num.<span class="built_in">push_back</span>(<span class="number">0</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 其他运算符</span></span><br><span class="line">            op.<span class="built_in">push_back</span>(c);</span><br><span class="line">            num.<span class="built_in">push_back</span>(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 收尾</span></span><br><span class="line">    <span class="keyword">while</span> (!op.<span class="built_in">empty</span>()) <span class="built_in">func</span>();</span><br><span class="line">    cout &lt;&lt; num[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="stacks-2"><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">const</span> unordered_map&lt;<span class="type">char</span>, <span class="type">int</span>&gt;</span><br><span class="line">        op_priority = &#123;</span><br><span class="line">            &#123;<span class="string">&#x27;+&#x27;</span>, <span class="number">0</span>&#125;, &#123;<span class="string">&#x27;-&#x27;</span>, <span class="number">0</span>&#125;, &#123;<span class="string">&#x27;*&#x27;</span>, <span class="number">1</span>&#125;, &#123;<span class="string">&#x27;/&#x27;</span>, <span class="number">1</span>&#125;, &#123;<span class="string">&#x27;(&#x27;</span>, <span class="number">-1</span>&#125;&#125;;</span><br><span class="line">    string s;</span><br><span class="line">    cin &gt;&gt; s;</span><br><span class="line">    vector&lt;<span class="type">char</span>&gt; op;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; num;</span><br><span class="line">    <span class="keyword">auto</span> func = [&amp;]() &#123;</span><br><span class="line">        <span class="type">int</span> y = num.<span class="built_in">back</span>();</span><br><span class="line">        num.<span class="built_in">pop_back</span>();</span><br><span class="line">        <span class="type">int</span> x = num.<span class="built_in">back</span>();</span><br><span class="line">        num.<span class="built_in">pop_back</span>();</span><br><span class="line">        <span class="type">char</span> o = op.<span class="built_in">back</span>();</span><br><span class="line">        op.<span class="built_in">pop_back</span>();</span><br><span class="line">        <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (o == <span class="string">&#x27;+&#x27;</span>) res = x + y;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (o == <span class="string">&#x27;-&#x27;</span>) res = x - y;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (o == <span class="string">&#x27;*&#x27;</span>) res = x * y;</span><br><span class="line">        <span class="keyword">else</span> res = x / y;</span><br><span class="line">        num.<span class="built_in">push_back</span>(res);</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="type">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> idx = <span class="number">0</span>; idx &lt; n; idx++) &#123;</span><br><span class="line">        <span class="type">char</span> c = s[idx];</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">isdigit</span>(c)) &#123;</span><br><span class="line">            <span class="type">int</span> x = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (idx &lt; n &amp;&amp; <span class="built_in">isdigit</span>(s[idx]))</span><br><span class="line">                x = x * <span class="number">10</span> + s[idx++] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            idx--;  <span class="comment">// 等会在 for 那里还要 ++</span></span><br><span class="line">            num.<span class="built_in">push_back</span>(x);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;(&#x27;</span>) &#123;</span><br><span class="line">            op.<span class="built_in">push_back</span>(c);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (c == <span class="string">&#x27;)&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">while</span> (op.<span class="built_in">back</span>() != <span class="string">&#x27;(&#x27;</span>) &#123;</span><br><span class="line">                <span class="built_in">func</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            op.<span class="built_in">pop_back</span>();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 负数，开头和 (- 的情况</span></span><br><span class="line">            <span class="keyword">if</span> (c == <span class="string">&#x27;-&#x27;</span> &amp;&amp; (idx == <span class="number">0</span> || s[idx - <span class="number">1</span>] == <span class="string">&#x27;(&#x27;</span>)) &#123;</span><br><span class="line">                num.<span class="built_in">push_back</span>(<span class="number">0</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 只要栈顶优先级 &gt;= 当前，就一直算</span></span><br><span class="line">            <span class="keyword">while</span> (!op.<span class="built_in">empty</span>() &amp;&amp; op_priority.<span class="built_in">at</span>(c) &lt;= op_priority.<span class="built_in">at</span>(op.<span class="built_in">back</span>()))</span><br><span class="line">                <span class="built_in">func</span>();</span><br><span class="line">            op.<span class="built_in">push_back</span>(c);</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; s &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">        cout &lt;&lt; s[idx]&lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;op:  &quot;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">char</span> o: op) cout &lt;&lt; o &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;\nnum: &quot;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> x: num) cout &lt;&lt; x &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;\n\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (!op.<span class="built_in">empty</span>()) <span class="built_in">func</span>();</span><br><span class="line">    cout &lt;&lt; num[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div></div></div>
+<h2 id="终极递归"><a href="#终极递归" class="headerlink" title="终极递归"></a>终极递归</h2><p>这个方法感觉听精妙的。用三个函数分别处理不同优先级的计算，</p>
+<ul>
+<li><code>exp()</code> ：表达式级别和加减法；</li>
+<li><code>term()</code> ：乘除法；</li>
+<li><code>factor()</code> ：一个数，包括一个括号的结果；</li>
+</ul>
+<p><code>exp()</code> 调用 <code>term()</code> ，<code>term()</code> 调用 <code>factor()</code> ，若 <code>factor()</code> 里又遇到括号，就又重新调用 <code>exp()</code> 。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="type">int</span> p; <span class="comment">// 全局变量，在表达式里的下标</span></span><br><span class="line">string s;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">term</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">exp</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 处理一个数（包括一个括号的结果）</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">factor</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> val = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(s[p] == <span class="string">&#x27;(&#x27;</span>)&#123;</span><br><span class="line">        p++;</span><br><span class="line">        val = <span class="built_in">exp</span>(); <span class="comment">// 算括号的值</span></span><br><span class="line">        p++; <span class="comment">// 跳过右括号</span></span><br><span class="line">        <span class="comment">// 上面三行可以写成 p++, val = exp(), p++;</span></span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">while</span>(p &lt; s.<span class="built_in">size</span>() &amp;&amp; <span class="built_in">isdigit</span>(s[p]))</span><br><span class="line">            val = val * <span class="number">10</span> + s[p++] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> val;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 计算乘除（最高优先级）</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">term</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> val = <span class="built_in">factor</span>(); <span class="comment">// 先拿到一个数</span></span><br><span class="line">    <span class="keyword">while</span>(s[p] == <span class="string">&#x27;*&#x27;</span> || s[p] == <span class="string">&#x27;/&#x27;</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(s[p] == <span class="string">&#x27;*&#x27;</span>)</span><br><span class="line">            p++, val *= <span class="built_in">factor</span>();</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            p++, val /= <span class="built_in">factor</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> val;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 计算整个表达式和处理加减（低优先级）</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">exp</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> val = <span class="built_in">term</span>();</span><br><span class="line">    <span class="keyword">while</span>(s[p] == <span class="string">&#x27;+&#x27;</span> || s[p] == <span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">        <span class="keyword">if</span>(s[p] == <span class="string">&#x27;+&#x27;</span>)</span><br><span class="line">            p++, val += <span class="built_in">term</span>();</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            p++, val -= <span class="built_in">term</span>();</span><br><span class="line">    <span class="keyword">return</span> val;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    cin &gt;&gt; s;</span><br><span class="line">    p = <span class="number">0</span>;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">exp</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="奇技淫巧"><a href="#奇技淫巧" class="headerlink" title="奇技淫巧"></a>奇技淫巧</h2><p>调用命令行~</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span>   <span class="comment">// 包含 system() 函数</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span>    <span class="comment">// 包含 popen/pclose（可选，更优雅的结果获取方式）</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 1. 接收用户输入的表达式字符串</span></span><br><span class="line">    std::string expr;</span><br><span class="line">    std::<span class="built_in">getline</span>(std::cin, expr);  <span class="comment">// 读取带空格的完整表达式</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 拼接 Shell/CMD 命令（调用 eval 计算）</span></span><br><span class="line">    std::string cmd;</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// Linux/Mac bash 语法：用 eval 执行 $(( )) 计算</span></span><br><span class="line">        cmd = <span class="string">&quot;eval \&quot;result=$(( &quot;</span> + expr + <span class="string">&quot; ))\&quot; &amp;&amp; echo \&quot;$result\&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3. 执行命令并输出结果</span></span><br><span class="line">    <span class="type">int</span> ret = <span class="built_in">system</span>(cmd.<span class="built_in">c_str</span>());  <span class="comment">// 执行拼接后的命令</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 4. 错误处理</span></span><br><span class="line">    <span class="keyword">if</span> (ret != <span class="number">0</span>) &#123;</span><br><span class="line">        std::cerr &lt;&lt; <span class="string">&quot;\n错误：表达式格式无效或计算失败！&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python代码的优化</title>
     <url>/posts/318604756.html</url>
     <content><![CDATA[<h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><h3 id="buffer-read-字节流读入"><a href="#buffer-read-字节流读入" class="headerlink" title="buffer.read() 字节流读入"></a><code>buffer.read()</code> 字节流读入</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data = sys.stdin.buffer.read().split()</span><br><span class="line">ptr = <span class="number">0</span></span><br><span class="line">n = <span class="built_in">int</span>(data[ptr])</span><br><span class="line">m = <span class="built_in">int</span>(data[ptr+<span class="number">1</span>])</span><br><span class="line">ptr += <span class="number">2</span></span><br><span class="line"><span class="comment"># 后续所有数据均通过ptr指针从data列表中取数</span></span><br></pre></td></tr></table></figure>
@@ -1602,26 +1628,6 @@ e^{ix}&=1+ix+\frac{(ix)^2}{2!}+\frac{(ix)^3}{3!}+\frac{(ix)^4}{4!}+...\\
       <tags>
         <tag>算法</tag>
         <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>二分法.md</title>
-    <url>/posts/3747214591.html</url>
-    <content><![CDATA[<h3 id="扫地机器人"><a href="#扫地机器人" class="headerlink" title="扫地机器人"></a>扫地机器人</h3><p>题目：<a href="https://www.lanqiao.cn/problems/199/learning/">https://www.lanqiao.cn/problems/199/learning/</a></p>
-<ul>
-<li>每个机器人“负责”的区域（包括他自己的）*2=他的时间</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># n, k = map(int, input().split())</span><br><span class="line"># # n, k = 10, 3</span><br><span class="line"># arr = [False] * (n + 1)</span><br><span class="line">#</span><br><span class="line"># for i in range(k):</span><br><span class="line">#     arr[int(input())] = True</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># # for i in [5, 2, 10]:</span><br><span class="line"># #     arr[i] = True</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># def check(d):</span><br><span class="line">#     i = 1</span><br><span class="line">#     while i &lt;= n:</span><br><span class="line">#         # print(d, i, i + d, arr[i:i + d])</span><br><span class="line">#         if not any(arr[i:i + d]):</span><br><span class="line">#             return False</span><br><span class="line">#         i += d</span><br><span class="line">#     return True</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># l, r = 1, n</span><br><span class="line"># while l &lt; r:</span><br><span class="line">#     mid = (l + r) // 2</span><br><span class="line">#     print(l, r, mid)</span><br><span class="line">#     if check(mid):</span><br><span class="line">#         r = mid</span><br><span class="line">#     else:</span><br><span class="line">#         l = mid + 1</span><br><span class="line"># print((l - 1) * 2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n, k = map(int, input().split())</span><br><span class="line">a = [0]</span><br><span class="line">for i in range(k):</span><br><span class="line">    a.append(int(input()))</span><br><span class="line">a.sort()</span><br><span class="line"></span><br><span class="line">print(a)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def check(d):</span><br><span class="line">    len = 0  # 覆盖长度，从最左端开始一直到最右端</span><br><span class="line">    for i in range(1, k + 1):</span><br><span class="line">        if len + d &gt;= a[i]:  # 当前覆盖长度加上d之后，是否包括了a[i]</span><br><span class="line">            if len &gt; a[i]:  # 当前覆盖长度是否已经包括了a[i]</span><br><span class="line">                # 如果当前覆盖长度已经包括了，说明a[i]之前的机器人已经负责了到len这块的区域</span><br><span class="line">                # 那a[i]就可以负责len往后再加d的部分</span><br><span class="line">                len = a[i] + d - 1  # 减1是因为还要算上自己</span><br><span class="line">            else:</span><br><span class="line">                # 如果当前覆盖长度没有包括a[i]，那就让a[i]负责[len+1,len+d]</span><br><span class="line">                len += d</span><br><span class="line">        else:</span><br><span class="line">            return False</span><br><span class="line">    return len &gt;= n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">l, r = 1, n</span><br><span class="line">mid = 0</span><br><span class="line">while l &lt; r:</span><br><span class="line">    mid = (l + r) // 2</span><br><span class="line">    print(l, r, mid)</span><br><span class="line">    if check(mid):</span><br><span class="line">        r = mid</span><br><span class="line">    else:</span><br><span class="line">        l = mid + 1</span><br><span class="line">print((l - 1) * 2)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<script type="math/tex; mode=display">
-\sum_{i=ln}^{rn}\frac{i(i+1)}{2}
-=\frac{1}{2}(\sum_{i=ln}^{rn}i^2+\sum_{i=ln}^{rn}i)</script>]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>二分</tag>
-        <tag>蓝桥杯</tag>
       </tags>
   </entry>
   <entry>
@@ -1695,6 +1701,26 @@ e^{ix}&=1+ix+\frac{(ix)^2}{2!}+\frac{(ix)^3}{3!}+\frac{(ix)^4}{4!}+...\\
       </tags>
   </entry>
   <entry>
+    <title>二分法.md</title>
+    <url>/posts/3747214591.html</url>
+    <content><![CDATA[<h3 id="扫地机器人"><a href="#扫地机器人" class="headerlink" title="扫地机器人"></a>扫地机器人</h3><p>题目：<a href="https://www.lanqiao.cn/problems/199/learning/">https://www.lanqiao.cn/problems/199/learning/</a></p>
+<ul>
+<li>每个机器人“负责”的区域（包括他自己的）*2=他的时间</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># n, k = map(int, input().split())</span><br><span class="line"># # n, k = 10, 3</span><br><span class="line"># arr = [False] * (n + 1)</span><br><span class="line">#</span><br><span class="line"># for i in range(k):</span><br><span class="line">#     arr[int(input())] = True</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># # for i in [5, 2, 10]:</span><br><span class="line"># #     arr[i] = True</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># def check(d):</span><br><span class="line">#     i = 1</span><br><span class="line">#     while i &lt;= n:</span><br><span class="line">#         # print(d, i, i + d, arr[i:i + d])</span><br><span class="line">#         if not any(arr[i:i + d]):</span><br><span class="line">#             return False</span><br><span class="line">#         i += d</span><br><span class="line">#     return True</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># l, r = 1, n</span><br><span class="line"># while l &lt; r:</span><br><span class="line">#     mid = (l + r) // 2</span><br><span class="line">#     print(l, r, mid)</span><br><span class="line">#     if check(mid):</span><br><span class="line">#         r = mid</span><br><span class="line">#     else:</span><br><span class="line">#         l = mid + 1</span><br><span class="line"># print((l - 1) * 2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n, k = map(int, input().split())</span><br><span class="line">a = [0]</span><br><span class="line">for i in range(k):</span><br><span class="line">    a.append(int(input()))</span><br><span class="line">a.sort()</span><br><span class="line"></span><br><span class="line">print(a)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def check(d):</span><br><span class="line">    len = 0  # 覆盖长度，从最左端开始一直到最右端</span><br><span class="line">    for i in range(1, k + 1):</span><br><span class="line">        if len + d &gt;= a[i]:  # 当前覆盖长度加上d之后，是否包括了a[i]</span><br><span class="line">            if len &gt; a[i]:  # 当前覆盖长度是否已经包括了a[i]</span><br><span class="line">                # 如果当前覆盖长度已经包括了，说明a[i]之前的机器人已经负责了到len这块的区域</span><br><span class="line">                # 那a[i]就可以负责len往后再加d的部分</span><br><span class="line">                len = a[i] + d - 1  # 减1是因为还要算上自己</span><br><span class="line">            else:</span><br><span class="line">                # 如果当前覆盖长度没有包括a[i]，那就让a[i]负责[len+1,len+d]</span><br><span class="line">                len += d</span><br><span class="line">        else:</span><br><span class="line">            return False</span><br><span class="line">    return len &gt;= n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">l, r = 1, n</span><br><span class="line">mid = 0</span><br><span class="line">while l &lt; r:</span><br><span class="line">    mid = (l + r) // 2</span><br><span class="line">    print(l, r, mid)</span><br><span class="line">    if check(mid):</span><br><span class="line">        r = mid</span><br><span class="line">    else:</span><br><span class="line">        l = mid + 1</span><br><span class="line">print((l - 1) * 2)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">
+\sum_{i=ln}^{rn}\frac{i(i+1)}{2}
+=\frac{1}{2}(\sum_{i=ln}^{rn}i^2+\sum_{i=ln}^{rn}i)</script>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>二分</tag>
+        <tag>蓝桥杯</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>树状数组</title>
     <url>/posts/1503714904.html</url>
     <content><![CDATA[<h2 id="解决什么问题？"><a href="#解决什么问题？" class="headerlink" title="解决什么问题？"></a>解决什么问题？</h2><p>单点更新，计算前缀和。</p>
@@ -1749,8 +1775,33 @@ e^{ix}&=1+ix+\frac{(ix)^2}{2!}+\frac{(ix)^3}{3!}+\frac{(ix)^4}{4!}+...\\
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>树状数组</tag>
         <tag>数据结构</tag>
+        <tag>树状数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>线段树</title>
+    <url>/posts/2291390787.html</url>
+    <content><![CDATA[<h2 id="线段树基础"><a href="#线段树基础" class="headerlink" title="线段树基础"></a>线段树基础</h2><p>线段树可以在 $𝑂(log⁡𝑁)$<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="O(\log N)"> 的时间复杂度内实现单点修改、区间修改、区间查询（区间求和，求区间最大值，求区间最小值）等操作。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ul>
+<li><a href="https://oi-wiki.org/ds/seg">oi-wiki</a></li>
+<li><a href="https://www.bilibili.com/video/BV18t4y1p736/?t=518">线段树入门 - Bilibili 灵神讲解</a> ，对应题目 <a href="https://leetcode.cn/problems/booking-concert-tickets-in-groups/">2286. 以组为单位订音乐会的门票</a> ，<a href="https://leetcode.cn/problems/booking-concert-tickets-in-groups/solutions/3901913/ji-chong-xian-duan-shu-by-wei-jia-biao-q-qgga">我的题解</a></li>
+</ul>
+<h3 id="一些问题与解释"><a href="#一些问题与解释" class="headerlink" title="一些问题与解释"></a>一些问题与解释</h3><h4 id="1-线段树的大小"><a href="#1-线段树的大小" class="headerlink" title="1. 线段树的大小"></a>1. 线段树的大小</h4><p>假设数组的大小是 $n$ ，把它们全部放在底层，满足这样的最小的满二叉树的高度是 $\lceil log_{2}{n} \rceil + 1$ （根节点高度是 $1$ ），结点个数是 $2^ {\lceil log_{2}{n} \rceil + 1} - 1$ ，又因为线段树的下标从 $1$ 开始，因此总的空间就是 $2^{\lceil log_{2}{n} \rceil + 1}$ ，即 $2 &lt;&lt; (n-1).bit_length()$ 。</p>
+<blockquote>
+<p>几坨莫名其妙的东西</p>
+<p>$\lfloor \log_2 n \rfloor = n.bit_length() - 1 = \lceil \log_2 (n+1) \rceil - 1$</p>
+<p>$\lceil \log_2 n \rceil = (n-1).bit_length()= \lfloor \log_2 (n-1) \rfloor + 1$ （当 $n &gt; 1$ 时）</p>
+<p>$2^{x} =&gt; 1 &lt;&lt; x =&gt; 2 &lt;&lt; (x - 1)$</p>
+</blockquote>
+<p>其实可以直接写 $4n$ 。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="tabs" id="leetcode_example"><ul class="nav-tabs"><li class="tab active"><a href="#leetcode_example-1">Python</a></li><li class="tab"><a href="#leetcode_example-2">c++</a></li></ul><div class="tab-content"><div class="tab-pane active" id="leetcode_example-1"><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello Python&quot;</span>)</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="leetcode_example-2"><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">cout &lt;&lt; <span class="string">&quot;Hello C++&quot;</span> &lt;&lt; endl;</span><br></pre></td></tr></table></figure></div></div></div>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>线段树</tag>
       </tags>
   </entry>
   <entry>
@@ -1903,102 +1954,6 @@ x \times x^{MOD - 2} \equiv 1 \pmod{MOD}</script><p>好了，写代码了。</p>
       </tags>
   </entry>
   <entry>
-    <title>Leetcode_1583. 统计不开心的朋友</title>
-    <url>/posts/1076317791.html</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1583. 统计不开心的朋友<br>难度：中等</p>
-<p>给你一份 <code>n</code> 位朋友的亲近程度列表，其中 <code>n</code> 总是 <strong>偶数</strong> 。</p>
-
-<p>对每位朋友 <code>i</code>，<code>preferences[i]</code> 包含一份 <strong>按亲近程度从高</strong><strong>到低排列</strong> 的朋友列表。换句话说，排在列表前面的朋友与 <code>i</code> 的亲近程度比排在列表后面的朋友更高。每个列表中的朋友均以 <code>0</code> 到 <code>n-1</code> 之间的整数表示。</p>
-
-<p>所有的朋友被分成几对，配对情况以列表 <code>pairs</code> 给出，其中 <code>pairs[i] = [x<sub>i</sub>, y<sub>i</sub>]</code> 表示 <code>x<sub>i</sub></code> 与 <code>y<sub>i</sub></code> 配对，且 <code>y<sub>i</sub></code> 与 <code>x<sub>i</sub></code> 配对。</p>
-
-<p>但是，这样的配对情况可能会使其中部分朋友感到不开心。在 <code>x</code> 与 <code>y</code> 配对且 <code>u</code> 与 <code>v</code> 配对的情况下，如果同时满足下述两个条件，<code>x</code> 就会不开心：</p>
-
-<ul>
-    <li><code>x</code> 与 <code>u</code> 的亲近程度胜过 <code>x</code> 与 <code>y</code>，且</li>
-    <li><code>u</code> 与 <code>x</code> 的亲近程度胜过 <code>u</code> 与 <code>v</code></li>
-</ul>
-
-<p>返回 <strong>不开心的朋友的数目</strong> 。</p>
-
-<p>&nbsp;</p>
-
-<p><strong>示例 1：</strong></p>
-
-<pre><strong>输入：</strong>n = 4, preferences = [[1, 2, 3], [3, 2, 0], [3, 1, 0], [1, 2, 0]], pairs = [[0, 1], [2, 3]]
-<strong>输出：</strong>2
-<strong>解释：</strong>
-朋友 1 不开心，因为：
-- <strong>1 与 0 </strong>配对，但 <strong>1 与 3</strong> 的亲近程度比 <strong>1 与 0</strong> 高，且
-- <strong>3 与 1</strong> 的亲近程度比 <strong>3 与 2</strong> 高。
-朋友 3 不开心，因为：
-- 3 与 2 配对，但 <strong>3 与 1</strong> 的亲近程度比 <strong>3 与 2</strong> 高，且
-- <strong>1 与 3</strong> 的亲近程度比 <strong>1 与 0</strong> 高。
-朋友 0 和 2 都是开心的。
-</pre>
-
-<p><strong>示例 2：</strong></p>
-
-<pre><strong>输入：</strong>n = 2, preferences = [[1], [0]], pairs = [[1, 0]]
-<strong>输出：</strong>0
-<strong>解释：</strong>朋友 0 和 1 都开心。
-</pre>
-
-<p><strong>示例 3：</strong></p>
-
-<pre><strong>输入：</strong>n = 4, preferences = [[1, 3, 2], [2, 3, 0], [1, 3, 0], [0, 2, 1]], pairs = [[1, 3], [0, 2]]
-<strong>输出：</strong>4
-</pre>
-
-<p>&nbsp;</p>
-
-<p><strong>提示：</strong></p>
-
-<ul>
-    <li><code>2 &lt;= n &lt;= 500</code></li>
-    <li><code>n</code> 是偶数</li>
-    <li><code>preferences.length&nbsp;== n</code></li>
-    <li><code>preferences[i].length&nbsp;== n - 1</code></li>
-    <li><code>0 &lt;= preferences[i][j] &lt;= n - 1</code></li>
-    <li><code>preferences[i]</code> 不包含 <code>i</code></li>
-    <li><code>preferences[i]</code> 中的所有值都是独一无二的</li>
-    <li><code>pairs.length&nbsp;== n/2</code></li>
-    <li><code>pairs[i].length&nbsp;== 2</code></li>
-    <li><code>x<sub>i</sub> != y<sub>i</sub></code></li>
-    <li><code>0 &lt;= x<sub>i</sub>, y<sub>i</sub>&nbsp;&lt;= n - 1</code></li>
-
-<li>每位朋友都 <strong>恰好</strong> 被包含在一对中</li>
-</ul>
-
-<h3 id="方法一：-模拟"><a href="#方法一：-模拟" class="headerlink" title="方法一： 模拟"></a>方法一： 模拟</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>这道题看起来非常非常非常复杂，但其实重点再那两个且的条件：</p>
-<blockquote>
-<ul>
-<li><code>x</code> 与 <code>u</code> 的亲近程度胜过 <code>x</code> 与 <code>y</code>，且</li>
-<li><code>u</code> 与 <code>x</code> 的亲近程度胜过 <code>u</code> 与 <code>v</code></li>
-</ul>
-
-</blockquote>
-<p>因此我们的做法就是：</p>
-<ol>
-<li>找到一个<code>x</code>，以及和他配对的<code>y</code>;</li>
-<li>在<code>x</code>的<code>preferences</code>里遍历，在没有遇到<code>y</code>之前，每一个都是可能的<code>u</code>;（这时满足了第一个条件）</li>
-<li>在找到与这个<code>u</code>配对的<code>v</code>，然后在<code>u</code>的<code>preferences</code>里找<code>x</code>和<code>v</code>的下标关系是否满足第二个条件，即如果在<code>u</code>的<code>preferences</code>里<code>x</code>的下标小于<code>v</code>的下标，那么，<code>x</code>就是不开心的。<br>为了找所有不开心的<code>x</code>，那么，就是要遍历所有人，同时还要方便找到与它配对的<code>y</code>，所以再开始的时候先创建一个字典，用于记录每个人和谁配对。<br>具体代码实现的时候，还有一个<code>x_isunhappy</code>用于标记<code>x</code>是不是不开心的，如果是，就可以去下一个<code>x</code>了。<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">unhappyFriends</span>(<span class="params">n, preferences, pairs</span>):</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    unhappy = <span class="number">0</span></span><br><span class="line">    pairs_dict = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> x, y <span class="keyword">in</span> pairs:</span><br><span class="line">        pairs_dict[x] = y</span><br><span class="line">        pairs_dict[y] = x</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        y = pairs_dict[x]</span><br><span class="line">        x_isunhappy = <span class="literal">False</span></span><br><span class="line">        <span class="keyword">for</span> u <span class="keyword">in</span> preferences[x]:</span><br><span class="line">            <span class="keyword">if</span> u == y <span class="keyword">or</span> x_isunhappy == <span class="literal">True</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            v = pairs_dict[u]</span><br><span class="line">            <span class="keyword">if</span> preferences[u].index(x) &lt; preferences[u].index(v):</span><br><span class="line">                x_isunhappy = <span class="literal">True</span></span><br><span class="line">                unhappy += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> unhappy</span><br></pre></td></tr></table></figure>
-官方的方法和我的几乎一样。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def unhappyFriends(self, n: int, preferences: List[List[int]], pairs: List[List[int]]) -&gt; int:</span><br><span class="line">        order = [[0] * n for _ in range(n)]</span><br><span class="line">        for i in range(n):</span><br><span class="line">            for j in range(n - 1):</span><br><span class="line">                order[i][preferences[i][j]] = j</span><br><span class="line">        </span><br><span class="line">        match = [0] * n</span><br><span class="line">        for x, y in pairs:</span><br><span class="line">            match[x] = y</span><br><span class="line">            match[y] = x</span><br><span class="line"></span><br><span class="line">        unhappyCount = 0</span><br><span class="line">        for x in range(n):</span><br><span class="line">            y = match[x]</span><br><span class="line">            index = order[x][y]</span><br><span class="line">            for i in range(index):</span><br><span class="line">                u = preferences[x][i]</span><br><span class="line">                v = match[u]</span><br><span class="line">                if order[u][x] &lt; order[u][v]:</span><br><span class="line">                    unhappyCount += 1</span><br><span class="line">                    break</span><br><span class="line">        </span><br><span class="line">        return unhappyCount</span><br><span class="line"></span><br><span class="line"># 作者：LeetCode-Solution</span><br><span class="line"># 链接：https://leetcode-cn.com/problems/count-unhappy-friends/solution/tong-ji-bu-kai-xin-de-peng-you-by-leetcode-solutio/</span><br><span class="line"># 来源：力扣（LeetCode）</span><br><span class="line"># 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/fXcVKK"><img src="https://z3.ax1x.com/2021/08/20/fXcVKK.jpg" alt="提交记录.jpg"></a></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>Leetcode</tag>
-        <tag>模拟</tag>
-        <tag>Leetcode中等</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode_1646. 获取生成数组中的最大值</title>
     <url>/posts/1397883998.html</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1646. 获取生成数组中的最大值<br>难度：简单</p>
@@ -2118,6 +2073,102 @@ x \times x^{MOD - 2} \equiv 1 \pmod{MOD}</script><p>好了，写代码了。</p>
       </tags>
   </entry>
   <entry>
+    <title>Leetcode_1583. 统计不开心的朋友</title>
+    <url>/posts/1076317791.html</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1583. 统计不开心的朋友<br>难度：中等</p>
+<p>给你一份 <code>n</code> 位朋友的亲近程度列表，其中 <code>n</code> 总是 <strong>偶数</strong> 。</p>
+
+<p>对每位朋友 <code>i</code>，<code>preferences[i]</code> 包含一份 <strong>按亲近程度从高</strong><strong>到低排列</strong> 的朋友列表。换句话说，排在列表前面的朋友与 <code>i</code> 的亲近程度比排在列表后面的朋友更高。每个列表中的朋友均以 <code>0</code> 到 <code>n-1</code> 之间的整数表示。</p>
+
+<p>所有的朋友被分成几对，配对情况以列表 <code>pairs</code> 给出，其中 <code>pairs[i] = [x<sub>i</sub>, y<sub>i</sub>]</code> 表示 <code>x<sub>i</sub></code> 与 <code>y<sub>i</sub></code> 配对，且 <code>y<sub>i</sub></code> 与 <code>x<sub>i</sub></code> 配对。</p>
+
+<p>但是，这样的配对情况可能会使其中部分朋友感到不开心。在 <code>x</code> 与 <code>y</code> 配对且 <code>u</code> 与 <code>v</code> 配对的情况下，如果同时满足下述两个条件，<code>x</code> 就会不开心：</p>
+
+<ul>
+    <li><code>x</code> 与 <code>u</code> 的亲近程度胜过 <code>x</code> 与 <code>y</code>，且</li>
+    <li><code>u</code> 与 <code>x</code> 的亲近程度胜过 <code>u</code> 与 <code>v</code></li>
+</ul>
+
+<p>返回 <strong>不开心的朋友的数目</strong> 。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入：</strong>n = 4, preferences = [[1, 2, 3], [3, 2, 0], [3, 1, 0], [1, 2, 0]], pairs = [[0, 1], [2, 3]]
+<strong>输出：</strong>2
+<strong>解释：</strong>
+朋友 1 不开心，因为：
+- <strong>1 与 0 </strong>配对，但 <strong>1 与 3</strong> 的亲近程度比 <strong>1 与 0</strong> 高，且
+- <strong>3 与 1</strong> 的亲近程度比 <strong>3 与 2</strong> 高。
+朋友 3 不开心，因为：
+- 3 与 2 配对，但 <strong>3 与 1</strong> 的亲近程度比 <strong>3 与 2</strong> 高，且
+- <strong>1 与 3</strong> 的亲近程度比 <strong>1 与 0</strong> 高。
+朋友 0 和 2 都是开心的。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>n = 2, preferences = [[1], [0]], pairs = [[1, 0]]
+<strong>输出：</strong>0
+<strong>解释：</strong>朋友 0 和 1 都开心。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>n = 4, preferences = [[1, 3, 2], [2, 3, 0], [1, 3, 0], [0, 2, 1]], pairs = [[1, 3], [0, 2]]
+<strong>输出：</strong>4
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>2 &lt;= n &lt;= 500</code></li>
+    <li><code>n</code> 是偶数</li>
+    <li><code>preferences.length&nbsp;== n</code></li>
+    <li><code>preferences[i].length&nbsp;== n - 1</code></li>
+    <li><code>0 &lt;= preferences[i][j] &lt;= n - 1</code></li>
+    <li><code>preferences[i]</code> 不包含 <code>i</code></li>
+    <li><code>preferences[i]</code> 中的所有值都是独一无二的</li>
+    <li><code>pairs.length&nbsp;== n/2</code></li>
+    <li><code>pairs[i].length&nbsp;== 2</code></li>
+    <li><code>x<sub>i</sub> != y<sub>i</sub></code></li>
+    <li><code>0 &lt;= x<sub>i</sub>, y<sub>i</sub>&nbsp;&lt;= n - 1</code></li>
+
+<li>每位朋友都 <strong>恰好</strong> 被包含在一对中</li>
+</ul>
+
+<h3 id="方法一：-模拟"><a href="#方法一：-模拟" class="headerlink" title="方法一： 模拟"></a>方法一： 模拟</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>这道题看起来非常非常非常复杂，但其实重点再那两个且的条件：</p>
+<blockquote>
+<ul>
+<li><code>x</code> 与 <code>u</code> 的亲近程度胜过 <code>x</code> 与 <code>y</code>，且</li>
+<li><code>u</code> 与 <code>x</code> 的亲近程度胜过 <code>u</code> 与 <code>v</code></li>
+</ul>
+
+</blockquote>
+<p>因此我们的做法就是：</p>
+<ol>
+<li>找到一个<code>x</code>，以及和他配对的<code>y</code>;</li>
+<li>在<code>x</code>的<code>preferences</code>里遍历，在没有遇到<code>y</code>之前，每一个都是可能的<code>u</code>;（这时满足了第一个条件）</li>
+<li>在找到与这个<code>u</code>配对的<code>v</code>，然后在<code>u</code>的<code>preferences</code>里找<code>x</code>和<code>v</code>的下标关系是否满足第二个条件，即如果在<code>u</code>的<code>preferences</code>里<code>x</code>的下标小于<code>v</code>的下标，那么，<code>x</code>就是不开心的。<br>为了找所有不开心的<code>x</code>，那么，就是要遍历所有人，同时还要方便找到与它配对的<code>y</code>，所以再开始的时候先创建一个字典，用于记录每个人和谁配对。<br>具体代码实现的时候，还有一个<code>x_isunhappy</code>用于标记<code>x</code>是不是不开心的，如果是，就可以去下一个<code>x</code>了。<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">unhappyFriends</span>(<span class="params">n, preferences, pairs</span>):</span><br><span class="line">    <span class="keyword">if</span> n == <span class="number">2</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    unhappy = <span class="number">0</span></span><br><span class="line">    pairs_dict = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> x, y <span class="keyword">in</span> pairs:</span><br><span class="line">        pairs_dict[x] = y</span><br><span class="line">        pairs_dict[y] = x</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        y = pairs_dict[x]</span><br><span class="line">        x_isunhappy = <span class="literal">False</span></span><br><span class="line">        <span class="keyword">for</span> u <span class="keyword">in</span> preferences[x]:</span><br><span class="line">            <span class="keyword">if</span> u == y <span class="keyword">or</span> x_isunhappy == <span class="literal">True</span>:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            v = pairs_dict[u]</span><br><span class="line">            <span class="keyword">if</span> preferences[u].index(x) &lt; preferences[u].index(v):</span><br><span class="line">                x_isunhappy = <span class="literal">True</span></span><br><span class="line">                unhappy += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> unhappy</span><br></pre></td></tr></table></figure>
+官方的方法和我的几乎一样。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def unhappyFriends(self, n: int, preferences: List[List[int]], pairs: List[List[int]]) -&gt; int:</span><br><span class="line">        order = [[0] * n for _ in range(n)]</span><br><span class="line">        for i in range(n):</span><br><span class="line">            for j in range(n - 1):</span><br><span class="line">                order[i][preferences[i][j]] = j</span><br><span class="line">        </span><br><span class="line">        match = [0] * n</span><br><span class="line">        for x, y in pairs:</span><br><span class="line">            match[x] = y</span><br><span class="line">            match[y] = x</span><br><span class="line"></span><br><span class="line">        unhappyCount = 0</span><br><span class="line">        for x in range(n):</span><br><span class="line">            y = match[x]</span><br><span class="line">            index = order[x][y]</span><br><span class="line">            for i in range(index):</span><br><span class="line">                u = preferences[x][i]</span><br><span class="line">                v = match[u]</span><br><span class="line">                if order[u][x] &lt; order[u][v]:</span><br><span class="line">                    unhappyCount += 1</span><br><span class="line">                    break</span><br><span class="line">        </span><br><span class="line">        return unhappyCount</span><br><span class="line"></span><br><span class="line"># 作者：LeetCode-Solution</span><br><span class="line"># 链接：https://leetcode-cn.com/problems/count-unhappy-friends/solution/tong-ji-bu-kai-xin-de-peng-you-by-leetcode-solutio/</span><br><span class="line"># 来源：力扣（LeetCode）</span><br><span class="line"># 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/fXcVKK"><img src="https://z3.ax1x.com/2021/08/20/fXcVKK.jpg" alt="提交记录.jpg"></a></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Leetcode</tag>
+        <tag>模拟</tag>
+        <tag>Leetcode中等</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-1706-球会落何处</title>
     <url>/posts/228469122.html</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1706. 球会落何处<br>难诉：中等</p>
@@ -2185,6 +2236,116 @@ b4 球开始放在第 4 列上，会卡在第 2、3 列和第 1 行之间的 "V"
         <tag>Leetcode</tag>
         <tag>模拟</tag>
         <tag>Leetcode中等</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-1719-重构一棵树的方案数</title>
+    <url>/posts/1053049866.html</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1719. 重构一棵树的方案数<br>难度：困难</p>
+<p>给你一个数组&nbsp;<code>pairs</code> ，其中&nbsp;<code>pairs[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&nbsp;，并且满足：</p>
+
+<ul>
+    <li><code>pairs</code>&nbsp;中没有重复元素</li>
+    <li><code>x<sub>i</sub> &lt; y<sub>i</sub></code></li>
+</ul>
+
+
+<p>令&nbsp;<code>ways</code>&nbsp;为满足下面条件的有根树的方案数：</p>
+
+<ul>
+    <li>树所包含的所有节点值都在 <code>pairs</code>&nbsp;中。</li>
+    <li>一个数对&nbsp;<code>[x<sub>i</sub>, y<sub>i</sub>]</code> 出现在&nbsp;<code>pairs</code>&nbsp;中&nbsp;<strong>当且仅当</strong><strong>&nbsp;</strong><code>x<sub>i</sub></code>&nbsp;是&nbsp;<code>y<sub>i</sub></code>&nbsp;的祖先或者&nbsp;<code>y<sub>i</sub></code>&nbsp;是&nbsp;<code>x<sub>i</sub></code><sub>&nbsp;</sub>的祖先。</li>
+    <li><strong>注意：</strong>构造出来的树不一定是二叉树。</li>
+</ul>
+
+
+<p>两棵树被视为不同的方案当存在至少一个节点在两棵树中有不同的父节点。</p>
+
+<p>请你返回：</p>
+
+<ul>
+    <li>如果&nbsp;<code>ways == 0</code>&nbsp;，返回&nbsp;<code>0</code>&nbsp;。</li>
+    <li>如果&nbsp;<code>ways == 1</code>&nbsp;，返回 <code>1</code>&nbsp;。</li>
+    <li>如果&nbsp;<code>ways &gt; 1</code>&nbsp;，返回&nbsp;<code>2</code>&nbsp;。</li>
+</ul>
+
+
+<p>一棵 <strong>有根树</strong>&nbsp;指的是只有一个根节点的树，所有边都是从根往外的方向。</p>
+
+<p>我们称从根到一个节点路径上的任意一个节点（除去节点本身）都是该节点的 <strong>祖先</strong>&nbsp;。根节点没有祖先。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<p><img style="width: 208px; height: 221px;" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/09/trees2.png"></p>
+<pre><b>输入：</b>pairs = [[1,2],[2,3]]
+<b>输出：</b>1
+<b>解释：</b>如上图所示，有且只有一个符合规定的有根树。
+</pre>
+
+
+<p><strong>示例 2：</strong></p>
+
+<p><img style="width: 234px; height: 241px;" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/09/tree.png" alt=""></p>
+<pre><b>输入：</b>pairs = [[1,2],[2,3],[1,3]]
+<b>输出：</b>2
+<b>解释：</b>有多个符合规定的有根树，其中三个如上图所示。
+</pre>
+
+
+<p><strong>示例 3：</strong></p>
+
+<pre><b>输入：</b>pairs = [[1,2],[2,3],[2,4],[1,5]]
+<b>输出：</b>0
+<b>解释：</b>没有符合规定的有根树。</pre>
+
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= pairs.length &lt;= 10<sup>5</sup></code></li>
+    <li><code>1 &lt;= x<sub>i </sub>&lt; y<sub>i</sub> &lt;= 500</code></li>
+    <li><code>pairs</code>&nbsp;中的元素互不相同。</li>
+</ul>
+
+
+
+<h3 id="思考过程"><a href="#思考过程" class="headerlink" title="思考过程"></a>思考过程</h3><p>一开始一直看不懂题目，不明白示例三为什么不行，认为示例三很容易就能画出一棵树来。反复读题之后才意识到题目中“树所包含的所有节点值都在 <code>pairs</code>&nbsp;中。”的意思，就是说构造出来的树的所有信息都要再<code>pairs</code>中体现，也明白了为什么要那样输出，只要找到符合条件的2个就能输出了。<br>于是看示例三就能想到：如果一个节点在一个数对中做了孩子节点，那它在其他数对中只能作为双亲节点，比如示例三中的<code>2</code>节点。<br>不对不对，;<code>pairs[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&amp;nbsp中，<code>x<sub>i</sub></code>和<code>y<sub>i</sub></code>之间的关系是祖先和后代的关系，而不是双亲孩子的关系，所以这不能用来解题。<br>那也就是说所有祖先后代的关系在<code>pairs</code>当中都有体现，那如果存在根节点的话，每一组数对当中都会有这个根节点咯？——找到根节点了！<br>呀，不是在每个数对中都出现，就是：    </p>
+<pre><code>d = defaultdict(set)
+for x,y in pairs:
+    d[x].add(y)
+    d[y].add(x)
+</code></pre><p>这样<code>d[根节点]</code>就包含了除自己以外所有的节点，而<code>d[x]</code>就是包含<code>x</code>的所有祖先和后代了。<br>然 后呢？官解是直接模拟，模拟啥呀？<br><code>x<sub>i</sub> &lt; y<sub>i</sub></code>这个条件有什么用吗？应该没有吧，只是一种表示而已吧。<br>能不能再统计一下<code>d[x]</code>的个数，然后用集合的相关运算划分出不同的子树，然后……<br>哎，大约只能想到这了，看官解吧。<br>哎，官解前面设的东西和我的想法好像哦。<br>看了一圈题解，字面上的也基本上都懂了，但离理解还是差点。<br>自己写了一个。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def checkWays(self, pairs) -&gt; int:</span><br><span class="line">        adj = defaultdict(set)</span><br><span class="line"></span><br><span class="line">        for x, y in pairs:</span><br><span class="line">            adj[x].add(y)</span><br><span class="line">            adj[y].add(x)</span><br><span class="line">        for x in adj:</span><br><span class="line">            adj[x].add(x)</span><br><span class="line">        for i in adj:</span><br><span class="line">            print(i,adj[i])</span><br><span class="line">        adj = sorted(adj.values(), key=lambda item: len(item))</span><br><span class="line">        n = len(adj)</span><br><span class="line">        if len(adj[-1]) &lt; n:</span><br><span class="line">            return 0</span><br><span class="line">        ans = 1</span><br><span class="line">        print(adj)</span><br><span class="line">        for i in range(n - 1):</span><br><span class="line">            for j in range(i + 1, n):</span><br><span class="line">                if adj[i].issubset(adj[j]):</span><br><span class="line">                    if ans != 2 and adj[i] == adj[j]:</span><br><span class="line">                        ans = 2</span><br><span class="line">                    break</span><br><span class="line">            else:</span><br><span class="line">                return 0</span><br><span class="line">        return ans</span><br></pre></td></tr></table></figure>
+<p>将某个节点的所有祖先和所有后代还有它自己装进一个集合里，然后以集合大小为排序依据进行排序。从小的开始，找到包含这个小集合的最小的大集合，那个就是小集合对应的节点的父节点了。然后判断如果这两集合一样大，那就说明可以交换。<br>这样是错误的，问题在于，所有集合都是根节点的那个集合的子集，那所有节点都能认根节点作为它的直接父节点。完了。<br>看官解代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> maxsize</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">checkWays</span>(<span class="params">self, pairs</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        adj = defaultdict(<span class="built_in">set</span>)</span><br><span class="line">        <span class="keyword">for</span> x, y <span class="keyword">in</span> pairs:</span><br><span class="line">            adj[x].add(y)</span><br><span class="line">            adj[y].add(x)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 检测是否存在根节点</span></span><br><span class="line">        root = <span class="built_in">next</span>((node <span class="keyword">for</span> node, neighbours <span class="keyword">in</span> adj.items() <span class="keyword">if</span> <span class="built_in">len</span>(neighbours) == <span class="built_in">len</span>(adj) - <span class="number">1</span>), -<span class="number">1</span>)</span><br><span class="line">        <span class="comment"># # 没有根节点</span></span><br><span class="line">        <span class="keyword">if</span> root == -<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        ans = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> node, neighbours <span class="keyword">in</span> adj.items():</span><br><span class="line">            <span class="keyword">if</span> node == root:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># # 遍历过程当中当前节点的Degree</span></span><br><span class="line">            currDegree = <span class="built_in">len</span>(neighbours)</span><br><span class="line">            parent = -<span class="number">1</span></span><br><span class="line">            parentDegree = maxsize</span><br><span class="line">            <span class="comment"># 根据 degree 的大小找到 node 的父节点 parent</span></span><br><span class="line">            <span class="comment"># # 遍历 adj[node] ,就是和 node 有关系的所有节点</span></span><br><span class="line">            <span class="keyword">for</span> neighbour <span class="keyword">in</span> neighbours:</span><br><span class="line">                <span class="comment"># # 找到 node 的可能父节点—— parentDegree &gt;= currDegree</span></span><br><span class="line">                <span class="keyword">if</span> currDegree &lt;= <span class="built_in">len</span>(adj[neighbour]) &lt; parentDegree:</span><br><span class="line">                    parent = neighbour</span><br><span class="line">                    parentDegree = <span class="built_in">len</span>(adj[neighbour])</span><br><span class="line">            <span class="comment"># 检测 neighbours 是否为 adj[parent] 的子集</span></span><br><span class="line">            <span class="comment"># # if parent == -1 or not neighbours.issubset(adj[parent]):</span></span><br><span class="line">            <span class="comment"># # ??</span></span><br><span class="line">            <span class="keyword">if</span> parent == -<span class="number">1</span> <span class="keyword">or</span> <span class="built_in">any</span>(neighbour != parent <span class="keyword">and</span> neighbour <span class="keyword">not</span> <span class="keyword">in</span> adj[parent] <span class="keyword">for</span> neighbour <span class="keyword">in</span> neighbours):</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> parentDegree == currDegree:</span><br><span class="line">                ans = <span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<p>其中<code># #</code>是我的注释。<br>现在问题就是，</p>
+<pre><code># 检测 neighbours 是否为 adj[parent] 的子集
+# # if parent == -1 or not neighbours.issubset(adj[parent]):
+if parent == -1 or any(neighbour != parent and neighbour not in adj[parent] for neighbour in neighbours):
+return 0
+</code></pre><p>我用集合本身的判断是否为另一个集合的子集的函数，结果是错误的。<br>现在就是要重点理解<code>any(neighbour != parent and neighbour not in adj[parent] for neighbour in neighbours)</code>了。还有，<code>parent</code>什么时候会是<code>-1</code>呀？<br>不，在这里<code>parent</code>都不可能是<code>-1</code>，经代码提交确认也是这样。<br>    any(neighbour != parent and neighbour not in adj[parent] for neighbour in neighbours)</p>
+<ul>
+<li><code>any()</code>只要有一个是True，结果就是True。</li>
+<li>遍历当前<code>node</code>的<code>neighbours</code>，若出现一个节点不属于<code>parent</code>那个集合时，就可以证明这个<code>parent</code>不是这个<code>node</code>的父节点：<ul>
+<li>当遍历的<code>neighbour</code>不是<code>parent</code>(<code>neighbour != parent</code>为<code>True</code>)时,<code>neighbour</code>又不在<code>parent</code>的集合里，整体值为<code>True</code>，即<code>parent</code>不是当前<code>node</code>的父节点，<code>return 0</code>；</li>
+<li>当遍历的<code>neighbour</code>恰好时<code>parent</code>(<code>neighbour != parent</code>为<code>False</code>)时，<code>neighbour</code>也一定不在’parent<code>的集合里，因此整体值为</code>False`;</li>
+</ul>
+</li>
+</ul>
+<p>好家伙，总算是理清了。</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Leetcode</tag>
+        <tag>模拟</tag>
+        <tag>Leetcode困难</tag>
       </tags>
   </entry>
   <entry>
@@ -2338,116 +2499,6 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-1719-重构一棵树的方案数</title>
-    <url>/posts/1053049866.html</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1719. 重构一棵树的方案数<br>难度：困难</p>
-<p>给你一个数组&nbsp;<code>pairs</code> ，其中&nbsp;<code>pairs[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&nbsp;，并且满足：</p>
-
-<ul>
-    <li><code>pairs</code>&nbsp;中没有重复元素</li>
-    <li><code>x<sub>i</sub> &lt; y<sub>i</sub></code></li>
-</ul>
-
-
-<p>令&nbsp;<code>ways</code>&nbsp;为满足下面条件的有根树的方案数：</p>
-
-<ul>
-    <li>树所包含的所有节点值都在 <code>pairs</code>&nbsp;中。</li>
-    <li>一个数对&nbsp;<code>[x<sub>i</sub>, y<sub>i</sub>]</code> 出现在&nbsp;<code>pairs</code>&nbsp;中&nbsp;<strong>当且仅当</strong><strong>&nbsp;</strong><code>x<sub>i</sub></code>&nbsp;是&nbsp;<code>y<sub>i</sub></code>&nbsp;的祖先或者&nbsp;<code>y<sub>i</sub></code>&nbsp;是&nbsp;<code>x<sub>i</sub></code><sub>&nbsp;</sub>的祖先。</li>
-    <li><strong>注意：</strong>构造出来的树不一定是二叉树。</li>
-</ul>
-
-
-<p>两棵树被视为不同的方案当存在至少一个节点在两棵树中有不同的父节点。</p>
-
-<p>请你返回：</p>
-
-<ul>
-    <li>如果&nbsp;<code>ways == 0</code>&nbsp;，返回&nbsp;<code>0</code>&nbsp;。</li>
-    <li>如果&nbsp;<code>ways == 1</code>&nbsp;，返回 <code>1</code>&nbsp;。</li>
-    <li>如果&nbsp;<code>ways &gt; 1</code>&nbsp;，返回&nbsp;<code>2</code>&nbsp;。</li>
-</ul>
-
-
-<p>一棵 <strong>有根树</strong>&nbsp;指的是只有一个根节点的树，所有边都是从根往外的方向。</p>
-
-<p>我们称从根到一个节点路径上的任意一个节点（除去节点本身）都是该节点的 <strong>祖先</strong>&nbsp;。根节点没有祖先。</p>
-
-<p>&nbsp;</p>
-
-<p><strong>示例 1：</strong></p>
-
-<p><img style="width: 208px; height: 221px;" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/09/trees2.png"></p>
-<pre><b>输入：</b>pairs = [[1,2],[2,3]]
-<b>输出：</b>1
-<b>解释：</b>如上图所示，有且只有一个符合规定的有根树。
-</pre>
-
-
-<p><strong>示例 2：</strong></p>
-
-<p><img style="width: 234px; height: 241px;" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2021/01/09/tree.png" alt=""></p>
-<pre><b>输入：</b>pairs = [[1,2],[2,3],[1,3]]
-<b>输出：</b>2
-<b>解释：</b>有多个符合规定的有根树，其中三个如上图所示。
-</pre>
-
-
-<p><strong>示例 3：</strong></p>
-
-<pre><b>输入：</b>pairs = [[1,2],[2,3],[2,4],[1,5]]
-<b>输出：</b>0
-<b>解释：</b>没有符合规定的有根树。</pre>
-
-
-<p>&nbsp;</p>
-
-<p><strong>提示：</strong></p>
-
-<ul>
-    <li><code>1 &lt;= pairs.length &lt;= 10<sup>5</sup></code></li>
-    <li><code>1 &lt;= x<sub>i </sub>&lt; y<sub>i</sub> &lt;= 500</code></li>
-    <li><code>pairs</code>&nbsp;中的元素互不相同。</li>
-</ul>
-
-
-
-<h3 id="思考过程"><a href="#思考过程" class="headerlink" title="思考过程"></a>思考过程</h3><p>一开始一直看不懂题目，不明白示例三为什么不行，认为示例三很容易就能画出一棵树来。反复读题之后才意识到题目中“树所包含的所有节点值都在 <code>pairs</code>&nbsp;中。”的意思，就是说构造出来的树的所有信息都要再<code>pairs</code>中体现，也明白了为什么要那样输出，只要找到符合条件的2个就能输出了。<br>于是看示例三就能想到：如果一个节点在一个数对中做了孩子节点，那它在其他数对中只能作为双亲节点，比如示例三中的<code>2</code>节点。<br>不对不对，;<code>pairs[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&amp;nbsp中，<code>x<sub>i</sub></code>和<code>y<sub>i</sub></code>之间的关系是祖先和后代的关系，而不是双亲孩子的关系，所以这不能用来解题。<br>那也就是说所有祖先后代的关系在<code>pairs</code>当中都有体现，那如果存在根节点的话，每一组数对当中都会有这个根节点咯？——找到根节点了！<br>呀，不是在每个数对中都出现，就是：    </p>
-<pre><code>d = defaultdict(set)
-for x,y in pairs:
-    d[x].add(y)
-    d[y].add(x)
-</code></pre><p>这样<code>d[根节点]</code>就包含了除自己以外所有的节点，而<code>d[x]</code>就是包含<code>x</code>的所有祖先和后代了。<br>然 后呢？官解是直接模拟，模拟啥呀？<br><code>x<sub>i</sub> &lt; y<sub>i</sub></code>这个条件有什么用吗？应该没有吧，只是一种表示而已吧。<br>能不能再统计一下<code>d[x]</code>的个数，然后用集合的相关运算划分出不同的子树，然后……<br>哎，大约只能想到这了，看官解吧。<br>哎，官解前面设的东西和我的想法好像哦。<br>看了一圈题解，字面上的也基本上都懂了，但离理解还是差点。<br>自己写了一个。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def checkWays(self, pairs) -&gt; int:</span><br><span class="line">        adj = defaultdict(set)</span><br><span class="line"></span><br><span class="line">        for x, y in pairs:</span><br><span class="line">            adj[x].add(y)</span><br><span class="line">            adj[y].add(x)</span><br><span class="line">        for x in adj:</span><br><span class="line">            adj[x].add(x)</span><br><span class="line">        for i in adj:</span><br><span class="line">            print(i,adj[i])</span><br><span class="line">        adj = sorted(adj.values(), key=lambda item: len(item))</span><br><span class="line">        n = len(adj)</span><br><span class="line">        if len(adj[-1]) &lt; n:</span><br><span class="line">            return 0</span><br><span class="line">        ans = 1</span><br><span class="line">        print(adj)</span><br><span class="line">        for i in range(n - 1):</span><br><span class="line">            for j in range(i + 1, n):</span><br><span class="line">                if adj[i].issubset(adj[j]):</span><br><span class="line">                    if ans != 2 and adj[i] == adj[j]:</span><br><span class="line">                        ans = 2</span><br><span class="line">                    break</span><br><span class="line">            else:</span><br><span class="line">                return 0</span><br><span class="line">        return ans</span><br></pre></td></tr></table></figure>
-<p>将某个节点的所有祖先和所有后代还有它自己装进一个集合里，然后以集合大小为排序依据进行排序。从小的开始，找到包含这个小集合的最小的大集合，那个就是小集合对应的节点的父节点了。然后判断如果这两集合一样大，那就说明可以交换。<br>这样是错误的，问题在于，所有集合都是根节点的那个集合的子集，那所有节点都能认根节点作为它的直接父节点。完了。<br>看官解代码：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sys <span class="keyword">import</span> maxsize</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">checkWays</span>(<span class="params">self, pairs</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        adj = defaultdict(<span class="built_in">set</span>)</span><br><span class="line">        <span class="keyword">for</span> x, y <span class="keyword">in</span> pairs:</span><br><span class="line">            adj[x].add(y)</span><br><span class="line">            adj[y].add(x)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 检测是否存在根节点</span></span><br><span class="line">        root = <span class="built_in">next</span>((node <span class="keyword">for</span> node, neighbours <span class="keyword">in</span> adj.items() <span class="keyword">if</span> <span class="built_in">len</span>(neighbours) == <span class="built_in">len</span>(adj) - <span class="number">1</span>), -<span class="number">1</span>)</span><br><span class="line">        <span class="comment"># # 没有根节点</span></span><br><span class="line">        <span class="keyword">if</span> root == -<span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        ans = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> node, neighbours <span class="keyword">in</span> adj.items():</span><br><span class="line">            <span class="keyword">if</span> node == root:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># # 遍历过程当中当前节点的Degree</span></span><br><span class="line">            currDegree = <span class="built_in">len</span>(neighbours)</span><br><span class="line">            parent = -<span class="number">1</span></span><br><span class="line">            parentDegree = maxsize</span><br><span class="line">            <span class="comment"># 根据 degree 的大小找到 node 的父节点 parent</span></span><br><span class="line">            <span class="comment"># # 遍历 adj[node] ,就是和 node 有关系的所有节点</span></span><br><span class="line">            <span class="keyword">for</span> neighbour <span class="keyword">in</span> neighbours:</span><br><span class="line">                <span class="comment"># # 找到 node 的可能父节点—— parentDegree &gt;= currDegree</span></span><br><span class="line">                <span class="keyword">if</span> currDegree &lt;= <span class="built_in">len</span>(adj[neighbour]) &lt; parentDegree:</span><br><span class="line">                    parent = neighbour</span><br><span class="line">                    parentDegree = <span class="built_in">len</span>(adj[neighbour])</span><br><span class="line">            <span class="comment"># 检测 neighbours 是否为 adj[parent] 的子集</span></span><br><span class="line">            <span class="comment"># # if parent == -1 or not neighbours.issubset(adj[parent]):</span></span><br><span class="line">            <span class="comment"># # ??</span></span><br><span class="line">            <span class="keyword">if</span> parent == -<span class="number">1</span> <span class="keyword">or</span> <span class="built_in">any</span>(neighbour != parent <span class="keyword">and</span> neighbour <span class="keyword">not</span> <span class="keyword">in</span> adj[parent] <span class="keyword">for</span> neighbour <span class="keyword">in</span> neighbours):</span><br><span class="line">                <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> parentDegree == currDegree:</span><br><span class="line">                ans = <span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-<p>其中<code># #</code>是我的注释。<br>现在问题就是，</p>
-<pre><code># 检测 neighbours 是否为 adj[parent] 的子集
-# # if parent == -1 or not neighbours.issubset(adj[parent]):
-if parent == -1 or any(neighbour != parent and neighbour not in adj[parent] for neighbour in neighbours):
-return 0
-</code></pre><p>我用集合本身的判断是否为另一个集合的子集的函数，结果是错误的。<br>现在就是要重点理解<code>any(neighbour != parent and neighbour not in adj[parent] for neighbour in neighbours)</code>了。还有，<code>parent</code>什么时候会是<code>-1</code>呀？<br>不，在这里<code>parent</code>都不可能是<code>-1</code>，经代码提交确认也是这样。<br>    any(neighbour != parent and neighbour not in adj[parent] for neighbour in neighbours)</p>
-<ul>
-<li><code>any()</code>只要有一个是True，结果就是True。</li>
-<li>遍历当前<code>node</code>的<code>neighbours</code>，若出现一个节点不属于<code>parent</code>那个集合时，就可以证明这个<code>parent</code>不是这个<code>node</code>的父节点：<ul>
-<li>当遍历的<code>neighbour</code>不是<code>parent</code>(<code>neighbour != parent</code>为<code>True</code>)时,<code>neighbour</code>又不在<code>parent</code>的集合里，整体值为<code>True</code>，即<code>parent</code>不是当前<code>node</code>的父节点，<code>return 0</code>；</li>
-<li>当遍历的<code>neighbour</code>恰好时<code>parent</code>(<code>neighbour != parent</code>为<code>False</code>)时，<code>neighbour</code>也一定不在’parent<code>的集合里，因此整体值为</code>False`;</li>
-</ul>
-</li>
-</ul>
-<p>好家伙，总算是理清了。</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>Leetcode</tag>
-        <tag>模拟</tag>
-        <tag>Leetcode困难</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode_345. 反转字符串中的元音字母</title>
     <url>/posts/3042145382.html</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>345. 反转字符串中的元音字母<br>难度：简单<br>编写一个函数，以字符串作为输入，反转该字符串中的元音字母。</p>
@@ -2474,6 +2525,36 @@ return 0
         <tag>Leetcode</tag>
         <tag>Leetcode简单</tag>
         <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode_526. 优美的排列</title>
+    <url>/posts/461475516.html</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>526. 优美的排列<br>难度：中等<br>假设有从 1 到 N 的 N 个整数，如果从这 N 个数字中成功构造出一个数组，使得数组的第 i 位 (1 &lt;= i &lt;= N) 满足如下两个条件中的一个，我们就称这个数组为一个优美的排列。条件：</p>
+<p>第 i 位的数字能被 i 整除<br>i 能被第 i 位上的数字整除<br>现在给定一个整数 N，请问可以构造多少个优美的排列？</p>
+<p>示例1:</p>
+<p>输入: 2<br>输出: 2<br>解释: </p>
+<p>第 1 个优美的排列是 [1, 2]:<br>  第 1 个位置（i=1）上的数字是1，1能被 i（i=1）整除<br>  第 2 个位置（i=2）上的数字是2，2能被 i（i=2）整除</p>
+<p>第 2 个优美的排列是 [2, 1]:<br>  第 1 个位置（i=1）上的数字是2，2能被 i（i=1）整除<br>  第 2 个位置（i=2）上的数字是1，i（i=2）能被 1 整除<br>说明:</p>
+<p>N 是一个正整数，并且不会超过15。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/beautiful-arrangement">https://leetcode-cn.com/problems/beautiful-arrangement</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h3 id="方法零：流氓方法"><a href="#方法零：流氓方法" class="headerlink" title="方法零：流氓方法"></a>方法零：流氓方法</h3><p>因为题目说明了N不会超过15，那就用例测试所有的数得到答案，然后用列表或者一串<code>if</code>语句就可以通过了。</p>
+<h3 id="方法一：回溯"><a href="#方法一：回溯" class="headerlink" title="方法一：回溯"></a>方法一：回溯</h3><h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>本来就隐约觉得会用到回溯算法，但还是想先用排列组合的方法试一下，但太太困难了，最后还是用了回溯算法。<br>先创建一个字典<code>d</code>，可以理解成键是第几个位置，对应的值是该位置上能放哪些数。<br>接下来是回溯函数，设置两个参数，第一个是用于记录当前状态的列表，第二个是 现在要填的是哪一个位置<code>pos</code>，返回当前状态下的优美排列数<code>c</code>。<br><code>c</code>初始设为0，<code>i</code>遍历可以在<code>pos</code>位置上的所有数，即<code>d[pos]</code>，如果<code>i</code>不在列表之内，就将它填到列表的对应位置上，并<code>c += func(s, pos+1)</code>，递归到下一个<code>pos</code>中，直到<code>pos==n</code>时，<code>c += 1</code>。<br>可能还是直接看代码清楚一些吧。</p>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def countArrangement(n):</span><br><span class="line">    d = defaultdict(list)</span><br><span class="line">    # 第num个位置上可以放哪些数</span><br><span class="line">    for num in range(1, n+1):</span><br><span class="line">        for i in range(1, num+1):</span><br><span class="line">            if num % i == 0:</span><br><span class="line">                d[num].append(i)</span><br><span class="line">                if num != i:</span><br><span class="line">                    d[i].append(num)</span><br><span class="line"></span><br><span class="line">    def func(s, pos):</span><br><span class="line">        c = 0</span><br><span class="line">        for i in d[pos]:</span><br><span class="line">            if i not in s:</span><br><span class="line">                s[pos-1] = i</span><br><span class="line">                if pos == n:</span><br><span class="line">                    c += 1</span><br><span class="line">                else:</span><br><span class="line">                    c += func(s, pos+1)</span><br><span class="line">                s[pos-1] = 0</span><br><span class="line">        return c</span><br><span class="line">    return func([0]*n, 1)</span><br></pre></td></tr></table></figure>
+<p>官方的回溯算法和我写得几乎一样，只是他用的是集合。我一开始也是想用集合的，但不知道集合的<code>disturb</code>方法，才改成了列表。<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def countArrangement(self, n: int) -&gt; int:</span><br><span class="line">        match = defaultdict(list)</span><br><span class="line">        for i in range(1, n + 1):</span><br><span class="line">            for j in range(1, n + 1):</span><br><span class="line">                if i % j == 0 or j % i == 0:</span><br><span class="line">                    match[i].append(j)</span><br><span class="line">        </span><br><span class="line">        num = 0</span><br><span class="line">        vis = set()</span><br><span class="line"></span><br><span class="line">        def backtrack(index: int) -&gt; None:</span><br><span class="line">            if index == n + 1:</span><br><span class="line">                nonlocal num</span><br><span class="line">                num += 1</span><br><span class="line">                return</span><br><span class="line">            </span><br><span class="line">            for x in match[index]:</span><br><span class="line">                if x not in vis:</span><br><span class="line">                    vis.add(x)</span><br><span class="line">                    backtrack(index + 1)</span><br><span class="line">                    vis.discard(x)</span><br><span class="line">                   </span><br><span class="line">        backtrack(1)</span><br><span class="line">        return num</span><br><span class="line"></span><br><span class="line">作者：LeetCode-Solution</span><br><span class="line">链接：https://leetcode-cn.com/problems/beautiful-arrangement/solution/you-mei-de-pai-lie-by-leetcode-solution-vea2/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure></p>
+<h3 id="方法二：状态压缩-动态规划"><a href="#方法二：状态压缩-动态规划" class="headerlink" title="方法二：状态压缩+动态规划"></a>方法二：状态压缩+动态规划</h3><h5 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h5><p>这个方法实在难理解，借助官方题解下的评论才勉强看懂。也不知道什么叫状态压缩。<br>首先，是动态规划的状态表示。这里用二进制数表示，从右往左数，第<code>i</code>位上的数字是1，就表示<code>i</code>这个数字被选取了。创建长度为<code>1&lt;&lt;n</code>的数组<code>f</code>，表示某一状态下的优美排列数。<br>以<code>n=6</code>举例。<code>f[000110]</code>的意思是（这里下标里的数都是二进制数）：数字2和3能够组成的优美排列数。<br>所以，最后返回的结果就是<code>f[1&lt;&lt;n -1]</code>，即<code>f[111111]</code>。<br>然后是转移方程。<code>f[111111] = f[011111] + f[101111] + f[110111] + f[111011] + f[111101] + f[111110]</code>，也就是说，要算取了6个数的优美排列，就算上所有任意去掉这已经取了的6个数中的一个的状态的优美排列数。当然，事实上并不是所有的数都要相加，因为还需要判断，去掉的那个数能否放在第6个位置上。比如<code>f[101111]</code>这时数字<code>5</code>还没有取，而<code>5</code>并不能放在第6个位置上。<br>再举个例子。<code>f[100110]</code>是要算数字<code>2</code>、<code>3</code>和<code>6</code>这3个数的优美排列，那就看哪个数可以放在第3个位置上，这里<code>6</code>和<code>3</code>可以放在第3个位置上，而这时候已经取了的数字分别是<code>2</code>、<code>3</code>和<code>2</code>、<code>6</code>所以<code>f[100110] = f[000110] + f[100010]</code>。<br>因此，设计双重循环，外层<code>mask</code>循环遍历所有状态，内存<code>i</code>循环做的事情是从0（最右边）开始遍历<code>mask</code>的每一位，如果第<code>i+1</code>位上是<code>1</code>，并且这个<code>1</code>对应的数<code>i+1</code>能放在这个位置上（这句话的意思是：假装还没有取<code>i+1</code>这个数，此时已经取了<code>num - 1</code>个数，那 <code>i+1</code>能否放在<code>num</code>这个位置上，所以，<code>num</code>的意思就是要求的<code>mask</code>当中已经取了的数的数量，所以，<code>num</code>可以通过统计<code>mask</code>中有几个<code>1</code>来获得），那么<code>f[mask]</code>就可以加上这种状态下的优美排列数了。<br>还是结合代码进行理解吧。</p>
+<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def countArrangement(n):</span><br><span class="line">    # f[X] X是一个二进制数，</span><br><span class="line">    # 例：f[000110]，表示数字2和3被选取后排在前面的优美排列数</span><br><span class="line">    # 从右往左数，1表示被选</span><br><span class="line">    f = [0]*(1 &lt;&lt; n)</span><br><span class="line">    f[0] = 1</span><br><span class="line"></span><br><span class="line">    # 动态规划，mask 遍历1到 1&lt;&lt;n</span><br><span class="line">    for mask in range(1, 1 &lt;&lt; n):</span><br><span class="line">        # 计mask有多少个1</span><br><span class="line">        # 以100110举例例，mum=3</span><br><span class="line">        # 也就是说，2、3、6被选取了，要放在前三个求他们呢的优美排列数</span><br><span class="line">        # 那需要判断第3个位置（也就是第 num个位置）可以放谁，</span><br><span class="line">        # 这里可以放3和6，</span><br><span class="line">        # 前两个位置是2，6，f[100110] += f[100010]</span><br><span class="line">        # 前两个位置是2，3，f[100110] += f[000110]</span><br><span class="line">        num = bin(mask).count(&quot;1&quot;)</span><br><span class="line">        for i in range(n):</span><br><span class="line">            # mask &amp; (1 &lt;&lt; i  mask的第i+1位是不是1</span><br><span class="line">            # 如果是，</span><br><span class="line">            # i+1这个数能不能放在 num 这个位置上</span><br><span class="line">            # 如果可以，</span><br><span class="line">            # mask ^ (1 &lt;&lt; i) mask的第i+1位改为0</span><br><span class="line">            # f[mask] += f[mask ^ (1 &lt;&lt; i)]</span><br><span class="line">            # 注意i与i+1，i-1的区别含义</span><br><span class="line">            if (mask &amp; (1 &lt;&lt; i) and (num % (i+1) == 0 or (i+1) % num == 0)):</span><br><span class="line">                f[mask] += f[mask ^ (1 &lt;&lt; i)]</span><br><span class="line">        # for i in range(1,n+1):</span><br><span class="line">        #     if (mask &amp; (1 &lt;&lt; (i-1)) and (num % i == 0 or i % num == 0)):</span><br><span class="line">        #         f[mask] += f[mask ^ (1 &lt;&lt; (i-1))]</span><br><span class="line">    return f[(1 &lt;&lt; n)-1]</span><br></pre></td></tr></table></figure>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><img src="https://z3.ax1x.com/2021/08/18/fI1buR.jpg" alt="526. 优美的排列提交记录"></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>动态规划</tag>
+        <tag>Leetcode</tag>
+        <tag>Leetcode中等</tag>
+        <tag>回溯</tag>
       </tags>
   </entry>
   <entry>
@@ -2546,36 +2627,6 @@ return 0
       </tags>
   </entry>
   <entry>
-    <title>Leetcode_526. 优美的排列</title>
-    <url>/posts/461475516.html</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>526. 优美的排列<br>难度：中等<br>假设有从 1 到 N 的 N 个整数，如果从这 N 个数字中成功构造出一个数组，使得数组的第 i 位 (1 &lt;= i &lt;= N) 满足如下两个条件中的一个，我们就称这个数组为一个优美的排列。条件：</p>
-<p>第 i 位的数字能被 i 整除<br>i 能被第 i 位上的数字整除<br>现在给定一个整数 N，请问可以构造多少个优美的排列？</p>
-<p>示例1:</p>
-<p>输入: 2<br>输出: 2<br>解释: </p>
-<p>第 1 个优美的排列是 [1, 2]:<br>  第 1 个位置（i=1）上的数字是1，1能被 i（i=1）整除<br>  第 2 个位置（i=2）上的数字是2，2能被 i（i=2）整除</p>
-<p>第 2 个优美的排列是 [2, 1]:<br>  第 1 个位置（i=1）上的数字是2，2能被 i（i=1）整除<br>  第 2 个位置（i=2）上的数字是1，i（i=2）能被 1 整除<br>说明:</p>
-<p>N 是一个正整数，并且不会超过15。</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/beautiful-arrangement">https://leetcode-cn.com/problems/beautiful-arrangement</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h3 id="方法零：流氓方法"><a href="#方法零：流氓方法" class="headerlink" title="方法零：流氓方法"></a>方法零：流氓方法</h3><p>因为题目说明了N不会超过15，那就用例测试所有的数得到答案，然后用列表或者一串<code>if</code>语句就可以通过了。</p>
-<h3 id="方法一：回溯"><a href="#方法一：回溯" class="headerlink" title="方法一：回溯"></a>方法一：回溯</h3><h5 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h5><p>本来就隐约觉得会用到回溯算法，但还是想先用排列组合的方法试一下，但太太困难了，最后还是用了回溯算法。<br>先创建一个字典<code>d</code>，可以理解成键是第几个位置，对应的值是该位置上能放哪些数。<br>接下来是回溯函数，设置两个参数，第一个是用于记录当前状态的列表，第二个是 现在要填的是哪一个位置<code>pos</code>，返回当前状态下的优美排列数<code>c</code>。<br><code>c</code>初始设为0，<code>i</code>遍历可以在<code>pos</code>位置上的所有数，即<code>d[pos]</code>，如果<code>i</code>不在列表之内，就将它填到列表的对应位置上，并<code>c += func(s, pos+1)</code>，递归到下一个<code>pos</code>中，直到<code>pos==n</code>时，<code>c += 1</code>。<br>可能还是直接看代码清楚一些吧。</p>
-<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def countArrangement(n):</span><br><span class="line">    d = defaultdict(list)</span><br><span class="line">    # 第num个位置上可以放哪些数</span><br><span class="line">    for num in range(1, n+1):</span><br><span class="line">        for i in range(1, num+1):</span><br><span class="line">            if num % i == 0:</span><br><span class="line">                d[num].append(i)</span><br><span class="line">                if num != i:</span><br><span class="line">                    d[i].append(num)</span><br><span class="line"></span><br><span class="line">    def func(s, pos):</span><br><span class="line">        c = 0</span><br><span class="line">        for i in d[pos]:</span><br><span class="line">            if i not in s:</span><br><span class="line">                s[pos-1] = i</span><br><span class="line">                if pos == n:</span><br><span class="line">                    c += 1</span><br><span class="line">                else:</span><br><span class="line">                    c += func(s, pos+1)</span><br><span class="line">                s[pos-1] = 0</span><br><span class="line">        return c</span><br><span class="line">    return func([0]*n, 1)</span><br></pre></td></tr></table></figure>
-<p>官方的回溯算法和我写得几乎一样，只是他用的是集合。我一开始也是想用集合的，但不知道集合的<code>disturb</code>方法，才改成了列表。<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def countArrangement(self, n: int) -&gt; int:</span><br><span class="line">        match = defaultdict(list)</span><br><span class="line">        for i in range(1, n + 1):</span><br><span class="line">            for j in range(1, n + 1):</span><br><span class="line">                if i % j == 0 or j % i == 0:</span><br><span class="line">                    match[i].append(j)</span><br><span class="line">        </span><br><span class="line">        num = 0</span><br><span class="line">        vis = set()</span><br><span class="line"></span><br><span class="line">        def backtrack(index: int) -&gt; None:</span><br><span class="line">            if index == n + 1:</span><br><span class="line">                nonlocal num</span><br><span class="line">                num += 1</span><br><span class="line">                return</span><br><span class="line">            </span><br><span class="line">            for x in match[index]:</span><br><span class="line">                if x not in vis:</span><br><span class="line">                    vis.add(x)</span><br><span class="line">                    backtrack(index + 1)</span><br><span class="line">                    vis.discard(x)</span><br><span class="line">                   </span><br><span class="line">        backtrack(1)</span><br><span class="line">        return num</span><br><span class="line"></span><br><span class="line">作者：LeetCode-Solution</span><br><span class="line">链接：https://leetcode-cn.com/problems/beautiful-arrangement/solution/you-mei-de-pai-lie-by-leetcode-solution-vea2/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure></p>
-<h3 id="方法二：状态压缩-动态规划"><a href="#方法二：状态压缩-动态规划" class="headerlink" title="方法二：状态压缩+动态规划"></a>方法二：状态压缩+动态规划</h3><h5 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h5><p>这个方法实在难理解，借助官方题解下的评论才勉强看懂。也不知道什么叫状态压缩。<br>首先，是动态规划的状态表示。这里用二进制数表示，从右往左数，第<code>i</code>位上的数字是1，就表示<code>i</code>这个数字被选取了。创建长度为<code>1&lt;&lt;n</code>的数组<code>f</code>，表示某一状态下的优美排列数。<br>以<code>n=6</code>举例。<code>f[000110]</code>的意思是（这里下标里的数都是二进制数）：数字2和3能够组成的优美排列数。<br>所以，最后返回的结果就是<code>f[1&lt;&lt;n -1]</code>，即<code>f[111111]</code>。<br>然后是转移方程。<code>f[111111] = f[011111] + f[101111] + f[110111] + f[111011] + f[111101] + f[111110]</code>，也就是说，要算取了6个数的优美排列，就算上所有任意去掉这已经取了的6个数中的一个的状态的优美排列数。当然，事实上并不是所有的数都要相加，因为还需要判断，去掉的那个数能否放在第6个位置上。比如<code>f[101111]</code>这时数字<code>5</code>还没有取，而<code>5</code>并不能放在第6个位置上。<br>再举个例子。<code>f[100110]</code>是要算数字<code>2</code>、<code>3</code>和<code>6</code>这3个数的优美排列，那就看哪个数可以放在第3个位置上，这里<code>6</code>和<code>3</code>可以放在第3个位置上，而这时候已经取了的数字分别是<code>2</code>、<code>3</code>和<code>2</code>、<code>6</code>所以<code>f[100110] = f[000110] + f[100010]</code>。<br>因此，设计双重循环，外层<code>mask</code>循环遍历所有状态，内存<code>i</code>循环做的事情是从0（最右边）开始遍历<code>mask</code>的每一位，如果第<code>i+1</code>位上是<code>1</code>，并且这个<code>1</code>对应的数<code>i+1</code>能放在这个位置上（这句话的意思是：假装还没有取<code>i+1</code>这个数，此时已经取了<code>num - 1</code>个数，那 <code>i+1</code>能否放在<code>num</code>这个位置上，所以，<code>num</code>的意思就是要求的<code>mask</code>当中已经取了的数的数量，所以，<code>num</code>可以通过统计<code>mask</code>中有几个<code>1</code>来获得），那么<code>f[mask]</code>就可以加上这种状态下的优美排列数了。<br>还是结合代码进行理解吧。</p>
-<h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">def countArrangement(n):</span><br><span class="line">    # f[X] X是一个二进制数，</span><br><span class="line">    # 例：f[000110]，表示数字2和3被选取后排在前面的优美排列数</span><br><span class="line">    # 从右往左数，1表示被选</span><br><span class="line">    f = [0]*(1 &lt;&lt; n)</span><br><span class="line">    f[0] = 1</span><br><span class="line"></span><br><span class="line">    # 动态规划，mask 遍历1到 1&lt;&lt;n</span><br><span class="line">    for mask in range(1, 1 &lt;&lt; n):</span><br><span class="line">        # 计mask有多少个1</span><br><span class="line">        # 以100110举例例，mum=3</span><br><span class="line">        # 也就是说，2、3、6被选取了，要放在前三个求他们呢的优美排列数</span><br><span class="line">        # 那需要判断第3个位置（也就是第 num个位置）可以放谁，</span><br><span class="line">        # 这里可以放3和6，</span><br><span class="line">        # 前两个位置是2，6，f[100110] += f[100010]</span><br><span class="line">        # 前两个位置是2，3，f[100110] += f[000110]</span><br><span class="line">        num = bin(mask).count(&quot;1&quot;)</span><br><span class="line">        for i in range(n):</span><br><span class="line">            # mask &amp; (1 &lt;&lt; i  mask的第i+1位是不是1</span><br><span class="line">            # 如果是，</span><br><span class="line">            # i+1这个数能不能放在 num 这个位置上</span><br><span class="line">            # 如果可以，</span><br><span class="line">            # mask ^ (1 &lt;&lt; i) mask的第i+1位改为0</span><br><span class="line">            # f[mask] += f[mask ^ (1 &lt;&lt; i)]</span><br><span class="line">            # 注意i与i+1，i-1的区别含义</span><br><span class="line">            if (mask &amp; (1 &lt;&lt; i) and (num % (i+1) == 0 or (i+1) % num == 0)):</span><br><span class="line">                f[mask] += f[mask ^ (1 &lt;&lt; i)]</span><br><span class="line">        # for i in range(1,n+1):</span><br><span class="line">        #     if (mask &amp; (1 &lt;&lt; (i-1)) and (num % i == 0 or i % num == 0)):</span><br><span class="line">        #         f[mask] += f[mask ^ (1 &lt;&lt; (i-1))]</span><br><span class="line">    return f[(1 &lt;&lt; n)-1]</span><br></pre></td></tr></table></figure>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><img src="https://z3.ax1x.com/2021/08/18/fI1buR.jpg" alt="526. 优美的排列提交记录"></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>动态规划</tag>
-        <tag>Leetcode</tag>
-        <tag>Leetcode中等</tag>
-        <tag>回溯</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode_541. 反转字符串 II</title>
     <url>/posts/3484666929.html</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>541. 反转字符串 II<br>难度：简单</p>
@@ -2622,35 +2673,6 @@ return 0
         <tag>Leetcode</tag>
         <tag>Leetcode简单</tag>
         <tag>模拟</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode_551. 学生出勤记录 I</title>
-    <url>/posts/1273336613.html</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>551.-学生出勤记录-I<br>难度：简单<br>给你一个字符串 s 表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符：</p>
-<p>‘A’：Absent，缺勤<br>‘L’：Late，迟到<br>‘P’：Present，到场<br>如果学生能够 同时 满足下面两个条件，则可以获得出勤奖励：</p>
-<p>按 总出勤 计，学生缺勤（’A’）严格 少于两天。<br>学生 不会 存在 连续 3 天或 3 天以上的迟到（’L’）记录。<br>如果学生可以获得出勤奖励，返回 true ；否则，返回 false 。</p>
-<p>示例 1：</p>
-<p>输入：s = “PPALLP”<br>输出：true<br>解释：学生缺勤次数少于 2 次，且不存在 3 天或以上的连续迟到记录。<br>示例 2：</p>
-<p>输入：s = “PPALLL”<br>输出：false<br>解释：学生最后三天连续迟到，所以不满足出勤奖励的条件。</p>
-<p>提示：</p>
-<p>1 &lt;= s.length &lt;= 1000<br>s[i] 为 ‘A’、’L’ 或 ‘P’</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/student-attendance-record-i">https://leetcode-cn.com/problems/student-attendance-record-i</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>太简单了，略</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ul>
-<li>python<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def checkRecord(self, s: str) -&gt; bool:</span><br><span class="line">        return s.count(&quot;A&quot;)&lt;2 and s.count(&quot;LLL&quot;)&lt;=0</span><br></pre></td></tr></table></figure></li>
-<li>C<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">bool</span> <span class="title function_">checkRecord</span><span class="params">(<span class="type">char</span>* s)</span> &#123;</span><br><span class="line">	<span class="type">int</span> absent = <span class="number">0</span>, late = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (*s != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (*s == <span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			absent++;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span> (absent == <span class="number">2</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (*s == <span class="string">&#x27;L&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			late++;</span><br><span class="line">			<span class="keyword">if</span> (late == <span class="number">3</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		s++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/f4KPi9"><img src="https://z3.ax1x.com/2021/08/17/f4KPi9.png" alt="551. 学生出勤记录 I.png"></a><br><a href="https://imgtu.com/i/f4h6TP"><img src="https://z3.ax1x.com/2021/08/17/f4h6TP.jpg" alt="551. 学生出勤记录 IC语言"></a></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>Leetcode</tag>
-        <tag>Leetcode简单</tag>
       </tags>
   </entry>
   <entry>
@@ -2788,6 +2810,120 @@ return 0
         <tag>Leetcode</tag>
         <tag>Leetcode简单</tag>
         <tag>卷积</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode_551. 学生出勤记录 I</title>
+    <url>/posts/1273336613.html</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>551.-学生出勤记录-I<br>难度：简单<br>给你一个字符串 s 表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符：</p>
+<p>‘A’：Absent，缺勤<br>‘L’：Late，迟到<br>‘P’：Present，到场<br>如果学生能够 同时 满足下面两个条件，则可以获得出勤奖励：</p>
+<p>按 总出勤 计，学生缺勤（’A’）严格 少于两天。<br>学生 不会 存在 连续 3 天或 3 天以上的迟到（’L’）记录。<br>如果学生可以获得出勤奖励，返回 true ；否则，返回 false 。</p>
+<p>示例 1：</p>
+<p>输入：s = “PPALLP”<br>输出：true<br>解释：学生缺勤次数少于 2 次，且不存在 3 天或以上的连续迟到记录。<br>示例 2：</p>
+<p>输入：s = “PPALLL”<br>输出：false<br>解释：学生最后三天连续迟到，所以不满足出勤奖励的条件。</p>
+<p>提示：</p>
+<p>1 &lt;= s.length &lt;= 1000<br>s[i] 为 ‘A’、’L’ 或 ‘P’</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/student-attendance-record-i">https://leetcode-cn.com/problems/student-attendance-record-i</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>太简单了，略</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ul>
+<li>python<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def checkRecord(self, s: str) -&gt; bool:</span><br><span class="line">        return s.count(&quot;A&quot;)&lt;2 and s.count(&quot;LLL&quot;)&lt;=0</span><br></pre></td></tr></table></figure></li>
+<li>C<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="type">bool</span> <span class="title function_">checkRecord</span><span class="params">(<span class="type">char</span>* s)</span> &#123;</span><br><span class="line">	<span class="type">int</span> absent = <span class="number">0</span>, late = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span> (*s != <span class="string">&#x27;\0&#x27;</span>)</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">if</span> (*s == <span class="string">&#x27;A&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			absent++;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span> (absent == <span class="number">2</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (*s == <span class="string">&#x27;L&#x27;</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			late++;</span><br><span class="line">			<span class="keyword">if</span> (late == <span class="number">3</span>)<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			late = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		s++;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/f4KPi9"><img src="https://z3.ax1x.com/2021/08/17/f4KPi9.png" alt="551. 学生出勤记录 I.png"></a><br><a href="https://imgtu.com/i/f4h6TP"><img src="https://z3.ax1x.com/2021/08/17/f4h6TP.jpg" alt="551. 学生出勤记录 IC语言"></a></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Leetcode</tag>
+        <tag>Leetcode简单</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode_787. K 站中转内最便宜的航班</title>
+    <url>/posts/undefined.html</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>787. K 站中转内最便宜的航班<br>难度：中等</p>
+<p>有 <code>n</code> 个城市通过一些航班连接。给你一个数组&nbsp;<code>flights</code> ，其中&nbsp;<code>flights[i] = [from<sub>i</sub>, to<sub>i</sub>, price<sub>i</sub>]</code> ，表示该航班都从城市 <code>from<sub>i</sub></code> 开始，以价格 <code>price<sub>i</sub></code> 抵达 <code>to<sub>i</sub></code>。</p>
+
+<p>现在给定所有的城市和航班，以及出发城市 <code>src</code> 和目的地 <code>dst</code>，你的任务是找到出一条最多经过 <code>k</code>&nbsp;站中转的路线，使得从 <code>src</code> 到 <code>dst</code> 的 <strong>价格最便宜</strong> ，并返回该价格。 如果不存在这样的路线，则输出 <code>-1</code>。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入:</strong> 
+n = 3, edges = [[0,1,100],[1,2,100],[0,2,500]]
+src = 0, dst = 2, k = 1
+<strong>输出:</strong> 200
+<strong>解释:</strong> 
+城市航班图如下
+<img style="height: 180px; width: 246px;" src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/02/16/995.png" alt="">
+
+从城市 0 到城市 2 在 1 站中转以内的最便宜价格是 200，如图中红色所示。</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入:</strong> 
+n = 3, edges = [[0,1,100],[1,2,100],[0,2,500]]
+src = 0, dst = 2, k = 0
+<strong>输出:</strong> 500
+<strong>解释:</strong> 
+城市航班图如下
+<img style="height: 180px; width: 246px;" src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/02/16/995.png" alt="">
+
+从城市 0 到城市 2 在 0 站中转以内的最便宜价格是 500，如图中蓝色所示。</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= n &lt;= 100</code></li>
+    <li><code>0 &lt;= flights.length &lt;= (n * (n - 1) / 2)</code></li>
+    <li><code>flights[i].length == 3</code></li>
+    <li><code>0 &lt;= from<sub>i</sub>, to<sub>i</sub> &lt; n</code></li>
+    <li><code>from<sub>i</sub> != to<sub>i</sub></code></li>
+    <li><code>1 &lt;= price<sub>i</sub> &lt;= 10<sup>4</sup></code></li>
+    <li>航班没有重复，且不存在自环</li>
+    <li><code>0 &lt;= src, dst, k &lt; n</code></li>
+    <li><code>src != dst</code></li>
+</ul>
+
+
+<h3 id="方法一-枚举"><a href="#方法一-枚举" class="headerlink" title="方法一: 枚举"></a>方法一: 枚举</h3><h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><ol>
+<li>先创建一个字典，用于存从某一个地方出发，可以到哪些目的地以及花费是多少；</li>
+<li>建立两个列表，分别存这一次可以从哪些地方出发，以及到这个地方已经用了的花费；</li>
+<li>再建立两个临时列表，分别存在遍历出发地点的列时的目的地，以及到达目的地的的花费；</li>
+<li>若遇到了目的地是<code>dst</code>，就将花费记录到另一个<code>ret</code>列表当中；</li>
+<li>遍历完一遍出发列表后，<code>k</code>自减，将<code>3</code>中的列表分别赋给<code>2</code>中的列表；</li>
+<li>直到<code>k</code>变为负数，输出<code>ret</code>中的最小值，如果没有，输出<code>-1</code>。<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">findCheapestPrice</span>(<span class="params">n, flights, src, dst, k</span>):</span><br><span class="line">    dst_price = defaultdict(<span class="built_in">list</span>)</span><br><span class="line">    <span class="keyword">for</span> s, d, p <span class="keyword">in</span> flights:</span><br><span class="line">        dst_price[s].append([d, p])</span><br><span class="line">        <span class="comment">#dst_price[d].append([s, p])</span></span><br><span class="line">    <span class="comment"># print(dst_price)</span></span><br><span class="line">    next_place = [src]</span><br><span class="line">    next_price = [<span class="number">0</span>]</span><br><span class="line">    temp_place = []</span><br><span class="line">    temp_price = []</span><br><span class="line">    kk = k</span><br><span class="line">    ret = []</span><br><span class="line">    <span class="keyword">while</span> k &gt;= <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">for</span> f, p0 <span class="keyword">in</span> <span class="built_in">zip</span>(next_place, next_price):</span><br><span class="line">            <span class="keyword">for</span> d, p <span class="keyword">in</span> dst_price[f]:</span><br><span class="line">                temp_place.append(d)</span><br><span class="line">                temp_price.append(p0+p)</span><br><span class="line">                <span class="comment"># print(f,d,temp_place)</span></span><br><span class="line">                <span class="comment"># print(temp_price)</span></span><br><span class="line">                <span class="keyword">if</span> d == dst:</span><br><span class="line">                    ret.append(p0+p)</span><br><span class="line">        next_place = temp_place</span><br><span class="line">        next_price = temp_price</span><br><span class="line">        <span class="comment"># print(next_place)</span></span><br><span class="line">        <span class="comment"># print(next_price,&quot;***&quot;)</span></span><br><span class="line">        temp_place = []</span><br><span class="line">        temp_price = []</span><br><span class="line">        k -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">min</span>(ret) <span class="keyword">if</span> ret != [] <span class="keyword">else</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4>可能会出现两个地方来回的情况，造成超级大量的浪费计算。</li>
+</ol>
+<h3 id="方法二：-回溯"><a href="#方法二：-回溯" class="headerlink" title="方法二： 回溯"></a>方法二： 回溯</h3><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">findCheapestPrice</span>(<span class="params">n, flights, src, dst, k</span>):</span><br><span class="line">    dst_price = defaultdict(<span class="built_in">list</span>)</span><br><span class="line">    <span class="keyword">for</span> s, d, p <span class="keyword">in</span> flights:</span><br><span class="line">        dst_price[s].append([d, p])</span><br><span class="line"></span><br><span class="line">    place = [src]</span><br><span class="line">    price = [<span class="number">0</span>]</span><br><span class="line">    ret = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">k, place, price</span>):</span><br><span class="line">        <span class="keyword">if</span> k &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">for</span> d, p0 <span class="keyword">in</span> dst_price[place[-<span class="number">1</span>]]:</span><br><span class="line">            <span class="keyword">if</span> d == dst:</span><br><span class="line">                ret.append(price[-<span class="number">1</span>]+p0)</span><br><span class="line">            place.append(d)</span><br><span class="line">            price.append(price[-<span class="number">1</span>]+p0)</span><br><span class="line">            forward(k-<span class="number">1</span>, place, price)</span><br><span class="line">            place.pop()</span><br><span class="line">            price.pop()</span><br><span class="line">    forward(k, place, price)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">min</span>(ret) <span class="keyword">if</span> ret != [] <span class="keyword">else</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h3 id="方法三：-动态规划"><a href="#方法三：-动态规划" class="headerlink" title="方法三： 动态规划"></a>方法三： 动态规划</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>我刚开始的时候想，某次换成之后的最便宜的花费等于换成之前的那么多可能的站里的最便宜的花费加上这一段的花费，然而显然不是这样的，一度认为这一题不能用动态规划来做。而事实上这是错的，因为到某一站的最便宜花费应当等于到上一站的所有可能的站的最便宜花费分别加上这些上一站到这一站的花费之后所有花费当中最便宜的。还是用式子和代码来表示这些狗屁不通的话吧。</p>
+<ol>
+<li>状态:<code>dp[t][d]</code>表示第<code>t</code>次换乘时到<code>d</code>站的最小花费;</li>
+<li>状态转移方程::<code>dp[t][d] = min(dp[t][d], dp[t-1][f]+cost)</code>,<code>cost</code>是<code>f</code>站到<code>d</code>站的花费,所以第<code>t</code>次换乘时到<code>d</code>站的最小花费等于所有能到<code>d</code>站的那些站到<code>d</code>站的最便宜花费加上那些站到<code>d</code>站的花费当中的最小值.</li>
+<li>初始状态:<code>d[0][src]=0</code>.<br>其他注意的</li>
+<li><code>k</code>次换乘,也就会有<code>k+2</code>个站,,注意相关循环的范围以及<code>dp</code>的设置;</li>
+<li><code>float(&quot;inf&quot;)</code>表示无穷大.<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">findCheapestPrice</span>(<span class="params">n, flights, src, dst, k</span>):</span><br><span class="line">    dp = [[<span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)]*n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(k+<span class="number">2</span>)]</span><br><span class="line">    dp[<span class="number">0</span>][src] = <span class="number">0</span></span><br><span class="line">    ret = []</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, k+<span class="number">2</span>):</span><br><span class="line">        <span class="keyword">for</span> f, d, cost <span class="keyword">in</span> flights:</span><br><span class="line">            dp[t][d] = <span class="built_in">min</span>(dp[t][d], dp[t-<span class="number">1</span>][f]+cost)</span><br><span class="line">            <span class="keyword">if</span> d == dst <span class="keyword">and</span> dp[t][d] != <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>):</span><br><span class="line">                ret.append(dp[t][d])</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">min</span>(ret) <span class="keyword">if</span> ret != [] <span class="keyword">else</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h4 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">findCheapestPrice</span>(<span class="params">n, flights, src, dst, k</span>):</span><br><span class="line">    <span class="comment"># dst_price = defaultdict(list)</span></span><br><span class="line">    <span class="comment"># for s, d, p in flights:</span></span><br><span class="line">    <span class="comment">#     dst_price[s].append([d, p])</span></span><br><span class="line"></span><br><span class="line">    dp = [<span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)]*n</span><br><span class="line">    ans = <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># next_place = [src]</span></span><br><span class="line">    dp[src] = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, k+<span class="number">2</span>):</span><br><span class="line">        g = [<span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)]*n</span><br><span class="line">        <span class="keyword">for</span> f,d,cost <span class="keyword">in</span> flights:</span><br><span class="line">            g[d]=<span class="built_in">min</span>(g[d],dp[f]+cost)</span><br><span class="line">        <span class="comment"># temp = []</span></span><br><span class="line">        <span class="comment"># for f in next_place:</span></span><br><span class="line">        <span class="comment">#     for d, p in dst_price[f]:</span></span><br><span class="line">        <span class="comment">#         g[d] = min(g[d], dp[f]+p)</span></span><br><span class="line">        <span class="comment">#         temp.append(d)</span></span><br><span class="line">            <span class="keyword">if</span> d == dst:</span><br><span class="line">                ans = <span class="built_in">min</span>(ans, g[d])</span><br><span class="line">        dp = g</span><br><span class="line">        <span class="comment"># next_place = temp</span></span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span> <span class="keyword">if</span> ans == <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>) <span class="keyword">else</span> ans</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/hAHnSS"><img src="https://z3.ax1x.com/2021/08/24/hAHnSS.jpg" alt="航班换乘提交记录.jpg"></a></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>动态规划</tag>
+        <tag>Leetcode</tag>
+        <tag>Leetcode中等</tag>
+        <tag>回溯</tag>
+        <tag>枚举</tag>
       </tags>
   </entry>
   <entry>
@@ -2932,88 +3068,19 @@ return 0
       </tags>
   </entry>
   <entry>
-    <title>Leetcode_787. K 站中转内最便宜的航班</title>
-    <url>/posts/undefined.html</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>787. K 站中转内最便宜的航班<br>难度：中等</p>
-<p>有 <code>n</code> 个城市通过一些航班连接。给你一个数组&nbsp;<code>flights</code> ，其中&nbsp;<code>flights[i] = [from<sub>i</sub>, to<sub>i</sub>, price<sub>i</sub>]</code> ，表示该航班都从城市 <code>from<sub>i</sub></code> 开始，以价格 <code>price<sub>i</sub></code> 抵达 <code>to<sub>i</sub></code>。</p>
-
-<p>现在给定所有的城市和航班，以及出发城市 <code>src</code> 和目的地 <code>dst</code>，你的任务是找到出一条最多经过 <code>k</code>&nbsp;站中转的路线，使得从 <code>src</code> 到 <code>dst</code> 的 <strong>价格最便宜</strong> ，并返回该价格。 如果不存在这样的路线，则输出 <code>-1</code>。</p>
-
-<p>&nbsp;</p>
-
-<p><strong>示例 1：</strong></p>
-
-<pre><strong>输入:</strong> 
-n = 3, edges = [[0,1,100],[1,2,100],[0,2,500]]
-src = 0, dst = 2, k = 1
-<strong>输出:</strong> 200
-<strong>解释:</strong> 
-城市航班图如下
-<img style="height: 180px; width: 246px;" src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/02/16/995.png" alt="">
-
-从城市 0 到城市 2 在 1 站中转以内的最便宜价格是 200，如图中红色所示。</pre>
-
-<p><strong>示例 2：</strong></p>
-
-<pre><strong>输入:</strong> 
-n = 3, edges = [[0,1,100],[1,2,100],[0,2,500]]
-src = 0, dst = 2, k = 0
-<strong>输出:</strong> 500
-<strong>解释:</strong> 
-城市航班图如下
-<img style="height: 180px; width: 246px;" src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/02/16/995.png" alt="">
-
-从城市 0 到城市 2 在 0 站中转以内的最便宜价格是 500，如图中蓝色所示。</pre>
-
-<p>&nbsp;</p>
-
-<p><strong>提示：</strong></p>
-
-<ul>
-    <li><code>1 &lt;= n &lt;= 100</code></li>
-    <li><code>0 &lt;= flights.length &lt;= (n * (n - 1) / 2)</code></li>
-    <li><code>flights[i].length == 3</code></li>
-    <li><code>0 &lt;= from<sub>i</sub>, to<sub>i</sub> &lt; n</code></li>
-    <li><code>from<sub>i</sub> != to<sub>i</sub></code></li>
-    <li><code>1 &lt;= price<sub>i</sub> &lt;= 10<sup>4</sup></code></li>
-    <li>航班没有重复，且不存在自环</li>
-    <li><code>0 &lt;= src, dst, k &lt; n</code></li>
-    <li><code>src != dst</code></li>
-</ul>
-
-
-<h3 id="方法一-枚举"><a href="#方法一-枚举" class="headerlink" title="方法一: 枚举"></a>方法一: 枚举</h3><h4 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h4><ol>
-<li>先创建一个字典，用于存从某一个地方出发，可以到哪些目的地以及花费是多少；</li>
-<li>建立两个列表，分别存这一次可以从哪些地方出发，以及到这个地方已经用了的花费；</li>
-<li>再建立两个临时列表，分别存在遍历出发地点的列时的目的地，以及到达目的地的的花费；</li>
-<li>若遇到了目的地是<code>dst</code>，就将花费记录到另一个<code>ret</code>列表当中；</li>
-<li>遍历完一遍出发列表后，<code>k</code>自减，将<code>3</code>中的列表分别赋给<code>2</code>中的列表；</li>
-<li>直到<code>k</code>变为负数，输出<code>ret</code>中的最小值，如果没有，输出<code>-1</code>。<h4 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">findCheapestPrice</span>(<span class="params">n, flights, src, dst, k</span>):</span><br><span class="line">    dst_price = defaultdict(<span class="built_in">list</span>)</span><br><span class="line">    <span class="keyword">for</span> s, d, p <span class="keyword">in</span> flights:</span><br><span class="line">        dst_price[s].append([d, p])</span><br><span class="line">        <span class="comment">#dst_price[d].append([s, p])</span></span><br><span class="line">    <span class="comment"># print(dst_price)</span></span><br><span class="line">    next_place = [src]</span><br><span class="line">    next_price = [<span class="number">0</span>]</span><br><span class="line">    temp_place = []</span><br><span class="line">    temp_price = []</span><br><span class="line">    kk = k</span><br><span class="line">    ret = []</span><br><span class="line">    <span class="keyword">while</span> k &gt;= <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">for</span> f, p0 <span class="keyword">in</span> <span class="built_in">zip</span>(next_place, next_price):</span><br><span class="line">            <span class="keyword">for</span> d, p <span class="keyword">in</span> dst_price[f]:</span><br><span class="line">                temp_place.append(d)</span><br><span class="line">                temp_price.append(p0+p)</span><br><span class="line">                <span class="comment"># print(f,d,temp_place)</span></span><br><span class="line">                <span class="comment"># print(temp_price)</span></span><br><span class="line">                <span class="keyword">if</span> d == dst:</span><br><span class="line">                    ret.append(p0+p)</span><br><span class="line">        next_place = temp_place</span><br><span class="line">        next_price = temp_price</span><br><span class="line">        <span class="comment"># print(next_place)</span></span><br><span class="line">        <span class="comment"># print(next_price,&quot;***&quot;)</span></span><br><span class="line">        temp_place = []</span><br><span class="line">        temp_price = []</span><br><span class="line">        k -= <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">min</span>(ret) <span class="keyword">if</span> ret != [] <span class="keyword">else</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
-<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4>可能会出现两个地方来回的情况，造成超级大量的浪费计算。</li>
-</ol>
-<h3 id="方法二：-回溯"><a href="#方法二：-回溯" class="headerlink" title="方法二： 回溯"></a>方法二： 回溯</h3><h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">findCheapestPrice</span>(<span class="params">n, flights, src, dst, k</span>):</span><br><span class="line">    dst_price = defaultdict(<span class="built_in">list</span>)</span><br><span class="line">    <span class="keyword">for</span> s, d, p <span class="keyword">in</span> flights:</span><br><span class="line">        dst_price[s].append([d, p])</span><br><span class="line"></span><br><span class="line">    place = [src]</span><br><span class="line">    price = [<span class="number">0</span>]</span><br><span class="line">    ret = []</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">k, place, price</span>):</span><br><span class="line">        <span class="keyword">if</span> k &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">for</span> d, p0 <span class="keyword">in</span> dst_price[place[-<span class="number">1</span>]]:</span><br><span class="line">            <span class="keyword">if</span> d == dst:</span><br><span class="line">                ret.append(price[-<span class="number">1</span>]+p0)</span><br><span class="line">            place.append(d)</span><br><span class="line">            price.append(price[-<span class="number">1</span>]+p0)</span><br><span class="line">            forward(k-<span class="number">1</span>, place, price)</span><br><span class="line">            place.pop()</span><br><span class="line">            price.pop()</span><br><span class="line">    forward(k, place, price)</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">min</span>(ret) <span class="keyword">if</span> ret != [] <span class="keyword">else</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
-<h3 id="方法三：-动态规划"><a href="#方法三：-动态规划" class="headerlink" title="方法三： 动态规划"></a>方法三： 动态规划</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>我刚开始的时候想，某次换成之后的最便宜的花费等于换成之前的那么多可能的站里的最便宜的花费加上这一段的花费，然而显然不是这样的，一度认为这一题不能用动态规划来做。而事实上这是错的，因为到某一站的最便宜花费应当等于到上一站的所有可能的站的最便宜花费分别加上这些上一站到这一站的花费之后所有花费当中最便宜的。还是用式子和代码来表示这些狗屁不通的话吧。</p>
-<ol>
-<li>状态:<code>dp[t][d]</code>表示第<code>t</code>次换乘时到<code>d</code>站的最小花费;</li>
-<li>状态转移方程::<code>dp[t][d] = min(dp[t][d], dp[t-1][f]+cost)</code>,<code>cost</code>是<code>f</code>站到<code>d</code>站的花费,所以第<code>t</code>次换乘时到<code>d</code>站的最小花费等于所有能到<code>d</code>站的那些站到<code>d</code>站的最便宜花费加上那些站到<code>d</code>站的花费当中的最小值.</li>
-<li>初始状态:<code>d[0][src]=0</code>.<br>其他注意的</li>
-<li><code>k</code>次换乘,也就会有<code>k+2</code>个站,,注意相关循环的范围以及<code>dp</code>的设置;</li>
-<li><code>float(&quot;inf&quot;)</code>表示无穷大.<h4 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">findCheapestPrice</span>(<span class="params">n, flights, src, dst, k</span>):</span><br><span class="line">    dp = [[<span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)]*n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(k+<span class="number">2</span>)]</span><br><span class="line">    dp[<span class="number">0</span>][src] = <span class="number">0</span></span><br><span class="line">    ret = []</span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, k+<span class="number">2</span>):</span><br><span class="line">        <span class="keyword">for</span> f, d, cost <span class="keyword">in</span> flights:</span><br><span class="line">            dp[t][d] = <span class="built_in">min</span>(dp[t][d], dp[t-<span class="number">1</span>][f]+cost)</span><br><span class="line">            <span class="keyword">if</span> d == dst <span class="keyword">and</span> dp[t][d] != <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>):</span><br><span class="line">                ret.append(dp[t][d])</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">min</span>(ret) <span class="keyword">if</span> ret != [] <span class="keyword">else</span> -<span class="number">1</span></span><br></pre></td></tr></table></figure>
-<h4 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h4><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">findCheapestPrice</span>(<span class="params">n, flights, src, dst, k</span>):</span><br><span class="line">    <span class="comment"># dst_price = defaultdict(list)</span></span><br><span class="line">    <span class="comment"># for s, d, p in flights:</span></span><br><span class="line">    <span class="comment">#     dst_price[s].append([d, p])</span></span><br><span class="line"></span><br><span class="line">    dp = [<span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)]*n</span><br><span class="line">    ans = <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># next_place = [src]</span></span><br><span class="line">    dp[src] = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> t <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, k+<span class="number">2</span>):</span><br><span class="line">        g = [<span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>)]*n</span><br><span class="line">        <span class="keyword">for</span> f,d,cost <span class="keyword">in</span> flights:</span><br><span class="line">            g[d]=<span class="built_in">min</span>(g[d],dp[f]+cost)</span><br><span class="line">        <span class="comment"># temp = []</span></span><br><span class="line">        <span class="comment"># for f in next_place:</span></span><br><span class="line">        <span class="comment">#     for d, p in dst_price[f]:</span></span><br><span class="line">        <span class="comment">#         g[d] = min(g[d], dp[f]+p)</span></span><br><span class="line">        <span class="comment">#         temp.append(d)</span></span><br><span class="line">            <span class="keyword">if</span> d == dst:</span><br><span class="line">                ans = <span class="built_in">min</span>(ans, g[d])</span><br><span class="line">        dp = g</span><br><span class="line">        <span class="comment"># next_place = temp</span></span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span> <span class="keyword">if</span> ans == <span class="built_in">float</span>(<span class="string">&quot;inf&quot;</span>) <span class="keyword">else</span> ans</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/hAHnSS"><img src="https://z3.ax1x.com/2021/08/24/hAHnSS.jpg" alt="航班换乘提交记录.jpg"></a></p>
-]]></content>
+    <title>Leetcode-838-推多米诺</title>
+    <url>/posts/4207363599.html</url>
+    <content><![CDATA[]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
         <tag>算法</tag>
-        <tag>动态规划</tag>
         <tag>Leetcode</tag>
+        <tag>模拟</tag>
         <tag>Leetcode中等</tag>
-        <tag>回溯</tag>
-        <tag>枚举</tag>
+        <tag>双指针</tag>
+        <tag>BFS</tag>
       </tags>
   </entry>
   <entry>
@@ -3095,55 +3162,8 @@ src = 0, dst = 2, k = 0
         <tag>Leetcode</tag>
         <tag>Leetcode中等</tag>
         <tag>回溯</tag>
+        <tag>BFS</tag>
         <tag>DFS</tag>
-        <tag>BFS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-838-推多米诺</title>
-    <url>/posts/4207363599.html</url>
-    <content><![CDATA[]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>Leetcode</tag>
-        <tag>模拟</tag>
-        <tag>Leetcode中等</tag>
-        <tag>双指针</tag>
-        <tag>BFS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Leetcode-84柱状图的最大矩形-85最大矩形</title>
-    <url>/posts/4286392913.html</url>
-    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><ul>
-<li><a href="https://leetcode.cn/problems/largest-rectangle-in-histogram/">84. 柱状图中最大的矩形</a></li>
-<li><a href="https://leetcode.cn/problems/maximal-rectangle/">85. 最大矩形</a></li>
-</ul>
-<p>这里主要是记一下对 84 题<a href="https://leetcode.cn/problems/largest-rectangle-in-histogram/solutions/2695467/dan-diao-zhan-fu-ti-dan-pythonjavacgojsr-89s7">灵神题解</a>中的代码的理解。</p>
-<h2 id="三次遍历"><a href="#三次遍历" class="headerlink" title="三次遍历"></a>三次遍历</h2><p>这里主要抓住在最后遍历的时候，枚举的 $h$ 是矩形的高，$l$ 和 $r$ 是在这个高的情况下左右各可以到多远，开区间 $(l,r)$ 构成矩形的宽，就可以了。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">largestRectangleArea</span>(<span class="params">self, heights: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        n = <span class="built_in">len</span>(heights)</span><br><span class="line">        left = [-<span class="number">1</span>] * n</span><br><span class="line">        st = []</span><br><span class="line">        <span class="keyword">for</span> i, h <span class="keyword">in</span> <span class="built_in">enumerate</span>(heights):</span><br><span class="line">            <span class="keyword">while</span> st <span class="keyword">and</span> heights[st[-<span class="number">1</span>]] &gt;= h:</span><br><span class="line">                st.pop()</span><br><span class="line">            <span class="keyword">if</span> st:</span><br><span class="line">                left[i] = st[-<span class="number">1</span>]</span><br><span class="line">            st.append(i)</span><br><span class="line"></span><br><span class="line">        right = [n] * n</span><br><span class="line">        st.clear()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n - <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">            h = heights[i]</span><br><span class="line">            <span class="keyword">while</span> st <span class="keyword">and</span> heights[st[-<span class="number">1</span>]] &gt;= h:</span><br><span class="line">                st.pop()</span><br><span class="line">            <span class="keyword">if</span> st:</span><br><span class="line">                right[i] = st[-<span class="number">1</span>]</span><br><span class="line">            st.append(i)</span><br><span class="line"></span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> h, l, r <span class="keyword">in</span> <span class="built_in">zip</span>(heights, left, right):</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, h * (r - l - <span class="number">1</span>))</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-<h2 id="两次遍历"><a href="#两次遍历" class="headerlink" title="两次遍历"></a>两次遍历</h2><p>在上面方法中 $left$ 的遍历中，弹出栈顶的条件是：$h &lt;= 栈顶$ ，而 $h$ 一定是在栈顶的右边（后遍历到），所以，弹出栈顶的这个动作，其实蕴含着，$h$ 是栈顶右边最近的小于等于它的柱子。</p>
-<p>因此，我们就可以在遍历 $left$ 的同时构造出 $right$ ，只不过 $right[i]$ 表示的是 $h = height[i]$ 右边最近的小于等于它的柱子，不再只是小于了。</p>
-<p>这个定义的转变不需要改变其他以及不会影响结果。原因如灵神题解里所说，在一些相同高度的柱子里，虽然左边的的柱子的 $right$ 可能会变小，但最右边的那个不会变，而它的面积也不会变，所以不会影响结果。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">largestRectangleArea</span>(<span class="params">self, heights: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        n = <span class="built_in">len</span>(heights)</span><br><span class="line">        left = [-<span class="number">1</span>] * n</span><br><span class="line">        right = [n] * n</span><br><span class="line">        st = []</span><br><span class="line">        <span class="keyword">for</span> i, h <span class="keyword">in</span> <span class="built_in">enumerate</span>(heights):</span><br><span class="line">            <span class="keyword">while</span> st <span class="keyword">and</span> heights[st[-<span class="number">1</span>]] &gt;= h:</span><br><span class="line">                <span class="comment"># 栈顶的柱子的右边最近的小宇等于它的就是 i 位置的柱子</span></span><br><span class="line">                right[st.pop()] = i</span><br><span class="line">            <span class="keyword">if</span> st:</span><br><span class="line">                left[i] = st[-<span class="number">1</span>]</span><br><span class="line">            st.append(i)</span><br><span class="line"></span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> h, l, r <span class="keyword">in</span> <span class="built_in">zip</span>(heights, left, right):</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, h * (r - l - <span class="number">1</span>))</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-<h2 id="一次遍历"><a href="#一次遍历" class="headerlink" title="一次遍历"></a>一次遍历</h2><p>在三次到两次的过程中，我们挖掘了栈顶的信息使得在一次遍历中同时得到了 $left$ 和 $right$， 那是否还有信息可以挖掘呢？比如在这个过程中，直接得到 $left[i]$ ，进而一次遍历就算出以 $heights[i]$ 为高的矩形的面积呢？</p>
-<p>可以的。那便是，栈顶的下一个元素就是栈顶的 $left$ ，而由前面知道，栈顶的 $right$ 就是当前遍历的这个柱子，也就是说，现在的 $h$ 是栈顶，栈顶下面的是 $l$，当前遍历的是 $r$，开区间 $(l,r)$ 是宽。</p>
-<p>代码实现时，可以在栈中先放一个 $-1$ ，用做最后一个柱子的 $l$ 。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">largestRectangleArea</span>(<span class="params">self, heights: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        heights.append(-<span class="number">1</span>)  <span class="comment"># 最后大火收汁，用 -1 把栈清空</span></span><br><span class="line">        st = [-<span class="number">1</span>]  <span class="comment"># 在栈中只有一个数的时候，栈顶的「下面那个数」是 -1，对应 left[i] = -1 的情况</span></span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> right, h <span class="keyword">in</span> <span class="built_in">enumerate</span>(heights):</span><br><span class="line">            <span class="keyword">while</span> <span class="built_in">len</span>(st) &gt; <span class="number">1</span> <span class="keyword">and</span> heights[st[-<span class="number">1</span>]] &gt;= h:</span><br><span class="line">                i = st.pop()  <span class="comment"># 矩形的高（的下标）</span></span><br><span class="line">                left = st[-<span class="number">1</span>]  <span class="comment"># 栈顶下面那个数就是 left</span></span><br><span class="line">                ans = <span class="built_in">max</span>(ans, heights[i] * (right - left - <span class="number">1</span>))</span><br><span class="line">            st.append(right)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-<h2 id="第-85-题"><a href="#第-85-题" class="headerlink" title="第 85 题"></a>第 85 题</h2><p>这一题还想用前缀和呢，但灵神的想法真的是太妙了！！！</p>
-<p><a href="https://leetcode.cn/problems/maximal-rectangle/solutions/3704011/zhi-jie-diao-yong-84-ti-dai-ma-jie-jue-p-49at">题解</a>。</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>Leetcode</tag>
-        <tag>Leetcode困难</tag>
-        <tag>单调栈</tag>
       </tags>
   </entry>
   <entry>
@@ -3199,6 +3219,57 @@ src = 0, dst = 2, k = 0
         <tag>贪心</tag>
         <tag>Leetcode中等</tag>
         <tag>双指针</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-84柱状图的最大矩形-85最大矩形</title>
+    <url>/posts/4286392913.html</url>
+    <content><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><ul>
+<li><a href="https://leetcode.cn/problems/largest-rectangle-in-histogram/">84. 柱状图中最大的矩形</a></li>
+<li><a href="https://leetcode.cn/problems/maximal-rectangle/">85. 最大矩形</a></li>
+</ul>
+<p>这里主要是记一下对 84 题<a href="https://leetcode.cn/problems/largest-rectangle-in-histogram/solutions/2695467/dan-diao-zhan-fu-ti-dan-pythonjavacgojsr-89s7">灵神题解</a>中的代码的理解。</p>
+<h2 id="三次遍历"><a href="#三次遍历" class="headerlink" title="三次遍历"></a>三次遍历</h2><p>这里主要抓住在最后遍历的时候，枚举的 $h$ 是矩形的高，$l$ 和 $r$ 是在这个高的情况下左右各可以到多远，开区间 $(l,r)$ 构成矩形的宽，就可以了。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">largestRectangleArea</span>(<span class="params">self, heights: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        n = <span class="built_in">len</span>(heights)</span><br><span class="line">        left = [-<span class="number">1</span>] * n</span><br><span class="line">        st = []</span><br><span class="line">        <span class="keyword">for</span> i, h <span class="keyword">in</span> <span class="built_in">enumerate</span>(heights):</span><br><span class="line">            <span class="keyword">while</span> st <span class="keyword">and</span> heights[st[-<span class="number">1</span>]] &gt;= h:</span><br><span class="line">                st.pop()</span><br><span class="line">            <span class="keyword">if</span> st:</span><br><span class="line">                left[i] = st[-<span class="number">1</span>]</span><br><span class="line">            st.append(i)</span><br><span class="line"></span><br><span class="line">        right = [n] * n</span><br><span class="line">        st.clear()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n - <span class="number">1</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">            h = heights[i]</span><br><span class="line">            <span class="keyword">while</span> st <span class="keyword">and</span> heights[st[-<span class="number">1</span>]] &gt;= h:</span><br><span class="line">                st.pop()</span><br><span class="line">            <span class="keyword">if</span> st:</span><br><span class="line">                right[i] = st[-<span class="number">1</span>]</span><br><span class="line">            st.append(i)</span><br><span class="line"></span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> h, l, r <span class="keyword">in</span> <span class="built_in">zip</span>(heights, left, right):</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, h * (r - l - <span class="number">1</span>))</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<h2 id="两次遍历"><a href="#两次遍历" class="headerlink" title="两次遍历"></a>两次遍历</h2><p>在上面方法中 $left$ 的遍历中，弹出栈顶的条件是：$h &lt;= 栈顶$ ，而 $h$ 一定是在栈顶的右边（后遍历到），所以，弹出栈顶的这个动作，其实蕴含着，$h$ 是栈顶右边最近的小于等于它的柱子。</p>
+<p>因此，我们就可以在遍历 $left$ 的同时构造出 $right$ ，只不过 $right[i]$ 表示的是 $h = height[i]$ 右边最近的小于等于它的柱子，不再只是小于了。</p>
+<p>这个定义的转变不需要改变其他以及不会影响结果。原因如灵神题解里所说，在一些相同高度的柱子里，虽然左边的的柱子的 $right$ 可能会变小，但最右边的那个不会变，而它的面积也不会变，所以不会影响结果。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">largestRectangleArea</span>(<span class="params">self, heights: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        n = <span class="built_in">len</span>(heights)</span><br><span class="line">        left = [-<span class="number">1</span>] * n</span><br><span class="line">        right = [n] * n</span><br><span class="line">        st = []</span><br><span class="line">        <span class="keyword">for</span> i, h <span class="keyword">in</span> <span class="built_in">enumerate</span>(heights):</span><br><span class="line">            <span class="keyword">while</span> st <span class="keyword">and</span> heights[st[-<span class="number">1</span>]] &gt;= h:</span><br><span class="line">                <span class="comment"># 栈顶的柱子的右边最近的小宇等于它的就是 i 位置的柱子</span></span><br><span class="line">                right[st.pop()] = i</span><br><span class="line">            <span class="keyword">if</span> st:</span><br><span class="line">                left[i] = st[-<span class="number">1</span>]</span><br><span class="line">            st.append(i)</span><br><span class="line"></span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> h, l, r <span class="keyword">in</span> <span class="built_in">zip</span>(heights, left, right):</span><br><span class="line">            ans = <span class="built_in">max</span>(ans, h * (r - l - <span class="number">1</span>))</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<h2 id="一次遍历"><a href="#一次遍历" class="headerlink" title="一次遍历"></a>一次遍历</h2><p>在三次到两次的过程中，我们挖掘了栈顶的信息使得在一次遍历中同时得到了 $left$ 和 $right$， 那是否还有信息可以挖掘呢？比如在这个过程中，直接得到 $left[i]$ ，进而一次遍历就算出以 $heights[i]$ 为高的矩形的面积呢？</p>
+<p>可以的。那便是，栈顶的下一个元素就是栈顶的 $left$ ，而由前面知道，栈顶的 $right$ 就是当前遍历的这个柱子，也就是说，现在的 $h$ 是栈顶，栈顶下面的是 $l$，当前遍历的是 $r$，开区间 $(l,r)$ 是宽。</p>
+<p>代码实现时，可以在栈中先放一个 $-1$ ，用做最后一个柱子的 $l$ 。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">largestRectangleArea</span>(<span class="params">self, heights: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        heights.append(-<span class="number">1</span>)  <span class="comment"># 最后大火收汁，用 -1 把栈清空</span></span><br><span class="line">        st = [-<span class="number">1</span>]  <span class="comment"># 在栈中只有一个数的时候，栈顶的「下面那个数」是 -1，对应 left[i] = -1 的情况</span></span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> right, h <span class="keyword">in</span> <span class="built_in">enumerate</span>(heights):</span><br><span class="line">            <span class="keyword">while</span> <span class="built_in">len</span>(st) &gt; <span class="number">1</span> <span class="keyword">and</span> heights[st[-<span class="number">1</span>]] &gt;= h:</span><br><span class="line">                i = st.pop()  <span class="comment"># 矩形的高（的下标）</span></span><br><span class="line">                left = st[-<span class="number">1</span>]  <span class="comment"># 栈顶下面那个数就是 left</span></span><br><span class="line">                ans = <span class="built_in">max</span>(ans, heights[i] * (right - left - <span class="number">1</span>))</span><br><span class="line">            st.append(right)</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
+<h2 id="第-85-题"><a href="#第-85-题" class="headerlink" title="第 85 题"></a>第 85 题</h2><p>这一题还想用前缀和呢，但灵神的想法真的是太妙了！！！</p>
+<p><a href="https://leetcode.cn/problems/maximal-rectangle/solutions/3704011/zhi-jie-diao-yong-84-ti-dai-ma-jie-jue-p-49at">题解</a>。</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Leetcode</tag>
+        <tag>Leetcode困难</tag>
+        <tag>单调栈</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode题解</title>
+    <url>/posts/691300009.html</url>
+    <content><![CDATA[<p>因为既想在Github上传题解思路和代码，又想在博客上传，但保证两边同步好麻烦，所以这里列一个列表，链接到Github上。</p>
+<h3 id="301-400"><a href="#301-400" class="headerlink" title="301-400"></a>301-400</h3><ul>
+<li><a href="https://github.com/shengrihui/Leetcode/blob/c396f399bcca39c40923411eabf0306c7d89739f/3/345.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D/345.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D.md">345. 反转字符串中的元音字母</a><h3 id="501-600"><a href="#501-600" class="headerlink" title="501~600"></a>501~600</h3></li>
+<li><a href="https://github.com/shengrihui/Leetcode/blob/5acbc6232b0a90c9cf3beaaa4972ba3e9174d7ab/5/526.%20%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97/526.%20%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97.md">526.优美的排列</a></li>
+<li>[541. 反转字符串 ](<a href="https://github.com/shengrihui/Leetcode/blob/c5b27e27baac035e0fddb3e64867fab88630da82/5/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II.md">https://github.com/shengrihui/Leetcode/blob/c5b27e27baac035e0fddb3e64867fab88630da82/5/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II.md</a></li>
+<li><a href="https://github.com/shengrihui/Leetcode/blob/96ca3695c85441f9cc189b123944249f5bb81bbc/5/551.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20I/551.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20I_%E9%A2%98%E8%A7%A3.md">551. 学生出勤记录 I_题解</a></li>
+<li><a href="https://github.com/shengrihui/Leetcode/blob/c396f399bcca39c40923411eabf0306c7d89739f/5/552.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20II/552.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20II.md">552. 学生出勤记录 II</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Leetcode</tag>
       </tags>
   </entry>
   <entry>
@@ -3269,26 +3340,6 @@ src = 0, dst = 2, k = 0
       </tags>
   </entry>
   <entry>
-    <title>Leetcode题解</title>
-    <url>/posts/691300009.html</url>
-    <content><![CDATA[<p>因为既想在Github上传题解思路和代码，又想在博客上传，但保证两边同步好麻烦，所以这里列一个列表，链接到Github上。</p>
-<h3 id="301-400"><a href="#301-400" class="headerlink" title="301-400"></a>301-400</h3><ul>
-<li><a href="https://github.com/shengrihui/Leetcode/blob/c396f399bcca39c40923411eabf0306c7d89739f/3/345.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D/345.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D.md">345. 反转字符串中的元音字母</a><h3 id="501-600"><a href="#501-600" class="headerlink" title="501~600"></a>501~600</h3></li>
-<li><a href="https://github.com/shengrihui/Leetcode/blob/5acbc6232b0a90c9cf3beaaa4972ba3e9174d7ab/5/526.%20%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97/526.%20%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97.md">526.优美的排列</a></li>
-<li>[541. 反转字符串 ](<a href="https://github.com/shengrihui/Leetcode/blob/c5b27e27baac035e0fddb3e64867fab88630da82/5/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II.md">https://github.com/shengrihui/Leetcode/blob/c5b27e27baac035e0fddb3e64867fab88630da82/5/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II.md</a></li>
-<li><a href="https://github.com/shengrihui/Leetcode/blob/96ca3695c85441f9cc189b123944249f5bb81bbc/5/551.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20I/551.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20I_%E9%A2%98%E8%A7%A3.md">551. 学生出勤记录 I_题解</a></li>
-<li><a href="https://github.com/shengrihui/Leetcode/blob/c396f399bcca39c40923411eabf0306c7d89739f/5/552.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20II/552.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20II.md">552. 学生出勤记录 II</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>Leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>蓝桥-2022</title>
     <url>/posts/1748642322.html</url>
     <content><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p><a href="https://www.lanqiao.cn/problems/2186/learning/">https://www.lanqiao.cn/problems/2186/learning/</a></p>
@@ -3351,8 +3402,8 @@ src = 0, dst = 2, k = 0
       <tags>
         <tag>算法</tag>
         <tag>蓝桥杯</tag>
-        <tag>DFS</tag>
         <tag>BFS</tag>
+        <tag>DFS</tag>
       </tags>
   </entry>
   <entry>
@@ -3367,8 +3418,8 @@ src = 0, dst = 2, k = 0
       <tags>
         <tag>算法</tag>
         <tag>蓝桥杯</tag>
-        <tag>DFS</tag>
         <tag>BFS</tag>
+        <tag>DFS</tag>
       </tags>
   </entry>
   <entry>
@@ -3659,6 +3710,19 @@ B_3 - B_3^{\prime} \gt 0 \\
       </tags>
   </entry>
   <entry>
+    <title>蓝桥的输入输出</title>
+    <url>/posts/394427570.html</url>
+    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">FileInput = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> FileInput:</span><br><span class="line">    sys.stdin = <span class="built_in">open</span>(<span class="string">&#x27;flower.in&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">    sys.stdout = <span class="built_in">open</span>(<span class="string">&#x27;flower.out&#x27;</span>, <span class="string">&#x27;w&#x27;</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>蓝桥杯</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>蓝桥-迷宫2019</title>
     <url>/posts/3933164985.html</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a href="https://www.lanqiao.cn/problems/602/learning/">https://www.lanqiao.cn/problems/602/learning/</a></p>
@@ -3673,23 +3737,5 @@ B_3 - B_3^{\prime} \gt 0 \\
         <tag>蓝桥杯</tag>
         <tag>BFS</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>蓝桥的输入输出</title>
-    <url>/posts/394427570.html</url>
-    <content><![CDATA[<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">FileInput = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> FileInput:</span><br><span class="line">    sys.stdin = <span class="built_in">open</span>(<span class="string">&#x27;flower.in&#x27;</span>, <span class="string">&#x27;r&#x27;</span>)</span><br><span class="line">    sys.stdout = <span class="built_in">open</span>(<span class="string">&#x27;flower.out&#x27;</span>, <span class="string">&#x27;w&#x27;</span>)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>蓝桥杯</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>线段树</title>
-    <url>/posts/2291390787.html</url>
-    <content><![CDATA[]]></content>
   </entry>
 </search>

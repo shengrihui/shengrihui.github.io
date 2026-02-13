@@ -20,16 +20,21 @@
     var CONFIG = {"hostname":"shengrihui.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="article">
+  <meta name="description" content="线段树基础线段树可以在 $𝑂(log⁡𝑁)$ 的时间复杂度内实现单点修改、区间修改、区间查询（区间求和，求区间最大值，求区间最小值）等操作。 原理">
+<meta property="og:type" content="article">
 <meta property="og:title" content="线段树">
 <meta property="og:url" content="https://shengrihui.github.io/posts/2291390787.html">
 <meta property="og:site_name" content="盛日辉的博客">
+<meta property="og:description" content="线段树基础线段树可以在 $𝑂(log⁡𝑁)$ 的时间复杂度内实现单点修改、区间修改、区间查询（区间求和，求区间最大值，求区间最小值）等操作。 原理">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
 <meta property="article:published_time" content="2026-02-11T12:35:25.000Z">
-<meta property="article:modified_time" content="2026-02-11T12:35:25.525Z">
+<meta property="article:modified_time" content="2026-02-13T06:06:43.273Z">
 <meta property="article:author" content="盛日辉">
-<meta property="article:tag" content="盛日辉">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="线段树">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
 
 <link rel="canonical" href="https://shengrihui.github.io/posts/2291390787.html">
 
@@ -213,6 +218,22 @@
 
               <time title="创建时间：2026-02-11 20:35:25" itemprop="dateCreated datePublished" datetime="2026-02-11T20:35:25+08:00">2026-02-11</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-02-13 14:06:43" itemprop="dateModified" datetime="2026-02-13T14:06:43+08:00">2026-02-13</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
 
           
 
@@ -225,7 +246,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h2 id="线段树基础"><a href="#线段树基础" class="headerlink" title="线段树基础"></a>线段树基础</h2><p>线段树可以在 $𝑂(log⁡𝑁)$<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="O(\log N)"> 的时间复杂度内实现单点修改、区间修改、区间查询（区间求和，求区间最大值，求区间最小值）等操作。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://oi-wiki.org/ds/seg">oi-wiki</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18t4y1p736/?t=518">线段树入门 - Bilibili 灵神讲解</a> ，对应题目 <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/booking-concert-tickets-in-groups/">2286. 以组为单位订音乐会的门票</a> ，<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/booking-concert-tickets-in-groups/solutions/3901913/ji-chong-xian-duan-shu-by-wei-jia-biao-q-qgga">我的题解</a></li>
+</ul>
+<h3 id="一些问题与解释"><a href="#一些问题与解释" class="headerlink" title="一些问题与解释"></a>一些问题与解释</h3><h4 id="1-线段树的大小"><a href="#1-线段树的大小" class="headerlink" title="1. 线段树的大小"></a>1. 线段树的大小</h4><p>假设数组的大小是 $n$ ，把它们全部放在底层，满足这样的最小的满二叉树的高度是 $\lceil log_{2}{n} \rceil + 1$ （根节点高度是 $1$ ），结点个数是 $2^ {\lceil log_{2}{n} \rceil + 1} - 1$ ，又因为线段树的下标从 $1$ 开始，因此总的空间就是 $2^{\lceil log_{2}{n} \rceil + 1}$ ，即 $2 &lt;&lt; (n-1).bit_length()$ 。</p>
+<blockquote>
+<p>几坨莫名其妙的东西</p>
+<p>$\lfloor \log_2 n \rfloor = n.bit_length() - 1 = \lceil \log_2 (n+1) \rceil - 1$</p>
+<p>$\lceil \log_2 n \rceil = (n-1).bit_length()= \lfloor \log_2 (n-1) \rfloor + 1$ （当 $n &gt; 1$ 时）</p>
+<p>$2^{x} =&gt; 1 &lt;&lt; x =&gt; 2 &lt;&lt; (x - 1)$</p>
+</blockquote>
+<p>其实可以直接写 $4n$ 。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><div class="tabs" id="leetcode_example"><ul class="nav-tabs"><li class="tab active"><a href="#leetcode_example-1">Python</a></li><li class="tab"><a href="#leetcode_example-2">c++</a></li></ul><div class="tab-content"><div class="tab-pane active" id="leetcode_example-1"><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Hello Python&quot;</span>)</span><br></pre></td></tr></table></figure></div><div class="tab-pane" id="leetcode_example-2"><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cout &lt;&lt; <span class="string">&quot;Hello C++&quot;</span> &lt;&lt; endl;</span><br></pre></td></tr></table></figure></div></div></div>
     </div>
 
     
@@ -253,6 +287,10 @@
 
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+              <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag"># 线段树</a>
+          </div>
 
         
 
@@ -264,8 +302,8 @@
       <i class="fa fa-chevron-left"></i> Python代码的优化
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/3512237323.html" rel="next" title="Python的一些内建函数和基本句法">
-      Python的一些内建函数和基本句法 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/196086287.html" rel="next" title="EOJ 1836. 表达式">
+      EOJ 1836. 表达式 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -325,6 +363,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">线段树基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%90%86"><span class="nav-number">1.1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E9%87%8A"><span class="nav-number">1.2.</span> <span class="nav-text">一些问题与解释</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E7%BA%BF%E6%AE%B5%E6%A0%91%E7%9A%84%E5%A4%A7%E5%B0%8F"><span class="nav-number">1.2.1.</span> <span class="nav-text">1. 线段树的大小</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -340,7 +379,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">60</span>
+          <span class="site-state-item-count">61</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -353,7 +392,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">50</span>
+        <span class="site-state-item-count">51</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

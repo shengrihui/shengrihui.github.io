@@ -973,7 +973,7 @@ e^{ix}&=1+ix+\frac{(ix)^2}{2!}+\frac{(ix)^3}{3!}+\frac{(ix)^4}{4!}+...\\
 <li><a href="https://www.bilibili.com/video/BV14r421W7oR/?t=1551">二维前缀和 树状数组原理【力扣周赛 387】</a></li>
 <li><a href="https://leetcode.cn/problems/range-sum-query-mutable/solutions/2524481/dai-ni-fa-ming-shu-zhuang-shu-zu-fu-shu-lyfll">带你发明树状数组！附数学证明</a></li>
 </ul>
-<p><a href="https://pic.leetcode.cn/1717549976-yUVqsj-lc307.png">树状数组图示</a></p>
+<p><img src="https://pic.leetcode.cn/1717549976-yUVqsj-lc307.png" alt="树状数组图示"></p>
 <h3 id="理解与总结"><a href="#理解与总结" class="headerlink" title="理解与总结"></a>理解与总结</h3><p>结合灵神文章和视频，尝试总结一下。</p>
 <p>在有单点更新的计算前缀和的问题当中，为了平衡「查询」和「更新」的时间复杂度，由每个数$i$的二进制长度为 $O(log\ i)$ 得到启发，考虑将每个区间 $[1,i]$ 划分成几个关键区间，每个区间的长度为 $i$ 的二进制中的 $1$ 们所代表的值。</p>
 <p>同时，由于从 $[1,1]$ 到 $[1,i]$ 右端点每增加$1$的一步都只会新增加一个<strong>关键区间</strong>，所以一共有 $i$ 个关键区间。因此，<code>tree[i]</code> 就是代表的是右端点为 $i$ 的关键区间的元素和。</p>

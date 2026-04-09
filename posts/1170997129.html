@@ -28,7 +28,7 @@
 <meta property="og:description" content="题目：3845. 最大子数组异或值  0-1 字典树（异或字典树）这个如果了解异或字典树就不算难，可惜我比赛的时候没有想到。直接贴代码。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-02-22T01:46:27.000Z">
-<meta property="article:modified_time" content="2026-02-23T15:40:04.118Z">
+<meta property="article:modified_time" content="2026-04-09T07:51:08.191Z">
 <meta property="article:author" content="盛日辉">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="Leetcode困难">
@@ -225,7 +225,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-02-23 23:40:04" itemprop="dateModified" datetime="2026-02-23T23:40:04+08:00">2026-02-23</time>
+                <time title="修改时间：2026-04-09 15:51:08" itemprop="dateModified" datetime="2026-04-09T15:51:08+08:00">2026-04-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -253,7 +253,7 @@
 </blockquote>
 <h3 id="0-1-字典树（异或字典树）"><a href="#0-1-字典树（异或字典树）" class="headerlink" title="0-1 字典树（异或字典树）"></a>0-1 字典树（异或字典树）</h3><p>这个如果了解异或字典树就不算难，可惜我比赛的时候没有想到。直接贴代码。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TrieNode</span>:</span><br><span class="line">    __slots__ = <span class="string">&#x27;children&#x27;</span>, <span class="string">&#x27;cnt&#x27;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.children = [<span class="literal">None</span>, <span class="literal">None</span>]</span><br><span class="line">        <span class="variable language_">self</span>.cnt = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Trie</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="variable language_">self</span>.root = TrieNode()</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">insert</span>(<span class="params">self, x</span>):</span><br><span class="line">        node = <span class="variable language_">self</span>.root</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">15</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">            b = (x &gt;&gt; i) &amp; <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> node.children[b]:</span><br><span class="line">                node.children[b] = TrieNode()</span><br><span class="line">            node.children[b].cnt += <span class="number">1</span></span><br><span class="line">            node = node.children[b]</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">delete</span>(<span class="params">self, x</span>):</span><br><span class="line">        node = <span class="variable language_">self</span>.root</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">15</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">            b = (x &gt;&gt; i) &amp; <span class="number">1</span></span><br><span class="line">            node = node.children[b]</span><br><span class="line">            node.cnt -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">query</span>(<span class="params">self, x</span>):</span><br><span class="line">        node = <span class="variable language_">self</span>.root</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">15</span>, -<span class="number">1</span>, -<span class="number">1</span>):</span><br><span class="line">            b = (x &gt;&gt; i) &amp; <span class="number">1</span></span><br><span class="line">            bb = <span class="number">1</span> - b</span><br><span class="line">            <span class="keyword">if</span> node.children[bb] <span class="keyword">and</span> node.children[bb].cnt &gt; <span class="number">0</span>:</span><br><span class="line">                <span class="comment"># 可以取 1</span></span><br><span class="line">                res |= <span class="number">1</span> &lt;&lt; i</span><br><span class="line">                node = node.children[<span class="number">1</span> - b]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># 这一位只能同 x，res 取 0</span></span><br><span class="line">                node = node.children[b]</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">maxXor</span>(<span class="params">self, nums: <span class="built_in">list</span>[<span class="built_in">int</span>], k: <span class="built_in">int</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">        min_q = deque()</span><br><span class="line">        max_q = deque()</span><br><span class="line">        xor_sum = [<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> nums:</span><br><span class="line">            xor_sum.append(xor_sum[-<span class="number">1</span>] ^ x)</span><br><span class="line">        ans = <span class="number">0</span></span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        trie = Trie()</span><br><span class="line">        trie.insert(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">for</span> right, x <span class="keyword">in</span> <span class="built_in">enumerate</span>(nums):</span><br><span class="line">            trie.insert(xor_sum[right + <span class="number">1</span>])</span><br><span class="line">            <span class="keyword">while</span> max_q <span class="keyword">and</span> nums[max_q[-<span class="number">1</span>]] &lt;= x:</span><br><span class="line">                max_q.pop()</span><br><span class="line">            max_q.append(right)</span><br><span class="line">            <span class="keyword">while</span> min_q <span class="keyword">and</span> nums[min_q[-<span class="number">1</span>]] &gt;= x:</span><br><span class="line">                min_q.pop()</span><br><span class="line">            min_q.append(right)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> nums[max_q[<span class="number">0</span>]] - nums[min_q[<span class="number">0</span>]] &gt; k:</span><br><span class="line">                trie.delete(xor_sum[left])</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> left &gt; max_q[<span class="number">0</span>]:</span><br><span class="line">                    max_q.popleft()</span><br><span class="line">                <span class="keyword">if</span> left &gt; min_q[<span class="number">0</span>]:</span><br><span class="line">                    min_q.popleft()</span><br><span class="line"></span><br><span class="line">            ans = <span class="built_in">max</span>(ans, trie.query(xor_sum[right + <span class="number">1</span>]))</span><br><span class="line">        <span class="keyword">return</span> ans</span><br></pre></td></tr></table></figure>
-<p>说明一点单调队列里的一个小点。</p>
+<p>说明一下单调队列里的一个小点。</p>
 <p><code>while max_q and nums[max_q[-1]] &lt;= x:</code> 和 <code>while min_q and nums[min_q[-1]] &gt;= x:</code> 的<strong>等号</strong>的作用：</p>
 <ul>
 <li>代码简洁，如果不加的的话在出队的时候，两个 <code>if left &gt;</code> 要写成 <code>while</code>；</li>
@@ -309,8 +309,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/4121574409.html" rel="prev" title="回文">
-      <i class="fa fa-chevron-left"></i> 回文
+    <a href="/posts/3720909548.html" rel="prev" title="EOJ 5201. Kaleidoscope（铺砖问题状压DP）">
+      <i class="fa fa-chevron-left"></i> EOJ 5201. Kaleidoscope（铺砖问题状压DP）
     </a></div>
       <div class="post-nav-item"></div>
     </div>
@@ -387,7 +387,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">61</span>
+          <span class="site-state-item-count">66</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -400,7 +400,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-count">63</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -422,6 +422,9 @@
     <ul class="links-of-blogroll-list">
         <li class="links-of-blogroll-item">
           <a href="https://goat2003.github.io/" title="https:&#x2F;&#x2F;goat2003.github.io" rel="noopener" target="_blank">goat2003</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://lvqingrui.github.io/" title="https:&#x2F;&#x2F;lvqingrui.github.io" rel="noopener" target="_blank">lvqingrui</a>
         </li>
     </ul>
   </div>

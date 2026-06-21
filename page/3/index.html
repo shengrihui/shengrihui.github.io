@@ -185,7 +185,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/4204691805.html">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/3710154345.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -199,7 +199,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/4204691805.html" class="post-title-link" itemprop="url">蓝桥-线性DP</a>
+            <a href="/posts/3710154345.html" class="post-title-link" itemprop="url">matlab-pspectrum函数.md</a>
         </h2>
 
         <div class="post-meta">
@@ -209,7 +209,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-02-16 10:54:25" itemprop="dateCreated datePublished" datetime="2023-02-16T10:54:25+08:00">2023-02-16</time>
+              <time title="创建时间：2022-11-10 17:06:39" itemprop="dateCreated datePublished" datetime="2022-11-10T17:06:39+08:00">2022-11-10</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -224,7 +224,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                  <a href="/categories/MATLAB/" itemprop="url" rel="index"><span itemprop="name">MATLAB</span></a>
                 </span>
             </span>
 
@@ -239,11 +239,57 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="最长公共子序列"><a href="#最长公共子序列" class="headerlink" title="最长公共子序列"></a>最长公共子序列</h3><p><code>dp[i][j]</code>，A序列前i个和B序列的前j个的最长公共子序列。</p>
-<h3 id="最长递增序列（蓝桥骑士）"><a href="#最长递增序列（蓝桥骑士）" class="headerlink" title="最长递增序列（蓝桥骑士）"></a>最长递增序列（蓝桥骑士）</h3>
+          <h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<li><code>x</code>——输入的信号</li>
+<li><code>fs</code>——采样率，默认$2\pi$，正数标量</li>
+<li><code>t</code>——时间，向量，或者是datetime类型duration类型的数据，或者表示每个样本之间差值</li>
+<li><code>type</code>——用什么方式计算，可选是<code>&#39;power&#39;</code> (default) | <code>&#39;spectrogram&#39;</code> | <code>&#39;persistence&#39;</code></li>
+</ul>
+<p>以下是要写出名字的参数：</p>
+<ul>
+<li><p><code>FrequencyLimits</code>——频带限制</p>
+<p>默认；[0   fs/2]   二元向量</p>
+</li>
+<li><p><code>FrequencyResolution</code> — Frequency resolution bandwidth频率分辨率</p>
+<p>实数标量，不能和时间分辨率一起指定。</p>
+</li>
+<li><p><code>Leakage</code>— Spectral leakage 泄漏量</p>
+<p>默认0.5</p>
+</li>
+<li><p><code>MinThreshold</code>— Lower bound for nonzero values 非零值的下限</p>
+<p>默认 <code>-Inf</code></p>
+</li>
+<li><p><code>NumPowerBins</code> — Number of power bins for persistence spectrum</p>
+<p>默认256</p>
+</li>
+<li><p><code>OverlapPercent</code> — Overlap between adjoining segments 重叠率</p>
+<p>[0,100)</p>
+</li>
+<li><p><code>Reassign</code> — Reassignment option 重新分配？？</p>
+<p>默认 false</p>
+</li>
+<li><p><code>TimeResolution</code> 时间分辨率</p>
+</li>
+<li><p><code>TwoSided</code> — Two-sided spectral estimate</p>
+</li>
+</ul>
+<h3 id="Spectrogram-Computation-spectrogram的计算"><a href="#Spectrogram-Computation-spectrogram的计算" class="headerlink" title="Spectrogram Computation spectrogram的计算"></a>Spectrogram Computation spectrogram的计算</h3><p>To compute the time-dependent spectrum of a nonstationary signal, <code>pspectrum</code> divides the signal into overlapping segments, windows each segment with a Kaiser window, computes the short-time Fourier transform, and then concatenates the transforms to form a matrix. For more information, see <a target="_blank" rel="noopener" href="https://ww2.mathworks.cn/help/signal/ug/spectrogram-computation-with-signal-processing-toolbox.html">Spectrogram Computation with Signal Processing Toolbox</a>.</p>
+<p>A nonstationary signal is a signal whose frequency content changes with time. The <em>spectrogram</em> of a nonstationary signal is an estimate of the time evolution of its frequency content. To construct the spectrogram of a nonstationary signal, <code>pspectrum</code> follows these steps:</p>
+<ol>
+<li><p>Divide the signal into equal-length segments. The segments must be short enough that the frequency content of the signal does not change appreciably within a segment. The segments may or may not overlap.</p>
+</li>
+<li><p>Window each segment and compute its spectrum to get the <em>short-time Fourier transform</em>.</p>
+</li>
+<li><p>Use the segment spectra to construct the spectrogram:</p>
+<ul>
+<li>If called with output arguments, concatenate the spectra to form a matrix.</li>
+<li>If called with no output arguments, display the power of each spectrum in decibels segment by segment. Depict the magnitudes side-by-side as an image with magnitude-dependent colormap.</li>
+</ul>
+</li>
+</ol>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/posts/4204691805.html#more" rel="contents">
+              <a class="btn" href="/posts/3710154345.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -267,7 +313,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/4022973346.html">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/479952160.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -281,7 +327,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/4022973346.html" class="post-title-link" itemprop="url">蓝桥-多重背包</a>
+            <a href="/posts/479952160.html" class="post-title-link" itemprop="url">Django学习</a>
         </h2>
 
         <div class="post-meta">
@@ -291,7 +337,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-02-15 23:28:27" itemprop="dateCreated datePublished" datetime="2023-02-15T23:28:27+08:00">2023-02-15</time>
+              <time title="创建时间：2022-07-11 23:07:14" itemprop="dateCreated datePublished" datetime="2022-07-11T23:07:14+08:00">2022-07-11</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -306,7 +352,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
                 </span>
             </span>
 
@@ -321,11 +367,17 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="分组背包"><a href="#分组背包" class="headerlink" title="分组背包"></a>分组背包</h3><p>问题：每一组当中的物品只能选一个。</p>
-<p>方法：在0/1背包的基础上，在每一组中遍历所有物品。</p>
+          <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"></td><td class="code"></td></tr></table></figure>
+<p>安装完之后在环境目录<code>D:\Users\11200\anaconda3\envs\web</code>下会有：</p>
+<h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><h4 id="终端"><a href="#终端" class="headerlink" title="终端"></a>终端</h4><ol>
+<li>进入终端</li>
+<li>进入想把项目放在的目录下</li>
+<li>执行命令<code>django-admin startproject 项目名</code><br> <code>django-admin</code>要进入这个环境当中。</li>
+</ol>
+<h4 id="pycharm创建"><a href="#pycharm创建" class="headerlink" title="pycharm创建"></a>pycharm创建</h4><p>选好解释器，删除<code>templates</code>文件夹，将57行改为<code>&#39;DIRS&#39;: [],</code>，为了和终端创建的保持一致。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/posts/4022973346.html#more" rel="contents">
+              <a class="btn" href="/posts/479952160.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -349,7 +401,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/1748642322.html">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/228469122.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -363,7 +415,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/1748642322.html" class="post-title-link" itemprop="url">蓝桥-2022</a>
+            <a href="/posts/228469122.html" class="post-title-link" itemprop="url">Leetcode-1706-球会落何处</a>
         </h2>
 
         <div class="post-meta">
@@ -373,7 +425,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-02-15 17:02:14" itemprop="dateCreated datePublished" datetime="2023-02-15T17:02:14+08:00">2023-02-15</time>
+              <time title="创建时间：2022-02-24 18:45:26" itemprop="dateCreated datePublished" datetime="2022-02-24T18:45:26+08:00">2022-02-24</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -403,11 +455,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/2186/learning/">https://www.lanqiao.cn/problems/2186/learning/</a></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3>
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1706. 球会落何处<br>难诉：中等</p>
+<p>用一个大小为 <code>m x n</code> 的二维网格 <code>grid</code> 表示一个箱子。你有 <code>n</code> 颗球。箱子的顶部和底部都是开着的。</p>
+
+<p>箱子中的每个单元格都有一个对角线挡板，跨过单元格的两个角，可以将球导向左侧或者右侧。</p>
+
+<ul>
+    <li>将球导向右侧的挡板跨过左上角和右下角，在网格中用 <code>1</code> 表示。</li>
+    <li>将球导向左侧的挡板跨过右上角和左下角，在网格中用 <code>-1</code> 表示。</li>
+</ul>
+
+<p>在箱子每一列的顶端各放一颗球。每颗球都可能卡在箱子里或从底部掉出来。如果球恰好卡在两块挡板之间的 "V" 形图案，或者被一块挡导向到箱子的任意一侧边上，就会卡住。</p>
+
+<p>返回一个大小为 <code>n</code> 的数组 <code>answer</code> ，其中 <code>answer[i]</code> 是球放在顶部的第 <code>i</code> 列后从底部掉出来的那一列对应的下标，如果球卡在盒子里，则返回 <code>-1</code> 。</p>
+
+<p>&nbsp;</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/posts/1748642322.html#more" rel="contents">
+              <a class="btn" href="/posts/228469122.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -431,7 +496,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/333428685.html">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/4207363599.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -445,7 +510,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/333428685.html" class="post-title-link" itemprop="url">蓝桥-小明的背包</a>
+            <a href="/posts/4207363599.html" class="post-title-link" itemprop="url">Leetcode-838-推多米诺</a>
         </h2>
 
         <div class="post-meta">
@@ -455,7 +520,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-02-15 15:13:11" itemprop="dateCreated datePublished" datetime="2023-02-15T15:13:11+08:00">2023-02-15</time>
+              <time title="创建时间：2022-02-21 16:39:15" itemprop="dateCreated datePublished" datetime="2022-02-21T16:39:15+08:00">2022-02-21</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -485,10 +550,103 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="小明的背包2"><a href="#小明的背包2" class="headerlink" title="小明的背包2"></a>小明的背包2</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/1175/learning/">https://www.lanqiao.cn/problems/1175/learning/</a></p>
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/1053049866.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/1053049866.html" class="post-title-link" itemprop="url">Leetcode-1719-重构一棵树的方案数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-02-20 23:38:03" itemprop="dateCreated datePublished" datetime="2022-02-20T23:38:03+08:00">2022-02-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-01-28 12:04:35" itemprop="dateModified" datetime="2026-01-28T12:04:35+08:00">2026-01-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1719. 重构一棵树的方案数<br>难度：困难</p>
+<p>给你一个数组&nbsp;<code>pairs</code> ，其中&nbsp;<code>pairs[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&nbsp;，并且满足：</p>
+
+<ul>
+    <li><code>pairs</code>&nbsp;中没有重复元素</li>
+    <li><code>x<sub>i</sub> &lt; y<sub>i</sub></code></li>
+</ul>
+
+
+<p>令&nbsp;<code>ways</code>&nbsp;为满足下面条件的有根树的方案数：</p>
+
+<ul>
+    <li>树所包含的所有节点值都在 <code>pairs</code>&nbsp;中。</li>
+    <li>一个数对&nbsp;<code>[x<sub>i</sub>, y<sub>i</sub>]</code> 出现在&nbsp;<code>pairs</code>&nbsp;中&nbsp;<strong>当且仅当</strong><strong>&nbsp;</strong><code>x<sub>i</sub></code>&nbsp;是&nbsp;<code>y<sub>i</sub></code>&nbsp;的祖先或者&nbsp;<code>y<sub>i</sub></code>&nbsp;是&nbsp;<code>x<sub>i</sub></code><sub>&nbsp;</sub>的祖先。</li>
+    <li><strong>注意：</strong>构造出来的树不一定是二叉树。</li>
+</ul>
+
+
+<p>两棵树被视为不同的方案当存在至少一个节点在两棵树中有不同的父节点。</p>
+
+<p>请你返回：</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/posts/333428685.html#more" rel="contents">
+              <a class="btn" href="/posts/1053049866.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -512,7 +670,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/1259790352.html">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/2483153324.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -526,7 +684,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/1259790352.html" class="post-title-link" itemprop="url">蓝桥-剪邮票</a>
+            <a href="/posts/2483153324.html" class="post-title-link" itemprop="url">欧拉公式</a>
         </h2>
 
         <div class="post-meta">
@@ -536,7 +694,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-02-12 23:33:55" itemprop="dateCreated datePublished" datetime="2023-02-12T23:33:55+08:00">2023-02-12</time>
+              <time title="创建时间：2022-02-20 13:04:28" itemprop="dateCreated datePublished" datetime="2022-02-20T13:04:28+08:00">2022-02-20</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -551,7 +709,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
                 </span>
             </span>
 
@@ -566,11 +724,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/1505/learning/">https://www.lanqiao.cn/problems/1505/learning/</a></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3>
+          <h3 id="欧拉公式"><a href="#欧拉公式" class="headerlink" title="欧拉公式"></a>欧拉公式</h3><p>$ e^{i\theta} = \cos\theta + i\sin\theta$ ，当 $\theta=\pi$ 时，$e^{i\pi} + 1 =0$.</p>
+<h3 id="证明一：求导"><a href="#证明一：求导" class="headerlink" title="证明一：求导"></a>证明一：求导</h3><p>设 $f(\theta)=\frac{e^i\theta}{i\sin\theta+\cos\theta}$ ,对 $ f(\theta)$ 求一阶导，</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f'(\theta)&=\frac{ie^{i\theta}(i\sin\theta+\cos\theta)-e^{i\theta}(i\cos\theta-\sin\theta)}{(i\sin\theta+\cos\theta)^{2}} \\
+&=\frac{-e^{i\theta}\sin\theta+ie^{i\theta}\cos\theta-ie^{i\theta}\cos\theta+e^{i\theta}\sin\theta}{(i\sin\theta+\cos\theta)^{2}} \\
+&=0\\
+\end{aligned}</script><p>因为 $f’(\theta)=0$ ，所以 $f(\theta)$ 是一个常数。取$\theta=0$:</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f(0)&=\frac{e^{i·0}}{i\sin0+\cos0}\\
+&=\frac{1}{0+1}\\
+&=1\\
+\end{aligned}</script><p>所以，$e^{i\theta} = \cos\theta + i\sin\theta$。<br>同时，也容易得到 $e^{i\theta} $ 和 $  \cos\theta + i\sin\theta$ 都不等于0。<br>将 $f(\theta)$ 设为 $f(\theta)=\frac{i\sin\theta+\cos\theta}{e^i\theta}$ 是一样的。</p>
+<h3 id="证明二：函数幂级数展开"><a href="#证明二：函数幂级数展开" class="headerlink" title="证明二：函数幂级数展开"></a>证明二：函数幂级数展开</h3><h5 id="泰勒展开式和麦克劳林展开式的简单推导"><a href="#泰勒展开式和麦克劳林展开式的简单推导" class="headerlink" title="泰勒展开式和麦克劳林展开式的简单推导"></a>泰勒展开式和麦克劳林展开式的简单推导</h5>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/posts/1259790352.html#more" rel="contents">
+              <a class="btn" href="/posts/2483153324.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -594,7 +765,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/371940618.html">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/527321662.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -608,7 +779,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/371940618.html" class="post-title-link" itemprop="url">蓝桥-全球变暖</a>
+            <a href="/posts/527321662.html" class="post-title-link" itemprop="url">Leetcode-969-煎饼排序</a>
         </h2>
 
         <div class="post-meta">
@@ -618,7 +789,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-02-12 15:53:42" itemprop="dateCreated datePublished" datetime="2023-02-12T15:53:42+08:00">2023-02-12</time>
+              <time title="创建时间：2022-02-19 22:44:36" itemprop="dateCreated datePublished" datetime="2022-02-19T22:44:36+08:00">2022-02-19</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -648,11 +819,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/178/learning/">https://www.lanqiao.cn/problems/178/learning/</a></p>
-<h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3>
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>969. 煎饼排序</p>
+<p>难度：中等</p>
+<p>给你一个整数数组 <code>arr</code> ，请使用 <strong>煎饼翻转</strong><em> </em>完成对数组的排序。</p>
+
+<p>一次煎饼翻转的执行过程如下：</p>
+
+<ul>
+   <li>选择一个整数 <code>k</code> ，<code>1 &lt;= k &lt;= arr.length</code></li>
+   <li>反转子数组 <code>arr[0...k-1]</code>（<strong>下标从 0 开始</strong>）</li>
+</ul>
+
+<p>例如，<code>arr = [3,2,1,4]</code> ，选择 <code>k = 3</code> 进行一次煎饼翻转，反转子数组 <code>[3,2,1]</code> ，得到 <code>arr = [<strong>1</strong>,<strong>2</strong>,<strong>3</strong>,4]</code> 。</p>
+
+<p>以数组形式返回能使 <code>arr</code> 有序的煎饼翻转操作所对应的 <code>k</code> 值序列。任何将数组排序且翻转次数在&nbsp;<code>10 * arr.length</code> 范围内的有效答案都将被判断为正确。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/posts/371940618.html#more" rel="contents">
+              <a class="btn" href="/posts/527321662.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -676,7 +859,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/3933164985.html">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/3720305040.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -690,7 +873,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/3933164985.html" class="post-title-link" itemprop="url">蓝桥-迷宫2019</a>
+            <a href="/posts/3720305040.html" class="post-title-link" itemprop="url">Leetcode-688-骑士在棋盘上的概率</a>
         </h2>
 
         <div class="post-meta">
@@ -700,7 +883,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-02-12 13:27:16" itemprop="dateCreated datePublished" datetime="2023-02-12T13:27:16+08:00">2023-02-12</time>
+              <time title="创建时间：2022-02-18 22:41:54" itemprop="dateCreated datePublished" datetime="2022-02-18T22:41:54+08:00">2022-02-18</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -730,11 +913,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/602/learning/">https://www.lanqiao.cn/problems/602/learning/</a></p>
-<h3 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h3>
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>688. 骑士在棋盘上的概率<br>难度：中等</p>
+<p>在一个&nbsp;<code>n x n</code>&nbsp;的国际象棋棋盘上，一个骑士从单元格 <code>(row, column)</code>&nbsp;开始，并尝试进行 <code>k</code> 次移动。行和列是 <strong>从 0 开始</strong> 的，所以左上单元格是 <code>(0,0)</code> ，右下单元格是 <code>(n - 1, n - 1)</code> 。</p>
+
+<p>象棋骑士有8种可能的走法，如下图所示。每次移动在基本方向上是两个单元格，然后在正交方向上是一个单元格。</p>
+
+<p><img style="height: 300px; width: 300px;" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/12/knight.png"></p>
+
+<p>每次骑士要移动时，它都会随机从8种可能的移动中选择一种(即使棋子会离开棋盘)，然后移动到那里。</p>
+
+<p>骑士继续移动，直到它走了 <code>k</code> 步或离开了棋盘。</p>
+
+<p>返回 <em>骑士在棋盘停止移动后仍留在棋盘上的概率</em> 。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/posts/3933164985.html#more" rel="contents">
+              <a class="btn" href="/posts/3720305040.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -758,7 +951,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/2889545895.html">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/3243819524.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -772,7 +965,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/2889545895.html" class="post-title-link" itemprop="url">蓝桥-防御力</a>
+            <a href="/posts/3243819524.html" class="post-title-link" itemprop="url">Leetcode-2029-石子游戏 IX</a>
         </h2>
 
         <div class="post-meta">
@@ -782,7 +975,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-02-11 16:55:16" itemprop="dateCreated datePublished" datetime="2023-02-11T16:55:16+08:00">2023-02-11</time>
+              <time title="创建时间：2022-02-14 22:13:15" itemprop="dateCreated datePublished" datetime="2022-02-14T22:13:15+08:00">2022-02-14</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -812,11 +1005,25 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/226/learning/">https://www.lanqiao.cn/problems/226/learning/</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3>
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>2029.石子游戏 IX 难度：中等</p>
+<p>Alice 和 Bob 再次设计了一款新的石子游戏。现有一行 n 个石子，每个石子都有一个关联的数字表示它的价值。给你一个整数数组 <code>stones</code> ，其中 <code>stones[i]</code> 是第 <code>i</code> 个石子的价值。</p>
+
+<p>Alice 和 Bob 轮流进行自己的回合，<strong>Alice</strong> 先手。每一回合，玩家需要从 <code>stones</code>&nbsp;中移除任一石子。</p>
+
+<ul>
+    <li>如果玩家移除石子后，导致 <strong>所有已移除石子</strong> 的价值&nbsp;<strong>总和</strong> 可以被 3 整除，那么该玩家就 <strong>输掉游戏</strong> 。</li>
+    <li>如果不满足上一条，且移除后没有任何剩余的石子，那么 Bob 将会直接获胜（即便是在 Alice 的回合）。</li>
+</ul>
+
+
+<p>假设两位玩家均采用&nbsp;<strong>最佳</strong> 决策。如果 Alice 获胜，返回 <code>true</code> ；如果 Bob 获胜，返回 <code>false</code> 。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/posts/2889545895.html#more" rel="contents">
+              <a class="btn" href="/posts/3243819524.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -840,7 +1047,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/662098575.html">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/3720729547.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -854,7 +1061,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/662098575.html" class="post-title-link" itemprop="url">蓝桥-统计子矩阵</a>
+            <a href="/posts/3720729547.html" class="post-title-link" itemprop="url">hexo命令.md</a>
         </h2>
 
         <div class="post-meta">
@@ -864,7 +1071,96 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-02-08 20:42:29" itemprop="dateCreated datePublished" datetime="2023-02-08T20:42:29+08:00">2023-02-08</time>
+              <time title="创建时间：2021-10-03 20:25:57" itemprop="dateCreated datePublished" datetime="2021-10-03T20:25:57+08:00">2021-10-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-01-28 12:04:35" itemprop="dateModified" datetime="2026-01-28T12:04:35+08:00">2026-01-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>B站视频：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Yb411a7ty?spm_id_from=333.999.0.0">https://www.bilibili.com/video/BV1Yb411a7ty?spm_id_from=333.999.0.0</a></p>
+<h5 id="安装配置hexo"><a href="#安装配置hexo" class="headerlink" title="安装配置hexo"></a>安装配置hexo</h5><ol>
+<li>安装nodejs和npm<br> nodejs网站：nodejs.org<br> 可以用<code>nodejs -v</code> <code>npm -v</code>检查是否安装成功</li>
+<li>安装淘宝镜像cnpm<br> <code>npm  install -g cnpm --registry=https://registry.npm.taobao.org</code><br> <code>-g</code>全局安装<br> <code>cnpm -v</code>检查是否安装成功</li>
+<li>安装hexo框架<br> <code>cnpm install -g hexo-cli</code><br> <code>hexo -v</code></li>
+</ol>
+<h5 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h5><ol>
+<li>新建一个文件夹， 进入该文件夹，<code>hexo init</code></li>
+<li>或者 <code>hexo init (名字)</code>;</li>
+<li>启动 start/service<br> <code>hexo s</code></li>
+<li>清理一下<br> <code>hexo clean</code></li>
+<li>生成<br> <code>hexo g</code></li>
+<li>安装git插件<br> <code>cnpm install --save hexo-deployer-git</code></li>
+<li>上传<br> <code>hexo d</code><br> 简单点可以和生成一起：<code>hexo g -d</code></li>
+<li>标签页<br> <code>hexo n page tags</code></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/2620070724.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/2620070724.html" class="post-title-link" itemprop="url">Leetcode_1221. 分割平衡字符串</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-07 19:46:17" itemprop="dateCreated datePublished" datetime="2021-09-07T19:46:17+08:00">2021-09-07</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -894,11 +1190,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/2109/learning/">https://www.lanqiao.cn/problems/2109/learning/</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3>
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1221. 分割平衡字符串<br>难度：简单</p>
+<p>在一个 <strong>平衡字符串</strong> 中，<code>'L'</code> 和 <code>'R'</code> 字符的数量是相同的。</p>
+
+<p>给你一个平衡字符串&nbsp;<code>s</code>，请你将它分割成尽可能多的平衡字符串。</p>
+
+<p><strong>注意：</strong>分割得到的每个字符串都必须是平衡字符串。</p>
+
+<p>返回可以通过分割得到的平衡字符串的 <strong>最大数量</strong> <strong>。</strong></p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/posts/662098575.html#more" rel="contents">
+              <a class="btn" href="/posts/2620070724.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -922,7 +1228,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/3726009543.html">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/1640616487.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -936,7 +1242,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/3726009543.html" class="post-title-link" itemprop="url">蓝桥-灵能传输</a>
+            <a href="/posts/1640616487.html" class="post-title-link" itemprop="url">cuda</a>
         </h2>
 
         <div class="post-meta">
@@ -946,7 +1252,180 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-02-07 21:46:35" itemprop="dateCreated datePublished" datetime="2023-02-07T21:46:35+08:00">2023-02-07</time>
+              <time title="创建时间：2021-08-29 23:55:50" itemprop="dateCreated datePublished" datetime="2021-08-29T23:55:50+08:00">2021-08-29</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-01-28 12:04:35" itemprop="dateModified" datetime="2026-01-28T12:04:35+08:00">2026-01-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>nvcc -v 查看cuda版本<br>nvidia-smi 查看cuda版本<br>这俩有些区别</p>
+<p>pip安装<br>pip3 install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio===0.9.0 -f <a target="_blank" rel="noopener" href="https://download.pytorch.org/whl/torch_stable.html">https://download.pytorch.org/whl/torch_stable.html</a></p>
+<p>conda<br>NOTE: ‘conda-forge’ channel is required for cudatoolkit 11.1<br>conda install pytorch torchvision torchaudio cudatoolkit=11.1 -c pytorch -c conda-forge</p>
+<p><a target="_blank" rel="noopener" href="https://pytorch.org/">https://pytorch.org/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/undefined.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/undefined.html" class="post-title-link" itemprop="url">Leetcode_787. K 站中转内最便宜的航班</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-27 00:22:28" itemprop="dateCreated datePublished" datetime="2021-08-27T00:22:28+08:00">2021-08-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-04-17 13:41:15" itemprop="dateModified" datetime="2025-04-17T13:41:15+08:00">2025-04-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>787. K 站中转内最便宜的航班<br>难度：中等</p>
+<p>有 <code>n</code> 个城市通过一些航班连接。给你一个数组&nbsp;<code>flights</code> ，其中&nbsp;<code>flights[i] = [from<sub>i</sub>, to<sub>i</sub>, price<sub>i</sub>]</code> ，表示该航班都从城市 <code>from<sub>i</sub></code> 开始，以价格 <code>price<sub>i</sub></code> 抵达 <code>to<sub>i</sub></code>。</p>
+
+<p>现在给定所有的城市和航班，以及出发城市 <code>src</code> 和目的地 <code>dst</code>，你的任务是找到出一条最多经过 <code>k</code>&nbsp;站中转的路线，使得从 <code>src</code> 到 <code>dst</code> 的 <strong>价格最便宜</strong> ，并返回该价格。 如果不存在这样的路线，则输出 <code>-1</code>。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+
+
+<p><strong>示例 2：</strong></p>
+
+
+
+<p>&nbsp;</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/undefined.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/1802490282.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/1802490282.html" class="post-title-link" itemprop="url">Leetcode_797. 所有可能的路径</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-26 16:07:01" itemprop="dateCreated datePublished" datetime="2021-08-26T16:07:01+08:00">2021-08-26</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -976,11 +1455,115 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/196/learning/">https://www.lanqiao.cn/problems/196/learning/</a></p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3>
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>797. 所有可能的路径<br>难度：中等</p>
+<p>给你一个有&nbsp;<code>n</code>&nbsp;个节点的 <strong>有向无环图（DAG）</strong>，请你找出所有从节点 <code>0</code>&nbsp;到节点 <code>n-1</code>&nbsp;的路径并输出（<strong>不要求按特定顺序</strong>）</p>
+
+<p>二维数组的第 <code>i</code> 个数组中的单元都表示有向图中 <code>i</code> 号节点所能到达的下一些节点，空就是没有下一个结点了。</p>
+
+<p>译者注：有向图是有方向的，即规定了 a→b 你就不能从 b→a 。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<p><img style="height: 242px; width: 242px;" src="https://assets.leetcode.com/uploads/2020/09/28/all_1.jpg" alt></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/posts/3726009543.html#more" rel="contents">
+              <a class="btn" href="/posts/1802490282.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/332257389.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/332257389.html" class="post-title-link" itemprop="url">Leetcode_881. 救生艇</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-26 16:03:51" itemprop="dateCreated datePublished" datetime="2021-08-26T16:03:51+08:00">2021-08-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-01-28 12:04:35" itemprop="dateModified" datetime="2026-01-28T12:04:35+08:00">2026-01-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>881. 救生艇<br>难度：中等</p>
+<p>第&nbsp;<code>i</code>&nbsp;个人的体重为&nbsp;<code>people[i]</code>，每艘船可以承载的最大重量为&nbsp;<code>limit</code>。</p>
+
+<p>每艘船最多可同时载两人，但条件是这些人的重量之和最多为&nbsp;<code>limit</code>。</p>
+
+<p>返回载到每一个人所需的最小船数。(保证每个人都能被船载)。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+
+
+<p><strong>示例 2：</strong></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/332257389.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1003,7 +1586,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1071,7 +1654,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1084,7 +1667,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">57</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"shengrihui.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="题目：3845. 最大子数组异或值  0-1 字典树（异或字典树）这个如果了解异或字典树就不算难，可惜我比赛的时候没有想到。直接贴代码。">
+  <meta name="description" content="题目：3845. 最大子数组异或值  0-1 字典树（异或字典树）这个如果了解异或字典树就不算难，可惜我比赛的时候没有想到。直接贴代码。  说明一下单调队列里的一个小点。 while max_q and nums[max_q[-1]] &lt;&#x3D; x: 和 while min_q and nums[min_q[-1]] &gt;&#x3D; x: 的等号的作用：  代码简洁，如果不加的的话在出队的时候，两">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode 3845. 最大子数组异或值（01字典树、单调队列）">
 <meta property="og:url" content="https://shengrihui.github.io/posts/1170997129.html">
 <meta property="og:site_name" content="盛日辉的博客">
-<meta property="og:description" content="题目：3845. 最大子数组异或值  0-1 字典树（异或字典树）这个如果了解异或字典树就不算难，可惜我比赛的时候没有想到。直接贴代码。">
+<meta property="og:description" content="题目：3845. 最大子数组异或值  0-1 字典树（异或字典树）这个如果了解异或字典树就不算难，可惜我比赛的时候没有想到。直接贴代码。  说明一下单调队列里的一个小点。 while max_q and nums[max_q[-1]] &lt;&#x3D; x: 和 while min_q and nums[min_q[-1]] &gt;&#x3D; x: 的等号的作用：  代码简洁，如果不加的的话在出队的时候，两">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-02-22T01:46:27.000Z">
 <meta property="article:modified_time" content="2026-04-09T07:51:08.191Z">
@@ -313,8 +313,8 @@
       <i class="fa fa-chevron-left"></i> EOJ 5201. Kaleidoscope（铺砖问题状压DP）
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/2645371572.html" rel="next" title="【MIT 18.06】01-线性方程组的几何意义">
-      【MIT 18.06】01-线性方程组的几何意义 <i class="fa fa-chevron-right"></i>
+    <a href="/posts/1305411400.html" rel="next" title="CF-2187A-Restricted Sorting">
+      CF-2187A-Restricted Sorting <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -390,7 +390,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -403,7 +403,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">57</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

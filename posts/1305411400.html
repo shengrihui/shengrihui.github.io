@@ -20,20 +20,20 @@
     var CONFIG = {"hostname":"shengrihui.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="题目2187A Restricted Sorting 题目意思">
+  <meta name="description" content="题目2187A Restricted Sorting 题目意思现在有一个数组 $a$ ，要将它通过元素交换排序成一个非降序的数组，要求是每次交换的两个元素满足 $|a_i - a_j| \ge k$ 也就是选差值至少为 $k$ 的两个元素。 求最大的 $k$ 。如果没有，输出 $-1$ 。 思路错误思路先得到排序之后的正确的数组 $b$ ，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CF-2187A-Restricted Sorting">
 <meta property="og:url" content="https://shengrihui.github.io/posts/1305411400.html">
 <meta property="og:site_name" content="盛日辉的博客">
-<meta property="og:description" content="题目2187A Restricted Sorting 题目意思">
+<meta property="og:description" content="题目2187A Restricted Sorting 题目意思现在有一个数组 $a$ ，要将它通过元素交换排序成一个非降序的数组，要求是每次交换的两个元素满足 $|a_i - a_j| \ge k$ 也就是选差值至少为 $k$ 的两个元素。 求最大的 $k$ 。如果没有，输出 $-1$ 。 思路错误思路先得到排序之后的正确的数组 $b$ ，">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-06-21T06:30:39.000Z">
-<meta property="article:modified_time" content="2026-06-21T08:14:15.243Z">
+<meta property="article:modified_time" content="2026-06-21T14:53:28.342Z">
 <meta property="article:author" content="盛日辉">
 <meta property="article:tag" content="算法">
-<meta property="article:tag" content="贪心">
 <meta property="article:tag" content="CodeForces">
 <meta property="article:tag" content="排序">
+<meta property="article:tag" content="贪心">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://shengrihui.github.io/posts/1305411400.html">
@@ -217,7 +217,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2026-06-21 14:30:39 / 修改时间：16:14:15" itemprop="dateCreated datePublished" datetime="2026-06-21T14:30:39+08:00">2026-06-21</time>
+              <time title="创建时间：2026-06-21 14:30:39 / 修改时间：22:53:28" itemprop="dateCreated datePublished" datetime="2026-06-21T14:30:39+08:00">2026-06-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -241,7 +241,7 @@
 
       
         <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/2187/A">2187A Restricted Sorting</a></p>
-<h3 id="题目意思"><a href="#题目意思" class="headerlink" title="题目意思"></a>题目意思</h3><p>现在有一个数组 $a$ ，要将它通过元素交换排序成一个非降序的数组，要求是每次交换的两个元素满足 $|a_i - a_j| \ge k$ 也就是选差值不超过 $k$ 的两个元素。</p>
+<h3 id="题目意思"><a href="#题目意思" class="headerlink" title="题目意思"></a>题目意思</h3><p>现在有一个数组 $a$ ，要将它通过元素交换排序成一个非降序的数组，要求是每次交换的两个元素满足 $|a_i - a_j| \ge k$ 也就是选差值至少为 $k$ 的两个元素。</p>
 <p>求最大的 $k$ 。如果没有，输出 $-1$ 。</p>
 <h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="错误思路"><a href="#错误思路" class="headerlink" title="错误思路"></a>错误思路</h3><p>先得到排序之后的正确的数组 $b$ ，</p>
 <ol>
@@ -253,12 +253,20 @@
 <li>没有考虑到元素到该去的位置可以“辗转腾挪”。</li>
 <li>只考虑了错误位置的元素组成 的“小圈子”，但事实上，它们可以通过“圈子”外的元素作为中转去到该去的位置，而那样的结果可能更优。</li>
 </ol>
-<h3 id="正确思路"><a href="#正确思路" class="headerlink" title="正确思路"></a>正确思路</h3><p>假设现在 $x$ 和 $y$ 需要交换，要使得 $k$ 尽可能大，那显然，可以找整个数组的最大值或最小值作为中转。</p>
-<p>记 $d=max(x - mn, mx - x)$ ，这时候，只要 $k \le d$ , $x$ 就一定能和数组中的最大值或最小值进行交换，因为 $|x- mx|=d \ge k$ 满足交换条件（假设 $d= x- mn $ ）。</p>
-<p>$y$ 同理可得 $k \le max(y-mn, mx-y) $ 。</p>
+<h3 id="正确思路"><a href="#正确思路" class="headerlink" title="正确思路"></a>正确思路</h3><p>假设现在 $x$ 不在正确的位置上，需要和别的数 $y$ 交换。</p>
+<p>根据条件，$|x-y| \ge k$ 的时候才能交换，当 $k$ 非常小的时候，能交换的 $y$ 可以有很多选择，而我们希望 $k$ 尽可能大，那 $k$ 最大能是多少呢？</p>
+<p>应该是 $k= d_1 = max(x - mn, mx - x)$ ，这个时候，$x$ 还能喝最大值或最小值交换，若 $k$ 再大，$x$ 就不可能被交换了。</p>
+<p>因此 $k \le d_1$ ，这样 $x$ 才有机会去到正确的位置。</p>
+<p>对于 $y$ 同理，可以得到 $k \le d_2 = max(y - mn, mx- y)$ 。</p>
+<p>综合起来，$k \le min(d_1, d_2)$ 。</p>
+<blockquote>
+<p>假设 $d_0 = |x-y|$ ，那么 $d_0$ 一定不超过 $d_1$ 和 $d_2$ 。</p>
+<p>假设 $d_2 \lt d_1$ ， $k = min(d_1, d_2) = d_2$ ，$y$ 可以交换最大或最小值，$x$ 也能，所以 $x$ 和 $y$ 可以通过最大或最小值来交换，而这种情况下的 $k$ 会优于直接 $x$ 和 $y$ 交换。</p>
+</blockquote>
 <p>最终，对所有不在正确位置上的值 $x$ 求 $d=max(x - mn, mx - x)$ ， $k$ 等于最小的 $d$ 。</p>
 <p>特殊情况，数组已经符合要求，输出 $-1$ 。</p>
-<h3 id="我写的太不清楚了，让-deepseek-来"><a href="#我写的太不清楚了，让-deepseek-来" class="headerlink" title="我写的太不清楚了，让 deepseek 来"></a>我写的太不清楚了，让 deepseek 来</h3><h4 id="错误思路的“死穴”"><a href="#错误思路的“死穴”" class="headerlink" title="错误思路的“死穴”"></a>错误思路的“死穴”</h4><p>先把数组排序得到目标数组 <code>b</code>，然后：</p>
+<h3 id="我写的太不清楚了，让-deepseek-来"><a href="#我写的太不清楚了，让-deepseek-来" class="headerlink" title="我写的太不清楚了，让 deepseek 来"></a>我写的太不清楚了，让 deepseek 来</h3><blockquote>
+<h4 id="错误思路的“死穴”"><a href="#错误思路的“死穴”" class="headerlink" title="错误思路的“死穴”"></a>错误思路的“死穴”</h4><p>先把数组排序得到目标数组 <code>b</code>，然后：</p>
 <ol>
 <li><p><strong>看 <code>abs(a[i] - b[i])</code></strong><br>比如 <code>a = [10, 1, 5]</code>，<code>b = [1, 5, 10]</code>。<br>位置 0 的 <code>10</code> 和 <code>1</code> 差 9，位置 1 的 <code>1</code> 和 <code>5</code> 差 4。<br>但真正的答案并不是 9 或 4，因为元素不是非要“一步到位”地跳到自己的目标位置，它完全可以<strong>先跟最大值/最小值交换</strong>，再辗转到位。<br><strong>核心错误</strong>：交换条件是“任意两个元素的差值”，不是“这个元素和它最终位置的差值”。</p>
 </li>
@@ -284,6 +292,7 @@ k \le d</script><p><strong>为什么取所有 <code>d</code> 的最小值？</st
 </ul>
 <hr>
 <p>😊</p>
+</blockquote>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">T = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(T):</span><br><span class="line">    n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    nums = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split()))</span><br><span class="line">    order = <span class="built_in">sorted</span>(nums)</span><br><span class="line">    mn, mx = order[<span class="number">0</span>], order[-<span class="number">1</span>]</span><br><span class="line">    ans = <span class="number">0x3f3f3f3f</span></span><br><span class="line">    <span class="keyword">for</span> x, y <span class="keyword">in</span> <span class="built_in">zip</span>(nums, order):</span><br><span class="line">        <span class="keyword">if</span> x != y:</span><br><span class="line">            ans = <span class="built_in">min</span>(ans, <span class="built_in">max</span>(x - mn, mx - x))</span><br><span class="line">    <span class="built_in">print</span>(ans <span class="keyword">if</span> ans != <span class="number">0x3f3f3f3f</span> <span class="keyword">else</span> -<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 
     </div>
@@ -315,9 +324,9 @@ k \le d</script><p><strong>为什么取所有 <code>d</code> 的最小值？</st
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
-              <a href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag"># 贪心</a>
               <a href="/tags/CodeForces/" rel="tag"># CodeForces</a>
               <a href="/tags/%E6%8E%92%E5%BA%8F/" rel="tag"># 排序</a>
+              <a href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag"># 贪心</a>
           </div>
 
         
@@ -326,8 +335,8 @@ k \le d</script><p><strong>为什么取所有 <code>d</code> 的最小值？</st
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/posts/2645371572.html" rel="prev" title="【MIT 18.06】01-线性方程组的几何意义">
-      <i class="fa fa-chevron-left"></i> 【MIT 18.06】01-线性方程组的几何意义
+    <a href="/posts/1170997129.html" rel="prev" title="Leetcode 3845. 最大子数组异或值（01字典树、单调队列）">
+      <i class="fa fa-chevron-left"></i> Leetcode 3845. 最大子数组异或值（01字典树、单调队列）
     </a></div>
       <div class="post-nav-item"></div>
     </div>
@@ -404,7 +413,7 @@ k \le d</script><p><strong>为什么取所有 <code>d</code> 的最小值？</st
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -417,7 +426,7 @@ k \le d</script><p><strong>为什么取所有 <code>d</code> 的最小值？</st
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">57</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

@@ -185,7 +185,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/3747214591.html">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/1397883998.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -199,7 +199,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/3747214591.html" class="post-title-link" itemprop="url">二分法.md</a>
+            <a href="/posts/1397883998.html" class="post-title-link" itemprop="url">Leetcode_1646. 获取生成数组中的最大值</a>
         </h2>
 
         <div class="post-meta">
@@ -209,7 +209,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2023-02-06 10:28:04" itemprop="dateCreated datePublished" datetime="2023-02-06T10:28:04+08:00">2023-02-06</time>
+              <time title="创建时间：2021-08-23 11:56:05" itemprop="dateCreated datePublished" datetime="2021-08-23T11:56:05+08:00">2021-08-23</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -239,13 +239,28 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="扫地机器人"><a href="#扫地机器人" class="headerlink" title="扫地机器人"></a>扫地机器人</h3><p>题目：<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/199/learning/">https://www.lanqiao.cn/problems/199/learning/</a></p>
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1646. 获取生成数组中的最大值<br>难度：简单</p>
+<p>给你一个整数 <code>n</code> 。按下述规则生成一个长度为 <code>n + 1</code> 的数组 <code>nums</code> ：</p>
+
 <ul>
-<li>每个机器人“负责”的区域（包括他自己的）*2=他的时间</li>
+    <li><code>nums[0] = 0</code></li>
+    <li><code>nums[1] = 1</code></li>
+    <li>当 <code>2 &lt;= 2 * i &lt;= n</code> 时，<code>nums[2 * i] = nums[i]</code></li>
+    <li>当 <code>2 &lt;= 2 * i + 1 &lt;= n</code> 时，<code>nums[2 * i + 1] = nums[i] + nums[i + 1]</code></li>
 </ul>
+
+<p>返回生成数组 <code>nums</code> 中的 <strong>最大</strong> 值。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+
+
+<p><strong>示例 2：</strong></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/posts/3747214591.html#more" rel="contents">
+              <a class="btn" href="/posts/1397883998.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -269,7 +284,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/3710154345.html">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/1711231878.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -283,7 +298,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/3710154345.html" class="post-title-link" itemprop="url">matlab-pspectrum函数.md</a>
+            <a href="/posts/1711231878.html" class="post-title-link" itemprop="url">Leetcode_443. 压缩字符串</a>
         </h2>
 
         <div class="post-meta">
@@ -293,7 +308,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-11-10 17:06:39" itemprop="dateCreated datePublished" datetime="2022-11-10T17:06:39+08:00">2022-11-10</time>
+              <time title="创建时间：2021-08-22 14:09:27" itemprop="dateCreated datePublished" datetime="2021-08-22T14:09:27+08:00">2021-08-22</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -308,7 +323,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MATLAB/" itemprop="url" rel="index"><span itemprop="name">MATLAB</span></a>
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
                 </span>
             </span>
 
@@ -323,16 +338,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
-<li><code>x</code>——输入的信号</li>
-<li><code>fs</code>——采样率，默认$2\pi$，正数标量</li>
-<li><code>t</code>——时间，向量，或者是datetime类型duration类型的数据，或者表示每个样本之间差值</li>
-<li><code>type</code>——用什么方式计算，可选是<code>&#39;power&#39;</code> (default) | <code>&#39;spectrogram&#39;</code> | <code>&#39;persistence&#39;</code></li>
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>443. 压缩字符串<br>难度：中等</p>
+<p>给你一个字符数组 <code>chars</code> ，请使用下述算法压缩：</p>
+
+<p>从一个空字符串 <code>s</code> 开始。对于 <code>chars</code> 中的每组 <strong>连续重复字符</strong> ：</p>
+
+<ul>
+    <li>如果这一组长度为 <code>1</code> ，则将字符追加到 <code>s</code> 中。</li>
+    <li>否则，需要向 <code>s</code> 追加字符，后跟这一组的长度。</li>
 </ul>
-<p>以下是要写出名字的参数：</p>
+
+<p>压缩后得到的字符串 <code>s</code> <strong>不应该直接返回</strong> ，需要转储到字符数组 <code>chars</code> 中。需要注意的是，如果组长度为 <code>10</code> 或 <code>10</code> 以上，则在 <code>chars</code> 数组中会被拆分为多个字符。</p>
+
+<p>请在 <strong>修改完输入数组后</strong> ，返回该数组的新长度。</p>
+
+<p>你必须设计并实现一个只使用常量额外空间的算法来解决此问题。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/posts/3710154345.html#more" rel="contents">
+              <a class="btn" href="/posts/1711231878.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -356,7 +379,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/479952160.html">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/1588639421.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -370,7 +393,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/479952160.html" class="post-title-link" itemprop="url">Django学习</a>
+            <a href="/posts/1588639421.html" class="post-title-link" itemprop="url">Leetcode_789.逃脱阻碍者</a>
         </h2>
 
         <div class="post-meta">
@@ -380,89 +403,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-07-11 23:07:14" itemprop="dateCreated datePublished" datetime="2022-07-11T23:07:14+08:00">2022-07-11</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-01-28 12:04:35" itemprop="dateModified" datetime="2026-01-28T12:04:35+08:00">2026-01-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install django</span><br></pre></td></tr></table></figure>
-<p>安装完之后在环境目录<code>D:\Users\11200\anaconda3\envs\web</code>下会有：</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/479952160.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/228469122.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/SNNZ5107.JPG">
-      <meta itemprop="name" content="盛日辉">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="盛日辉的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/228469122.html" class="post-title-link" itemprop="url">Leetcode-1706-球会落何处</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-24 18:45:26" itemprop="dateCreated datePublished" datetime="2022-02-24T18:45:26+08:00">2022-02-24</time>
+              <time title="创建时间：2021-08-22 12:41:00" itemprop="dateCreated datePublished" datetime="2021-08-22T12:41:00+08:00">2021-08-22</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -492,11 +433,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1706. 球会落何处<br>难诉：中等</p>
-<p>用一个大小为 <code>m x n</code> 的二维网格 <code>grid</code> 表示一个箱子。你有 <code>n</code> 颗球。箱子的顶部和底部都是开着的。</p>
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>789. 逃脱阻碍者<br>难度：中等</p>
+<p>你在进行一个简化版的吃豆人游戏。你从 <code>[0, 0]</code> 点开始出发，你的目的地是&nbsp;<code>target = [x<sub>target</sub>, y<sub>target</sub>]</code> 。地图上有一些阻碍者，以数组 <code>ghosts</code> 给出，第 <code>i</code> 个阻碍者从&nbsp;<code>ghosts[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&nbsp;出发。所有输入均为 <strong>整数坐标</strong> 。</p>
+
+<p>每一回合，你和阻碍者们可以同时向东，西，南，北四个方向移动，每次可以移动到距离原位置 <strong>1 个单位</strong> 的新位置。当然，也可以选择 <strong>不动</strong> 。所有动作 <strong>同时</strong> 发生。</p>
+
+<p>如果你可以在任何阻碍者抓住你 <strong>之前</strong> 到达目的地（阻碍者可以采取任意行动方式），则被视为逃脱成功。如果你和阻碍者同时到达了一个位置（包括目的地）都不算是逃脱成功。</p>
+
+<p>只有在你有可能成功逃脱时，输出 <code>true</code> ；否则，输出 <code>false</code> 。</p>
+&nbsp;
+
+<p><strong>示例 1：</strong></p>
+
+
+
+<p><strong>示例 2：</strong></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/posts/228469122.html#more" rel="contents">
+              <a class="btn" href="/posts/1588639421.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -520,7 +474,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/4207363599.html">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/1076317791.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -534,7 +488,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/4207363599.html" class="post-title-link" itemprop="url">Leetcode-838-推多米诺</a>
+            <a href="/posts/1076317791.html" class="post-title-link" itemprop="url">Leetcode_1583. 统计不开心的朋友</a>
         </h2>
 
         <div class="post-meta">
@@ -544,7 +498,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-02-21 16:39:15" itemprop="dateCreated datePublished" datetime="2022-02-21T16:39:15+08:00">2022-02-21</time>
+              <time title="创建时间：2021-08-20 20:18:10" itemprop="dateCreated datePublished" datetime="2021-08-20T20:18:10+08:00">2021-08-20</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -574,7 +528,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1583. 统计不开心的朋友<br>难度：中等</p>
+<p>给你一份 <code>n</code> 位朋友的亲近程度列表，其中 <code>n</code> 总是 <strong>偶数</strong> 。</p>
+
+<p>对每位朋友 <code>i</code>，<code>preferences[i]</code> 包含一份 <strong>按亲近程度从高</strong><strong>到低排列</strong> 的朋友列表。换句话说，排在列表前面的朋友与 <code>i</code> 的亲近程度比排在列表后面的朋友更高。每个列表中的朋友均以 <code>0</code> 到 <code>n-1</code> 之间的整数表示。</p>
+
+<p>所有的朋友被分成几对，配对情况以列表 <code>pairs</code> 给出，其中 <code>pairs[i] = [x<sub>i</sub>, y<sub>i</sub>]</code> 表示 <code>x<sub>i</sub></code> 与 <code>y<sub>i</sub></code> 配对，且 <code>y<sub>i</sub></code> 与 <code>x<sub>i</sub></code> 配对。</p>
+
+<p>但是，这样的配对情况可能会使其中部分朋友感到不开心。在 <code>x</code> 与 <code>y</code> 配对且 <code>u</code> 与 <code>v</code> 配对的情况下，如果同时满足下述两个条件，<code>x</code> 就会不开心：</p>
+
+<ul>
+    <li><code>x</code> 与 <code>u</code> 的亲近程度胜过 <code>x</code> 与 <code>y</code>，且</li>
+    <li><code>u</code> 与 <code>x</code> 的亲近程度胜过 <code>u</code> 与 <code>v</code></li>
+</ul>
+
+<p>返回 <strong>不开心的朋友的数目</strong> 。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/1076317791.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -593,7 +569,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/1053049866.html">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/3330001796.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -607,7 +583,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/1053049866.html" class="post-title-link" itemprop="url">Leetcode-1719-重构一棵树的方案数</a>
+            <a href="/posts/3330001796.html" class="post-title-link" itemprop="url">博客配置</a>
         </h2>
 
         <div class="post-meta">
@@ -617,7 +593,82 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-02-20 23:38:03" itemprop="dateCreated datePublished" datetime="2022-02-20T23:38:03+08:00">2022-02-20</time>
+              <time title="创建时间：2021-08-20 17:11:52" itemprop="dateCreated datePublished" datetime="2021-08-20T17:11:52+08:00">2021-08-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-06-21 14:40:01" itemprop="dateModified" datetime="2026-06-21T14:40:01+08:00">2026-06-21</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="多标签代码"><a href="#多标签代码" class="headerlink" title="多标签代码"></a>多标签代码</h3><p>可以是多个语言，也可以是不同版本。</p>
+<p><code>C++</code> 和 <code>Python</code> 可以换。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;% tabs stacks %&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- tab C++ --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- endtab --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- tab Python --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- endtab --&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;% endtabs %&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/4266674408.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/4266674408.html" class="post-title-link" itemprop="url">Leetcode_57|. 出界的路径数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-20 17:09:41" itemprop="dateCreated datePublished" datetime="2021-08-20T17:09:41+08:00">2021-08-20</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -647,11 +698,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1719. 重构一棵树的方案数<br>难度：困难</p>
-<p>给你一个数组&nbsp;<code>pairs</code> ，其中&nbsp;<code>pairs[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&nbsp;，并且满足：</p>
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><ol>
+<li>出界的路径数<br>难度：简单<p>给你一个大小为 <code>m x n</code> 的网格和一个球。球的起始坐标为 <code>[startRow, startColumn]</code> 。你可以将球移到在四个方向上相邻的单元格内（可以穿过网格边界到达网格之外）。你 <strong>最多</strong> 可以移动 <code>maxMove</code> 次球。</p>
+
+</li>
+</ol>
+<p>给你五个整数 <code>m</code>、<code>n</code>、<code>maxMove</code>、<code>startRow</code> 以及 <code>startColumn</code> ，找出并返回可以将球移出边界的路径数量。因为答案可能非常大，返回对 <code>10<sup>9</sup> + 7</code> <strong>取余</strong> 后的结果。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+<img style="width: 500px; height: 296px;" src="https://assets.leetcode.com/uploads/2021/04/28/out_of_boundary_paths_1.png" alt>
+
+
+<p><strong>示例 2：</strong></p>
+<img style="width: 500px; height: 293px;" src="https://assets.leetcode.com/uploads/2021/04/28/out_of_boundary_paths_2.png" alt>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/posts/1053049866.html#more" rel="contents">
+              <a class="btn" href="/posts/4266674408.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -675,7 +739,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/2483153324.html">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/3484666929.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -689,7 +753,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/2483153324.html" class="post-title-link" itemprop="url">欧拉公式</a>
+            <a href="/posts/3484666929.html" class="post-title-link" itemprop="url">Leetcode_541. 反转字符串 II</a>
         </h2>
 
         <div class="post-meta">
@@ -699,89 +763,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-02-20 13:04:28" itemprop="dateCreated datePublished" datetime="2022-02-20T13:04:28+08:00">2022-02-20</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-01-28 12:04:35" itemprop="dateModified" datetime="2026-01-28T12:04:35+08:00">2026-01-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="欧拉公式"><a href="#欧拉公式" class="headerlink" title="欧拉公式"></a>欧拉公式</h3><p>$ e^{i\theta} = \cos\theta + i\sin\theta$ ，当 $\theta=\pi$ 时，$e^{i\pi} + 1 =0$.</p>
-<h3 id="证明一：求导"><a href="#证明一：求导" class="headerlink" title="证明一：求导"></a>证明一：求导</h3>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/2483153324.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/527321662.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/SNNZ5107.JPG">
-      <meta itemprop="name" content="盛日辉">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="盛日辉的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/527321662.html" class="post-title-link" itemprop="url">Leetcode-969-煎饼排序</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-02-19 22:44:36" itemprop="dateCreated datePublished" datetime="2022-02-19T22:44:36+08:00">2022-02-19</time>
+              <time title="创建时间：2021-08-20 13:17:27" itemprop="dateCreated datePublished" datetime="2021-08-20T13:17:27+08:00">2021-08-20</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -811,11 +793,28 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>969. 煎饼排序</p>
-<p>难度：中等</p>
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>541. 反转字符串 II<br>难度：简单</p>
+<p>给定一个字符串 <code>s</code> 和一个整数 <code>k</code>，从字符串开头算起，每 <code>2k</code> 个字符反转前 <code>k</code> 个字符。</p>
+
+<ul>
+    <li>如果剩余字符少于 <code>k</code> 个，则将剩余字符全部反转。</li>
+    <li>如果剩余字符小于 <code>2k</code> 但大于或等于 <code>k</code> 个，则反转前 <code>k</code> 个字符，其余字符保持原样。</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+
+
+<p><strong>示例 2：</strong></p>
+
+
+
+<p>&nbsp;</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/posts/527321662.html#more" rel="contents">
+              <a class="btn" href="/posts/3484666929.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -839,7 +838,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/3720305040.html">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/3461582405.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -853,7 +852,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/3720305040.html" class="post-title-link" itemprop="url">Leetcode-688-骑士在棋盘上的概率</a>
+            <a href="/posts/3461582405.html" class="post-title-link" itemprop="url">Leetcode_552. 学生出勤记录 II</a>
         </h2>
 
         <div class="post-meta">
@@ -863,7 +862,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-02-18 22:41:54" itemprop="dateCreated datePublished" datetime="2022-02-18T22:41:54+08:00">2022-02-18</time>
+              <time title="创建时间：2021-08-19 23:35:32" itemprop="dateCreated datePublished" datetime="2021-08-19T23:35:32+08:00">2021-08-19</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -893,11 +892,28 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>688. 骑士在棋盘上的概率<br>难度：中等</p>
-<p>在一个&nbsp;<code>n x n</code>&nbsp;的国际象棋棋盘上，一个骑士从单元格 <code>(row, column)</code>&nbsp;开始，并尝试进行 <code>k</code> 次移动。行和列是 <strong>从 0 开始</strong> 的，所以左上单元格是 <code>(0,0)</code> ，右下单元格是 <code>(n - 1, n - 1)</code> 。</p>
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>552. 学生出勤记录 II<br>难度：困难<br>可以用字符串表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符：</p>
+<ul>
+    <li><code>'A'</code>：Absent，缺勤</li>
+    <li><code>'L'</code>：Late，迟到</li>
+    <li><code>'P'</code>：Present，到场</li>
+</ul>
+
+<p>如果学生能够 <strong>同时</strong> 满足下面两个条件，则可以获得出勤奖励：</p>
+
+<ul>
+    <li>按 <strong>总出勤</strong> 计，学生缺勤（<code>'A'</code>）<strong>严格</strong> 少于两天。</li>
+    <li>学生 <strong>不会</strong> 存在 <strong>连续</strong> 3 天或 <strong>连续</strong> 3 天以上的迟到（<code>'L'</code>）记录。</li>
+</ul>
+
+<p>给你一个整数 <code>n</code> ，表示出勤记录的长度（次数）。请你返回记录长度为 <code>n</code> 时，可能获得出勤奖励的记录情况 <strong>数量</strong> 。答案可能很大，所以返回对 <code>10<sup>9</sup> + 7</code> <strong>取余</strong> 的结果。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/posts/3720305040.html#more" rel="contents">
+              <a class="btn" href="/posts/3461582405.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -921,7 +937,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/3243819524.html">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/3042145382.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/SNNZ5107.JPG">
@@ -935,7 +951,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/posts/3243819524.html" class="post-title-link" itemprop="url">Leetcode-2029-石子游戏 IX</a>
+            <a href="/posts/3042145382.html" class="post-title-link" itemprop="url">Leetcode_345. 反转字符串中的元音字母</a>
         </h2>
 
         <div class="post-meta">
@@ -945,7 +961,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2022-02-14 22:13:15" itemprop="dateCreated datePublished" datetime="2022-02-14T22:13:15+08:00">2022-02-14</time>
+              <time title="创建时间：2021-08-19 11:09:28" itemprop="dateCreated datePublished" datetime="2021-08-19T11:09:28+08:00">2021-08-19</time>
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
@@ -975,11 +991,271 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>2029.石子游戏 IX 难度：中等</p>
-<p>Alice 和 Bob 再次设计了一款新的石子游戏。现有一行 n 个石子，每个石子都有一个关联的数字表示它的价值。给你一个整数数组 <code>stones</code> ，其中 <code>stones[i]</code> 是第 <code>i</code> 个石子的价值。</p>
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>345. 反转字符串中的元音字母<br>难度：简单<br>编写一个函数，以字符串作为输入，反转该字符串中的元音字母。</p>
+<p>示例 1：</p>
+<p>输入：”hello”<br>输出：”holle”<br>示例 2：</p>
+<p>输入：”leetcode”<br>输出：”leotcede”</p>
+<p>提示：</p>
+<p>元音字母不包含字母 “y” 。</p>
+<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/reverse-vowels-of-a-string">https://leetcode-cn.com/problems/reverse-vowels-of-a-string</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/posts/3243819524.html#more" rel="contents">
+              <a class="btn" href="/posts/3042145382.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/461475516.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/461475516.html" class="post-title-link" itemprop="url">Leetcode_526. 优美的排列</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-18 00:19:15" itemprop="dateCreated datePublished" datetime="2021-08-18T00:19:15+08:00">2021-08-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-01-28 12:04:35" itemprop="dateModified" datetime="2026-01-28T12:04:35+08:00">2026-01-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>526. 优美的排列<br>难度：中等<br>假设有从 1 到 N 的 N 个整数，如果从这 N 个数字中成功构造出一个数组，使得数组的第 i 位 (1 &lt;= i &lt;= N) 满足如下两个条件中的一个，我们就称这个数组为一个优美的排列。条件：</p>
+<p>第 i 位的数字能被 i 整除<br>i 能被第 i 位上的数字整除<br>现在给定一个整数 N，请问可以构造多少个优美的排列？</p>
+<p>示例1:</p>
+<p>输入: 2<br>输出: 2<br>解释: </p>
+<p>第 1 个优美的排列是 [1, 2]:<br>  第 1 个位置（i=1）上的数字是1，1能被 i（i=1）整除<br>  第 2 个位置（i=2）上的数字是2，2能被 i（i=2）整除</p>
+<p>第 2 个优美的排列是 [2, 1]:<br>  第 1 个位置（i=1）上的数字是2，2能被 i（i=1）整除<br>  第 2 个位置（i=2）上的数字是1，i（i=2）能被 1 整除<br>说明:</p>
+<p>N 是一个正整数，并且不会超过15。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/461475516.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/691300009.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/691300009.html" class="post-title-link" itemprop="url">Leetcode题解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-17 17:02:09" itemprop="dateCreated datePublished" datetime="2021-08-17T17:02:09+08:00">2021-08-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-01-28 12:04:35" itemprop="dateModified" datetime="2026-01-28T12:04:35+08:00">2026-01-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>因为既想在Github上传题解思路和代码，又想在博客上传，但保证两边同步好麻烦，所以这里列一个列表，链接到Github上。</p>
+<h3 id="301-400"><a href="#301-400" class="headerlink" title="301-400"></a>301-400</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/shengrihui/Leetcode/blob/c396f399bcca39c40923411eabf0306c7d89739f/3/345.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D/345.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D.md">345. 反转字符串中的元音字母</a><h3 id="501-600"><a href="#501-600" class="headerlink" title="501~600"></a>501~600</h3></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/shengrihui/Leetcode/blob/5acbc6232b0a90c9cf3beaaa4972ba3e9174d7ab/5/526.%20%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97/526.%20%E4%BC%98%E7%BE%8E%E7%9A%84%E6%8E%92%E5%88%97.md">526.优美的排列</a></li>
+<li>[541. 反转字符串 ](<a target="_blank" rel="noopener" href="https://github.com/shengrihui/Leetcode/blob/c5b27e27baac035e0fddb3e64867fab88630da82/5/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II.md">https://github.com/shengrihui/Leetcode/blob/c5b27e27baac035e0fddb3e64867fab88630da82/5/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II/541.%20%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%20II.md</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/shengrihui/Leetcode/blob/96ca3695c85441f9cc189b123944249f5bb81bbc/5/551.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20I/551.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20I_%E9%A2%98%E8%A7%A3.md">551. 学生出勤记录 I_题解</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/shengrihui/Leetcode/blob/c396f399bcca39c40923411eabf0306c7d89739f/5/552.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20II/552.%20%E5%AD%A6%E7%94%9F%E5%87%BA%E5%8B%A4%E8%AE%B0%E5%BD%95%20II.md">552. 学生出勤记录 II</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/1273336613.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/1273336613.html" class="post-title-link" itemprop="url">Leetcode_551. 学生出勤记录 I</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-08-17 16:15:13" itemprop="dateCreated datePublished" datetime="2021-08-17T16:15:13+08:00">2021-08-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-01-28 12:04:35" itemprop="dateModified" datetime="2026-01-28T12:04:35+08:00">2026-01-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>551.-学生出勤记录-I<br>难度：简单<br>给你一个字符串 s 表示一个学生的出勤记录，其中的每个字符用来标记当天的出勤情况（缺勤、迟到、到场）。记录中只含下面三种字符：</p>
+<p>‘A’：Absent，缺勤<br>‘L’：Late，迟到<br>‘P’：Present，到场<br>如果学生能够 同时 满足下面两个条件，则可以获得出勤奖励：</p>
+<p>按 总出勤 计，学生缺勤（’A’）严格 少于两天。<br>学生 不会 存在 连续 3 天或 3 天以上的迟到（’L’）记录。<br>如果学生可以获得出勤奖励，返回 true ；否则，返回 false 。</p>
+<p>示例 1：</p>
+<p>输入：s = “PPALLP”<br>输出：true<br>解释：学生缺勤次数少于 2 次，且不存在 3 天或以上的连续迟到记录。<br>示例 2：</p>
+<p>输入：s = “PPALLL”<br>输出：false<br>解释：学生最后三天连续迟到，所以不满足出勤奖励的条件。</p>
+<p>提示：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/1273336613.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1002,7 +1278,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
   </nav>
 
 
@@ -1070,7 +1346,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1083,7 +1359,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">57</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1216,59 +1492,6 @@
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 

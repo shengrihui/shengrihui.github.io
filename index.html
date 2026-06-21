@@ -210,7 +210,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2026-06-21 14:30:39 / 修改时间：16:14:15" itemprop="dateCreated datePublished" datetime="2026-06-21T14:30:39+08:00">2026-06-21</time>
+              <time title="创建时间：2026-06-21 14:30:39 / 修改时间：22:53:28" itemprop="dateCreated datePublished" datetime="2026-06-21T14:30:39+08:00">2026-06-21</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -234,87 +234,12 @@
 
       
           <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/2187/A">2187A Restricted Sorting</a></p>
-<h3 id="题目意思"><a href="#题目意思" class="headerlink" title="题目意思"></a>题目意思</h3>
+<h3 id="题目意思"><a href="#题目意思" class="headerlink" title="题目意思"></a>题目意思</h3><p>现在有一个数组 $a$ ，要将它通过元素交换排序成一个非降序的数组，要求是每次交换的两个元素满足 $|a_i - a_j| \ge k$ 也就是选差值至少为 $k$ 的两个元素。</p>
+<p>求最大的 $k$ 。如果没有，输出 $-1$ 。</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="错误思路"><a href="#错误思路" class="headerlink" title="错误思路"></a>错误思路</h3><p>先得到排序之后的正确的数组 $b$ ，</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/1305411400.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/2645371572.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/SNNZ5107.JPG">
-      <meta itemprop="name" content="盛日辉">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="盛日辉的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/2645371572.html" class="post-title-link" itemprop="url">【MIT 18.06】01-线性方程组的几何意义</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2026-06-03 16:16:39 / 修改时间：16:33:38" itemprop="dateCreated datePublished" datetime="2026-06-03T16:16:39+08:00">2026-06-03</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>课程链接：<a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=J7DzL2_Na80&amp;list=PLE7DDD91010BC51F8&amp;index=3">1. The Geometry of Linear Equations</a></p>
-<p>这节课难度不大。</p>
-<p>主要以二元一次方程组</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/2645371572.html#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -396,6 +321,14 @@
 <p>题目：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximum-subarray-xor-with-bounded-range/">3845. 最大子数组异或值</a></p>
 </blockquote>
 <h3 id="0-1-字典树（异或字典树）"><a href="#0-1-字典树（异或字典树）" class="headerlink" title="0-1 字典树（异或字典树）"></a>0-1 字典树（异或字典树）</h3><p>这个如果了解异或字典树就不算难，可惜我比赛的时候没有想到。直接贴代码。</p>
+<figure class="highlight python"><table><tr><td class="gutter"></td><td class="code"></td></tr></table></figure>
+<p>说明一下单调队列里的一个小点。</p>
+<p><code>while max_q and nums[max_q[-1]] &lt;= x:</code> 和 <code>while min_q and nums[min_q[-1]] &gt;= x:</code> 的<strong>等号</strong>的作用：</p>
+<ul>
+<li>代码简洁，如果不加的的话在出队的时候，两个 <code>if left &gt;</code> 要写成 <code>while</code>；</li>
+<li>空间复杂度更好。</li>
+</ul>
+<p>附两个单调队列的题：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/1170997129.html#more" rel="contents">
@@ -481,6 +414,11 @@
 </blockquote>
 <p>读完题，心想这不就是个动态规划么，定义 $dp[i]$ 表示铺满 $i$ 行的方案数，然后从 $i-1$ 和 $i-2$ 行转移过来，特殊算一下两行的情况用来转移，这不就好了么。</p>
 <p>但是写了八百遍调试了九千遍之后仍然不对。</p>
+<p>后来意识到（当然也是问了 Gemini 得到了正确思路后），最后铺满，并不是只能从之前的铺满的状态转移过来，它完全可以从第 $i-1$ 行伸出一些到第 $i$ 行然后仍然可以铺满的。</p>
+<p>所以这道题的正确思路是<strong>状压DP</strong>。</p>
+<p>定义每一列的格子的占有情况为二进制数 $s$，其中 $1$ 表示有棋子 $0$ 表示没有棋子。用递归的方式分别计算所有状态对应的“下一个”状态是什么及其数量。</p>
+<p>具体的看代码吧，这里想再说一下动态规划的初始值和最后的返回值为什么都是 $dp[0]$。因为 $dp[s]$ 可以理解成是第 $i - 1$ 行留给第 $i$ 行的状态是 $s$，一开始棋盘的空的，可以认为是第 $0$ 列（棋盘的列从 $1$ 开始）留给第 $1$ 列的是 $0$ 。同样的，当所有格子都铺满了，可以认为最后留给第 $m+1$ 列的状态是 $0$。用 Gemini 的话来说，$0$ 状态相当于「收口」。</p>
+<div class="tabs" id="code"><ul class="nav-tabs"><li class="tab active"><a href="#code-1">Python3</a></li><li class="tab"><a href="#code-2">C++</a></li></ul><div class="tab-content"><div class="tab-pane active" id="code-1"><figure class="highlight python"><table><tr><td class="gutter"></td><td class="code"></td></tr></table></figure></div><div class="tab-pane" id="code-2"><figure class="highlight c++"><table><tr><td class="gutter"></td><td class="code"></td></tr></table></figure></div></div></div>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/3720909548.html#more" rel="contents">
@@ -562,7 +500,14 @@
 
       
           <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>题目链接：<a target="_blank" rel="noopener" href="https://acm.ecnu.edu.cn/problem/5200/">https://acm.ecnu.edu.cn/problem/5200/</a></p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>读完题只是隐约感觉可以用二分，但没有别的任何想法了。</p>
+<p>于是问了 Gemini G 老师，它提示了可以用 <strong>尺取法</strong> 和 <strong>动态规划</strong> 来做。因为答案必定是由两个子数组的和相减得到的，而数据规模只有 $100$，因此可以枚举出所有的子数组和，然后排序之后利用尺取法即同向双指针来找到两个数作为划分之后所有区间的最大、最小的子数组和，判断这样的最大、最小子数组和能否被成功划分出来。</p>
+<blockquote>
+<p><strong>尺取法</strong>就像在序列上移动的一条“毛毛虫”或一个“伸缩滑窗”：它通过同向交替移动左、右两个端点，在 $O(n)$ 时间内高效地扫描出所有符合条件的区间。</p>
+<p>简单来说，就是<strong>右端点负责扩张以寻找可行解，左端点负责收缩以寻找最优解。</strong></p>
+</blockquote>
+<p>如何判断呢？</p>
+<p>G 老师给的方法是动态规划。定义 $dp[i]$ 表示数组的<strong>前 $i$ 个数字</strong>，是否能被合法地划分为若干个区间，使得每个区间的和 $S$ 都在范围 $[L, R]$ 之内。对于每一个位置 $i$ (从 $1$ 到 $n$)，尝试枚举上一个区间的结束位置 $j$：</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/3562725333.html#more" rel="contents">
@@ -646,6 +591,10 @@
           <p>题目链接：<a target="_blank" rel="noopener" href="https://acm.ecnu.edu.cn/problem/3462/">https://acm.ecnu.edu.cn/problem/3462/</a></p>
 <p>也是一道执着地优化 Python 的一道题。思路并不太难，试填法加连通性判断就行，连通性判断可以 BFS 、并查集等好多方法了。</p>
 <p>主要记录一些优化 Python 的点，因为同样的思路，C++ 就能轻松过而 Python 就是不行。</p>
+<h3 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h3><p>生成器不如 <code>ptr</code> 指针读。</p>
+<p>生成器法代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"></td><td class="code"></td></tr></table></figure>
+<p>这个方法，不如</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/1019365821.html#more" rel="contents">
@@ -728,6 +677,10 @@
       
           <p>一道用 Python 一下子就一行带走的题，但竟然还有高级做法……</p>
 <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a target="_blank" rel="noopener" href="https://acm.ecnu.edu.cn/problem/1836/">题目链接</a></p>
+<h2 id="Python-一行流"><a href="#Python-一行流" class="headerlink" title="Python 一行流"></a>Python 一行流</h2><figure class="highlight python"><table><tr><td class="gutter"></td><td class="code"></td></tr></table></figure>
+<p>也有写成 <code>print(int(eval(input())))</code> 这样的。但我觉得题目里的 <code>/</code> 应当是 <strong>整除</strong> ，最好换成 Python 的 <code>//</code> 更好一些。</p>
+<p>不过在负数的情况下，Python 的整除和 C/C++ 的整除还不一样。Python 的 <code>-5 // 2</code> 结果是 <code>-3</code> ，而 C++ 里 <code>-5 / 2</code> 的结果是 <code>-2</code> 。</p>
+<h2 id="双栈模拟"><a href="#双栈模拟" class="headerlink" title="双栈模拟"></a>双栈模拟</h2>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/196086287.html#more" rel="contents">
@@ -809,7 +762,17 @@
 
       
           <h2 id="线段树基础"><a href="#线段树基础" class="headerlink" title="线段树基础"></a>线段树基础</h2><p>线段树可以在 $𝑂(log⁡𝑁)$<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="O(\log N)"> 的时间复杂度内实现单点修改、区间修改、区间查询（区间求和，求区间最大值，求区间最小值）等操作。</p>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://oi-wiki.org/ds/seg">oi-wiki</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV18t4y1p736/?t=518">线段树入门 - Bilibili 灵神讲解</a> ，对应题目 <a target="_blank" rel="noopener" href="https://leetcode.cn/problems/booking-concert-tickets-in-groups/">2286. 以组为单位订音乐会的门票</a> ，<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/booking-concert-tickets-in-groups/solutions/3901913/ji-chong-xian-duan-shu-by-wei-jia-biao-q-qgga">我的题解</a></li>
+</ul>
+<h3 id="一些问题与解释"><a href="#一些问题与解释" class="headerlink" title="一些问题与解释"></a>一些问题与解释</h3><h4 id="1-线段树的大小"><a href="#1-线段树的大小" class="headerlink" title="1. 线段树的大小"></a>1. 线段树的大小</h4><p>假设数组的大小是 $n$ ，把它们全部放在底层，满足这样的最小的满二叉树的高度是 $\lceil log_{2}{n} \rceil + 1$ （根节点高度是 $1$ ），结点个数是 $2^ {\lceil log_{2}{n} \rceil + 1} - 1$ ，又因为线段树的下标从 $1$ 开始，因此总的空间就是 $2^{\lceil log_{2}{n} \rceil + 1}$ ，即 $2 &lt;&lt; (n-1).bit_length()$ 。</p>
+<blockquote>
+<p>几坨莫名其妙的东西</p>
+<p>$\lfloor \log_2 n \rfloor = n.bit_length() - 1 = \lceil \log_2 (n+1) \rceil - 1$</p>
+<p>$\lceil \log_2 n \rceil = (n-1).bit_length()= \lfloor \log_2 (n-1) \rfloor + 1$ （当 $n &gt; 1$ 时）</p>
+<p>$2^{x} =&gt; 1 &lt;&lt; x =&gt; 2 &lt;&lt; (x - 1)$</p>
+</blockquote>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/2291390787.html#more" rel="contents">
@@ -892,6 +855,8 @@
       
           <p>直接到<a href="#0-1BFS">最重要的地方</a>。</p>
 <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p><a target="_blank" rel="noopener" href="https://acm.ecnu.edu.cn/problem/2026/">2026. Telephone Lines</a></p>
+<h2 id="题目翻译理解"><a href="#题目翻译理解" class="headerlink" title="题目翻译理解"></a>题目<del>翻译</del>理解</h2><p>一共有 $N$ 个电线杆，其中有 $P$ 对电线杆之间可以连电缆。现在要选一些可连接的电线杆对，使 $1$ 号电线杆和 $n$ 号电线杆连接起来。电话公司可以为 $K$ 根电缆免费，最终收费为需要收费的最长的那根电缆（费用等于长度）。问最少费用是多少？</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><h3 id="二分"><a href="#二分" class="headerlink" title="二分"></a>二分</h3><p>题目问的是需要支付的<strong>最长</strong>的那根费用的<strong>最小值</strong>是多少，是一个<strong>最小化最大值</strong>问题，可以考虑用<strong>二分</strong>。</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/318629119.html#more" rel="contents">
@@ -972,7 +937,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><h3 id="buffer-read-字节流读入"><a href="#buffer-read-字节流读入" class="headerlink" title="buffer.read() 字节流读入"></a><code>buffer.read()</code> 字节流读入</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">data = sys.stdin.buffer.read().split()</span><br><span class="line">ptr = <span class="number">0</span></span><br><span class="line">n = <span class="built_in">int</span>(data[ptr])</span><br><span class="line">m = <span class="built_in">int</span>(data[ptr+<span class="number">1</span>])</span><br><span class="line">ptr += <span class="number">2</span></span><br><span class="line"><span class="comment"># 后续所有数据均通过ptr指针从data列表中取数</span></span><br></pre></td></tr></table></figure>
+          <h2 id="输入输出"><a href="#输入输出" class="headerlink" title="输入输出"></a>输入输出</h2><h3 id="buffer-read-字节流读入"><a href="#buffer-read-字节流读入" class="headerlink" title="buffer.read() 字节流读入"></a><code>buffer.read()</code> 字节流读入</h3><figure class="highlight python"><table><tr><td class="gutter"></td><td class="code"></td></tr></table></figure>
+<ul>
+<li>Python 原生 <code>input()</code> / <code>sys.stdin.readline()</code> <strong>逐行读入</strong>的问题， 面对题目 <code>m≤1e6</code> 行数据读入，会触发<strong>1e6 + 次 IO 系统调用</strong>，而 Python 作为解释型语言，对「频繁系统调用」极度敏感；</li>
+<li>普通<code>sys.stdin.read()</code>是字符流读取，<code>buffer.read()</code> 是<strong>字节流读取</strong>，跳过字符编码转换，速度更快。</li>
+<li><code>sys.stdin.buffer.read().split()</code> 会把字节流按空白分割成字符串元素列表，<code>ptr</code> 是遍历这个列表的元素索引。</li>
+</ul>
+<h3 id="sys-stdout-write-代替-print"><a href="#sys-stdout-write-代替-print" class="headerlink" title="sys.stdout.write() 代替 print()"></a><code>sys.stdout.write()</code> 代替 <code>print()</code></h3><figure class="highlight python"><table><tr><td class="gutter"></td><td class="code"></td></tr></table></figure>
+<p>Python 原生<code>print()</code>函数并非底层输出，包含大量<strong>冗余操作</strong>：</p>
+<ul>
+<li>自动添加换行符、格式化校验；</li>
+<li>内置输出缓冲机制，会额外占用内存并增加处理耗时。</li>
+</ul>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/318604756.html#more" rel="contents">
@@ -995,10 +971,536 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/2196506938.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/2196506938.html" class="post-title-link" itemprop="url">EOJ-3681.中位数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-01-15 22:49:28" itemprop="dateCreated datePublished" datetime="2026-01-15T22:49:28+08:00">2026-01-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-02-14 23:39:44" itemprop="dateModified" datetime="2026-02-14T23:39:44+08:00">2026-02-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这道题有点折磨。首先是思路不太简单，用 ChatGPT 的话来说，就是有着“三层‘逼迫’”——当然，对于大佬来说可能也是常规了。然后是 Python 的问题，一直超内存，最后是 Gemini 优化后终于过了。因此在这里记录一下。</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>题目链接：<a target="_blank" rel="noopener" href="https://acm.ecnu.edu.cn/problem/3681/">https://acm.ecnu.edu.cn/problem/3681/</a></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>先给出一个判断一个数与一个数组的中位数之间大小关系的方法：</p>
+<blockquote>
+<p>假设一个数为 $X$，数组的中位数是 $M$，将数组中大于等于 $X$ 的数看作 $1$ 、小于 $X$ 的数看作 $-1$，则如果整个数组的和小于 $0$ ，则 $X \gt M$，而如果和大于等于 $0$，说明 $X \le M$。</p>
+<p>因为这道题里中位数是排序后的第 $\lfloor \frac{n}{2} \rfloor + 1$ 个，所以当 $X == M$ 的时候，和大于或者等于 $0$ 。</p>
+</blockquote>
+<p>对于这道题，直接求非常难，转换为判定性问题，即假定结果是 $X$，是否存在一条从 $1$ 到 $n$ 的路径中位数 $M &gt;= X$ 。</p>
+<p>怎样判断存在？这里要用 <strong>拓扑排序</strong> 和 <strong>动态规划</strong> 了。首先用前面的方法假设一个数 $X$ 进行权值转换，定义 $dp[i]$ 为结点 $1$ 到 $i$ 的最大权值和（从 $1$ 到 $i$ 会有好多路径，每个路径都会有一个权值和，取最大的那个作为 $dp[i]$ ），若 $dp[n] &gt;= 0$，说明存在一条 $1$ 到 $n$ 的路径中位数  $M \ge X$ ，否则说明 $M \lt X$ 。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/2196506938.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/4286392913.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/4286392913.html" class="post-title-link" itemprop="url">Leetcode-84柱状图的最大矩形-85最大矩形</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-01-12 13:04:57" itemprop="dateCreated datePublished" datetime="2026-01-12T13:04:57+08:00">2026-01-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-01-28 12:04:35" itemprop="dateModified" datetime="2026-01-28T12:04:35+08:00">2026-01-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/largest-rectangle-in-histogram/">84. 柱状图中最大的矩形</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/maximal-rectangle/">85. 最大矩形</a></li>
+</ul>
+<p>这里主要是记一下对 84 题<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/largest-rectangle-in-histogram/solutions/2695467/dan-diao-zhan-fu-ti-dan-pythonjavacgojsr-89s7">灵神题解</a>中的代码的理解。</p>
+<h2 id="三次遍历"><a href="#三次遍历" class="headerlink" title="三次遍历"></a>三次遍历</h2><p>这里主要抓住在最后遍历的时候，枚举的 $h$ 是矩形的高，$l$ 和 $r$ 是在这个高的情况下左右各可以到多远，开区间 $(l,r)$ 构成矩形的宽，就可以了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"></td><td class="code"></td></tr></table></figure>
+<h2 id="两次遍历"><a href="#两次遍历" class="headerlink" title="两次遍历"></a>两次遍历</h2><p>在上面方法中 $left$ 的遍历中，弹出栈顶的条件是：$h &lt;= 栈顶$ ，而 $h$ 一定是在栈顶的右边（后遍历到），所以，弹出栈顶的这个动作，其实蕴含着，$h$ 是栈顶右边最近的小于等于它的柱子。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/4286392913.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/2596384424.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/2596384424.html" class="post-title-link" itemprop="url">组合数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-01-09 17:50:53" itemprop="dateCreated datePublished" datetime="2026-01-09T17:50:53+08:00">2026-01-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-03-10 22:51:26" itemprop="dateModified" datetime="2026-03-10T22:51:26+08:00">2026-03-10</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>在一些计数问题中，有的时候需要预处理组合数。这里有两种方法：</p>
+<ol>
+<li>动态规划（杨辉三角），用于规模较小的情况；</li>
+<li>阶乘 + 逆元，用于规模较大的情况。</li>
+</ol>
+<h2 id="动态规划（杨辉三角）"><a href="#动态规划（杨辉三角）" class="headerlink" title="动态规划（杨辉三角）"></a>动态规划（杨辉三角）</h2><p>计算 $C(n,k)$ ，从 $n$ 个里面取 $k$ 个，从<strong>动态规划</strong>的角度来思考可以看成以下两种情况的和：</p>
+<ol>
+<li>第 $n$ 个选，在前 $n-1$ 个里再选 $k-1$ 个；</li>
+<li>第 $n$ 个不选，在前 $n-1$ 个里再选 $k$ 个。</li>
+</ol>
+<p>因此，$C(n,k)=C(n-1,k-1) + C(n-1,k)$ ——将杨辉三角“变个形”，可以发现这和杨辉三角的计算规则是一致的。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"></td><td class="code"></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/2596384424.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/1503714904.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/1503714904.html" class="post-title-link" itemprop="url">树状数组</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-01-08 11:28:15" itemprop="dateCreated datePublished" datetime="2026-01-08T11:28:15+08:00">2026-01-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-03-11 21:07:56" itemprop="dateModified" datetime="2026-03-11T21:07:56+08:00">2026-03-11</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="解决什么问题？"><a href="#解决什么问题？" class="headerlink" title="解决什么问题？"></a>解决什么问题？</h2><p>单点更新，计算前缀和。</p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><h3 id="灵神讲解"><a href="#灵神讲解" class="headerlink" title="灵神讲解"></a>灵神讲解</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14r421W7oR/?t=1551">二维前缀和 树状数组原理【力扣周赛 387】</a></li>
+<li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/range-sum-query-mutable/solutions/2524481/dai-ni-fa-ming-shu-zhuang-shu-zu-fu-shu-lyfll">带你发明树状数组！附数学证明</a></li>
+</ul>
+<p><img src="https://pic.leetcode.cn/1717549976-yUVqsj-lc307.png" alt="树状数组图示"></p>
+<h3 id="理解与总结"><a href="#理解与总结" class="headerlink" title="理解与总结"></a>理解与总结</h3><p>结合灵神文章和视频，尝试总结一下。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/1503714904.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/1243066710.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/1243066710.html" class="post-title-link" itemprop="url">Hello World</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-07 20:00:19" itemprop="dateCreated datePublished" datetime="2023-03-07T20:00:19+08:00">2023-03-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-01-28 12:04:35" itemprop="dateModified" datetime="2026-01-28T12:04:35+08:00">2026-01-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"></td><td class="code"></td></tr></table></figure>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"></td><td class="code"></td></tr></table></figure>
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/1243066710.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/3907716225.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/3907716225.html" class="post-title-link" itemprop="url">二分查找</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-03-01 14:45:14" itemprop="dateCreated datePublished" datetime="2023-03-01T14:45:14+08:00">2023-03-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-01-28 12:04:35" itemprop="dateModified" datetime="2026-01-28T12:04:35+08:00">2026-01-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>记录一下抠二分查找细节的过程。</p>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="// 运算符"></a>// 运算符</h3><p>是除了之后向下取整。</p>
+<figure class="highlight python"><table><tr><td class="gutter"></td><td class="code"></td></tr></table></figure>
+<p>对于<code>(left+right)//2</code>来说，奇数个就正好是中间，偶数个会更靠近<code>left</code>一些。</p>
+<h3 id="关于区间的讨论"><a href="#关于区间的讨论" class="headerlink" title="关于区间的讨论"></a>关于区间的讨论</h3><h4 id="左闭右闭"><a href="#左闭右闭" class="headerlink" title="左闭右闭"></a>左闭右闭</h4><figure class="highlight python"><table><tr><td class="gutter"></td><td class="code"></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/posts/3907716225.html#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1066,7 +1568,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">58</span>
+          <span class="site-state-item-count">57</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1079,7 +1581,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">59</span>
+        <span class="site-state-item-count">57</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

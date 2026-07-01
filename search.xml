@@ -38,34 +38,6 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo命令.md</title>
-    <url>/posts/3720729547.html</url>
-    <content><![CDATA[<p>B站视频：<a href="https://www.bilibili.com/video/BV1Yb411a7ty?spm_id_from=333.999.0.0">https://www.bilibili.com/video/BV1Yb411a7ty?spm_id_from=333.999.0.0</a></p>
-<h5 id="安装配置hexo"><a href="#安装配置hexo" class="headerlink" title="安装配置hexo"></a>安装配置hexo</h5><ol>
-<li>安装nodejs和npm<br> nodejs网站：nodejs.org<br> 可以用<code>nodejs -v</code> <code>npm -v</code>检查是否安装成功</li>
-<li>安装淘宝镜像cnpm<br> <code>npm  install -g cnpm --registry=https://registry.npm.taobao.org</code><br> <code>-g</code>全局安装<br> <code>cnpm -v</code>检查是否安装成功</li>
-<li>安装hexo框架<br> <code>cnpm install -g hexo-cli</code><br> <code>hexo -v</code></li>
-</ol>
-<h5 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h5><ol>
-<li>新建一个文件夹， 进入该文件夹，<code>hexo init</code></li>
-<li>或者 <code>hexo init (名字)</code>;</li>
-<li>启动 start/service<br> <code>hexo s</code></li>
-<li>清理一下<br> <code>hexo clean</code></li>
-<li>生成<br> <code>hexo g</code></li>
-<li>安装git插件<br> <code>cnpm install --save hexo-deployer-git</code></li>
-<li>上传<br> <code>hexo d</code><br> 简单点可以和生成一起：<code>hexo g -d</code></li>
-<li>标签页<br> <code>hexo n page tags</code></li>
-</ol>
-]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-      <tags>
-        <tag>命令</tag>
-        <tag>其他</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Django学习</title>
     <url>/posts/479952160.html</url>
     <content><![CDATA[<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pip install django</span><br></pre></td></tr></table></figure>
@@ -397,6 +369,34 @@ django底层会执行这样的sql语句，创建的表名是app名加下划线�
       </tags>
   </entry>
   <entry>
+    <title>hexo命令.md</title>
+    <url>/posts/3720729547.html</url>
+    <content><![CDATA[<p>B站视频：<a href="https://www.bilibili.com/video/BV1Yb411a7ty?spm_id_from=333.999.0.0">https://www.bilibili.com/video/BV1Yb411a7ty?spm_id_from=333.999.0.0</a></p>
+<h5 id="安装配置hexo"><a href="#安装配置hexo" class="headerlink" title="安装配置hexo"></a>安装配置hexo</h5><ol>
+<li>安装nodejs和npm<br> nodejs网站：nodejs.org<br> 可以用<code>nodejs -v</code> <code>npm -v</code>检查是否安装成功</li>
+<li>安装淘宝镜像cnpm<br> <code>npm  install -g cnpm --registry=https://registry.npm.taobao.org</code><br> <code>-g</code>全局安装<br> <code>cnpm -v</code>检查是否安装成功</li>
+<li>安装hexo框架<br> <code>cnpm install -g hexo-cli</code><br> <code>hexo -v</code></li>
+</ol>
+<h5 id="搭建博客"><a href="#搭建博客" class="headerlink" title="搭建博客"></a>搭建博客</h5><ol>
+<li>新建一个文件夹， 进入该文件夹，<code>hexo init</code></li>
+<li>或者 <code>hexo init (名字)</code>;</li>
+<li>启动 start/service<br> <code>hexo s</code></li>
+<li>清理一下<br> <code>hexo clean</code></li>
+<li>生成<br> <code>hexo g</code></li>
+<li>安装git插件<br> <code>cnpm install --save hexo-deployer-git</code></li>
+<li>上传<br> <code>hexo d</code><br> 简单点可以和生成一起：<code>hexo g -d</code></li>
+<li>标签页<br> <code>hexo n page tags</code></li>
+</ol>
+]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>命令</tag>
+        <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>matlab-pspectrum函数.md</title>
     <url>/posts/3710154345.html</url>
     <content><![CDATA[<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
@@ -555,6 +555,20 @@ django底层会执行这样的sql语句，创建的表名是app名加下划线�
       </tags>
   </entry>
   <entry>
+    <title>博客配置</title>
+    <url>/posts/3330001796.html</url>
+    <content><![CDATA[<h3 id="多标签代码"><a href="#多标签代码" class="headerlink" title="多标签代码"></a>多标签代码</h3><p>可以是多个语言，也可以是不同版本。</p>
+<p><code>C++</code> 和 <code>Python</code> 可以换。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;&#123;% tabs stacks %&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- tab C++ --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- endtab --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- tab Python --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- endtab --&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;% endtabs %&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>其他</tag>
+        <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>欧拉公式</title>
     <url>/posts/2483153324.html</url>
     <content><![CDATA[<h3 id="欧拉公式"><a href="#欧拉公式" class="headerlink" title="欧拉公式"></a>欧拉公式</h3><p>$ e^{i\theta} = \cos\theta + i\sin\theta$ ，当 $\theta=\pi$ 时，$e^{i\pi} + 1 =0$.</p>
@@ -667,20 +681,6 @@ e^{ix}&=1+ix+\frac{(ix)^2}{2!}+\frac{(ix)^3}{3!}+\frac{(ix)^4}{4!}+...\\
       </tags>
   </entry>
   <entry>
-    <title>博客配置</title>
-    <url>/posts/3330001796.html</url>
-    <content><![CDATA[<h3 id="多标签代码"><a href="#多标签代码" class="headerlink" title="多标签代码"></a>多标签代码</h3><p>可以是多个语言，也可以是不同版本。</p>
-<p><code>C++</code> 和 <code>Python</code> 可以换。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&#123;&#123;% tabs stacks %&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- tab C++ --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- endtab --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- tab Python --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- endtab --&gt;</span></span><br><span class="line"></span><br><span class="line">&#123;% endtabs %&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>其他</category>
-      </categories>
-      <tags>
-        <tag>其他</tag>
-        <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>二分查找</title>
     <url>/posts/3907716225.html</url>
     <content><![CDATA[<p>记录一下抠二分查找细节的过程。</p>
@@ -751,6 +751,26 @@ e^{ix}&=1+ix+\frac{(ix)^2}{2!}+\frac{(ix)^3}{3!}+\frac{(ix)^4}{4!}+...\\
       </tags>
   </entry>
   <entry>
+    <title>二分法.md</title>
+    <url>/posts/3747214591.html</url>
+    <content><![CDATA[<h3 id="扫地机器人"><a href="#扫地机器人" class="headerlink" title="扫地机器人"></a>扫地机器人</h3><p>题目：<a href="https://www.lanqiao.cn/problems/199/learning/">https://www.lanqiao.cn/problems/199/learning/</a></p>
+<ul>
+<li>每个机器人“负责”的区域（包括他自己的）*2=他的时间</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># n, k = map(int, input().split())</span><br><span class="line"># # n, k = 10, 3</span><br><span class="line"># arr = [False] * (n + 1)</span><br><span class="line">#</span><br><span class="line"># for i in range(k):</span><br><span class="line">#     arr[int(input())] = True</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># # for i in [5, 2, 10]:</span><br><span class="line"># #     arr[i] = True</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># def check(d):</span><br><span class="line">#     i = 1</span><br><span class="line">#     while i &lt;= n:</span><br><span class="line">#         # print(d, i, i + d, arr[i:i + d])</span><br><span class="line">#         if not any(arr[i:i + d]):</span><br><span class="line">#             return False</span><br><span class="line">#         i += d</span><br><span class="line">#     return True</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># l, r = 1, n</span><br><span class="line"># while l &lt; r:</span><br><span class="line">#     mid = (l + r) // 2</span><br><span class="line">#     print(l, r, mid)</span><br><span class="line">#     if check(mid):</span><br><span class="line">#         r = mid</span><br><span class="line">#     else:</span><br><span class="line">#         l = mid + 1</span><br><span class="line"># print((l - 1) * 2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n, k = map(int, input().split())</span><br><span class="line">a = [0]</span><br><span class="line">for i in range(k):</span><br><span class="line">    a.append(int(input()))</span><br><span class="line">a.sort()</span><br><span class="line"></span><br><span class="line">print(a)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def check(d):</span><br><span class="line">    len = 0  # 覆盖长度，从最左端开始一直到最右端</span><br><span class="line">    for i in range(1, k + 1):</span><br><span class="line">        if len + d &gt;= a[i]:  # 当前覆盖长度加上d之后，是否包括了a[i]</span><br><span class="line">            if len &gt; a[i]:  # 当前覆盖长度是否已经包括了a[i]</span><br><span class="line">                # 如果当前覆盖长度已经包括了，说明a[i]之前的机器人已经负责了到len这块的区域</span><br><span class="line">                # 那a[i]就可以负责len往后再加d的部分</span><br><span class="line">                len = a[i] + d - 1  # 减1是因为还要算上自己</span><br><span class="line">            else:</span><br><span class="line">                # 如果当前覆盖长度没有包括a[i]，那就让a[i]负责[len+1,len+d]</span><br><span class="line">                len += d</span><br><span class="line">        else:</span><br><span class="line">            return False</span><br><span class="line">    return len &gt;= n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">l, r = 1, n</span><br><span class="line">mid = 0</span><br><span class="line">while l &lt; r:</span><br><span class="line">    mid = (l + r) // 2</span><br><span class="line">    print(l, r, mid)</span><br><span class="line">    if check(mid):</span><br><span class="line">        r = mid</span><br><span class="line">    else:</span><br><span class="line">        l = mid + 1</span><br><span class="line">print((l - 1) * 2)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">
+\sum_{i=ln}^{rn}\frac{i(i+1)}{2}
+=\frac{1}{2}(\sum_{i=ln}^{rn}i^2+\sum_{i=ln}^{rn}i)</script>]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>二分</tag>
+        <tag>蓝桥杯</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>字符串</title>
     <url>/posts/4236377085.html</url>
     <content><![CDATA[<h2 id="字符串匹配"><a href="#字符串匹配" class="headerlink" title="字符串匹配"></a>字符串匹配</h2><h3 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h3><ul>
@@ -771,26 +791,6 @@ e^{ix}&=1+ix+\frac{(ix)^2}{2!}+\frac{(ix)^3}{3!}+\frac{(ix)^4}{4!}+...\\
         <tag>KMP</tag>
         <tag>字符串哈希</tag>
         <tag>RK算法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>二分法.md</title>
-    <url>/posts/3747214591.html</url>
-    <content><![CDATA[<h3 id="扫地机器人"><a href="#扫地机器人" class="headerlink" title="扫地机器人"></a>扫地机器人</h3><p>题目：<a href="https://www.lanqiao.cn/problems/199/learning/">https://www.lanqiao.cn/problems/199/learning/</a></p>
-<ul>
-<li>每个机器人“负责”的区域（包括他自己的）*2=他的时间</li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># n, k = map(int, input().split())</span><br><span class="line"># # n, k = 10, 3</span><br><span class="line"># arr = [False] * (n + 1)</span><br><span class="line">#</span><br><span class="line"># for i in range(k):</span><br><span class="line">#     arr[int(input())] = True</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># # for i in [5, 2, 10]:</span><br><span class="line"># #     arr[i] = True</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># def check(d):</span><br><span class="line">#     i = 1</span><br><span class="line">#     while i &lt;= n:</span><br><span class="line">#         # print(d, i, i + d, arr[i:i + d])</span><br><span class="line">#         if not any(arr[i:i + d]):</span><br><span class="line">#             return False</span><br><span class="line">#         i += d</span><br><span class="line">#     return True</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># l, r = 1, n</span><br><span class="line"># while l &lt; r:</span><br><span class="line">#     mid = (l + r) // 2</span><br><span class="line">#     print(l, r, mid)</span><br><span class="line">#     if check(mid):</span><br><span class="line">#         r = mid</span><br><span class="line">#     else:</span><br><span class="line">#         l = mid + 1</span><br><span class="line"># print((l - 1) * 2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n, k = map(int, input().split())</span><br><span class="line">a = [0]</span><br><span class="line">for i in range(k):</span><br><span class="line">    a.append(int(input()))</span><br><span class="line">a.sort()</span><br><span class="line"></span><br><span class="line">print(a)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def check(d):</span><br><span class="line">    len = 0  # 覆盖长度，从最左端开始一直到最右端</span><br><span class="line">    for i in range(1, k + 1):</span><br><span class="line">        if len + d &gt;= a[i]:  # 当前覆盖长度加上d之后，是否包括了a[i]</span><br><span class="line">            if len &gt; a[i]:  # 当前覆盖长度是否已经包括了a[i]</span><br><span class="line">                # 如果当前覆盖长度已经包括了，说明a[i]之前的机器人已经负责了到len这块的区域</span><br><span class="line">                # 那a[i]就可以负责len往后再加d的部分</span><br><span class="line">                len = a[i] + d - 1  # 减1是因为还要算上自己</span><br><span class="line">            else:</span><br><span class="line">                # 如果当前覆盖长度没有包括a[i]，那就让a[i]负责[len+1,len+d]</span><br><span class="line">                len += d</span><br><span class="line">        else:</span><br><span class="line">            return False</span><br><span class="line">    return len &gt;= n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">l, r = 1, n</span><br><span class="line">mid = 0</span><br><span class="line">while l &lt; r:</span><br><span class="line">    mid = (l + r) // 2</span><br><span class="line">    print(l, r, mid)</span><br><span class="line">    if check(mid):</span><br><span class="line">        r = mid</span><br><span class="line">    else:</span><br><span class="line">        l = mid + 1</span><br><span class="line">print((l - 1) * 2)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<script type="math/tex; mode=display">
-\sum_{i=ln}^{rn}\frac{i(i+1)}{2}
-=\frac{1}{2}(\sum_{i=ln}^{rn}i^2+\sum_{i=ln}^{rn}i)</script>]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>二分</tag>
-        <tag>蓝桥杯</tag>
       </tags>
   </entry>
   <entry>
@@ -1073,25 +1073,6 @@ k \le d</script><p><strong>为什么取所有 <code>d</code> 的最小值？</st
       </tags>
   </entry>
   <entry>
-    <title>BigInt实现</title>
-    <url>/posts/110450276.html</url>
-    <content><![CDATA[<h3 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">BigInt</span> &#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">BigInt</span>(<span class="type">int</span> x) &#123;</span><br><span class="line">        <span class="keyword">if</span> (x == <span class="number">0</span>) v.<span class="built_in">emplace_back</span>(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">while</span> (x) &#123;</span><br><span class="line">            v.<span class="built_in">emplace_back</span>(x % <span class="number">10</span>);</span><br><span class="line">            x /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">multiply</span><span class="params">(<span class="type">int</span> a)</span> </span>&#123;  <span class="comment">// a &lt; 10</span></span><br><span class="line">        <span class="type">int</span> carry = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; v.<span class="built_in">size</span>() || carry; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt;= v.<span class="built_in">size</span>()) v.<span class="built_in">emplace_back</span>(<span class="number">0</span>);</span><br><span class="line">            <span class="type">int</span> t = v[i] * a + carry;</span><br><span class="line">            v[i] = t % <span class="number">10</span>;</span><br><span class="line">            carry = t / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 去掉前导 0，但保留真是 0</span></span><br><span class="line">        <span class="keyword">while</span> (v.<span class="built_in">size</span>() &gt; <span class="number">1</span> &amp;&amp; v[v.<span class="built_in">size</span>() - <span class="number">1</span>] == <span class="number">0</span>) v.<span class="built_in">pop_back</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">friend</span> ostream &amp;<span class="keyword">operator</span>&lt;&lt;(ostream &amp;out, <span class="type">const</span> BigInt &amp;a) &#123;</span><br><span class="line">        <span class="keyword">if</span> (a.v.<span class="built_in">empty</span>()) out &lt;&lt; <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = a.v.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) out &lt;&lt; a.v[i];</span><br><span class="line">        <span class="keyword">return</span> out;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">BigInt <span class="title">pow</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 算 a 的 n 次方</span></span><br><span class="line">    <span class="function">BigInt <span class="title">res</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="keyword">while</span> (n--) &#123;</span><br><span class="line">        res.<span class="built_in">multiply</span>(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="C-1"><a href="#C-1" class="headerlink" title="C"></a>C</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXN 2000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> v[MAXN];</span><br><span class="line">    <span class="type">int</span> size;</span><br><span class="line">&#125; BigInt;</span><br><span class="line"><span class="type">void</span> <span class="title function_">BigInt_print</span><span class="params">(<span class="type">const</span> BigInt *bi)</span>;</span><br><span class="line">BigInt <span class="title function_">BigInt_init</span><span class="params">(<span class="type">int</span> x)</span> &#123;</span><br><span class="line">    BigInt b;</span><br><span class="line">    b.size = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="number">0</span>) &#123;</span><br><span class="line">        b.v[b.size++] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (x) &#123;</span><br><span class="line">        b.v[b.size++] = x % <span class="number">10</span>;</span><br><span class="line">        x /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">BigInt_add</span><span class="params">(BigInt *bi, <span class="type">int</span> a)</span> &#123;</span><br><span class="line">    <span class="type">int</span> carry = a;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; bi-&gt;size || carry; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= bi-&gt;size) &#123;</span><br><span class="line">            bi-&gt;v[bi-&gt;size++] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> t = bi-&gt;v[i] + carry;</span><br><span class="line">        bi-&gt;v[i] = t % <span class="number">10</span>;</span><br><span class="line">        carry = t / <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (bi-&gt;size &gt; <span class="number">1</span> &amp;&amp; bi-&gt;v[bi-&gt;size - <span class="number">1</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">        bi-&gt;size--;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">BigInt_multiply</span><span class="params">(BigInt *bi, <span class="type">int</span> a)</span> &#123;</span><br><span class="line">    <span class="type">int</span> carry = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; bi-&gt;size || carry; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= bi-&gt;size) &#123;</span><br><span class="line">            bi-&gt;v[bi-&gt;size++] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> t = bi-&gt;v[i] * a + carry;</span><br><span class="line">        bi-&gt;v[i] = t % <span class="number">10</span>;</span><br><span class="line">        carry = t / <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (bi-&gt;size &gt; <span class="number">1</span> &amp;&amp; bi-&gt;v[bi-&gt;size - <span class="number">1</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">        bi-&gt;size--;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">BigInt_div</span><span class="params">(BigInt *bi, <span class="type">int</span> a)</span> &#123;</span><br><span class="line">    <span class="type">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (bi-&gt;v[bi-&gt;size - <span class="number">1</span>] == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (bi-&gt;size == <span class="number">1</span>) &#123;</span><br><span class="line">            bi-&gt;v[bi-&gt;size - <span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        bi-&gt;v[bi-&gt;size - <span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">        bi-&gt;size--;</span><br><span class="line">        p = <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> i, r = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = bi-&gt;size - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        p += bi-&gt;v[i];</span><br><span class="line">        r = p % a;</span><br><span class="line">        bi-&gt;v[i] = p / a;</span><br><span class="line">        p = r * <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">BigInt_print</span><span class="params">(<span class="type">const</span> BigInt *bi)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (bi-&gt;size == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;0\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = bi-&gt;size - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, bi-&gt;v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">pow_big</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> n, BigInt *result)</span> &#123;</span><br><span class="line">    *result = BigInt_init(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">while</span> (n--) &#123;</span><br><span class="line">        BigInt_multiply(result, a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><ul>
-<li><a href="https://acm.ecnu.edu.cn/problem/38/">38. 二进制倒置</a></li>
-<li><a href="https://acm.ecnu.edu.cn/problem/207/">207. 整数分组</a></li>
-<li><a href="https://acm.ecnu.edu.cn/problem/3143/">3143. 纯虚数的幂</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>数据结构</tag>
-        <tag>EOJ</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>EOJ 1836. 表达式</title>
     <url>/posts/196086287.html</url>
     <content><![CDATA[<p>一道用 Python 一下子就一行带走的题，但竟然还有高级做法……</p>
@@ -1155,6 +1136,7 @@ k \le d</script><p><strong>为什么取所有 <code>d</code> 的最小值？</st
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">2 1 0</span><br><span class="line">1 2 10</span><br></pre></td></tr></table></figure>
 <p>$K=0$ 且 $1$ 到 $n$ 可达的情况，二分结束之后，$left$ 等于 $mx$ ，应该输出 $left$ ，但 $left&lt;mx$ 会输出错误的 $-1$ 。</p>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>这题和 <a href="https://acm.ecnu.edu.cn/problem/3681/">3681. 中位数</a> 有异曲同工之处在于，它们都将权值转换、映射到了两个特殊值上，这题是边权变为 $0$ 和 $1$ 算最短路，另题是点权变为 $1$ 和 $-1$ 考虑中位数，我觉得还挺妙的。那道题的题解在<a href="/posts/2196506938.html">这里</a>。</p>
+<p>补充一道可以用 <code>0-1BFS</code> 做的题：<a href="https://leetcode.cn/problems/find-a-safe-walk-through-a-grid/">力扣3286. 穿越网格图的安全路径</a>，<a href="https://leetcode.cn/problems/find-a-safe-walk-through-a-grid/solutions/2917627/0-1-bfs-xian-xing-zuo-fa-pythonjavacgo-b-zlzq">灵神题解</a>。</p>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -1625,6 +1607,76 @@ dp[i] = \bigvee_{0 \le j < i} \left( dp[j] \land L \le \text{sum}(j+1, i) \le R 
       </tags>
   </entry>
   <entry>
+    <title>Leetcode-1706-球会落何处</title>
+    <url>/posts/228469122.html</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1706. 球会落何处<br>难诉：中等</p>
+<p>用一个大小为 <code>m x n</code> 的二维网格 <code>grid</code> 表示一个箱子。你有 <code>n</code> 颗球。箱子的顶部和底部都是开着的。</p>
+
+<p>箱子中的每个单元格都有一个对角线挡板，跨过单元格的两个角，可以将球导向左侧或者右侧。</p>
+
+<ul>
+    <li>将球导向右侧的挡板跨过左上角和右下角，在网格中用 <code>1</code> 表示。</li>
+    <li>将球导向左侧的挡板跨过右上角和左下角，在网格中用 <code>-1</code> 表示。</li>
+</ul>
+
+<p>在箱子每一列的顶端各放一颗球。每颗球都可能卡在箱子里或从底部掉出来。如果球恰好卡在两块挡板之间的 "V" 形图案，或者被一块挡导向到箱子的任意一侧边上，就会卡住。</p>
+
+<p>返回一个大小为 <code>n</code> 的数组 <code>answer</code> ，其中 <code>answer[i]</code> 是球放在顶部的第 <code>i</code> 列后从底部掉出来的那一列对应的下标，如果球卡在盒子里，则返回 <code>-1</code> 。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<p><strong><img style="width: 500px; height: 385px;" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/12/26/ball.jpg" alt=""></strong></p>
+
+<pre><strong>输入：</strong>grid = [[1,1,1,-1,-1],[1,1,1,-1,-1],[-1,-1,-1,1,1],[1,1,1,1,-1],[-1,-1,-1,-1,-1]]
+<strong>输出：</strong>[1,-1,-1,-1,-1]
+<strong>解释：</strong>示例如图：
+b0 球开始放在第 0 列上，最终从箱子底部第 1 列掉出。
+b1 球开始放在第 1 列上，会卡在第 2、3 列和第 1 行之间的 "V" 形里。
+b2 球开始放在第 2 列上，会卡在第 2、3 列和第 0 行之间的 "V" 形里。
+b3 球开始放在第 3 列上，会卡在第 2、3 列和第 0 行之间的 "V" 形里。
+b4 球开始放在第 4 列上，会卡在第 2、3 列和第 1 行之间的 "V" 形里。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>grid = [[-1]]
+<strong>输出：</strong>[-1]
+<strong>解释：</strong>球被卡在箱子左侧边上。
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>grid = [[1,1,1,1,1,1],[-1,-1,-1,-1,-1,-1],[1,1,1,1,1,1],[-1,-1,-1,-1,-1,-1]]
+<strong>输出：</strong>[0,1,2,3,4,-1]
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>m == grid.length</code></li>
+    <li><code>n == grid[i].length</code></li>
+    <li><code>1 &lt;= m, n &lt;= 100</code></li>
+    <li><code>grid[i][j]</code> 为 <code>1</code> 或 <code>-1</code></li>
+</ul>
+
+<h3 id="方法一：-模拟"><a href="#方法一：-模拟" class="headerlink" title="方法一： 模拟"></a>方法一： 模拟</h3><p>虽然是中等难度的题，但看完题后就马上想到了可以用DFS，不过再想想发现不是DFS而是模拟！<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findBall</span>(<span class="params">self, grid</span>):</span><br><span class="line">        m, n = <span class="built_in">len</span>(grid), <span class="built_in">len</span>(grid[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">DFS</span>(<span class="params">row, col</span>):</span><br><span class="line">            <span class="keyword">if</span> row == m :</span><br><span class="line">                <span class="keyword">return</span> col</span><br><span class="line">            <span class="keyword">if</span> grid[row][col] == <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">if</span> col == n - <span class="number">1</span> <span class="keyword">or</span> grid[row][col + <span class="number">1</span>] == -<span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> grid[row][col + <span class="number">1</span>] == <span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">return</span> DFS(row + <span class="number">1</span>, col + <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">elif</span> grid[row][col] == -<span class="number">1</span>:</span><br><span class="line">                <span class="keyword">if</span> col == <span class="number">0</span> <span class="keyword">or</span> grid[row][col - <span class="number">1</span>] == <span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> grid[row][col - <span class="number">1</span>] == -<span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">return</span> DFS(row + <span class="number">1</span>, col - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> [DFS(<span class="number">0</span>, i) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br></pre></td></tr></table></figure></p>
+<p>官解更简洁一些：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findBall</span>(<span class="params">self, grid: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        n = <span class="built_in">len</span>(grid[<span class="number">0</span>])</span><br><span class="line">        ans = [-<span class="number">1</span>] * n</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            col = j  <span class="comment"># 球的初始列</span></span><br><span class="line">            <span class="keyword">for</span> row <span class="keyword">in</span> grid:</span><br><span class="line">                <span class="built_in">dir</span> = row[col]</span><br><span class="line">                col += <span class="built_in">dir</span>  <span class="comment"># 移动球</span></span><br><span class="line">                <span class="keyword">if</span> col &lt; <span class="number">0</span> <span class="keyword">or</span> col == n <span class="keyword">or</span> row[col] != <span class="built_in">dir</span>:  <span class="comment"># 到达侧边或 V 形</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">else</span>:  <span class="comment"># 成功到达底部</span></span><br><span class="line">                ans[j] = col</span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line"><span class="comment"># 作者：LeetCode-Solution</span></span><br><span class="line"><span class="comment"># 链接：https://leetcode-cn.com/problems/where-will-the-ball-fall/solution/qiu-hui-luo-he-chu-by-leetcode-solution-xqop/</span></span><br><span class="line"><span class="comment"># 来源：力扣（LeetCode）</span></span><br><span class="line"><span class="comment"># 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span></span><br></pre></td></tr></table></figure></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Leetcode</tag>
+        <tag>模拟</tag>
+        <tag>Leetcode中等</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Leetcode-1719-重构一棵树的方案数</title>
     <url>/posts/1053049866.html</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1719. 重构一棵树的方案数<br>难度：困难</p>
@@ -1735,73 +1787,22 @@ return 0
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-1706-球会落何处</title>
-    <url>/posts/228469122.html</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1706. 球会落何处<br>难诉：中等</p>
-<p>用一个大小为 <code>m x n</code> 的二维网格 <code>grid</code> 表示一个箱子。你有 <code>n</code> 颗球。箱子的顶部和底部都是开着的。</p>
-
-<p>箱子中的每个单元格都有一个对角线挡板，跨过单元格的两个角，可以将球导向左侧或者右侧。</p>
-
-<ul>
-    <li>将球导向右侧的挡板跨过左上角和右下角，在网格中用 <code>1</code> 表示。</li>
-    <li>将球导向左侧的挡板跨过右上角和左下角，在网格中用 <code>-1</code> 表示。</li>
+    <title>BigInt实现</title>
+    <url>/posts/110450276.html</url>
+    <content><![CDATA[<h3 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h3><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">BigInt</span> &#123;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt; v;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">BigInt</span>(<span class="type">int</span> x) &#123;</span><br><span class="line">        <span class="keyword">if</span> (x == <span class="number">0</span>) v.<span class="built_in">emplace_back</span>(<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">while</span> (x) &#123;</span><br><span class="line">            v.<span class="built_in">emplace_back</span>(x % <span class="number">10</span>);</span><br><span class="line">            x /= <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">multiply</span><span class="params">(<span class="type">int</span> a)</span> </span>&#123;  <span class="comment">// a &lt; 10</span></span><br><span class="line">        <span class="type">int</span> carry = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; v.<span class="built_in">size</span>() || carry; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt;= v.<span class="built_in">size</span>()) v.<span class="built_in">emplace_back</span>(<span class="number">0</span>);</span><br><span class="line">            <span class="type">int</span> t = v[i] * a + carry;</span><br><span class="line">            v[i] = t % <span class="number">10</span>;</span><br><span class="line">            carry = t / <span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 去掉前导 0，但保留真是 0</span></span><br><span class="line">        <span class="keyword">while</span> (v.<span class="built_in">size</span>() &gt; <span class="number">1</span> &amp;&amp; v[v.<span class="built_in">size</span>() - <span class="number">1</span>] == <span class="number">0</span>) v.<span class="built_in">pop_back</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">friend</span> ostream &amp;<span class="keyword">operator</span>&lt;&lt;(ostream &amp;out, <span class="type">const</span> BigInt &amp;a) &#123;</span><br><span class="line">        <span class="keyword">if</span> (a.v.<span class="built_in">empty</span>()) out &lt;&lt; <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = a.v.<span class="built_in">size</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) out &lt;&lt; a.v[i];</span><br><span class="line">        <span class="keyword">return</span> out;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">BigInt <span class="title">pow</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 算 a 的 n 次方</span></span><br><span class="line">    <span class="function">BigInt <span class="title">res</span><span class="params">(<span class="number">1</span>)</span></span>;</span><br><span class="line">    <span class="keyword">while</span> (n--) &#123;</span><br><span class="line">        res.<span class="built_in">multiply</span>(a);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="C-1"><a href="#C-1" class="headerlink" title="C"></a>C</h3><figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXN 2000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">int</span> v[MAXN];</span><br><span class="line">    <span class="type">int</span> size;</span><br><span class="line">&#125; BigInt;</span><br><span class="line"><span class="type">void</span> <span class="title function_">BigInt_print</span><span class="params">(<span class="type">const</span> BigInt *bi)</span>;</span><br><span class="line">BigInt <span class="title function_">BigInt_init</span><span class="params">(<span class="type">int</span> x)</span> &#123;</span><br><span class="line">    BigInt b;</span><br><span class="line">    b.size = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="number">0</span>) &#123;</span><br><span class="line">        b.v[b.size++] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (x) &#123;</span><br><span class="line">        b.v[b.size++] = x % <span class="number">10</span>;</span><br><span class="line">        x /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">BigInt_add</span><span class="params">(BigInt *bi, <span class="type">int</span> a)</span> &#123;</span><br><span class="line">    <span class="type">int</span> carry = a;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; bi-&gt;size || carry; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= bi-&gt;size) &#123;</span><br><span class="line">            bi-&gt;v[bi-&gt;size++] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> t = bi-&gt;v[i] + carry;</span><br><span class="line">        bi-&gt;v[i] = t % <span class="number">10</span>;</span><br><span class="line">        carry = t / <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (bi-&gt;size &gt; <span class="number">1</span> &amp;&amp; bi-&gt;v[bi-&gt;size - <span class="number">1</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">        bi-&gt;size--;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">BigInt_multiply</span><span class="params">(BigInt *bi, <span class="type">int</span> a)</span> &#123;</span><br><span class="line">    <span class="type">int</span> carry = <span class="number">0</span>;</span><br><span class="line">    <span class="type">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; bi-&gt;size || carry; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &gt;= bi-&gt;size) &#123;</span><br><span class="line">            bi-&gt;v[bi-&gt;size++] = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> t = bi-&gt;v[i] * a + carry;</span><br><span class="line">        bi-&gt;v[i] = t % <span class="number">10</span>;</span><br><span class="line">        carry = t / <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span> (bi-&gt;size &gt; <span class="number">1</span> &amp;&amp; bi-&gt;v[bi-&gt;size - <span class="number">1</span>] == <span class="number">0</span>) &#123;</span><br><span class="line">        bi-&gt;size--;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">BigInt_div</span><span class="params">(BigInt *bi, <span class="type">int</span> a)</span> &#123;</span><br><span class="line">    <span class="type">int</span> p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (bi-&gt;v[bi-&gt;size - <span class="number">1</span>] == <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (bi-&gt;size == <span class="number">1</span>) &#123;</span><br><span class="line">            bi-&gt;v[bi-&gt;size - <span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        bi-&gt;v[bi-&gt;size - <span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">        bi-&gt;size--;</span><br><span class="line">        p = <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> i, r = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (i = bi-&gt;size - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        p += bi-&gt;v[i];</span><br><span class="line">        r = p % a;</span><br><span class="line">        bi-&gt;v[i] = p / a;</span><br><span class="line">        p = r * <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">BigInt_print</span><span class="params">(<span class="type">const</span> BigInt *bi)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (bi-&gt;size == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;0\n&quot;</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = bi-&gt;size - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, bi-&gt;v[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">pow_big</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> n, BigInt *result)</span> &#123;</span><br><span class="line">    *result = BigInt_init(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">while</span> (n--) &#123;</span><br><span class="line">        BigInt_multiply(result, a);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><ul>
+<li><a href="https://acm.ecnu.edu.cn/problem/38/">38. 二进制倒置</a></li>
+<li><a href="https://acm.ecnu.edu.cn/problem/207/">207. 整数分组</a></li>
+<li><a href="https://acm.ecnu.edu.cn/problem/3143/">3143. 纯虚数的幂</a></li>
 </ul>
-
-<p>在箱子每一列的顶端各放一颗球。每颗球都可能卡在箱子里或从底部掉出来。如果球恰好卡在两块挡板之间的 "V" 形图案，或者被一块挡导向到箱子的任意一侧边上，就会卡住。</p>
-
-<p>返回一个大小为 <code>n</code> 的数组 <code>answer</code> ，其中 <code>answer[i]</code> 是球放在顶部的第 <code>i</code> 列后从底部掉出来的那一列对应的下标，如果球卡在盒子里，则返回 <code>-1</code> 。</p>
-
-<p>&nbsp;</p>
-
-<p><strong>示例 1：</strong></p>
-
-<p><strong><img style="width: 500px; height: 385px;" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/12/26/ball.jpg" alt=""></strong></p>
-
-<pre><strong>输入：</strong>grid = [[1,1,1,-1,-1],[1,1,1,-1,-1],[-1,-1,-1,1,1],[1,1,1,1,-1],[-1,-1,-1,-1,-1]]
-<strong>输出：</strong>[1,-1,-1,-1,-1]
-<strong>解释：</strong>示例如图：
-b0 球开始放在第 0 列上，最终从箱子底部第 1 列掉出。
-b1 球开始放在第 1 列上，会卡在第 2、3 列和第 1 行之间的 "V" 形里。
-b2 球开始放在第 2 列上，会卡在第 2、3 列和第 0 行之间的 "V" 形里。
-b3 球开始放在第 3 列上，会卡在第 2、3 列和第 0 行之间的 "V" 形里。
-b4 球开始放在第 4 列上，会卡在第 2、3 列和第 1 行之间的 "V" 形里。
-</pre>
-
-<p><strong>示例 2：</strong></p>
-
-<pre><strong>输入：</strong>grid = [[-1]]
-<strong>输出：</strong>[-1]
-<strong>解释：</strong>球被卡在箱子左侧边上。
-</pre>
-
-<p><strong>示例 3：</strong></p>
-
-<pre><strong>输入：</strong>grid = [[1,1,1,1,1,1],[-1,-1,-1,-1,-1,-1],[1,1,1,1,1,1],[-1,-1,-1,-1,-1,-1]]
-<strong>输出：</strong>[0,1,2,3,4,-1]
-</pre>
-
-<p>&nbsp;</p>
-
-<p><strong>提示：</strong></p>
-
-<ul>
-    <li><code>m == grid.length</code></li>
-    <li><code>n == grid[i].length</code></li>
-    <li><code>1 &lt;= m, n &lt;= 100</code></li>
-    <li><code>grid[i][j]</code> 为 <code>1</code> 或 <code>-1</code></li>
-</ul>
-
-<h3 id="方法一：-模拟"><a href="#方法一：-模拟" class="headerlink" title="方法一： 模拟"></a>方法一： 模拟</h3><p>虽然是中等难度的题，但看完题后就马上想到了可以用DFS，不过再想想发现不是DFS而是模拟！<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findBall</span>(<span class="params">self, grid</span>):</span><br><span class="line">        m, n = <span class="built_in">len</span>(grid), <span class="built_in">len</span>(grid[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">def</span> <span class="title function_">DFS</span>(<span class="params">row, col</span>):</span><br><span class="line">            <span class="keyword">if</span> row == m :</span><br><span class="line">                <span class="keyword">return</span> col</span><br><span class="line">            <span class="keyword">if</span> grid[row][col] == <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">if</span> col == n - <span class="number">1</span> <span class="keyword">or</span> grid[row][col + <span class="number">1</span>] == -<span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> grid[row][col + <span class="number">1</span>] == <span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">return</span> DFS(row + <span class="number">1</span>, col + <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">elif</span> grid[row][col] == -<span class="number">1</span>:</span><br><span class="line">                <span class="keyword">if</span> col == <span class="number">0</span> <span class="keyword">or</span> grid[row][col - <span class="number">1</span>] == <span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> grid[row][col - <span class="number">1</span>] == -<span class="number">1</span>:</span><br><span class="line">                    <span class="keyword">return</span> DFS(row + <span class="number">1</span>, col - <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> [DFS(<span class="number">0</span>, i) <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br></pre></td></tr></table></figure></p>
-<p>官解更简洁一些：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">findBall</span>(<span class="params">self, grid: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]]</span>) -&gt; <span class="type">List</span>[<span class="built_in">int</span>]:</span><br><span class="line">        n = <span class="built_in">len</span>(grid[<span class="number">0</span>])</span><br><span class="line">        ans = [-<span class="number">1</span>] * n</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            col = j  <span class="comment"># 球的初始列</span></span><br><span class="line">            <span class="keyword">for</span> row <span class="keyword">in</span> grid:</span><br><span class="line">                <span class="built_in">dir</span> = row[col]</span><br><span class="line">                col += <span class="built_in">dir</span>  <span class="comment"># 移动球</span></span><br><span class="line">                <span class="keyword">if</span> col &lt; <span class="number">0</span> <span class="keyword">or</span> col == n <span class="keyword">or</span> row[col] != <span class="built_in">dir</span>:  <span class="comment"># 到达侧边或 V 形</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">else</span>:  <span class="comment"># 成功到达底部</span></span><br><span class="line">                ans[j] = col</span><br><span class="line">        <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line"><span class="comment"># 作者：LeetCode-Solution</span></span><br><span class="line"><span class="comment"># 链接：https://leetcode-cn.com/problems/where-will-the-ball-fall/solution/qiu-hui-luo-he-chu-by-leetcode-solution-xqop/</span></span><br><span class="line"><span class="comment"># 来源：力扣（LeetCode）</span></span><br><span class="line"><span class="comment"># 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span></span><br></pre></td></tr></table></figure></p>
 ]]></content>
       <categories>
         <category>算法</category>
       </categories>
       <tags>
-        <tag>算法</tag>
-        <tag>Leetcode</tag>
-        <tag>模拟</tag>
-        <tag>Leetcode中等</tag>
+        <tag>数据结构</tag>
+        <tag>EOJ</tag>
       </tags>
   </entry>
   <entry>
@@ -2332,71 +2333,6 @@ Alice 输掉游戏，因为已移除石子值总和（15）可以被 3 整除，
       </tags>
   </entry>
   <entry>
-    <title>Leetcode-688-骑士在棋盘上的概率</title>
-    <url>/posts/3720305040.html</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>688. 骑士在棋盘上的概率<br>难度：中等</p>
-<p>在一个&nbsp;<code>n x n</code>&nbsp;的国际象棋棋盘上，一个骑士从单元格 <code>(row, column)</code>&nbsp;开始，并尝试进行 <code>k</code> 次移动。行和列是 <strong>从 0 开始</strong> 的，所以左上单元格是 <code>(0,0)</code> ，右下单元格是 <code>(n - 1, n - 1)</code> 。</p>
-
-<p>象棋骑士有8种可能的走法，如下图所示。每次移动在基本方向上是两个单元格，然后在正交方向上是一个单元格。</p>
-
-<p><img style="height: 300px; width: 300px;" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/12/knight.png"></p>
-
-<p>每次骑士要移动时，它都会随机从8种可能的移动中选择一种(即使棋子会离开棋盘)，然后移动到那里。</p>
-
-<p>骑士继续移动，直到它走了 <code>k</code> 步或离开了棋盘。</p>
-
-<p>返回 <em>骑士在棋盘停止移动后仍留在棋盘上的概率</em> 。</p>
-
-<p>&nbsp;</p>
-
-<p><strong>示例 1：</strong></p>
-
-<pre><strong>输入:</strong> n = 3, k = 2, row = 0, column = 0
-<strong>输出:</strong> 0.0625
-<strong>解释:</strong> 有两步(到(1,2)，(2,1))可以让骑士留在棋盘上。
-在每一个位置上，也有两种移动可以让骑士留在棋盘上。
-骑士留在棋盘上的总概率是0.0625。
-</pre>
-
-<p><strong>示例 2：</strong></p>
-
-<pre><strong>输入:</strong> n = 1, k = 0, row = 0, column = 0
-<strong>输出:</strong> 1.00000
-</pre>
-
-<p>&nbsp;</p>
-
-<p><strong>提示:</strong></p>
-
-<ul>
-    <li><code>1 &lt;= n &lt;= 25</code></li>
-    <li><code>0 &lt;= k &lt;= 100</code></li>
-    <li><code>0 &lt;= row, column &lt;= n</code></li>
-</ul>
-
-<h3 id="思路一：广度优先搜索（BFS）"><a href="#思路一：广度优先搜索（BFS）" class="headerlink" title="思路一：广度优先搜索（BFS）"></a>思路一：广度优先搜索（BFS）</h3><p>题目不是很难理解，容易想到BFS。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">	    <span class="keyword">def</span> <span class="title function_">knightProbability</span>(<span class="params">self, n: <span class="built_in">int</span>, k: <span class="built_in">int</span>, row: <span class="built_in">int</span>, column: <span class="built_in">int</span></span>) -&gt; <span class="built_in">float</span>:</span><br><span class="line">        Dirs = [(-<span class="number">1</span>, -<span class="number">2</span>), (<span class="number">1</span>, -<span class="number">2</span>),</span><br><span class="line">                (-<span class="number">2</span>, -<span class="number">1</span>), (<span class="number">2</span>, -<span class="number">1</span>),</span><br><span class="line">                (-<span class="number">2</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">1</span>),</span><br><span class="line">                (-<span class="number">1</span>, <span class="number">2</span>), (<span class="number">1</span>, <span class="number">2</span>)]</span><br><span class="line">        q = deque()</span><br><span class="line">        q.append((row, column, k))</span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> q:</span><br><span class="line">            r, c, kk = q.popleft()</span><br><span class="line">            <span class="comment"># # 取出kk==0，cnt+1</span></span><br><span class="line">            <span class="comment"># # 也就是，走到最后一步再计数</span></span><br><span class="line">            <span class="keyword">if</span> kk == <span class="number">0</span>:</span><br><span class="line">                cnt += <span class="number">1</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">for</span> x, y <span class="keyword">in</span> Dirs:</span><br><span class="line">                <span class="keyword">if</span> <span class="number">0</span> &lt;= r + x &lt; n <span class="keyword">and</span> <span class="number">0</span> &lt;= c + y &lt; n:</span><br><span class="line">                    q.append((r + x, c + y, kk - <span class="number">1</span>))</span><br><span class="line">        <span class="keyword">return</span> cnt / <span class="built_in">pow</span>(<span class="number">8</span>, k)</span><br></pre></td></tr></table></figure>
-<p>但这也很容易地超出了时间限制。</p>
-<h3 id="思路二：动态规划"><a href="#思路二：动态规划" class="headerlink" title="思路二：动态规划"></a>思路二：动态规划</h3><p>看了一下官解，没想到用的是动态规划。尝试自己写了一下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">knightProbability</span>(<span class="params">self, n: <span class="built_in">int</span>, k: <span class="built_in">int</span>, row: <span class="built_in">int</span>, column: <span class="built_in">int</span></span>) -&gt; <span class="built_in">float</span>:</span><br><span class="line">        Dirs = [(-<span class="number">1</span>, -<span class="number">2</span>), (<span class="number">1</span>, -<span class="number">2</span>),</span><br><span class="line">                (-<span class="number">2</span>, -<span class="number">1</span>), (<span class="number">2</span>, -<span class="number">1</span>),</span><br><span class="line">                (-<span class="number">2</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">1</span>),</span><br><span class="line">                (-<span class="number">1</span>, <span class="number">2</span>), (<span class="number">1</span>, <span class="number">2</span>)]</span><br><span class="line">        dp=[[[<span class="number">0</span>]* n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)]<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(k+<span class="number">1</span>)]</span><br><span class="line">        dp[<span class="number">0</span>][row][column]=<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> step <span class="keyword">in</span> <span class="built_in">range</span>(k):</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                    <span class="keyword">if</span> dp[step][i][j]&gt;<span class="number">0</span>:</span><br><span class="line">                        <span class="keyword">for</span> di,dj <span class="keyword">in</span> Dirs:</span><br><span class="line">                            ni,nj=i+di,j+dj</span><br><span class="line">                            <span class="keyword">if</span> <span class="number">0</span>&lt;=ni&lt;n <span class="keyword">and</span> <span class="number">0</span>&lt;=nj&lt;n:</span><br><span class="line">                                dp[step+<span class="number">1</span>][ni][nj]+=<span class="number">1</span></span><br><span class="line">        cnt=<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            cnt+=<span class="built_in">sum</span>(dp[-<span class="number">1</span>][i])</span><br><span class="line">        <span class="built_in">print</span>(dp[-<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> cnt/<span class="built_in">pow</span>(<span class="number">8</span>,k)</span><br></pre></td></tr></table></figure>
-<p>但是这样出现了错误，原因是在最后一步（<code>step=k-1</code>）的<code>dp[step+1][ni][nj]+=1</code>，加的只是这一步的情况，没有算上之前其实还有很多能到<code>i</code>,<code>j</code>的情况。</p>
-<p>将<code>dp[step+1][ni][nj]+=1</code>修改为<code>dp[step + 1][ni][nj] += dp[step][i][j]</code>,成功通过！而且比官解的好！</p>
-<p>官解：<br>它的状态值<code>dp[step][i][j]</code>指的是从<code>(i,j)</code>出发第<code>step</code>步后还在棋盘上的概率，状态转移方程是： $ dp[step][i][j] += \frac{1}{8} + \sum_{di,dj} dp[step-1][i+di][j+dj] , (di,dj)\in \{(-2, -1), (-2, 1), (2, -1), (2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2)\}, 0\leq i,j,i+di,j+dj &lt;n $ 。<br>也不难理解，因为<code>(i,j)</code>下一步有8种可能的走法，那<code>(i+di,j+dj)</code>的概率就是 $\frac{1}{8}$ <code>(i,j)</code>的概率。换个角度讲也就是，有8种可能走到它<code>(i,j)</code>这，那走到<code>(i,j)</code>的概率就是$\sum_{di,dj} dp[step-1][i+di][j+dj]$。<br>那为什么最后只要输出<code>dp[k][row][column]</code>就好了呢？<br>我觉得可以倒过来走，以<code>n=3,k=1,row=0,colmn=0</code>为例，<code>(0,0)</code>在第1步往回走，有<code>0.25</code>的概率留在棋盘上，这就是答案。将初始值全部设为1，遍历所有点进行状态转移方程的计算，所得的结果<code>dp[k][i][j]</code>就是<code>(i,j)</code>走了<code>k</code>步之后仍然留在棋盘上的概率。将<code>k</code>扩展来解释状态转移方程，第<code>k</code>步<code>(i,j)</code>仍然留在棋盘的概率是由第<code>k-1</code>步对应8个点的状态值计算而来，每个点的状态值就是该店走那么多步仍然留在棋盘的概率。<br>当然了，超出棋盘范围的值都是0啦。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">knightProbability</span>(<span class="params">self, n: <span class="built_in">int</span>, k: <span class="built_in">int</span>, row: <span class="built_in">int</span>, column: <span class="built_in">int</span></span>) -&gt; <span class="built_in">float</span>:</span><br><span class="line">        dp = [[[<span class="number">0</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(k + <span class="number">1</span>)]</span><br><span class="line">        <span class="keyword">for</span> step <span class="keyword">in</span> <span class="built_in">range</span>(k + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                    <span class="keyword">if</span> step == <span class="number">0</span>:</span><br><span class="line">                        dp[step][i][j] = <span class="number">1</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        <span class="keyword">for</span> di, dj <span class="keyword">in</span> ((-<span class="number">2</span>, -<span class="number">1</span>), (-<span class="number">2</span>, <span class="number">1</span>), (<span class="number">2</span>, -<span class="number">1</span>), (<span class="number">2</span>, <span class="number">1</span>), (-<span class="number">1</span>, -<span class="number">2</span>), (-<span class="number">1</span>, <span class="number">2</span>), (<span class="number">1</span>, -<span class="number">2</span>), (<span class="number">1</span>, <span class="number">2</span>)):</span><br><span class="line">                            ni, nj = i + di, j + dj</span><br><span class="line">                            <span class="keyword">if</span> <span class="number">0</span> &lt;= ni &lt; n <span class="keyword">and</span> <span class="number">0</span> &lt;= nj &lt; n:</span><br><span class="line">                                dp[step][i][j] += dp[step - <span class="number">1</span>][ni][nj] / <span class="number">8</span></span><br><span class="line">        <span class="keyword">return</span> dp[k][row][column]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 作者：LeetCode-Solution</span></span><br><span class="line"><span class="comment"># 链接：https://leetcode-cn.com/problems/knight-probability-in-chessboard/solution/qi-shi-zai-qi-pan-shang-de-gai-lu-by-lee-2qhk/</span></span><br><span class="line"><span class="comment"># 来源：力扣（LeetCode）</span></span><br><span class="line"><span class="comment"># 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span></span><br></pre></td></tr></table></figure>
-<p>我对官解的优化<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def knightProbability(self, n: int, k: int, row: int, column: int) -&gt; float:</span><br><span class="line">        Dirs = ((-2, -1), (-2, 1), (2, -1), (2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2))</span><br><span class="line">        dp = [[[0] * (n + 4) for _ in range(n + 4)] for _ in range(2)]</span><br><span class="line">        for i in range(2, 2 + n):</span><br><span class="line">            for j in range(2, 2 + n):</span><br><span class="line">                dp[0][i][j] = 1</span><br><span class="line">        for step in range(1, k + 1):</span><br><span class="line">            for i in range(2, 2 + n):</span><br><span class="line">                for j in range(2, 2 + n):</span><br><span class="line">                    dp[step % 2][i][j] = 0</span><br><span class="line">                    for di, dj in Dirs:</span><br><span class="line">                        ni, nj = i + di, j + dj</span><br><span class="line">                        dp[step % 2][i][j] += dp[1 - step % 2][ni][nj] / 8</span><br><span class="line">        return dp[k % 2][row + 2][column + 2]</span><br></pre></td></tr></table></figure></p>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/H74Hte"><img src="https://s4.ax1x.com/2022/02/18/H74Hte.png" alt="提交记录.png"></a></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>动态规划</tag>
-        <tag>Leetcode</tag>
-        <tag>Leetcode中等</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode_787. K 站中转内最便宜的航班</title>
     <url>/posts/undefined.html</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>787. K 站中转内最便宜的航班<br>难度：中等</p>
@@ -2482,82 +2418,6 @@ src = 0, dst = 2, k = 0
       </tags>
   </entry>
   <entry>
-    <title>Leetcode_789.逃脱阻碍者</title>
-    <url>/posts/1588639421.html</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>789. 逃脱阻碍者<br>难度：中等</p>
-<p>你在进行一个简化版的吃豆人游戏。你从 <code>[0, 0]</code> 点开始出发，你的目的地是&nbsp;<code>target = [x<sub>target</sub>, y<sub>target</sub>]</code> 。地图上有一些阻碍者，以数组 <code>ghosts</code> 给出，第 <code>i</code> 个阻碍者从&nbsp;<code>ghosts[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&nbsp;出发。所有输入均为 <strong>整数坐标</strong> 。</p>
-
-<p>每一回合，你和阻碍者们可以同时向东，西，南，北四个方向移动，每次可以移动到距离原位置 <strong>1 个单位</strong> 的新位置。当然，也可以选择 <strong>不动</strong> 。所有动作 <strong>同时</strong> 发生。</p>
-
-<p>如果你可以在任何阻碍者抓住你 <strong>之前</strong> 到达目的地（阻碍者可以采取任意行动方式），则被视为逃脱成功。如果你和阻碍者同时到达了一个位置（包括目的地）都不算是逃脱成功。</p>
-
-<p>只有在你有可能成功逃脱时，输出 <code>true</code> ；否则，输出 <code>false</code> 。</p>
-&nbsp;
-
-<p><strong>示例 1：</strong></p>
-
-<pre><strong>输入：</strong>ghosts = [[1,0],[0,3]], target = [0,1]
-<strong>输出：</strong>true
-<strong>解释：</strong>你可以直接一步到达目的地 (0,1) ，在 (1, 0) 或者 (0, 3) 位置的阻碍者都不可能抓住你。 
-</pre>
-
-<p><strong>示例 2：</strong></p>
-
-<pre><strong>输入：</strong>ghosts = [[1,0]], target = [2,0]
-<strong>输出：</strong>false
-<strong>解释：</strong>你需要走到位于 (2, 0) 的目的地，但是在 (1, 0) 的阻碍者位于你和目的地之间。 
-</pre>
-
-<p><strong>示例 3：</strong></p>
-
-<pre><strong>输入：</strong>ghosts = [[2,0]], target = [1,0]
-<strong>输出：</strong>false
-<strong>解释：</strong>阻碍者可以和你同时达到目的地。 
-</pre>
-
-<p><strong>示例 4：</strong></p>
-
-<pre><strong>输入：</strong>ghosts = [[5,0],[-10,-2],[0,-5],[-2,-2],[-7,1]], target = [7,7]
-<strong>输出：</strong>false
-</pre>
-
-<p><strong>示例 5：</strong></p>
-
-<pre><strong>输入：</strong>ghosts = [[-1,0],[0,1],[-1,0],[0,1],[-1,0]], target = [0,0]
-<strong>输出：</strong>true
-</pre>
-
-<p>&nbsp;</p>
-
-<p><strong>提示：</strong></p>
-
-<ul>
-    <li><code>1 &lt;= ghosts.length &lt;= 100</code></li>
-    <li><code>ghosts[i].length == 2</code></li>
-    <li><code>-10<sup>4</sup> &lt;= x<sub>i</sub>, y<sub>i</sub> &lt;= 10<sup>4</sup></code></li>
-    <li>同一位置可能有 <strong>多个阻碍者</strong> 。</li>
-    <li><code>target.length == 2</code></li>
-    <li><code>-10<sup>4</sup> &lt;= x<sub>target</sub>, y<sub>target</sub> &lt;= 10<sup>4</sup></code></li>
-</ul>
-
-
-<h3 id="方法：-曼哈顿距离"><a href="#方法：-曼哈顿距离" class="headerlink" title="方法： 曼哈顿距离"></a>方法： 曼哈顿距离</h3><p>刚过十二点，看完题目是懵的，这是要干嘛？没有思路，去看题解，曼哈顿距离又是什么鬼？于是去B站上找一下曼哈顿距离的讲解，知道了就是两个点之间的横坐标距离与纵坐标距离的和。那这和解题有什么关系呢？上床在睡前想了一下，发现其实并不难。<br>题目中的情况虽然看起来很多很复杂，但其实要解决的就是”我“能不能比幽灵更快地到达目的地。因为中途被拦截地情况，也能变为让拦截者到了目的地之后等”我“，结果是一样的。因此，就是要考虑”我“的起点到目的地的曼哈顿距离是不是比所有幽灵到目的地的曼哈顿距离小。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">escapeGhosts</span>(<span class="params">ghosts, target</span>):</span><br><span class="line">    target_x, target_y = target</span><br><span class="line">    L = <span class="built_in">abs</span>(target_x)+<span class="built_in">abs</span>(target_y)</span><br><span class="line">    <span class="keyword">for</span> x, y <span class="keyword">in</span> ghosts:</span><br><span class="line">        l = <span class="built_in">abs</span>(x-target_x)+<span class="built_in">abs</span>(y-target_y)</span><br><span class="line">        <span class="keyword">if</span> l &lt;= L:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure><br>还有一行的版本：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">escapeGhosts</span>(<span class="params">self, ghosts: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]], target: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">all</span>([<span class="built_in">abs</span>(target[<span class="number">0</span>])+<span class="built_in">abs</span>(target[<span class="number">1</span>]) &lt; <span class="built_in">abs</span>(ghost[<span class="number">0</span>]-target[<span class="number">0</span>])+<span class="built_in">abs</span>(ghost[<span class="number">1</span>]-target[<span class="number">1</span>]) <span class="keyword">for</span> ghost <span class="keyword">in</span> ghosts])</span><br><span class="line"></span><br><span class="line">作者：luanhz</span><br><span class="line">链接：https://leetcode-cn.com/problems/escape-the-ghosts/solution/wei-jin-zhe-sheng-pythonyi-xing-dai-ma-by-luanz/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>all() 函数用于判断给定的可迭代参数 iterable 中的所有元素是否都为 TRUE，如果是返回 True，否则返回 False。<br>元素除了是 0、空、None、False 外都算 True。</p>
-</blockquote>
-<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/hSCRQe"><img src="https://z3.ax1x.com/2021/08/22/hSCRQe.jpg" alt="逃脱阻碍者提交记录.jpg"></a></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>Leetcode</tag>
-        <tag>Leetcode中等</tag>
-        <tag>曼哈顿距离</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Leetcode_797. 所有可能的路径</title>
     <url>/posts/1802490282.html</url>
     <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>797. 所有可能的路径<br>难度：中等</p>
@@ -2638,6 +2498,147 @@ src = 0, dst = 2, k = 0
         <tag>回溯</tag>
         <tag>DFS</tag>
         <tag>BFS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode_789.逃脱阻碍者</title>
+    <url>/posts/1588639421.html</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>789. 逃脱阻碍者<br>难度：中等</p>
+<p>你在进行一个简化版的吃豆人游戏。你从 <code>[0, 0]</code> 点开始出发，你的目的地是&nbsp;<code>target = [x<sub>target</sub>, y<sub>target</sub>]</code> 。地图上有一些阻碍者，以数组 <code>ghosts</code> 给出，第 <code>i</code> 个阻碍者从&nbsp;<code>ghosts[i] = [x<sub>i</sub>, y<sub>i</sub>]</code>&nbsp;出发。所有输入均为 <strong>整数坐标</strong> 。</p>
+
+<p>每一回合，你和阻碍者们可以同时向东，西，南，北四个方向移动，每次可以移动到距离原位置 <strong>1 个单位</strong> 的新位置。当然，也可以选择 <strong>不动</strong> 。所有动作 <strong>同时</strong> 发生。</p>
+
+<p>如果你可以在任何阻碍者抓住你 <strong>之前</strong> 到达目的地（阻碍者可以采取任意行动方式），则被视为逃脱成功。如果你和阻碍者同时到达了一个位置（包括目的地）都不算是逃脱成功。</p>
+
+<p>只有在你有可能成功逃脱时，输出 <code>true</code> ；否则，输出 <code>false</code> 。</p>
+&nbsp;
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入：</strong>ghosts = [[1,0],[0,3]], target = [0,1]
+<strong>输出：</strong>true
+<strong>解释：</strong>你可以直接一步到达目的地 (0,1) ，在 (1, 0) 或者 (0, 3) 位置的阻碍者都不可能抓住你。 
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入：</strong>ghosts = [[1,0]], target = [2,0]
+<strong>输出：</strong>false
+<strong>解释：</strong>你需要走到位于 (2, 0) 的目的地，但是在 (1, 0) 的阻碍者位于你和目的地之间。 
+</pre>
+
+<p><strong>示例 3：</strong></p>
+
+<pre><strong>输入：</strong>ghosts = [[2,0]], target = [1,0]
+<strong>输出：</strong>false
+<strong>解释：</strong>阻碍者可以和你同时达到目的地。 
+</pre>
+
+<p><strong>示例 4：</strong></p>
+
+<pre><strong>输入：</strong>ghosts = [[5,0],[-10,-2],[0,-5],[-2,-2],[-7,1]], target = [7,7]
+<strong>输出：</strong>false
+</pre>
+
+<p><strong>示例 5：</strong></p>
+
+<pre><strong>输入：</strong>ghosts = [[-1,0],[0,1],[-1,0],[0,1],[-1,0]], target = [0,0]
+<strong>输出：</strong>true
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示：</strong></p>
+
+<ul>
+    <li><code>1 &lt;= ghosts.length &lt;= 100</code></li>
+    <li><code>ghosts[i].length == 2</code></li>
+    <li><code>-10<sup>4</sup> &lt;= x<sub>i</sub>, y<sub>i</sub> &lt;= 10<sup>4</sup></code></li>
+    <li>同一位置可能有 <strong>多个阻碍者</strong> 。</li>
+    <li><code>target.length == 2</code></li>
+    <li><code>-10<sup>4</sup> &lt;= x<sub>target</sub>, y<sub>target</sub> &lt;= 10<sup>4</sup></code></li>
+</ul>
+
+
+<h3 id="方法：-曼哈顿距离"><a href="#方法：-曼哈顿距离" class="headerlink" title="方法： 曼哈顿距离"></a>方法： 曼哈顿距离</h3><p>刚过十二点，看完题目是懵的，这是要干嘛？没有思路，去看题解，曼哈顿距离又是什么鬼？于是去B站上找一下曼哈顿距离的讲解，知道了就是两个点之间的横坐标距离与纵坐标距离的和。那这和解题有什么关系呢？上床在睡前想了一下，发现其实并不难。<br>题目中的情况虽然看起来很多很复杂，但其实要解决的就是”我“能不能比幽灵更快地到达目的地。因为中途被拦截地情况，也能变为让拦截者到了目的地之后等”我“，结果是一样的。因此，就是要考虑”我“的起点到目的地的曼哈顿距离是不是比所有幽灵到目的地的曼哈顿距离小。<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">escapeGhosts</span>(<span class="params">ghosts, target</span>):</span><br><span class="line">    target_x, target_y = target</span><br><span class="line">    L = <span class="built_in">abs</span>(target_x)+<span class="built_in">abs</span>(target_y)</span><br><span class="line">    <span class="keyword">for</span> x, y <span class="keyword">in</span> ghosts:</span><br><span class="line">        l = <span class="built_in">abs</span>(x-target_x)+<span class="built_in">abs</span>(y-target_y)</span><br><span class="line">        <span class="keyword">if</span> l &lt;= L:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure><br>还有一行的版本：<br><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">escapeGhosts</span>(<span class="params">self, ghosts: <span class="type">List</span>[<span class="type">List</span>[<span class="built_in">int</span>]], target: <span class="type">List</span>[<span class="built_in">int</span>]</span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">all</span>([<span class="built_in">abs</span>(target[<span class="number">0</span>])+<span class="built_in">abs</span>(target[<span class="number">1</span>]) &lt; <span class="built_in">abs</span>(ghost[<span class="number">0</span>]-target[<span class="number">0</span>])+<span class="built_in">abs</span>(ghost[<span class="number">1</span>]-target[<span class="number">1</span>]) <span class="keyword">for</span> ghost <span class="keyword">in</span> ghosts])</span><br><span class="line"></span><br><span class="line">作者：luanhz</span><br><span class="line">链接：https://leetcode-cn.com/problems/escape-the-ghosts/solution/wei-jin-zhe-sheng-pythonyi-xing-dai-ma-by-luanz/</span><br><span class="line">来源：力扣（LeetCode）</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>all() 函数用于判断给定的可迭代参数 iterable 中的所有元素是否都为 TRUE，如果是返回 True，否则返回 False。<br>元素除了是 0、空、None、False 外都算 True。</p>
+</blockquote>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/hSCRQe"><img src="https://z3.ax1x.com/2021/08/22/hSCRQe.jpg" alt="逃脱阻碍者提交记录.jpg"></a></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Leetcode</tag>
+        <tag>Leetcode中等</tag>
+        <tag>曼哈顿距离</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Leetcode-688-骑士在棋盘上的概率</title>
+    <url>/posts/3720305040.html</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>688. 骑士在棋盘上的概率<br>难度：中等</p>
+<p>在一个&nbsp;<code>n x n</code>&nbsp;的国际象棋棋盘上，一个骑士从单元格 <code>(row, column)</code>&nbsp;开始，并尝试进行 <code>k</code> 次移动。行和列是 <strong>从 0 开始</strong> 的，所以左上单元格是 <code>(0,0)</code> ，右下单元格是 <code>(n - 1, n - 1)</code> 。</p>
+
+<p>象棋骑士有8种可能的走法，如下图所示。每次移动在基本方向上是两个单元格，然后在正交方向上是一个单元格。</p>
+
+<p><img style="height: 300px; width: 300px;" src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2018/10/12/knight.png"></p>
+
+<p>每次骑士要移动时，它都会随机从8种可能的移动中选择一种(即使棋子会离开棋盘)，然后移动到那里。</p>
+
+<p>骑士继续移动，直到它走了 <code>k</code> 步或离开了棋盘。</p>
+
+<p>返回 <em>骑士在棋盘停止移动后仍留在棋盘上的概率</em> 。</p>
+
+<p>&nbsp;</p>
+
+<p><strong>示例 1：</strong></p>
+
+<pre><strong>输入:</strong> n = 3, k = 2, row = 0, column = 0
+<strong>输出:</strong> 0.0625
+<strong>解释:</strong> 有两步(到(1,2)，(2,1))可以让骑士留在棋盘上。
+在每一个位置上，也有两种移动可以让骑士留在棋盘上。
+骑士留在棋盘上的总概率是0.0625。
+</pre>
+
+<p><strong>示例 2：</strong></p>
+
+<pre><strong>输入:</strong> n = 1, k = 0, row = 0, column = 0
+<strong>输出:</strong> 1.00000
+</pre>
+
+<p>&nbsp;</p>
+
+<p><strong>提示:</strong></p>
+
+<ul>
+    <li><code>1 &lt;= n &lt;= 25</code></li>
+    <li><code>0 &lt;= k &lt;= 100</code></li>
+    <li><code>0 &lt;= row, column &lt;= n</code></li>
+</ul>
+
+<h3 id="思路一：广度优先搜索（BFS）"><a href="#思路一：广度优先搜索（BFS）" class="headerlink" title="思路一：广度优先搜索（BFS）"></a>思路一：广度优先搜索（BFS）</h3><p>题目不是很难理解，容易想到BFS。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">	    <span class="keyword">def</span> <span class="title function_">knightProbability</span>(<span class="params">self, n: <span class="built_in">int</span>, k: <span class="built_in">int</span>, row: <span class="built_in">int</span>, column: <span class="built_in">int</span></span>) -&gt; <span class="built_in">float</span>:</span><br><span class="line">        Dirs = [(-<span class="number">1</span>, -<span class="number">2</span>), (<span class="number">1</span>, -<span class="number">2</span>),</span><br><span class="line">                (-<span class="number">2</span>, -<span class="number">1</span>), (<span class="number">2</span>, -<span class="number">1</span>),</span><br><span class="line">                (-<span class="number">2</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">1</span>),</span><br><span class="line">                (-<span class="number">1</span>, <span class="number">2</span>), (<span class="number">1</span>, <span class="number">2</span>)]</span><br><span class="line">        q = deque()</span><br><span class="line">        q.append((row, column, k))</span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> q:</span><br><span class="line">            r, c, kk = q.popleft()</span><br><span class="line">            <span class="comment"># # 取出kk==0，cnt+1</span></span><br><span class="line">            <span class="comment"># # 也就是，走到最后一步再计数</span></span><br><span class="line">            <span class="keyword">if</span> kk == <span class="number">0</span>:</span><br><span class="line">                cnt += <span class="number">1</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">for</span> x, y <span class="keyword">in</span> Dirs:</span><br><span class="line">                <span class="keyword">if</span> <span class="number">0</span> &lt;= r + x &lt; n <span class="keyword">and</span> <span class="number">0</span> &lt;= c + y &lt; n:</span><br><span class="line">                    q.append((r + x, c + y, kk - <span class="number">1</span>))</span><br><span class="line">        <span class="keyword">return</span> cnt / <span class="built_in">pow</span>(<span class="number">8</span>, k)</span><br></pre></td></tr></table></figure>
+<p>但这也很容易地超出了时间限制。</p>
+<h3 id="思路二：动态规划"><a href="#思路二：动态规划" class="headerlink" title="思路二：动态规划"></a>思路二：动态规划</h3><p>看了一下官解，没想到用的是动态规划。尝试自己写了一下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">knightProbability</span>(<span class="params">self, n: <span class="built_in">int</span>, k: <span class="built_in">int</span>, row: <span class="built_in">int</span>, column: <span class="built_in">int</span></span>) -&gt; <span class="built_in">float</span>:</span><br><span class="line">        Dirs = [(-<span class="number">1</span>, -<span class="number">2</span>), (<span class="number">1</span>, -<span class="number">2</span>),</span><br><span class="line">                (-<span class="number">2</span>, -<span class="number">1</span>), (<span class="number">2</span>, -<span class="number">1</span>),</span><br><span class="line">                (-<span class="number">2</span>, <span class="number">1</span>), (<span class="number">2</span>, <span class="number">1</span>),</span><br><span class="line">                (-<span class="number">1</span>, <span class="number">2</span>), (<span class="number">1</span>, <span class="number">2</span>)]</span><br><span class="line">        dp=[[[<span class="number">0</span>]* n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)]<span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(k+<span class="number">1</span>)]</span><br><span class="line">        dp[<span class="number">0</span>][row][column]=<span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> step <span class="keyword">in</span> <span class="built_in">range</span>(k):</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                    <span class="keyword">if</span> dp[step][i][j]&gt;<span class="number">0</span>:</span><br><span class="line">                        <span class="keyword">for</span> di,dj <span class="keyword">in</span> Dirs:</span><br><span class="line">                            ni,nj=i+di,j+dj</span><br><span class="line">                            <span class="keyword">if</span> <span class="number">0</span>&lt;=ni&lt;n <span class="keyword">and</span> <span class="number">0</span>&lt;=nj&lt;n:</span><br><span class="line">                                dp[step+<span class="number">1</span>][ni][nj]+=<span class="number">1</span></span><br><span class="line">        cnt=<span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">            cnt+=<span class="built_in">sum</span>(dp[-<span class="number">1</span>][i])</span><br><span class="line">        <span class="built_in">print</span>(dp[-<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> cnt/<span class="built_in">pow</span>(<span class="number">8</span>,k)</span><br></pre></td></tr></table></figure>
+<p>但是这样出现了错误，原因是在最后一步（<code>step=k-1</code>）的<code>dp[step+1][ni][nj]+=1</code>，加的只是这一步的情况，没有算上之前其实还有很多能到<code>i</code>,<code>j</code>的情况。</p>
+<p>将<code>dp[step+1][ni][nj]+=1</code>修改为<code>dp[step + 1][ni][nj] += dp[step][i][j]</code>,成功通过！而且比官解的好！</p>
+<p>官解：<br>它的状态值<code>dp[step][i][j]</code>指的是从<code>(i,j)</code>出发第<code>step</code>步后还在棋盘上的概率，状态转移方程是： $ dp[step][i][j] += \frac{1}{8} + \sum_{di,dj} dp[step-1][i+di][j+dj] , (di,dj)\in \{(-2, -1), (-2, 1), (2, -1), (2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2)\}, 0\leq i,j,i+di,j+dj &lt;n $ 。<br>也不难理解，因为<code>(i,j)</code>下一步有8种可能的走法，那<code>(i+di,j+dj)</code>的概率就是 $\frac{1}{8}$ <code>(i,j)</code>的概率。换个角度讲也就是，有8种可能走到它<code>(i,j)</code>这，那走到<code>(i,j)</code>的概率就是$\sum_{di,dj} dp[step-1][i+di][j+dj]$。<br>那为什么最后只要输出<code>dp[k][row][column]</code>就好了呢？<br>我觉得可以倒过来走，以<code>n=3,k=1,row=0,colmn=0</code>为例，<code>(0,0)</code>在第1步往回走，有<code>0.25</code>的概率留在棋盘上，这就是答案。将初始值全部设为1，遍历所有点进行状态转移方程的计算，所得的结果<code>dp[k][i][j]</code>就是<code>(i,j)</code>走了<code>k</code>步之后仍然留在棋盘上的概率。将<code>k</code>扩展来解释状态转移方程，第<code>k</code>步<code>(i,j)</code>仍然留在棋盘的概率是由第<code>k-1</code>步对应8个点的状态值计算而来，每个点的状态值就是该店走那么多步仍然留在棋盘的概率。<br>当然了，超出棋盘范围的值都是0啦。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">knightProbability</span>(<span class="params">self, n: <span class="built_in">int</span>, k: <span class="built_in">int</span>, row: <span class="built_in">int</span>, column: <span class="built_in">int</span></span>) -&gt; <span class="built_in">float</span>:</span><br><span class="line">        dp = [[[<span class="number">0</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)] <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(k + <span class="number">1</span>)]</span><br><span class="line">        <span class="keyword">for</span> step <span class="keyword">in</span> <span class="built_in">range</span>(k + <span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">                    <span class="keyword">if</span> step == <span class="number">0</span>:</span><br><span class="line">                        dp[step][i][j] = <span class="number">1</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        <span class="keyword">for</span> di, dj <span class="keyword">in</span> ((-<span class="number">2</span>, -<span class="number">1</span>), (-<span class="number">2</span>, <span class="number">1</span>), (<span class="number">2</span>, -<span class="number">1</span>), (<span class="number">2</span>, <span class="number">1</span>), (-<span class="number">1</span>, -<span class="number">2</span>), (-<span class="number">1</span>, <span class="number">2</span>), (<span class="number">1</span>, -<span class="number">2</span>), (<span class="number">1</span>, <span class="number">2</span>)):</span><br><span class="line">                            ni, nj = i + di, j + dj</span><br><span class="line">                            <span class="keyword">if</span> <span class="number">0</span> &lt;= ni &lt; n <span class="keyword">and</span> <span class="number">0</span> &lt;= nj &lt; n:</span><br><span class="line">                                dp[step][i][j] += dp[step - <span class="number">1</span>][ni][nj] / <span class="number">8</span></span><br><span class="line">        <span class="keyword">return</span> dp[k][row][column]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 作者：LeetCode-Solution</span></span><br><span class="line"><span class="comment"># 链接：https://leetcode-cn.com/problems/knight-probability-in-chessboard/solution/qi-shi-zai-qi-pan-shang-de-gai-lu-by-lee-2qhk/</span></span><br><span class="line"><span class="comment"># 来源：力扣（LeetCode）</span></span><br><span class="line"><span class="comment"># 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span></span><br></pre></td></tr></table></figure>
+<p>我对官解的优化<br><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution:</span><br><span class="line">    def knightProbability(self, n: int, k: int, row: int, column: int) -&gt; float:</span><br><span class="line">        Dirs = ((-2, -1), (-2, 1), (2, -1), (2, 1), (-1, -2), (-1, 2), (1, -2), (1, 2))</span><br><span class="line">        dp = [[[0] * (n + 4) for _ in range(n + 4)] for _ in range(2)]</span><br><span class="line">        for i in range(2, 2 + n):</span><br><span class="line">            for j in range(2, 2 + n):</span><br><span class="line">                dp[0][i][j] = 1</span><br><span class="line">        for step in range(1, k + 1):</span><br><span class="line">            for i in range(2, 2 + n):</span><br><span class="line">                for j in range(2, 2 + n):</span><br><span class="line">                    dp[step % 2][i][j] = 0</span><br><span class="line">                    for di, dj in Dirs:</span><br><span class="line">                        ni, nj = i + di, j + dj</span><br><span class="line">                        dp[step % 2][i][j] += dp[1 - step % 2][ni][nj] / 8</span><br><span class="line">        return dp[k % 2][row + 2][column + 2]</span><br></pre></td></tr></table></figure></p>
+<h3 id="提交记录"><a href="#提交记录" class="headerlink" title="提交记录"></a>提交记录</h3><p><a href="https://imgtu.com/i/H74Hte"><img src="https://s4.ax1x.com/2022/02/18/H74Hte.png" alt="提交记录.png"></a></p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>动态规划</tag>
+        <tag>Leetcode</tag>
+        <tag>Leetcode中等</tag>
       </tags>
   </entry>
   <entry>
@@ -2830,24 +2831,6 @@ src = 0, dst = 2, k = 0
       </tags>
   </entry>
   <entry>
-    <title>蓝桥-全球变暖</title>
-    <url>/posts/371940618.html</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a href="https://www.lanqiao.cn/problems/178/learning/">https://www.lanqiao.cn/problems/178/learning/</a></p>
-<h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><p>会栈溢出</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 05-全球变暖1</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">sys.setrecursionlimit(<span class="number">600000</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">i, j</span>):</span><br><span class="line">    <span class="keyword">global</span> flag, vis, mp, Dir</span><br><span class="line">    <span class="keyword">if</span> mp[i + <span class="number">1</span>][j] == <span class="string">&quot;#&quot;</span> <span class="keyword">and</span> mp[i - <span class="number">1</span>][j] == <span class="string">&quot;#&quot;</span> <span class="keyword">and</span> \</span><br><span class="line">            mp[i][j + <span class="number">1</span>] == <span class="string">&quot;#&quot;</span> <span class="keyword">and</span> mp[i][j - <span class="number">1</span>] == <span class="string">&quot;#&quot;</span>:</span><br><span class="line">        flag = <span class="literal">True</span></span><br><span class="line">        <span class="comment"># return</span></span><br><span class="line">    <span class="keyword">for</span> di, dj <span class="keyword">in</span> Dir:</span><br><span class="line">        ni, nj = i + di, j + dj</span><br><span class="line">        <span class="comment"># if ni &lt; 0 or nj &lt; 0 or ni &gt;= n or nj &gt;= n or vis[ni][nj]:</span></span><br><span class="line">        <span class="comment">#     continue</span></span><br><span class="line">        <span class="comment"># 因为最外面一圈都是海</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> vis[ni][nj] <span class="keyword">and</span> mp[ni][nj] == <span class="string">&quot;#&quot;</span>:</span><br><span class="line">            vis[ni][nj] = <span class="literal">True</span></span><br><span class="line">            dfs(ni, nj)</span><br><span class="line">            <span class="comment"># vis[ni][nj] = False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ans = <span class="number">0</span></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">mp = []</span><br><span class="line">vis = [[<span class="literal">False</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line">Dir = [(<span class="number">1</span>, <span class="number">0</span>), (-<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>), (<span class="number">0</span>, -<span class="number">1</span>)]</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    mp.append(<span class="built_in">list</span>(<span class="built_in">input</span>()))</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        <span class="keyword">if</span> mp[x][y] == <span class="string">&quot;.&quot;</span> <span class="keyword">or</span> vis[x][y]:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="comment"># print(x,y)</span></span><br><span class="line">        flag = <span class="literal">False</span></span><br><span class="line">        vis[x][y] = <span class="literal">True</span></span><br><span class="line">        dfs(x, y)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> flag:</span><br><span class="line">            ans += <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(ans)</span><br></pre></td></tr></table></figure>
-<h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 02-全球变暖-1</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bfs</span>(<span class="params">i, j</span>):</span><br><span class="line">    <span class="keyword">global</span> flag</span><br><span class="line">    q = deque()</span><br><span class="line">    q.append((i, j))</span><br><span class="line">    vis[i][j] = <span class="literal">True</span></span><br><span class="line">    <span class="keyword">while</span> q:</span><br><span class="line">        x, y = q.popleft()</span><br><span class="line">        <span class="keyword">if</span> mp[x + <span class="number">1</span>][y] == <span class="string">&quot;#&quot;</span> <span class="keyword">and</span> mp[x - <span class="number">1</span>][y] == <span class="string">&quot;#&quot;</span> <span class="keyword">and</span> \</span><br><span class="line">                mp[x][y + <span class="number">1</span>] == <span class="string">&quot;#&quot;</span> <span class="keyword">and</span> mp[x][y - <span class="number">1</span>] == <span class="string">&quot;#&quot;</span>:</span><br><span class="line">            flag = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">for</span> dx, dy <span class="keyword">in</span> Dir:</span><br><span class="line">            nx, ny = x + dx, y + dy</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> vis[nx][ny] <span class="keyword">and</span> mp[nx][ny] == <span class="string">&quot;#&quot;</span>:</span><br><span class="line">                vis[nx][ny] = <span class="literal">True</span></span><br><span class="line">                q.append((nx, ny))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ans = <span class="number">0</span></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">mp = []</span><br><span class="line">vis = [[<span class="literal">False</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line">Dir = [(<span class="number">1</span>, <span class="number">0</span>), (-<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>), (<span class="number">0</span>, -<span class="number">1</span>)]</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    mp.append(<span class="built_in">list</span>(<span class="built_in">input</span>()))</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        <span class="keyword">if</span> mp[x][y] == <span class="string">&quot;.&quot;</span> <span class="keyword">or</span> vis[x][y]:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="comment"># print(x,y)</span></span><br><span class="line">        flag = <span class="literal">False</span></span><br><span class="line">        vis[x][y] = <span class="literal">True</span></span><br><span class="line">        bfs(x, y)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> flag:</span><br><span class="line">            ans += <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(ans)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">输入</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">7</span></span><br><span class="line"><span class="string">.......</span></span><br><span class="line"><span class="string">.##....</span></span><br><span class="line"><span class="string">.##....</span></span><br><span class="line"><span class="string">....##.</span></span><br><span class="line"><span class="string">..####.</span></span><br><span class="line"><span class="string">...###.</span></span><br><span class="line"><span class="string">.......</span></span><br><span class="line"><span class="string">copy</span></span><br><span class="line"><span class="string">输出</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">1</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">10</span></span><br><span class="line"><span class="string"> .......... .......... ...#...... .......... ....#.##.. ....#.##.. .#..####.. .#........ .##....... ..........</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">20</span></span><br><span class="line"><span class="string">....................</span></span><br><span class="line"><span class="string">....................</span></span><br><span class="line"><span class="string">....................</span></span><br><span class="line"><span class="string">....................</span></span><br><span class="line"><span class="string">....#...............</span></span><br><span class="line"><span class="string">....########........</span></span><br><span class="line"><span class="string">....##########......</span></span><br><span class="line"><span class="string">....###############.</span></span><br><span class="line"><span class="string">.....##############.</span></span><br><span class="line"><span class="string">.....##############.</span></span><br><span class="line"><span class="string">.....##############.</span></span><br><span class="line"><span class="string">......#############.</span></span><br><span class="line"><span class="string">......#############.</span></span><br><span class="line"><span class="string">......#############.</span></span><br><span class="line"><span class="string">.......############.</span></span><br><span class="line"><span class="string">.......############.</span></span><br><span class="line"><span class="string">........###########.</span></span><br><span class="line"><span class="string">.........##########.</span></span><br><span class="line"><span class="string">..........#########.</span></span><br><span class="line"><span class="string">....................</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>蓝桥杯</tag>
-        <tag>DFS</tag>
-        <tag>BFS</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>蓝桥-2022</title>
     <url>/posts/1748642322.html</url>
     <content><![CDATA[<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p><a href="https://www.lanqiao.cn/problems/2186/learning/">https://www.lanqiao.cn/problems/2186/learning/</a></p>
@@ -2897,6 +2880,40 @@ src = 0, dst = 2, k = 0
       </tags>
   </entry>
   <entry>
+    <title>蓝桥-全球变暖</title>
+    <url>/posts/371940618.html</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a href="https://www.lanqiao.cn/problems/178/learning/">https://www.lanqiao.cn/problems/178/learning/</a></p>
+<h3 id="DFS"><a href="#DFS" class="headerlink" title="DFS"></a>DFS</h3><p>会栈溢出</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 05-全球变暖1</span></span><br><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"></span><br><span class="line">sys.setrecursionlimit(<span class="number">600000</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">i, j</span>):</span><br><span class="line">    <span class="keyword">global</span> flag, vis, mp, Dir</span><br><span class="line">    <span class="keyword">if</span> mp[i + <span class="number">1</span>][j] == <span class="string">&quot;#&quot;</span> <span class="keyword">and</span> mp[i - <span class="number">1</span>][j] == <span class="string">&quot;#&quot;</span> <span class="keyword">and</span> \</span><br><span class="line">            mp[i][j + <span class="number">1</span>] == <span class="string">&quot;#&quot;</span> <span class="keyword">and</span> mp[i][j - <span class="number">1</span>] == <span class="string">&quot;#&quot;</span>:</span><br><span class="line">        flag = <span class="literal">True</span></span><br><span class="line">        <span class="comment"># return</span></span><br><span class="line">    <span class="keyword">for</span> di, dj <span class="keyword">in</span> Dir:</span><br><span class="line">        ni, nj = i + di, j + dj</span><br><span class="line">        <span class="comment"># if ni &lt; 0 or nj &lt; 0 or ni &gt;= n or nj &gt;= n or vis[ni][nj]:</span></span><br><span class="line">        <span class="comment">#     continue</span></span><br><span class="line">        <span class="comment"># 因为最外面一圈都是海</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> vis[ni][nj] <span class="keyword">and</span> mp[ni][nj] == <span class="string">&quot;#&quot;</span>:</span><br><span class="line">            vis[ni][nj] = <span class="literal">True</span></span><br><span class="line">            dfs(ni, nj)</span><br><span class="line">            <span class="comment"># vis[ni][nj] = False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ans = <span class="number">0</span></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">mp = []</span><br><span class="line">vis = [[<span class="literal">False</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line">Dir = [(<span class="number">1</span>, <span class="number">0</span>), (-<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>), (<span class="number">0</span>, -<span class="number">1</span>)]</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    mp.append(<span class="built_in">list</span>(<span class="built_in">input</span>()))</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        <span class="keyword">if</span> mp[x][y] == <span class="string">&quot;.&quot;</span> <span class="keyword">or</span> vis[x][y]:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="comment"># print(x,y)</span></span><br><span class="line">        flag = <span class="literal">False</span></span><br><span class="line">        vis[x][y] = <span class="literal">True</span></span><br><span class="line">        dfs(x, y)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> flag:</span><br><span class="line">            ans += <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(ans)</span><br></pre></td></tr></table></figure>
+<h3 id="BFS"><a href="#BFS" class="headerlink" title="BFS"></a>BFS</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 02-全球变暖-1</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bfs</span>(<span class="params">i, j</span>):</span><br><span class="line">    <span class="keyword">global</span> flag</span><br><span class="line">    q = deque()</span><br><span class="line">    q.append((i, j))</span><br><span class="line">    vis[i][j] = <span class="literal">True</span></span><br><span class="line">    <span class="keyword">while</span> q:</span><br><span class="line">        x, y = q.popleft()</span><br><span class="line">        <span class="keyword">if</span> mp[x + <span class="number">1</span>][y] == <span class="string">&quot;#&quot;</span> <span class="keyword">and</span> mp[x - <span class="number">1</span>][y] == <span class="string">&quot;#&quot;</span> <span class="keyword">and</span> \</span><br><span class="line">                mp[x][y + <span class="number">1</span>] == <span class="string">&quot;#&quot;</span> <span class="keyword">and</span> mp[x][y - <span class="number">1</span>] == <span class="string">&quot;#&quot;</span>:</span><br><span class="line">            flag = <span class="literal">True</span></span><br><span class="line">        <span class="keyword">for</span> dx, dy <span class="keyword">in</span> Dir:</span><br><span class="line">            nx, ny = x + dx, y + dy</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> vis[nx][ny] <span class="keyword">and</span> mp[nx][ny] == <span class="string">&quot;#&quot;</span>:</span><br><span class="line">                vis[nx][ny] = <span class="literal">True</span></span><br><span class="line">                q.append((nx, ny))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ans = <span class="number">0</span></span><br><span class="line">n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">mp = []</span><br><span class="line">vis = [[<span class="literal">False</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n)]</span><br><span class="line">Dir = [(<span class="number">1</span>, <span class="number">0</span>), (-<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>), (<span class="number">0</span>, -<span class="number">1</span>)]</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    mp.append(<span class="built_in">list</span>(<span class="built_in">input</span>()))</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(n):</span><br><span class="line">        <span class="keyword">if</span> mp[x][y] == <span class="string">&quot;.&quot;</span> <span class="keyword">or</span> vis[x][y]:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="comment"># print(x,y)</span></span><br><span class="line">        flag = <span class="literal">False</span></span><br><span class="line">        vis[x][y] = <span class="literal">True</span></span><br><span class="line">        bfs(x, y)</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> flag:</span><br><span class="line">            ans += <span class="number">1</span></span><br><span class="line"><span class="built_in">print</span>(ans)</span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">输入</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">7</span></span><br><span class="line"><span class="string">.......</span></span><br><span class="line"><span class="string">.##....</span></span><br><span class="line"><span class="string">.##....</span></span><br><span class="line"><span class="string">....##.</span></span><br><span class="line"><span class="string">..####.</span></span><br><span class="line"><span class="string">...###.</span></span><br><span class="line"><span class="string">.......</span></span><br><span class="line"><span class="string">copy</span></span><br><span class="line"><span class="string">输出</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">1</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">10</span></span><br><span class="line"><span class="string"> .......... .......... ...#...... .......... ....#.##.. ....#.##.. .#..####.. .#........ .##....... ..........</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">20</span></span><br><span class="line"><span class="string">....................</span></span><br><span class="line"><span class="string">....................</span></span><br><span class="line"><span class="string">....................</span></span><br><span class="line"><span class="string">....................</span></span><br><span class="line"><span class="string">....#...............</span></span><br><span class="line"><span class="string">....########........</span></span><br><span class="line"><span class="string">....##########......</span></span><br><span class="line"><span class="string">....###############.</span></span><br><span class="line"><span class="string">.....##############.</span></span><br><span class="line"><span class="string">.....##############.</span></span><br><span class="line"><span class="string">.....##############.</span></span><br><span class="line"><span class="string">......#############.</span></span><br><span class="line"><span class="string">......#############.</span></span><br><span class="line"><span class="string">......#############.</span></span><br><span class="line"><span class="string">.......############.</span></span><br><span class="line"><span class="string">.......############.</span></span><br><span class="line"><span class="string">........###########.</span></span><br><span class="line"><span class="string">.........##########.</span></span><br><span class="line"><span class="string">..........#########.</span></span><br><span class="line"><span class="string">....................</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>蓝桥杯</tag>
+        <tag>DFS</tag>
+        <tag>BFS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>蓝桥-剪邮票</title>
+    <url>/posts/1259790352.html</url>
+    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a href="https://www.lanqiao.cn/problems/1505/learning/">https://www.lanqiao.cn/problems/1505/learning/</a></p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 03-剪邮票-1</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line">mp = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>]</span><br><span class="line">vis = [<span class="literal">False</span>] * <span class="number">13</span></span><br><span class="line">a = [<span class="number">0</span>] * <span class="number">5</span>  <span class="comment"># 选出来的5个数</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bfs</span>():</span><br><span class="line">    <span class="keyword">global</span> a</span><br><span class="line">    cnt = [<span class="number">0</span>] * <span class="number">5</span></span><br><span class="line">    q = deque()</span><br><span class="line">    q.append(a[<span class="number">0</span>])</span><br><span class="line">    cnt[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> q:</span><br><span class="line">        x = q.popleft()</span><br><span class="line">        <span class="keyword">for</span> i, y <span class="keyword">in</span> <span class="built_in">enumerate</span>(a):</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">abs</span>(x - y) <span class="keyword">in</span> [<span class="number">1</span>, <span class="number">5</span>] <span class="keyword">and</span> cnt[i] == <span class="number">0</span>:</span><br><span class="line">                q.append(y)</span><br><span class="line">                cnt[i] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">sum</span>(cnt) == <span class="number">5</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">s</span>):</span><br><span class="line">    <span class="keyword">global</span> ans, vis</span><br><span class="line">    <span class="keyword">if</span> s == <span class="number">6</span>:</span><br><span class="line">        <span class="keyword">if</span> bfs():</span><br><span class="line">            <span class="comment"># print(a)</span></span><br><span class="line">            ans += <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">12</span>):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> vis[i]:</span><br><span class="line">                vis[i] = <span class="literal">True</span></span><br><span class="line">                a[s - <span class="number">1</span>] = mp[i]</span><br><span class="line">                dfs(s + <span class="number">1</span>)</span><br><span class="line">                vis[i] = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ans = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">dfs(<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(ans // <span class="number">120</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>蓝桥杯</tag>
+        <tag>DFS</tag>
+        <tag>BFS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>蓝桥-多重背包</title>
     <url>/posts/4022973346.html</url>
     <content><![CDATA[<h3 id="分组背包"><a href="#分组背包" class="headerlink" title="分组背包"></a>分组背包</h3><p>问题：每一组当中的物品只能选一个。</p>
@@ -2922,22 +2939,6 @@ src = 0, dst = 2, k = 0
         <tag>蓝桥杯</tag>
         <tag>动态规划</tag>
         <tag>背包</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>蓝桥-剪邮票</title>
-    <url>/posts/1259790352.html</url>
-    <content><![CDATA[<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a href="https://www.lanqiao.cn/problems/1505/learning/">https://www.lanqiao.cn/problems/1505/learning/</a></p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 03-剪邮票-1</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line">mp = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">11</span>, <span class="number">12</span>, <span class="number">13</span>, <span class="number">14</span>]</span><br><span class="line">vis = [<span class="literal">False</span>] * <span class="number">13</span></span><br><span class="line">a = [<span class="number">0</span>] * <span class="number">5</span>  <span class="comment"># 选出来的5个数</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">bfs</span>():</span><br><span class="line">    <span class="keyword">global</span> a</span><br><span class="line">    cnt = [<span class="number">0</span>] * <span class="number">5</span></span><br><span class="line">    q = deque()</span><br><span class="line">    q.append(a[<span class="number">0</span>])</span><br><span class="line">    cnt[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> q:</span><br><span class="line">        x = q.popleft()</span><br><span class="line">        <span class="keyword">for</span> i, y <span class="keyword">in</span> <span class="built_in">enumerate</span>(a):</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">abs</span>(x - y) <span class="keyword">in</span> [<span class="number">1</span>, <span class="number">5</span>] <span class="keyword">and</span> cnt[i] == <span class="number">0</span>:</span><br><span class="line">                q.append(y)</span><br><span class="line">                cnt[i] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">sum</span>(cnt) == <span class="number">5</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">dfs</span>(<span class="params">s</span>):</span><br><span class="line">    <span class="keyword">global</span> ans, vis</span><br><span class="line">    <span class="keyword">if</span> s == <span class="number">6</span>:</span><br><span class="line">        <span class="keyword">if</span> bfs():</span><br><span class="line">            <span class="comment"># print(a)</span></span><br><span class="line">            ans += <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">12</span>):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> vis[i]:</span><br><span class="line">                vis[i] = <span class="literal">True</span></span><br><span class="line">                a[s - <span class="number">1</span>] = mp[i]</span><br><span class="line">                dfs(s + <span class="number">1</span>)</span><br><span class="line">                vis[i] = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ans = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">dfs(<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(ans // <span class="number">120</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>蓝桥杯</tag>
-        <tag>DFS</tag>
-        <tag>BFS</tag>
       </tags>
   </entry>
   <entry>

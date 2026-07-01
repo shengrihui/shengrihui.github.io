@@ -185,6 +185,172 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/3726009543.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/3726009543.html" class="post-title-link" itemprop="url">蓝桥-灵能传输</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-02-07 21:46:35" itemprop="dateCreated datePublished" datetime="2023-02-07T21:46:35+08:00">2023-02-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-01-28 12:04:35" itemprop="dateModified" datetime="2026-01-28T12:04:35+08:00">2026-01-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p><a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/196/learning/">https://www.lanqiao.cn/problems/196/learning/</a></p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ol>
+<li>所有操作都是在数组内进行的，整个数组的和不变；</li>
+<li>每次操作的三个数的和不变，因此考虑到用前缀和。</li>
+<li>一次更新后，<code>s[i-1]</code>变为原来的<code>s[i]</code>,<code>s[i]</code>变为原来的<code>s[i-1]</code>,<code>s[i+1]</code>不变；</li>
+<li>因此“一次加减操作”转变为“前两个前缀和的交换”。</li>
+<li>两端的武士不向外传递灵能，但他们的灵能值也会改变，而<code>s[n]</code>是所有的和，不变。因此，<code>s[0]=0</code>，<code>s[1]</code>到<code>s[n-1]</code>可以交换到任意位置。</li>
+<li>要求的东西就变成了求<code>max&#123;|s[i]-s[i-1|&#125;</code>尽量小。</li>
+<li>先考虑简单情况，<code>s[]</code>都是正的，将他排序，相邻差最大的就是结果，因为如果不排序，相邻相减会大；</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/xuxiaobo1234/article/details/108095193">https://blog.csdn.net/xuxiaobo1234/article/details/108095193</a></li>
+<li>最后一步，我只能理解成：小于<code>s[0]</code>大于min部分的值要排列起来，使得相邻两数的差最大值最小化，从图像上想象就是，<code>s[0]</code>固定住，<code>s[1]</code>到<code>s[p]</code>（假设是这样的下标）升序排序，但都小于<code>s[0]</code>，然后隔一个的将数拆开成两部分，一部分降序地排列在<code>s[0]</code>后面，然后另一部分更在后面，这样能“使得相邻两数的差最大值最小化”。</li>
+</ol>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 灵能传输</span></span><br><span class="line"></span><br><span class="line">T = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line"><span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(T):</span><br><span class="line">    n = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    arr = <span class="built_in">list</span>(<span class="built_in">map</span>(<span class="built_in">int</span>, <span class="built_in">input</span>().split()))</span><br><span class="line">    <span class="comment"># 计算前缀和</span></span><br><span class="line">    s = [<span class="number">0</span>] * (n + <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i, x <span class="keyword">in</span> <span class="built_in">enumerate</span>(arr):</span><br><span class="line">        s[i + <span class="number">1</span>] = s[i] + x</span><br><span class="line">    s0, sn = s[<span class="number">0</span>], s[-<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">if</span> s0 &gt; sn:</span><br><span class="line">        s0, sn = sn, s0</span><br><span class="line">    <span class="comment"># print(s)</span></span><br><span class="line">    s.sort()</span><br><span class="line">    s0_idx = s.index(s0)</span><br><span class="line">    sn_idx = s.index(sn)</span><br><span class="line">    <span class="comment"># print(s)</span></span><br><span class="line">    <span class="comment"># print(s0_idx)</span></span><br><span class="line">    <span class="comment"># print(sn_idx)</span></span><br><span class="line">    res_sum = s.copy()</span><br><span class="line">    L, R = <span class="number">0</span>, n</span><br><span class="line">    vis = [<span class="literal">True</span>] * (n + <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(s0_idx, -<span class="number">1</span>, -<span class="number">2</span>):</span><br><span class="line">        res_sum[L] = s[i]</span><br><span class="line">        L += <span class="number">1</span></span><br><span class="line">        vis[i] = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(sn_idx, n + <span class="number">1</span>, <span class="number">2</span>):</span><br><span class="line">        res_sum[R] = s[i]</span><br><span class="line">        R -= <span class="number">1</span></span><br><span class="line">        vis[i] = <span class="literal">False</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(n + <span class="number">1</span>):</span><br><span class="line">        <span class="keyword">if</span> vis[i]:</span><br><span class="line">            res_sum[L] = s[i]</span><br><span class="line">            L += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    res = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, <span class="built_in">len</span>(res_sum)):</span><br><span class="line">        res = <span class="built_in">max</span>(res, <span class="built_in">abs</span>(res_sum[i] - res_sum[i - <span class="number">1</span>]))</span><br><span class="line"></span><br><span class="line">    <span class="built_in">print</span>(res)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/3747214591.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/SNNZ5107.JPG">
+      <meta itemprop="name" content="盛日辉">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="盛日辉的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/posts/3747214591.html" class="post-title-link" itemprop="url">二分法.md</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-02-06 10:28:04" itemprop="dateCreated datePublished" datetime="2023-02-06T10:28:04+08:00">2023-02-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-01-28 12:04:35" itemprop="dateModified" datetime="2026-01-28T12:04:35+08:00">2026-01-28</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="扫地机器人"><a href="#扫地机器人" class="headerlink" title="扫地机器人"></a>扫地机器人</h3><p>题目：<a target="_blank" rel="noopener" href="https://www.lanqiao.cn/problems/199/learning/">https://www.lanqiao.cn/problems/199/learning/</a></p>
+<ul>
+<li>每个机器人“负责”的区域（包括他自己的）*2=他的时间</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"># n, k = map(int, input().split())</span><br><span class="line"># # n, k = 10, 3</span><br><span class="line"># arr = [False] * (n + 1)</span><br><span class="line">#</span><br><span class="line"># for i in range(k):</span><br><span class="line">#     arr[int(input())] = True</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># # for i in [5, 2, 10]:</span><br><span class="line"># #     arr[i] = True</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># def check(d):</span><br><span class="line">#     i = 1</span><br><span class="line">#     while i &lt;= n:</span><br><span class="line">#         # print(d, i, i + d, arr[i:i + d])</span><br><span class="line">#         if not any(arr[i:i + d]):</span><br><span class="line">#             return False</span><br><span class="line">#         i += d</span><br><span class="line">#     return True</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># l, r = 1, n</span><br><span class="line"># while l &lt; r:</span><br><span class="line">#     mid = (l + r) // 2</span><br><span class="line">#     print(l, r, mid)</span><br><span class="line">#     if check(mid):</span><br><span class="line">#         r = mid</span><br><span class="line">#     else:</span><br><span class="line">#         l = mid + 1</span><br><span class="line"># print((l - 1) * 2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">n, k = map(int, input().split())</span><br><span class="line">a = [0]</span><br><span class="line">for i in range(k):</span><br><span class="line">    a.append(int(input()))</span><br><span class="line">a.sort()</span><br><span class="line"></span><br><span class="line">print(a)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def check(d):</span><br><span class="line">    len = 0  # 覆盖长度，从最左端开始一直到最右端</span><br><span class="line">    for i in range(1, k + 1):</span><br><span class="line">        if len + d &gt;= a[i]:  # 当前覆盖长度加上d之后，是否包括了a[i]</span><br><span class="line">            if len &gt; a[i]:  # 当前覆盖长度是否已经包括了a[i]</span><br><span class="line">                # 如果当前覆盖长度已经包括了，说明a[i]之前的机器人已经负责了到len这块的区域</span><br><span class="line">                # 那a[i]就可以负责len往后再加d的部分</span><br><span class="line">                len = a[i] + d - 1  # 减1是因为还要算上自己</span><br><span class="line">            else:</span><br><span class="line">                # 如果当前覆盖长度没有包括a[i]，那就让a[i]负责[len+1,len+d]</span><br><span class="line">                len += d</span><br><span class="line">        else:</span><br><span class="line">            return False</span><br><span class="line">    return len &gt;= n</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">l, r = 1, n</span><br><span class="line">mid = 0</span><br><span class="line">while l &lt; r:</span><br><span class="line">    mid = (l + r) // 2</span><br><span class="line">    print(l, r, mid)</span><br><span class="line">    if check(mid):</span><br><span class="line">        r = mid</span><br><span class="line">    else:</span><br><span class="line">        l = mid + 1</span><br><span class="line">print((l - 1) * 2)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">
+\sum_{i=ln}^{rn}\frac{i(i+1)}{2}
+=\frac{1}{2}(\sum_{i=ln}^{rn}i^2+\sum_{i=ln}^{rn}i)</script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/3710154345.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1397,192 +1563,6 @@ f(0)&=\frac{e^{i·0}}{i\sin0+\cos0}\\
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/1802490282.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/SNNZ5107.JPG">
-      <meta itemprop="name" content="盛日辉">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="盛日辉的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/1802490282.html" class="post-title-link" itemprop="url">Leetcode_797. 所有可能的路径</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-26 16:07:01" itemprop="dateCreated datePublished" datetime="2021-08-26T16:07:01+08:00">2021-08-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-01-28 12:04:35" itemprop="dateModified" datetime="2026-01-28T12:04:35+08:00">2026-01-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>797. 所有可能的路径<br>难度：中等</p>
-<p>给你一个有&nbsp;<code>n</code>&nbsp;个节点的 <strong>有向无环图（DAG）</strong>，请你找出所有从节点 <code>0</code>&nbsp;到节点 <code>n-1</code>&nbsp;的路径并输出（<strong>不要求按特定顺序</strong>）</p>
-
-<p>二维数组的第 <code>i</code> 个数组中的单元都表示有向图中 <code>i</code> 号节点所能到达的下一些节点，空就是没有下一个结点了。</p>
-
-<p>译者注：有向图是有方向的，即规定了 a→b 你就不能从 b→a 。</p>
-
-<p>&nbsp;</p>
-
-<p><strong>示例 1：</strong></p>
-
-<p><img style="height: 242px; width: 242px;" src="https://assets.leetcode.com/uploads/2020/09/28/all_1.jpg" alt></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/1802490282.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://shengrihui.github.io/posts/332257389.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/SNNZ5107.JPG">
-      <meta itemprop="name" content="盛日辉">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="盛日辉的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/posts/332257389.html" class="post-title-link" itemprop="url">Leetcode_881. 救生艇</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-08-26 16:03:51" itemprop="dateCreated datePublished" datetime="2021-08-26T16:03:51+08:00">2021-08-26</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-01-28 12:04:35" itemprop="dateModified" datetime="2026-01-28T12:04:35+08:00">2026-01-28</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>881. 救生艇<br>难度：中等</p>
-<p>第&nbsp;<code>i</code>&nbsp;个人的体重为&nbsp;<code>people[i]</code>，每艘船可以承载的最大重量为&nbsp;<code>limit</code>。</p>
-
-<p>每艘船最多可同时载两人，但条件是这些人的重量之和最多为&nbsp;<code>limit</code>。</p>
-
-<p>返回载到每一个人所需的最小船数。(保证每个人都能被船载)。</p>
-
-<p>&nbsp;</p>
-
-<p><strong>示例 1：</strong></p>
-
-
-
-<p><strong>示例 2：</strong></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/posts/332257389.html#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1654,7 +1634,7 @@ f(0)&=\frac{e^{i·0}}{i\sin0+\cos0}\\
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">57</span>
+          <span class="site-state-item-count">59</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1667,7 +1647,7 @@ f(0)&=\frac{e^{i·0}}{i\sin0+\cos0}\\
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">57</span>
+        <span class="site-state-item-count">61</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
